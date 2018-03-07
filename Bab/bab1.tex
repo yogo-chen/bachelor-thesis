@@ -5,23 +5,33 @@
 \section{Latar Belakang}
 \label{sec:label}
 
-Bagian ini akan diisi dengan apa yang melatarbelakangi pembuatan template skripsi ini.
-Termasuk juga masalah-masalah yang akan dihadapi untuk membuatnya, termasuk kurangnya kemampuan penguasaan \LaTeX{} sehingga template ini dibuat dengan mengandalkan berbagai contoh yang tersebar di dunia maya, yang digabung-gabung menjadi satu jua.
-Bagian lain juga akan dilengkapi, untuk sementara diisi dengan lorem ipsum versi bahasa inggris.
+Kamera merupakan alat/komponen optik yang digunakan untuk mengambil citra/gambar. Salah satu penggunaan kamera dalam kehidupan sehari-hari adalah kamera CCTV (\textit{closed-circuit television}). Kamera CCTV digunakan untuk memantau suatu lokasi dengan tujuan pengawasan dan keamanan. Kamera CCTV pada umumnya dipasang pada tempat strategis sehingga memiliki tingkat jangkauan yang baik. Kamera CCTV bekerja dengan cara merekam lokasi dalam jangkauannya secara terus menerus dan menyimpan hasil rekamannya dalam media penyimpanan. Rekaman ini biasanya digunakan oleh petugas keamanan untuk memantau lokasi tersebut dari tempat yang berbeda sehingga petugas tidak perlu memantau lokasi tersebut dengan datang secara langsung. Petugas hanya perlu mendatangi lokasi tersebut apabila mendapati hal-hal yang mencurigakan berdasarkan hasil rekaman CCTV.
 
-\dtext{5-10}
+Penempatan kamera CCTV di ruangan yang berbentuk sederhana (persegi panjang) tidaklah sulit. Kamera CCTV yang dibutuhkan biasanya berjumlah dua buah dan dipasang di kedua sudut ruangan yang merupakan satu diagonal. Namun, jika ruangan berukuran besar, maka tujuan penggunaan kamera CCTV pun tidak hanya untuk mendeteksi adanya orang, tetapi juga mengenali orang tersebut. Hal ini tentunya menyebabkan kesulitan dalam menentukan jumlah minimum dan lokasi penempatan kamera CCTV. Terdapat beberapa pendekatan yang dapat digunakan untuk menyelesaikan masalah ini, seperti dengan cara memasang kamera CCTV pada daerah-daerah yang dapat dimasuki orang. Tetapi pada kasus terburuk, orang bisa saja masuk melewati jalur-jalur yang tidak diduga, seperti tembok, atap, bawah tanah, dsb. Oleh karena itu, alangkah baiknya pemasangan kamera CCTV dilakukan hingga seluruh daerah di ruangan tersebut tercakup sepenuhnya.
+
+Penempatan kamera CCTV dapat dilakukan dalam berbagai lokasi dan berbagai arah pandang. Apabila penempatan kamera CCTV dilakukan tanpa adanya perhitungan, maka terdapat kemungkinan jumlah kamera yang terlalu banyak dan/atau seluruh lokasi yang tidak tercakup sepenuhnya. Pada penempatan kamera CCTV terdapat perhitungan tingkat \textit{overlap} (penumpukan jangkauan) dan tingkat \textit{out of bound} (jarak pandang terpotong). Penempatan kamera CCTV akan semakin baik apabila memiliki tingkat \textit{overlap} dan tingkat \textit{out of bound} yang semakin rendah.
+
+Pada skripsi ini, akan dibuat sebuah perangkat lunak yang akan menghasilkan jumlah minimum beserta dengan penempatan-penempatan kamera CCTV berdasarkan ukuran ruangan, jarak pandang efektif kamera CCTV, dan sudut pandang kamera CCTV. Penempatan kamera CCTV akan terdiri atas lokasi penempatan dan juga arah pandangnya. Perangkat lunak juga akan memberikan visualisasi guna membantu pengguna memahami penempatan setiap kamera CCTV pada ruangan yang dimasukkan. Hasil dari perangkat lunak ini dapat dipastikan menjadi hasil yang paling optimal yang berarti bahwa hasil akan memiliki jumlah kamera CCTV yang paling minimum yang mencakup seluruh isi ruangan.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
-Bagian ini akan diisi dengan penajaman dari masalah-masalah yang sudah diidentifikasi di bagian sebelumnya. 
 
-\dtext{6}
+Berdasarkan deskripsi masalah yang dibahas sebelumnya, maka ditetapkan rumusan masalah sebagai berikut:
+
+\begin{itemize}
+	\item Bagaimana cara menentukan jumlah minimum kamera CCTV dalam suatu ruangan?
+	\item Bagaimana cara memvisualisasikan penempatan kamera-kamera CCTV dalam suatu ruangan?
+\end{itemize}
 
 \section{Tujuan}
 \label{sec:tujuan}
-Akan dipaparkan secara lebih terperinci dan tersturkur apa yang menjadi tujuan pembuatan template skripsi ini
 
-\dtext{7}
+Berdasarkan rumusan masalah, maka tujuan dalam skripsi ini adalah sebagai berikut:
+
+\begin{itemize}
+	\item Mempelajari cara menentukan jumlah minimum kamera CCTV dalam suatu ruangan.
+	\item Membangun perangkat lunak yang dapat memvisualisasikan penempatan kamera-kamera CCTV dalam suatu ruangan.
+\end{itemize}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
