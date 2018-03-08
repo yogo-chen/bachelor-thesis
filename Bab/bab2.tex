@@ -10,12 +10,12 @@ Linear programming adalah teknik dalam ilmu matematika untuk menyelesaikan masal
 \subsection{Karakteristik}
 \label{karakteristik}
 
-Setiap masalah optimasi dapat dimodelkan ke bentuk linear programming yang memiliki ciri-ciri sebagai berikut:
+Setiap masalah optimasi dapat dimodelkan ke dalam bentuk masalah linear programming. Masalah linear programming memiliki ciri-ciri sebagai berikut:
 
 \begin{itemize}
 	\item Variabel keputusan
 	
-		Variabel keputusan merupakan variabel yang akan dicari nilainya. Variabel ini juga menunjukkan keputusan yang akan diambil.
+		Di dalam masalah linear programming terdapat variabel-variabel keputusan. Variabel keputusan menunjukkan keputusan yang diambil.
 		
 		\begin{equation*}
 			\begin{split}
@@ -24,9 +24,9 @@ Setiap masalah optimasi dapat dimodelkan ke bentuk linear programming yang memil
 			\end{split}
 		\end{equation*}
 		
-	\item Fungsi Objektif
+	\item Fungsi Tujuan
 	
-		Dalam masalah linear programming, terdapat tujuan yang ingin dimaksimalkan atau diminimalkan. Tujuan atau hasil ini ditentukan oleh variabel-variabel keputusan. Dalam kasus produksi, pembuat keputusan menginginkan jumlah pendapatkan terbesar. Bila pendapatan dihitung berdasarkan jumlah dan harga dari setiap produk, maka fungsi objektif akan memaksimalkan setiap pendapatan dari masing-masing produk.
+		Di dalam masalah linear programming terdapat tujuan yang akan dicapai. Tujuan ini dimodelkan dengan memaksimalkan/meminimalkan variabel-variabel keputusan.
 		
 		\begin{equation*}
 			\text{maximize } z = 3x_1 + 2x_2
@@ -34,7 +34,8 @@ Setiap masalah optimasi dapat dimodelkan ke bentuk linear programming yang memil
 
 	\item Batasan
 	
-		Fungsi objektif ditentukan oleh variabel-variabel keputusan. Dalam fungsi objektif yang memaksimalkan hasil, nilai dari setiap variabel keputusan dapat ditentukan sedemikian mungkin sehingga menghasilkan hasil sebesar-besarnya. Tentunya hal ini tidak mungkin terjadi karena terdapat faktor-faktor yang mencegah variabel keputusan untuk ditentukan sedemikian mungkin. Faktor-faktor ini berperan sebagai batasan bagi variabel keputusan sehingga nilai variabel keputusan tidak melebihi batas. Dengan adanya batasan ini, nilai dari fungsi objektif tidak akan bernilai tak hingga karena variabel-variabel keputusannya dibatasi.
+		Batasan dalam linear programming berfungsi untuk membatasi nilai variabel. Batasan juga dapat menunjukkan keterkaitan antar variabel keputusan.
+		%Fungsi tujuan ditentukan oleh variabel-variabel keputusan. Dalam fungsi tujuan yang memaksimalkan hasil, nilai dari setiap variabel keputusan dapat ditentukan sedemikian mungkin sehingga menghasilkan hasil sebesar-besarnya. Tentunya hal ini tidak mungkin terjadi karena terdapat faktor-faktor yang mencegah variabel keputusan untuk ditentukan sedemikian mungkin. Faktor-faktor ini berperan sebagai batasan bagi variabel keputusan sehingga nilai variabel keputusan tidak melebihi batas. Dengan adanya batasan ini, nilai dari fungsi tujuan tidak akan bernilai tak hingga karena variabel-variabel keputusannya dibatasi.
 		
 		\begin{equation*}
 			\begin{split}
@@ -46,7 +47,7 @@ Setiap masalah optimasi dapat dimodelkan ke bentuk linear programming yang memil
 		
 	\item Tanda Pembatas
 		
-		Jika variabel keputusan \(x_i\) tidak dapat bernilai negatif maka perlu ditambahkan tanda pembatas \(x_i \geq 0\). Namun, apabila nilai variabel keputusan tidak dibatasi atau dapat bernilai negatif, maka variabel keputusan tersebut merupakan variabel yang tidak dibatasi oleh tanda (\textit{unrestricted in sign}). Dalam kasus produksi, jumlah barang yang diproduksi tidak dapat bernilai negatif sehingga variabel jumlah barang harus diberikan tanda pembatas.
+		Tanda pembatas berfungsi untuk menyatakan apakah variabel keputusan dapat bernilai negatif atau tidak. Jika variabel keputusan \(x_i\) tidak dapat bernilai negatif maka perlu ditambahkan tanda pembatas \(x_i \geq 0\). Namun, apabila nilai variabel keputusan tidak dibatasi atau dapat bernilai negatif, maka variabel keputusan tersebut merupakan variabel bebas (\textit{unrestricted in sign}).
 		
 		\begin{equation*}
 			\begin{split}
@@ -57,10 +58,9 @@ Setiap masalah optimasi dapat dimodelkan ke bentuk linear programming yang memil
 		
 \end{itemize}
 
-Dengan adanya keempat karakteristik di atas, setiap masalah optimasi dapat dimodelkan ke bentuk linear programming. Berikut contoh pemodelan masalah dalam bentuk linear progamming:
+Dengan keempat karakteristik di atas, setiap masalah optimasi dapat dimodelkan ke bentuk masalah linear programming. Berikut contoh masalah linear progamming:
 
 \begin{equation*}
-	\setlength\arraycolsep{1.5pt}
 	\begin{array}{r r c r c l}
 		\text{maximize} &\multicolumn{5}{l}{z = 3x_1 + 2x_2}\\
 		\text{subject to} &2x_1 &+ &x_2 &\leq &100\\
@@ -74,13 +74,17 @@ Dengan adanya keempat karakteristik di atas, setiap masalah optimasi dapat dimod
 \subsection{Daerah Solusi dan Solusi Optimal}
 \label{daerah_solusi_dan_solusi_optimal}
 
-Solusi dari linear programming merupakan solusi yang tidak melanggar setiap batasan-batasannya. Dengan diketahuinya hal ini, bisa saja maka linear programming memiliki banyak solusi dengan tidak melanggar batasan manapun. Dalam linear programming, solusi-solusi ini berada dalam daerah yang disebut dengan daerah solusi (feasible reqion). Daerah ini berbentuk \textit{covex polytope} yang terdiri dari banyak titik sudut. Titik-titik sudut ini merupakan perpotongan dari setiap batasan dengan batasan-batasan lainnya. Dengan adanya daerah ini, pencarian solusi menjadi dibatasi sehingga tidak perlu memeriksa seluruh kemungkinan yang ada. 
+Di dalam linear programming terdapat daerah solusi. Setiap batasan pada masalah linear programming akan menentukan daerah yang memenuhi batasan tersebut. Irisan dari gabungan daerah-daerah tersebut akan menghasilkan daerah solusi bagi masalah linear programming. Dengan adanya daerah solusi, maka masalah linear programming dapat diselesaikan karena memiliki solusi yang dibatasi.
 
-Bila diketahui bahwa titik sudut dibentuk dari perpotongan antar batasan, maka hal ini tidak berlaku sebaliknya. Titik potong tidak selalu menjadi titik sudut bagi daerah solusi. Titik sudut merupakan titik potong yang tidak melanggar batasan-batasan. Apabila daerah solusi divisualisasikan dalam bentuk grafik atau lainnya, daerah solusi akan berbentuk \textit{convex polytope}.
+%Solusi dari linear programming merupakan solusi yang tidak melanggar setiap batasan-batasannya. Dengan diketahuinya hal ini, bisa saja maka linear programming memiliki banyak solusi dengan tidak melanggar batasan manapun. Dalam linear programming, solusi-solusi ini berada dalam daerah yang disebut dengan daerah solusi (feasible reqion). Daerah ini berbentuk \textit{covex polytope} yang terdiri dari banyak titik sudut. Titik-titik sudut ini merupakan perpotongan dari setiap batasan dengan batasan-batasan lainnya. Dengan adanya daerah ini, pencarian solusi menjadi dibatasi sehingga tidak perlu memeriksa seluruh kemungkinan yang ada. 
 
-Bila daerah solusi sudah ditemukan, solusi optimal dapat dicari dengan memeriksa setiap kemungkinan yang berada di dalam daerah solusi. Walaupun demikian, pemeriksaan ini masih dianggap tidak efisien. Bila solusi optimal dapat berupa bilangan pecahan, maka pemeriksaan tidak dapat berakhir karena bilangan pecahan yang berada di antara dua batas berjumlah tak hingga.
+%Bila diketahui bahwa titik sudut dibentuk dari perpotongan antar batasan, maka hal ini tidak berlaku sebaliknya. Titik potong tidak selalu menjadi titik sudut bagi daerah solusi. Titik sudut merupakan titik potong yang tidak melanggar batasan-batasan. Apabila daerah solusi divisualisasikan dalam bentuk grafik atau lainnya, daerah solusi akan berbentuk \textit{convex polytope}.
 
-Tentunya seluruh pemeriksaan ini dapat dihindari karena solusi optimal dari linear programming berada pada salah satu titik sudut di daerah solusi. Dengan diketahuinya hal ini, maka solusi optimal dapat dicari dengan mengecek setiap titik sudut yang berjumlah terhitung (\textit{finite}).
+%Bila daerah solusi sudah ditemukan, solusi optimal dapat dicari dengan memeriksa setiap kemungkinan yang berada di dalam daerah solusi. Walaupun demikian, pemeriksaan ini masih dianggap tidak efisien. Bila solusi optimal dapat berupa bilangan pecahan, maka pemeriksaan tidak dapat berakhir karena bilangan pecahan yang berada di antara dua batas berjumlah tak hingga.
+
+%Tentunya seluruh pemeriksaan ini dapat dihindari karena solusi optimal dari linear programming berada pada salah satu titik sudut di daerah solusi. Dengan diketahuinya hal ini, maka solusi optimal dapat dicari dengan mengecek setiap titik sudut yang berjumlah terhitung (\textit{finite}).
+
+Apabila memiliki daerah solusi, maka masalah linear programming tersebut memiliki solusi optimal. Daerah ini berbentuk \textit{convex polytope} yang terdiri dari banyak titik sudut. Solusi optimal bagi masalah linear programming terdapat pada salah satu titik sudut.
 
 \begin{figure}[H]
 	\centering
@@ -105,15 +109,15 @@ Tentunya seluruh pemeriksaan ini dapat dihindari karena solusi optimal dari line
 		\draw (4,0.2) node[right] {$E$};
 		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,4) -- (2,3) -- (4,1) -- (4,0) -- cycle;
 	\end{tikzpicture}
-	\caption{Titik-titik sudut dalam daerah solusi}
+	\caption{Daerah solusi dan titik-titik sudut}
 \end{figure}
 
-Dengan diketahuinya daerah solusi, maka terdapat 3 jenis solusi optimal dalam linear programming, yaitu:
+Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
 
 \begin{enumerate}
 	\item Daerah solusi yang dibatasi (\textit{bounded feasible region})
 	
-		Batasan-batasan menghasilkan daerah solusi yang berbentuk \textit{convex polytope}. Solusi optimal linear programming terdapat di salah satu titik sudut.
+		Batasan-batasan menghasilkan daerah solusi yang berbentuk \textit{convex polytope}. Solusi optimal linear programming terdapat pada salah satu titik sudut.
 			
 		\begin{figure}[H]
     		\centering
@@ -133,7 +137,7 @@ Dengan diketahuinya daerah solusi, maka terdapat 3 jenis solusi optimal dalam li
     	
 	\item Daerah solusi yang tidak dibatasi (\textit{unbounded feasible region})
 	
-		Batasan-batasan menghasilkan daerah solusi, namun daerah tersebut memiliki bagian yang tidak tertutup sehingga tidak berbentuk \textit{convex polytope}. Hal ini dapat menyebabkan jumlah solusi yang tak terhitung. Dalam kasus ini, linear programming memiliki solusi namun solusi optimal tidak dapat ditemukan.
+		Batasan-batasan menghasilkan daerah solusi yang tidak tertutup sehingga tidak berbentuk \textit{convex polytope}. Daerah solusi ini memiliki jumlah solusi yang tak terhitung.
 			
     	\begin{figure}[H]
     		\centering
@@ -150,9 +154,9 @@ Dengan diketahuinya daerah solusi, maka terdapat 3 jenis solusi optimal dalam li
 			\caption{Daerah solusi yang tidak dibatasi}
 		\end{figure}
 
-	\item Tidak memiliki daerah solusi (\textit{infeasible region})
+	\item Tidak ada daerah solusi (\textit{infeasible region})
 
-		Batasan-batasan tidak membentuk daerah solusi akibat adanya dua atau lebih persamaan batasan yang saling bertentangan. Pada kasus ini, linear programming tidak memiliki solusi dan tidak dapat diselesaikan.
+		Batasan-batasan tidak membentuk daerah solusi sehingga masalah linear programming tidak memiliki solusi dan tidak dapat diselesaikan.
 			
 		\begin{figure}[H]
     		\centering
@@ -165,7 +169,7 @@ Dengan diketahuinya daerah solusi, maka terdapat 3 jenis solusi optimal dalam li
 				\draw (3,0) -- node[above,sloped] {\small $x + y \leq 3$} (0,3);
 				\draw (5,0) -- node[above,sloped] {\small $x + y \geq 5$} (0,5);
 			\end{tikzpicture}
-			\caption{Tidak memiliki daerah solusi}
+			\caption{Tidak ada daerah solusi}
     	\end{figure}
 
 \end{enumerate}
@@ -173,20 +177,22 @@ Dengan diketahuinya daerah solusi, maka terdapat 3 jenis solusi optimal dalam li
 \subsection{Bentuk Standar}
 \label{bentuk_standar}
 
-Setiap model linear programming dapat dimodelkan ke dalam bentuk standar berikut ini:
+Setiap model linear programming dapat dimodelkan ke dalam bentuk standar seperti berikut ini:
     	
-\begin{center}
-	\begin{tabular}{r c @{}c @{}c @{}c @{}c @{}c @{}c c l}
-	    \textit{maximize}	& $c_1x_1$    & + & $c_2x_2$    & + & \dots & + & $c_nx_n$ \\
-		\textit{subject to} & $a_{11}x_1$ & + & $a_{12}x_2$ & + & \dots & + & $a_{1n}x_n$ & = & $b_1$ \\
-    						& $a_{21}x_1$ & + & $a_{22}x_2$ & + & \dots & + & $a_{2n}x_n$ & = & $b_2$ \\
-                            & \multicolumn{7}{c}{\vdots}                                  &   & \vdots \\
-                            & $a_{m1}x_1$ & + & $a_{m2}x_2$ & + & \dots & + & $a_{mn}x_n$ & = & $b_m$ \\
-                            & \multicolumn{9}{l}{$x_1\geq0,x_2\geq0,\dots,x_n\geq0$}
-	\end{tabular}
-\end{center}
+\begin{equation*}
+	\begin{array}{r r c r c r c r c l}
+	    \text{maximize}		& c_1x_1    & + & c_2x_2 	& + & \dots & + & c_nx_n \\
+		\text{subject to} 	& a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1 \\
+    						& a_{21}x_1 & + & a_{22}x_2 & + & \dots & + & a_{2n}x_n & = & b_2 \\
+                            & \multicolumn{7}{c}{\vdots}                            &   & \vdots \\
+                            & a_{m1}x_1 & + & a_{m2}x_2 & + & \dots & + & a_{mn}x_n & = & b_m \\
+                            & \multicolumn{9}{l}{x_1\geq0,x_2\geq0,\dots,x_n\geq0}
+	\end{array}
+\end{equation*}
 
-Bentuk tersebut merupakan bentuk standar linear programming yang terdiri dari $n$ buah variabel $x$ dan $m$ buah persamaan batasan. Variabel $b_i,c_i,a_{ij}$ merupakan konstanta dan $x_i$ merupakan variabel keputusan. Bentuk standar tersebut dapat dibentuk dalam notasi matriks berikut:
+Bentuk tersebut merupakan bentuk standar masalah linear programming yang terdiri dari $n$ buah variabel $x$ dan $m$ buah persamaan batasan. Variabel $b_i,c_i,a_{ij}$ merupakan konstanta dan $x_i$ merupakan variabel keputusan. 
+
+Bentuk standar tersebut dapat dinyatakan dalam notasi matriks seperti berikut ini:
         
 \begin{center}
 	\begin{tabular}{r l}
@@ -195,24 +201,24 @@ Bentuk tersebut merupakan bentuk standar linear programming yang terdiri dari $n
 	\end{tabular}    
 \end{center}
         
-Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matriks baris berdimensi $n$, $A$ adalah matriks berdimensi $m\times n$, dan $b$ adalah matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan bahwa setiap variabel keputusan $x_i$ tidak dapat bernilai negatif.
+Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matriks baris berdimensi $n$, $A$ adalah matriks berdimensi $m\times n$, dan $b$ adalah matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan variabel keputusan $x_i$ tidak dapat bernilai negatif.
         
-Langkah-langkah untuk mengubah \textit{linear program} ke bentuk standar:
+Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
 
 \begin{enumerate}
-	\item Ubah objektif menjadi maksimalisasi
+%	\item Ubah tujuan agar memaksimalkan
 	
-		Apabila objektif berupa minimalisasi, maka ubah objektif menjadi maksimalisasi dengan cara mengalikan fungsi objektif dengan -1. Contoh:
-	
-		\begin{equation*}
-			\text{minimize } z = x_1 + 2x_2
-		\end{equation*}
+%		Apabila bertujuan meminimalkan, maka ubah tujuan agar memaksimalkan dengan cara mengalikan fungsi tujuan dengan -1. Contoh:
+
+%		\begin{equation*}
+%			\text{minimize } z = x_1 + 2x_2
+%		\end{equation*}
 		
-		menjadi
+%		menjadi
 		
-		\begin{equation*}
-			\text{maximize } -z = -x_1 - 2x_2
-		\end{equation*}
+%		\begin{equation*}
+%			\text{maximize } -z = -x_1 - 2x_2
+%		\end{equation*}
 		
 %	\item Ubah sisi kanan pertidaksamaan batasan sehingga tidak bernilai negatif
 	
@@ -228,14 +234,14 @@ Langkah-langkah untuk mengubah \textit{linear program} ke bentuk standar:
 %			-x_1 - 2x_2 \geq 20
 %		\end{equation*}
 
-	\item Ubah pertidaksamaan pada batasan ke dalam bentuk persamaan
+	\item Mengubah batasan ke dalam bentuk persamaan
 	
 		Perubahan pertidaksamaan pada batasan dibedakan menjadi 2 berdasarkan jenis tandanya, yaitu:
 		
 		\begin{enumerate}
 			\item Pertidaksamaan lebih kecil (\(\leq\))		
 
-				Pertidaksamaan dengan tanda lebih kecil diubah ke bentuk persamaan dengan cara menambahkan variabel baru bernilai positif yang dinamakan \textit{slack}. Selain itu ditambahkan juga tanda pembatas bagi variabel \textit{slack} tersebut. Contoh:
+				Pertidaksamaan dengan tanda lebih kecil diubah ke bentuk persamaan dengan menambahkan variabel baru positif bernama \textit{slack}. Lalu tambahkan tanda pembatas tidak negatif untuk variabel \textit{slack} tersebut. Contoh:
 				
 				\begin{equation*}
 					x_1 + 2x_2 \leq 40
@@ -252,7 +258,7 @@ Langkah-langkah untuk mengubah \textit{linear program} ke bentuk standar:
 			
 			\item Pertidaksamaan lebih besar (\(\geq\))
 			
-				Pertidaksamaan dengan tanda lebih besar diubah ke bentuk persamaan dengan cara menambahkan variabel baru bernilai negatif yang dinamakan \textit{surplus}. Selain itu ditambahkan juga tanda pembatas bagi variabel \textit{surplus} tersebut. Contoh:
+				Pertidaksamaan dengan tanda lebih besar diubah ke bentuk persamaan dengan menambahkan variabel baru negatif bernama \textit{surplus}. Lalu tambahkan tanda pembatas tidak negatif untuk variabel \textit{surplus} tersebut. Contoh:
 				
 				\begin{equation*}
 					x_1 + 2x_2 \geq 40
@@ -266,13 +272,43 @@ Langkah-langkah untuk mengubah \textit{linear program} ke bentuk standar:
 						e_1 &\geq 0
 					\end{split}
 				\end{equation*}
-		\end{enumerate}	
+		\end{enumerate}
+		
+	\item Mengsubtitusi variabel bebas
+	
+		Apabila terdapat variabel bebas \(x_i\), maka subtitusikan setiap variabel tersebut dengan 2 variabel pengganti \(u_i\) dan \(v_i\) sehingga \(x_i = u_i - v_i\). Lalu tambahkan tanda pembatas tidak negatif untuk variabel \(u_i\) dan \(v_i\). Contoh:
+		
+		\begin{equation*}
+			\begin{array}{r r c r c l}
+				\text{maximize} & \multicolumn{5}{l}{z = x_1 + x_2}\\
+				\text{subject to} & 2x_1 & + & x_2 & \leq & 4\\
+									& \multicolumn{3}{r}{x_1} & \geq & 0\\
+			\end{array}
+		\end{equation*}
+		
+		dengan
+		
+		\begin{equation*}
+			x_2 = u_2 - v_2
+		\end{equation*}
+		
+		menjadi
+		
+		\begin{equation*}
+			\begin{array}{r r c r c r c l}
+				\text{maximize} & \multicolumn{7}{l}{z = x_1 + u_2 - v_2}\\
+				\text{subject to} & 2x_1 & + & u_2 & - & v_2 & \leq & 4\\
+									& \multicolumn{5}{r}{x_1} & \geq & 0\\
+									& \multicolumn{5}{r}{u_2} & \geq & 0\\
+									& \multicolumn{5}{r}{v_2} & \geq & 0\\
+			\end{array}
+		\end{equation*}
 \end{enumerate}
 
 \subsection{Variabel Basis dan Non Basis}
 \label{variabel_basis_dan_non_basis}
 
-Jika model linear programming \(Ax = b\) terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel, maka solusi basis dapat ditemukan dengan cara membuat \(n - m\) buah variabel bernilai 0 dan menyelesaikan \(m\) buah variabel tersisa lainnya. Sebanyak \(n - m\) buah variabel yang dibuat bernilai 0 merupakan variabel non basis. Sedangkan sebanyak \(m\) buah variabel sisanya merupakan variabel basis karena diselesaikan dengan membuat variabel lainnya menjadi variabel non basis. Berikut contoh sistem persamaan linear:
+Masalah linear programming \(Ax = b\) yang terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah linear programming \(Ax = b\) memiliki solusi basis yang didapatkan dengan membuat \(n - m\) buah variabel bernilai 0 dan menyelesaikan \(m\) buah variabel lainnya. Sebanyak \(n - m\) buah variabel yang dibuat bernilai 0 disebut variabel non basis. Sedangkan sebanyak \(m\) buah variabel lainnya disebut variabel basis. Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. Berikut contoh sistem persamaan linear:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -282,7 +318,7 @@ Jika model linear programming \(Ax = b\) terdiri dari \(m\) buah persamaan batas
 	\end{array}
 \end{equation*}
 
-Pada sistem persamaan linear di atas, akan dipilih sebanyak 3 - 2 = 1 (3 variabel dan 2 persamaan) buah variabel yang akan menjadi variabel non basis dalam. Jika himpunan variabel non basis NBV = \(\{x_3\}\), maka himpunan variabel basis BV = \(\{x_1, x_2\}\). Nilai dari variabel basis dapat dicari dengan membuat variabel \(x_3\) menjadi 0 dan menyelesaikan
+Pada sistem persamaan linear di atas, dipilih sebanyak 3 - 2 = 1 (3 variabel dan 2 persamaan) buah variabel yang akan menjadi variabel non basis. Jika himpunan variabel non basis NBV = \(\{x_3\}\), maka himpunan variabel basis BV = \(\{x_1, x_2\}\). Solusi dari sistem persamaan tersebut dapat dicari dengan membuat variabel \(x_3\) menjadi variabel non basis dan menyelesaikan variabel basis lainnya.
 
 \begin{equation*}
 	\begin{split}
@@ -291,45 +327,49 @@ Pada sistem persamaan linear di atas, akan dipilih sebanyak 3 - 2 = 1 (3 variabe
 	\end{split}
 \end{equation*}
 
-Didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1 sehingga \(x_1\) = 2, \(x_2\) = 1, \(x_3\) = 0 menjadi solusi basis. Solusi basis merupakan solusi yang didapatkan dengan menggunakan variabel basis.
+Pada persamaan di atas didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1. Dengan demikian didapatkan solusi basis \(x_1\) = 2, \(x_2\) = 1, \(x_3\) = 0.
 
 \subsection{Metode Simplex}
 \label{metode_simplex}
 
-Metode simplex merupakan salah satu metode yang digunakan untuk mencari solusi optimal dari masalah linear programming. Metode \textit{simplex} bekerja secara beriterasi dan akan menghasilkan solusi yang mendekati optimal pada setiap iterasinya. Iterasi ini akan dilakukan hingga tidak ditemukannya solusi yang lebih optimal. Berikut contoh masalah linear programming:
+Metode simplex merupakan metode yang digunakan untuk mencari solusi optimal dari masalah linear programming. Metode simplex bekerja secara beriterasi dengan menghasilkan solusi yang mendekati optimal pada setiap iterasinya. Iterasi ini akan dilakukan hingga tidak ditemukannya solusi yang lebih optimal. Berikut contoh masalah linear programming:
 
-\begin{center}
-	\begin{tabular}{r c @{}c @{}c c l}
-		\textit{maximize}   & $3x_1$ & + & $2x_2$ \\
-		\textit{subject to} & $2x_1$ & + & $x_2$  & $\leq$ & $18$ \\
-        					& $2x_1$ & + & $3x_2$ & $\leq$ & $42$ \\
-                           	& $3x_1$ & + & $x_2$  & $\leq$ & $24$ \\
-                           	& \multicolumn{5}{l}{$x_1\geq0,x_2\geq0$} \\
-	\end{tabular}
-\end{center}
+\begin{equation*}
+	\begin{array}{r c c c c l}
+		\text{maximize}   & 3x_1 & + & 2x_2 \\
+		\text{subject to} & 2x_1 & + & x_2  & \leq & 18 \\
+        					& 2x_1 & + & 3x_2 & \leq & 42 \\
+                           	& 3x_1 & + & x_2  & \leq & 24 \\
+                           	& \multicolumn{5}{l}{x_1\geq0,x_2\geq0} \\
+	\end{array}
+\end{equation*}
         
-Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan menggunakan metode simplex:
+Langkah-langkah untuk menyelesaikan maslaah linear programming dengan menggunakan metode simplex:
 
 \begin{enumerate}
-	\item Mengubah ke dalam bentuk standar
+	\item Mengubah masalah ke dalam bentuk standar
 	
-        Pertidaksamaan-pertidaksamaan pada batasan diubah menjadi bentuk persamaan dengan menambahkan variabel \textit{slack} dan mengubah tanda pertidaksamaan menjadi tanda persamaan.
+        Masalah linear programming diubah ke bentuk standar sesuai dengan langkah-langkah yang sudah dibahas sebelumnya.
         
-	    \begin{center}
-			\begin{tabular}{r c @{}c @{}c @{}c @{}c @{}c @{}c @{}c @{}c c l}
-    	    	\textit{maximize}   & $3x_1$ & + & $2x_2$ & + & $0x_3$ & + & $0x_4$ & + & 0$x_5$\\
-	            \textit{subject to} & $2x_1$ & + & $x_2$  & + & $x_3$ &   &       &   &       & $=$ & $18$ \\
-                        	   		& $2x_1$ & + & $3x_2$ &   &       & + & $x_4$ &   &       & $=$ & $42$ \\
-                    	       		& $3x_1$ & + & $x_2$  &   &       &   &       & + & $x_5$ & $=$ & $24$ \\
-                	           		& \multicolumn{11}{l}{$x_1\geq0,x_2\geq0,x_3\geq0,x_4\geq0,x_5\geq0$} \\
-        	\end{tabular}
-		\end{center}
+        Berikut contoh masalah linear programming yang sudah diubah ke bentuk standar:
+        
+	    \begin{equation*}
+			\begin{array}{r c c c c c c c c c c l}
+    	    	\text{maximize}   & 3x_1 & + & 2x_2 & + & 0x_3 & + & 0x_4 & + & 0x_5\\
+	            \text{subject to} & 2x_1 & + & x_2  & + & x_3 &   &       &   &       & = & 18 \\
+                        	   		& 2x_1 & + & 3x_2 &   &       & + & x_4 &   &       & = & 42 \\
+                    	       		& 3x_1 & + & x_2  &   &       &   &       & + & x_5 & = & 24 \\
+                	           		& \multicolumn{11}{l}{x_1\geq0,x_2\geq0,x_3\geq0,x_4\geq0,x_5\geq0} \\
+        	\end{array}
+		\end{equation*}
 			
 	\item Membuat tabel \textit{simplex}\\
-		Tabel \textit{simplex} yang terdiri dari 4 kolom utama, yaitu kolom basis, kolom $z$, kolom variabel non basis, dan kolom ruas kanan/rhs (\textit{right hand side}). Pada awalnya, baris $z$ berisi nilai negatif dari konstanta variabel pada fungsi objektif dan $m$ baris berikutnya berisi konstanta variabel pada setiap persamaan batasan. $m$ baris terkahir ini diidentifikasikan sebagai baris basis. Berikut bentuk dari tabel simplex:
+		Tabel~\ref{tab:kerangka_tabel_simplex} merupakan kerangka tabel simplex yang terdiri dari 4 kolom utama, yaitu kolom basis, kolom $z$, kolom variabel non basis, dan kolom ruas kanan/rhs (\textit{right hand side}). Pada awalnya, baris $z$ berisi nilai negatif dari konstanta variabel pada fungsi tujuan dan $m$ baris berikutnya berisi konstanta variabel pada setiap persamaan batasan. $m$ baris terkahir ini diidentifikasikan sebagai baris basis.
         	
 		\begin{table}[H]
 			\centering
+			\caption{Kerangka tabel simplex}
+			\label{tab:kerangka_tabel_simplex}
 			\begin{tabular}{|c|c|c c c c |c|}
 				\hline
 				basic & $z$ & $x_1$ & $x_2$ & \dots & $x_n$ & rhs \\
@@ -342,13 +382,14 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_{n+m}$ & 0 & $a_{m1}$ & $a_{m2}$ & \dots & $a_{mn}$ & $b_m$ \\
 				\hline
 			\end{tabular}
-			\caption{Kerangka awal tabel simplex}
 		\end{table}
 			
-		Berikut tabel simplex awal untuk contoh masalah linear programming di atas:
+		Tabel~\ref{tab:contoh_simplex_awal} berikut adalah tabel simplex awal untuk contoh masalah linear programming.
 			
 		\begin{table}[H]
 			\centering
+			\caption{Tabel simplex awal}
+			\label{tab:contoh_simplex_awal}
 			\begin{tabular}{|c|c|c c c c c|c|}
 				\hline
 				basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
@@ -360,14 +401,13 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_5$ & 0 & 3 & 1 & 0 & 0 & 1 & 24\\
 				\hline
 			\end{tabular}
-			\caption{Tabel simplex pada iterasi ke-1}
 		\end{table}
 
 	\item Mengecek solusi optimal
 	
     	Apabila pada baris $z$ tidak terdapat variabel dengan nilai negatif, maka solusi optimal sudah ditemukan dan menandakan akhir dari iterasi. Solusi optimal terdapat pada setiap rhs dari setiap baris basis. Jika masih terdapat variabel dengan nilai negatif, maka langkah selanjutnya adalah melakukan proses \textit{pivoting}.
 
-		Pada tabel contoh \textit{linear program} iterasi pertama, terdapat nilai negatif di baris $z$, yaitu pada variabel $x_1$ dan $x_2$. Maka, akan dilanjutkan dengan proses \textit{pivoting}.
+		Pada Tabel~\ref{tab:contoh_simplex_awal}, terdapat nilai negatif di baris $z$, yaitu pada variabel $x_1$ dan $x_2$. Sehingga dilanjutkan ke proses \textit{pivoting}.
 
 	\item Melakukan proses \textit{pivoting}
 		
@@ -376,15 +416,17 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 		\begin{itemize}
     		\item \textit{Entering variable} dipilih berdasarkan nilai terkecil dalam baris $z$. Kolom dari \textit{entering variable} akan menjadi kolom pivot (\textit{pivot column}).
     		
-    		\item \textit{Leaving variable} dipilih berdasarkan rasio terkecil rhs bersangkutan per nilai pada kolom pivot bersangkutan. Baris dari \textit{leaving variable} akan menjadi baris pivot (\textit{pivot row}).
+    		\item \textit{Leaving variable} dipilih berdasarkan rasio tidak negatif terkecil antara rhs dengan nilai pada kolom pivot. Baris dari \textit{leaving variable} akan menjadi baris pivot (\textit{pivot row}).
 
 			\item Pivot merupakan nilai yang berada di perpotongan kolom pivot dan baris pivot.
     	\end{itemize}
 
-    	Berdasarkan contoh, $x_1$ menjadi \textit{entering variabel} karena bernilai paling kecil di baris $z$, yaitu $-3$. Sedangkan baris basis $x_5$ menjadi \textit{leaving variable} karena nilai rasionya yang paling kecil, yaitu 8. Perpotongan baris pivot dan kolom pivot menghasilkan pivot bernilai $3$.
+    	Pada Tabel~\ref{tab:contoh_simplex_pemilihan_pivot}, $x_1$ menjadi \textit{entering variabel} karena bernilai paling kecil di baris $z$, yaitu $-3$. Sedangkan baris basis $x_5$ menjadi \textit{leaving variable} karena nilai rasionya yang paling kecil, yaitu 8. Perpotongan baris pivot dan kolom pivot menghasilkan pivot bernilai $3$.
 
     	\begin{table}[H]
-    		\centering					
+    		\centering
+			\caption{Pemilihan pivot}
+    		\label{tab:contoh_simplex_pemilihan_pivot}			
 			\begin{tabular}{c|c|c|c c c c c|c|c}
 				\multicolumn{3}{c}{} & \multicolumn{6}{l}{\textit{pivot column}}\\
 				\multicolumn{3}{c}{} & $\downarrow$ & \multicolumn{5}{c}{}\\
@@ -398,17 +440,18 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				\textit{pivot row} $\rightarrow$ & $x_5$ & 0 & \encircle{3} & 1 & 0 & 0 & 1 & 24 & $\frac{24}{3}=8$\\
 				\cline{2-9}
 			\end{tabular}
-			\caption{Proses \textit{pivoting}}
 		\end{table}
     		
-    \item Memperbaharui table simplex
+    \item Memperbaharui tabel simplex
     
 		Setiap nilai pada baris basis baru akan dibagi dengan nilai pivot sebelumnya. Sedangkan nilai pada baris basis lainnya dikurangi dengan hasil perkalian antara nilai kolom pivot yang bersangkutan dengan nilai baru pada baris pivot yang bersangkutan. Setelah diperbaharui, langkah selanjutnya adalah kembali pada pengecekan solusi optimal.
 
-		Pada contoh linear programming, $x_1$ menjadi baris basis yang baru. Setiap nilai pada baris tersebut dibagi dengan nilai pivot sebelumnya yang bernilai $3$. Setiap nilai pada baris basis lainnya diubah sesuai dengan ketentuan yang sudah dibahas sebelumnya.
+		Pada Tabel~\ref{tab:contoh_simplex_pembaharuan_tabel_simplex}, $x_1$ menjadi baris basis yang baru. Setiap nilai pada baris tersebut dibagi dengan nilai pivot sebelumnya yang bernilai $3$. Setiap nilai pada baris basis lainnya diubah sesuai dengan ketentuan yang sudah dibahas sebelumnya.
 			
 		\begin{table}[H]
 			\centering
+			\caption{Pembaharuan tabel simplex}
+			\label{tab:contoh_simplex_pembaharuan_tabel_simplex}
 			\small
 			\begin{tabular}{|c|c|c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c|c|c}
 				\hline
@@ -421,14 +464,14 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_1$ & 3 & $\frac{3}{3}$ & $\frac{1}{3}$ & 0 & 0 & $\frac{1}{3}$ & $\frac{24}{3}$ \\
 				\hline
 			\end{tabular}
-			\normalsize
-			\caption{Proses pembaharuan baris basic}
 		\end{table}
 			
-		Berikut tabel simplex pada akhir iterasi ke-2:
+		Tabel~\ref{tab:contoh_simplex_iterasi_1} berikut merupakan tabel simplex pada akhir iterasi ke-1:
 			
 		\begin{table}[H]
 			\centering
+			\caption{Tabel simplex iterasi ke-1}
+			\label{tab:contoh_simplex_iterasi_1}
 			\begin{tabular}{|c|c|c c c c c|c|c}
 				\hline
 				basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
@@ -440,13 +483,14 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_1$ & 3 & 1 & $\frac{1}{3}$ & 0 & 0 & $\frac{1}{3}$ & 8 \\
 				\hline
 			\end{tabular}
-			\caption{Tabel simplex iterasi ke-2}
 		\end{table}
 			
-		Pada iterasi ke-2 masih terdapat nilai negatif pada baris $z$, sehingga iterasi masih dilakukan hingga tidak terdapat nilai negatif pada baris $z$. Berikut tabel-tabel simplex pada iterasi yang masih tersisa:
+		Pada iterasi ke-1 masih terdapat nilai negatif pada baris $z$, sehingga iterasi masih dilakukan hingga tidak terdapat nilai negatif pada baris $z$. Tabel~\ref{tab:contoh_simplex_iterasi_2} dan Tabel~\ref{tab:contoh_simplex_iterasi_3} berikut merupakan hasil iterasi ke-2 dan ke-3.
 			
 		\begin{table}[H]
 			\centering
+			\caption{Tabel simplex iterasi ke-2}
+			\label{tab:contoh_simplex_iterasi_2}
 			\begin{tabular}{|c|c|c c c c c|c|c}
 				\hline
 			 	basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
@@ -458,11 +502,12 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_1$ & 3 & 1 & 0 & -1 & 0 & 1 & 6 \\
 				\hline
 			\end{tabular}
-			\caption{Tabel simplex iterasi ke-3}
 		\end{table}
 
 		\begin{table}[H]
 			\centering
+			\caption{Tabel simplex iterasi ke-3}
+			\label{tab:contoh_simplex_iterasi_3}
 			\begin{tabular}{|c|c|c c c c c|c|c}
 				\hline
 			 	basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
@@ -474,10 +519,9 @@ Berikut langkah-langkah untuk menyelesaikan maslaah linear programming dengan me
 				$x_1$ & 3 & 1 & 0 & $\frac{3}{4}$ & $-\frac{1}{4}$ & 0 & 3 \\
 				\hline
 			\end{tabular}
-			\caption{Tabel simplex iterasi ke-4}
 		\end{table}
 
-		Pada iterasi ke-4 sudah tidak terdapat nilai negatif pada baris $z$. Dengan demikian, solusi optimal sudah dicapai, yaitu pada titik $x_1 = 3$ dan $x_2=12$.
+		Pada iterasi ke-3 sudah tidak terdapat nilai negatif pada baris $z$. Dengan demikian, solusi optimal sudah dicapai, yaitu pada titik $x_1 = 3$ dan $x_2=12$.
 
 \end{enumerate}
 
