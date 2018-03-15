@@ -5,17 +5,17 @@
 \section{Linear Programming}
 \label{linear_programming}
 
-Linear programming adalah teknik dalam ilmu matematika untuk menyelesaikan masalah yang berhubungan dengan optimasi. Teknik ini biasa digunakan dalam bidang produksi, manajemen operasional, penjadwalan, dan bidang-bidang lainnya yang melibatkan pengambilan keputusan. Pada bidang produksi, terdapat masalah ketika menentukan produk yang akan dihasilkan. Biasanya terdapat beberapa faktor yang menjadi pertimbangan seperti jumlah ketersedian sumber daya, jumlah pekerja, dan besar keuntungan yang didapatkan. Dengan adanya faktor-faktor tersebut, penentuan terhadap produk yang akan dihasilkan tentunya harus dilakukan dengan perhitungan yang tepat. Linear programming merupakan teknik yang cocok untuk menyelesaikan masalah tersebut. Dengan memodelkan masalah tersebut secara tepat, maka masalah tersebut dapat diselesaikan sehingga menghasilkan solusi terbaik tanpa mengabaikan setiap faktor yang ada.
+Linear programming adalah teknik dalam ilmu matematika untuk menyelesaikan permasalahan yang berhubungan dengan optimasi. Teknik ini biasa digunakan dalam bidang produksi, manajemen operasional, penjadwalan, dan bidang-bidang lainnya yang melibatkan pengambilan keputusan. Pada bidang produksi, terdapat masalah ketika menentukan produk yang akan dihasilkan. Biasanya terdapat beberapa faktor yang menjadi pertimbangan seperti jumlah ketersedian sumber daya, jumlah pekerja, dan besar keuntungan yang didapatkan. Dengan adanya faktor-faktor tersebut, penentuan terhadap produk yang akan dihasilkan harus dilakukan dengan perhitungan yang tepat. Apabila permasalahan tersebut dapat dimodelkan dengan tepat, maka masalah dapat diselesaikan dengan teknik linear programming sehingga menghasilkan solusi terbaik dengan memperhatikan setiap faktor yang ada.
 
 \subsection{Karakteristik}
 \label{karakteristik}
 
-Setiap masalah optimasi dapat dimodelkan ke dalam bentuk masalah linear programming. Masalah linear programming memiliki ciri-ciri sebagai berikut:
+Masalah linear programming memiliki ciri-ciri sebagai berikut:
 
 \begin{itemize}
 	\item Variabel keputusan
 	
-		Di dalam masalah linear programming terdapat variabel-variabel keputusan. Variabel keputusan menunjukkan keputusan yang diambil.
+		Di dalam masalah linear programming terdapat variabel-variabel keputusan. Variabel keputusan menunjukkan keputusan yang akan diambil.
 		
 		\begin{equation*}
 			\begin{split}
@@ -26,7 +26,7 @@ Setiap masalah optimasi dapat dimodelkan ke dalam bentuk masalah linear programm
 		
 	\item Fungsi Tujuan
 	
-		Di dalam masalah linear programming terdapat tujuan yang akan dicapai. Tujuan ini dimodelkan dengan memaksimalkan/meminimalkan variabel-variabel keputusan.
+		Di dalam masalah linear programming terdapat tujuan yang akan dicapai. Fungsi tujuan menunjukkan tujuan yang akan dimaksimalkan atau diminimalkan.
 		
 		\begin{equation*}
 			\text{maximize } z = 3x_1 + 2x_2
@@ -47,7 +47,7 @@ Setiap masalah optimasi dapat dimodelkan ke dalam bentuk masalah linear programm
 		
 	\item Tanda Pembatas
 		
-		Tanda pembatas berfungsi untuk menyatakan apakah variabel keputusan dapat bernilai negatif atau tidak. Jika variabel keputusan \(x_i\) tidak dapat bernilai negatif maka perlu ditambahkan tanda pembatas \(x_i \geq 0\). Namun, apabila nilai variabel keputusan tidak dibatasi atau dapat bernilai negatif, maka variabel keputusan tersebut merupakan variabel bebas (\textit{unrestricted in sign}).
+		Tanda pembatas berfungsi untuk menyatakan apakah variabel keputusan dapat bernilai negatif atau tidak. Jika variabel keputusan \(x_i\) tidak dapat bernilai negatif maka ditambahkan tanda pembatas \(x_i \geq 0\) yang menyatakan bahwa variabel \(x_i\) tidak bernilai negatif. Namun, apabila nilai variabel keputusan tidak dibatasi atau dapat bernilai negatif, maka variabel tersebut disebut variabel bebas (\textit{unrestricted in sign}).
 		
 		\begin{equation*}
 			\begin{split}
@@ -84,7 +84,7 @@ Di dalam linear programming terdapat daerah solusi. Setiap batasan pada masalah 
 
 %Tentunya seluruh pemeriksaan ini dapat dihindari karena solusi optimal dari linear programming berada pada salah satu titik sudut di daerah solusi. Dengan diketahuinya hal ini, maka solusi optimal dapat dicari dengan mengecek setiap titik sudut yang berjumlah terhitung (\textit{finite}).
 
-Apabila memiliki daerah solusi, maka masalah linear programming tersebut memiliki solusi optimal. Daerah ini berbentuk \textit{convex polytope} yang terdiri dari banyak titik sudut. Solusi optimal bagi masalah linear programming terdapat pada salah satu titik sudut.
+Apabila masalah linear programming memiliki daerah solusi seperti pada Gambar~\ref{fig:daerah_solusi}, maka masalah linear programming tersebut memiliki solusi optimal. Daerah solusi pada setiap masalah linear programaming berbentuk \textit{convex polytope} yang terdiri dari banyak titik sudut. Solusi optimal terdapat pada salah satu titik sudut.
 
 \begin{figure}[H]
 	\centering
@@ -109,7 +109,8 @@ Apabila memiliki daerah solusi, maka masalah linear programming tersebut memilik
 		\draw (4,0.2) node[right] {$E$};
 		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,4) -- (2,3) -- (4,1) -- (4,0) -- cycle;
 	\end{tikzpicture}
-	\caption{Daerah solusi dan titik-titik sudut}
+	\caption{Daerah solusi}
+	\label{fig:daerah_solusi}
 \end{figure}
 
 Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
@@ -117,7 +118,7 @@ Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
 \begin{enumerate}
 	\item Daerah solusi yang dibatasi (\textit{bounded feasible region})
 	
-		Batasan-batasan menghasilkan daerah solusi yang berbentuk \textit{convex polytope}. Solusi optimal linear programming terdapat pada salah satu titik sudut.
+		Batasan-batasan menghasilkan daerah solusi yang berbentuk \textit{convex polytope}. Solusi optimal linear programming terdapat pada salah satu titik sudut. Gambar~\ref{fig:daerah_solusi_dibatasi} berikut menggambarkan daerah solusi yang dibatasi.
 			
 		\begin{figure}[H]
     		\centering
@@ -133,11 +134,12 @@ Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
 				\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,4) -- (2,3) -- (4,1) -- (4,0) -- cycle;
 			\end{tikzpicture}
 			\caption{Daerah solusi yang dibatasi}
+			\label{fig:daerah_solusi_dibatasi}
 		\end{figure}
     	
 	\item Daerah solusi yang tidak dibatasi (\textit{unbounded feasible region})
 	
-		Batasan-batasan menghasilkan daerah solusi yang tidak tertutup sehingga tidak berbentuk \textit{convex polytope}. Daerah solusi ini memiliki jumlah solusi yang tak terhitung.
+		Batasan-batasan menghasilkan daerah solusi yang tidak tertutup. Daerah solusi ini memiliki jumlah solusi yang tak terhitung. Gambar~\ref{fig:daerah_solusi_tidak_dibatasi} berikut menggambarkan daerah solusi yang tidak dibatasi.
 			
     	\begin{figure}[H]
     		\centering
@@ -152,11 +154,12 @@ Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
 				\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,1) -- (1,5) -- (5,5) -- (5,2) -- (2,0) -- cycle;
 			\end{tikzpicture}
 			\caption{Daerah solusi yang tidak dibatasi}
+			\label{fig:daerah_solusi_tidak_dibatasi}
 		\end{figure}
 
 	\item Tidak ada daerah solusi (\textit{infeasible region})
 
-		Batasan-batasan tidak membentuk daerah solusi sehingga masalah linear programming tidak memiliki solusi dan tidak dapat diselesaikan.
+		Batasan-batasan tidak membentuk daerah solusi sehingga masalah linear programming tidak memiliki solusi dan tidak dapat diselesaikan. Gambar~\ref{fig:tidak_ada_daerah_solusi} berikut menggambarkan tidak ada daerah solusi.
 			
 		\begin{figure}[H]
     		\centering
@@ -170,6 +173,7 @@ Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
 				\draw (5,0) -- node[above,sloped] {\small $x + y \geq 5$} (0,5);
 			\end{tikzpicture}
 			\caption{Tidak ada daerah solusi}
+			\label{fig:tidak_ada_daerah_solusi}
     	\end{figure}
 
 \end{enumerate}
@@ -203,9 +207,9 @@ Bentuk standar tersebut dapat dinyatakan dalam notasi matriks seperti berikut in
         
 Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matriks baris berdimensi $n$, $A$ adalah matriks berdimensi $m\times n$, dan $b$ adalah matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan variabel keputusan $x_i$ tidak dapat bernilai negatif.
         
-Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
+%Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
 
-\begin{enumerate}
+%\begin{enumerate}
 %	\item Ubah tujuan agar memaksimalkan
 	
 %		Apabila bertujuan meminimalkan, maka ubah tujuan agar memaksimalkan dengan cara mengalikan fungsi tujuan dengan -1. Contoh:
@@ -234,9 +238,9 @@ Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
 %			-x_1 - 2x_2 \geq 20
 %		\end{equation*}
 
-	\item Mengubah batasan ke dalam bentuk persamaan
+%	\item Mengubah batasan ke dalam bentuk persamaan
 	
-		Perubahan pertidaksamaan pada batasan dibedakan menjadi 2 berdasarkan jenis tandanya, yaitu:
+		Untuk mengubah ke bentuk standar, maka pertidaksamaan pada batasan harus diubah menjadi persamaan. Perubahan dibedakan menjadi 2 berdasarkan jenis tandanya, yaitu:
 		
 		\begin{enumerate}
 			\item Pertidaksamaan lebih kecil (\(\leq\))		
@@ -274,41 +278,41 @@ Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
 				\end{equation*}
 		\end{enumerate}
 		
-	\item Mengsubtitusi variabel bebas
+%	\item Mengsubtitusi variabel bebas
 	
-		Apabila terdapat variabel bebas \(x_i\), maka subtitusikan setiap variabel tersebut dengan 2 variabel pengganti \(u_i\) dan \(v_i\) sehingga \(x_i = u_i - v_i\). Lalu tambahkan tanda pembatas tidak negatif untuk variabel \(u_i\) dan \(v_i\). Contoh:
+%		Apabila terdapat variabel bebas \(x_i\), maka subtitusikan setiap variabel tersebut dengan 2 variabel pengganti \(u_i\) dan \(v_i\) sehingga \(x_i = u_i - v_i\). Lalu tambahkan tanda pembatas tidak negatif untuk variabel \(u_i\) dan \(v_i\). Contoh:
 		
-		\begin{equation*}
-			\begin{array}{r r c r c l}
-				\text{maximize} & \multicolumn{5}{l}{z = x_1 + x_2}\\
-				\text{subject to} & 2x_1 & + & x_2 & \leq & 4\\
-									& \multicolumn{3}{r}{x_1} & \geq & 0\\
-			\end{array}
-		\end{equation*}
+%		\begin{equation*}
+%			\begin{array}{r r c r c l}
+%				\text{maximize} & \multicolumn{5}{l}{z = x_1 + x_2}\\
+%				\text{subject to} & 2x_1 & + & x_2 & \leq & 4\\
+%									& \multicolumn{3}{r}{x_1} & \geq & 0\\
+%			\end{array}
+%		\end{equation*}
 		
-		dengan
+%		dengan
 		
-		\begin{equation*}
-			x_2 = u_2 - v_2
-		\end{equation*}
+%		\begin{equation*}
+%			x_2 = u_2 - v_2
+%		\end{equation*}
 		
-		menjadi
+%		menjadi
 		
-		\begin{equation*}
-			\begin{array}{r r c r c r c l}
-				\text{maximize} & \multicolumn{7}{l}{z = x_1 + u_2 - v_2}\\
-				\text{subject to} & 2x_1 & + & u_2 & - & v_2 & \leq & 4\\
-									& \multicolumn{5}{r}{x_1} & \geq & 0\\
-									& \multicolumn{5}{r}{u_2} & \geq & 0\\
-									& \multicolumn{5}{r}{v_2} & \geq & 0\\
-			\end{array}
-		\end{equation*}
-\end{enumerate}
+%		\begin{equation*}
+%			\begin{array}{r r c r c r c l}
+%				\text{maximize} & \multicolumn{7}{l}{z = x_1 + u_2 - v_2}\\
+%				\text{subject to} & 2x_1 & + & u_2 & - & v_2 & \leq & 4\\
+%									& \multicolumn{5}{r}{x_1} & \geq & 0\\
+%									& \multicolumn{5}{r}{u_2} & \geq & 0\\
+%									& \multicolumn{5}{r}{v_2} & \geq & 0\\
+%			\end{array}
+%		\end{equation*}
+%\end{enumerate}
 
 \subsection{Variabel Basis dan Non Basis}
 \label{variabel_basis_dan_non_basis}
 
-Masalah linear programming \(Ax = b\) yang terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah linear programming \(Ax = b\) memiliki solusi basis yang didapatkan dengan membuat \(n - m\) buah variabel bernilai 0 dan menyelesaikan \(m\) buah variabel lainnya. Sebanyak \(n - m\) buah variabel yang dibuat bernilai 0 disebut variabel non basis. Sedangkan sebanyak \(m\) buah variabel lainnya disebut variabel basis. Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. Berikut contoh sistem persamaan linear:
+Masalah linear programming \(Ax = b\) yang terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah linear programming \(Ax = b\) memiliki solusi basis yang didapatkan dengan membuat \((n - m)\) buah variabel bernilai 0 dan menyelesaikan \(m\) buah variabel lainnya. Sebanyak \((n - m)\) buah variabel yang dibuat bernilai 0 disebut variabel non basis. Sedangkan sebanyak \(m\) buah variabel lainnya disebut variabel basis. Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. Berikut contoh sistem persamaan linear:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -318,13 +322,14 @@ Masalah linear programming \(Ax = b\) yang terdiri dari \(m\) buah persamaan bat
 	\end{array}
 \end{equation*}
 
-Pada sistem persamaan linear di atas, dipilih sebanyak 3 - 2 = 1 (3 variabel dan 2 persamaan) buah variabel yang akan menjadi variabel non basis. Jika himpunan variabel non basis NBV = \(\{x_3\}\), maka himpunan variabel basis BV = \(\{x_1, x_2\}\). Solusi dari sistem persamaan tersebut dapat dicari dengan membuat variabel \(x_3\) menjadi variabel non basis dan menyelesaikan variabel basis lainnya.
+Pada sistem persamaan linear di atas, dipilih sebanyak 3 - 2 = 1 (3 variabel dan 2 persamaan) buah variabel yang akan menjadi variabel non basis. Jika himpunan variabel non basis NBV = \(\{x_3\}\), maka himpunan variabel basis BV = \(\{x_1, x_2\}\). Solusi dari sistem persamaan tersebut dapat dicari dengan membuat setiap variabel NBV menjadi variabel non basis dan menyelesaikan variabel BV.
 
 \begin{equation*}
-	\begin{split}
-		x_1 + x_2 &= 3\\
-		-x_2 &= -1
-	\end{split}
+	\setlength\arraycolsep{1.5pt}
+	\begin{array}{r c r c r c l}
+		x_1 &+ &x_2 &  &    &= &3\\
+		    &  &x_2 &+ &0 &= &-1
+	\end{array}
 \end{equation*}
 
 Pada persamaan di atas didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1. Dengan demikian didapatkan solusi basis \(x_1\) = 2, \(x_2\) = 1, \(x_3\) = 0.
@@ -523,6 +528,42 @@ Langkah-langkah untuk menyelesaikan maslaah linear programming dengan menggunaka
 
 		Pada iterasi ke-3 sudah tidak terdapat nilai negatif pada baris $z$. Dengan demikian, solusi optimal sudah dicapai, yaitu pada titik $x_1 = 3$ dan $x_2=12$.
 
+\end{enumerate}
+
+\section{Integer Programming}
+\label{integer_programming}
+
+Integer programming merupakan teknik lanjutan dari linear programming yang dimana solusinya harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah branch and bound.
+
+\subsection{Branch and Bound}
+\label{branch_and_bound}
+Branch and bound merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah menjadi sub masalah akan terus dilakukan hingga didapatkan solusi berupa bilangan bulat. Berikut langkah-langkah metode branch and bound:
+
+\begin{enumerate}
+	\item Selesaikan masalah menggunakan linear programming. Apabila solusi yang didapat berupa bilangan bulat, maka proses berhenti pada tahap ini. Solusi ini menjadi solusi akhir bagi permasalahan ini. Apabila sebaliknya, maka dilanjutkan ke tahap selanjutnya. Solusi pada tahap ini akan menjadi solusi batas atas yang akan digunakan sebagai pembanding di tahap-tahap selanjutnya.
+
+	\item Pecah masalah menjadi 2 sub masalah. Sub-sub masalah merupakan masalah yang sama dengan masalah sebelum dipecah namun memiliki sebuah tambahan batasan baru. Seelum menambah batasan baru tersebut, tentukan satu variabel keputusan dari masalah sebelum dipecah yang solusinya tidak berupa bilangan bulat. Lakukan pembulatan bilangan ke atas dan ke bawah terhadap solusi dari variabel keputusan tersebut. Lalu pada sub masalah pertama, tambahkan batasan untuk variabel keputusan tersebut agar bernilai lebih kecil daripada hasil pembulatan ke bawah. Sedangkan pada sub masalah kedua, tambahkan batasan untuk variabel keputusan tersebut agar bernilai lebih besar daripada hasil pembulatan ke atas.
+	
+	\item Selesaikan sub masalah menggunakan linear programming dan periksa solusinya. Tahap ini dibedakan menjadi 3 berdasarkan solusinya, yaitu:
+	\begin{itemize}
+		\item Solusi berupa bilangan bulat
+		
+		Apabila solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi akhir bagi permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
+		
+		\item Solusi tidak berupa bilangan bulat
+
+		Apabila solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka lakukan tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah karena tidak akan menghasilkan solusi yang lebih baik.
+		
+		\item Sub masalah tidak dapat diselesaikan
+		
+		Sub masalah ini tidak memiliki solusi sehingga tidak perlu dilanjutkan lagi.
+		
+	\end{itemize}
+	
+	\item Periksa apakah terdapat sub masalah yang belum diselesaikan. Apabila masih terdapat sub masalah yang belum diselesaikan, maka kembali ke tahap ke-3 untuk menyelesaikannya. Apabila seluruh sub masalah telah diselesaikan, maka lanjutkan ke tahap selanjutnya.
+	
+	\item Periksa solusi batas bawah. Apabila terdapat solusi batas bawah, maka solusi tersebut merupakan solusi akhir bagi permasalahan ini. Apabila tidak terdapat solusi batas bawah, maka permasalahan ini tidak memiliki solusi yang berupa bilangan bulat
+	 	
 \end{enumerate}
 
 \section{Template Skripsi FTIS UNPAR}
