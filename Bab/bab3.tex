@@ -103,7 +103,7 @@ Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV
 \subsection{Batasan}
 Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan harus tercakup sepenuhnya. Berdasarkan pemodelan, ruangan dimodelkan dalam bentuk grid point sehingga daerah pada ruangan dimodelkan dalam bentuk cell. Agar seluruh daerah pada ruangan tercakup sepenuhnya, maka setiap cell harus dicakup oleh minimal 1 kamera CCTV. Sebuah fungsi biner akan dibuat untuk mengetahui apakah suatu penempatan kamera CCTV dapat mencakup suatu cell. Fungsi biner ini akan menghasilkan nilai 1 apabila suatu penempatan kamera CCTV dapat mencakup suatu cell. Apabila sebaliknya, maka fungsi biner ini akan menghasilkan nilai 0. Fungsi tersebut ditulis sebagai berikut:
 \begin{equation*}
-	c(i,j,\theta,p,q) =
+	cov(i,j,\theta,p,q) =
 	\left \{
 		\begin{tabular}{cl}
 			1 & jika kamera CCTV pada posisi $(i,j)$ dengan arah pandang $\theta$\\
@@ -115,7 +115,10 @@ Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan haru
 \end{equation*}
 Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa setiap cell harus dicakup oleh minimal 1 penempatan kamera CCTV. Fungsi biner sebelumnya akan digunakan untuk menyatakan hubungan ketercakupan cell dengan penempatan kamera CCTV. Batasan tersebut ditulis sebagai berikut:
 \begin{equation*}
-	\sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} \sum_{p=0}^{s_p-1} \sum_{q=0}^{s_q-1} x_{i,j,\theta} \times c(i,j,\theta,p,q) \geq 1
+	\begin{split}
+		& \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
+		& 0 \leq p \leq (s_p - 1), 0 \leq q \leq (s_q - 1)
+	\end{split}
 \end{equation*}
 
 \subsection{Bentuk Linear Programming}
@@ -123,7 +126,8 @@ Masalah yang dibahas di dalam skripsi ini telah dirumuskan ke dalam bentuk yang 
 \begin{equation*}
 	\begin{split}
 		\textit{minimize } & z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}\\
-		\textit{subject to } & \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} \sum_{p=0}^{s_p-1} \sum_{q=0}^{s_q-1} x_{i,j,\theta} \times c(i,j,\theta,p,q) \geq 1\\
+		\textit{subject to } & \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
+		& 0 \leq p \leq (s_p - 1), 0 \leq q \leq (s_q - 1)\\
 		& x_{ij\theta} \in \{0,1\}
 	\end{split}
 \end{equation*}
