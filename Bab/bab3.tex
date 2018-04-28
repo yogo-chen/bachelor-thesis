@@ -175,19 +175,68 @@ Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapa
 	\end{split}
 \end{equation*}
 
+\section{Analisis Kebutuhan Prangkat Lunak}
+Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan sekanrio-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
+%Pada subbab ini akan dijelaskan deskripsi dari perangkat lunak yang akan dibangun. Perangkat lunak yang dibangun akan disesuaikan dengan pemodelan masalah yang telah dibahas sebelumnya. Perangkat lunak akan menggunakan fitur tampilan antarmuka grafis untuk memudahkan interaksi pengguna dengan perangkat lunak. Perangkat lunak akan mengsimulasikan masalah penempatan kamera CCTV dengan masukan yang dimasukkan oleh pengguna. Hasil dari masukan pengguna akan diolah oleh perangkat lunak dan hasilnya akan ditampilkan. Rancangan perangkat lunak yang terdiri dari diagram use case, diagram kelas, masukan, dan keluaran akan dibahas pada bagian ini.
 
+\subsection{Diagram \textit{Use Case}}
+Dalam perangkat lunak yang dibangun, hanya terdapat 1 jenis pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor dan aksi-aksi yang dapat dilakukannya.
+\begin{figure}[h]
+	\centering  
+	\includegraphics[scale=0.6]{use_case_diagram}
+	\caption[Diagram \textit{use case}]{Diagram \textit{use case}}
+	\label{fig:use_case_diagram}
+\end{figure}
 
+Berikut skenario dari setiap aksi pada diagram \textit{use case}:
+\begin{itemize}
+	\item Skenario: \textbf{Memasukkan Spesifikasi Masalah}
+	\begin{itemize}
+		\item Aktor: Pengguna
+		\item Langkah:
+		\begin{enumerate}
+			\item Aktor memasukkan spesifikasi masalah yang terdiri dari ukuran ruangan dan spesifikasi kamera CCTV dan dilanjutkan dengan menekan tombol ''\textit{submit}''.
+			\item Sistem menampilkan tampilan simulasi penempatan kamera CCTV.
+		\end{enumerate}
+	\end{itemize}
+	\item Skenario: \textbf{Menambah Penempatan Kamera CCTV}
+	\begin{itemize}
+		\item Aktor: Pengguna
+		\item Langkah:
+		\begin{enumerate}
+			\item Aktor memilih posisi penempatan kamera CCTV dan mengisi sudut arah pandang penempatan kamera CCTV dan dilanjutkan dengan menekan tombol ''\textit{add camera}''.
+			\item Sistem menambahkan penempatan ke dalam simulasi dan memperbaharui tampilan simulasi.
+		\end{enumerate}
+	\end{itemize}
+%	\item Skenario: \textbf{Menyelesaikan Masalah Secara Otomatis}
+%	\begin{itemize}
+%		\item Aktor: Pengguna
+%		\item Langkah:
+%		\begin{enumerate}
+%			\item Aktor menekan tombol ''\textit{auto solve}''.
+%			\item Sistem menganalisa kondisi masalah dan mencari penempatan-penempatan kamera CCTV.
+%			\item Sistem menambahkan penempatan-penempatan kamera CCTV ke dalam simulasi secara otomatis.
+%			\item Sistem memperbaharui visualisasi penempatan kamera CCTV.
+%			\item Sistem memperbaharui panel informasi.
+%		\end{enumerate}
+%	\end{itemize}
+	\item Skenario: \textbf{Membuang Penempatan Kamera CCTV}
+	\begin{itemize}
+		\item Aktor: Pengguna
+		\item Langkah:
+		\begin{enumerate}
+			\item Aktor memilih penempatan kamera CCTV yang akan dibuang dan menekan tombol ''\textit{remove}''.
+			\item Sistem membuang penempatan dari simulasi dan memperbaharui tampilan simulasi.
+		\end{enumerate}
+	\end{itemize}
+\end{itemize}
 
+\subsection{Diagram Kelas}
+Pada bagian ini terdapat diagram kelas sederhana yang menunjukkan kelas-kelas yang akan digunakan untuk merancang perangkat lunak. Diagram kelas sederhana dapat dilihat pada gambar~\ref{fig:class_diagram_basic}.
 
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{figure}[h]
+	\centering  
+	\includegraphics[scale=0.6]{class_diagram_basic}
+	\caption[Diagram kelas sederhana]{Diagram kelas sederhana}
+	\label{fig:class_diagram_basic}
+\end{figure}
