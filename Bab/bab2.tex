@@ -14,8 +14,8 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 		Dalam masalah linear programming, terdapat variabel keputusan yang mendeskripsikan keputusan yang akan diambil. Contoh:
 		\begin{equation*}
 			\begin{split}
-				x_1 &: \text{jumlah produk A yang diproduksi} \\
-    			x_2 &: \text{jumlah produk B yang diproduksi}
+				x_1 &= \text{jumlah produk A yang diproduksi} \\
+    			x_2 &= \text{jumlah produk B yang diproduksi}
 			\end{split}
 		\end{equation*}
 		
@@ -30,7 +30,8 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 		Dalam masalah linear programming, terdapat batasan-batasan yang membuat variabel keputusan memiliki nilai yang dibatasi. Batasan juga membuat suatu variabel keputusan berkaitan dengan variabel keputusan lainnya. Contoh:
 		%Fungsi tujuan ditentukan oleh variabel-variabel keputusan. Dalam fungsi tujuan yang memaksimalkan hasil, nilai dari setiap variabel keputusan dapat ditentukan sedemikian mungkin sehingga menghasilkan hasil sebesar-besarnya. Tentunya hal ini tidak mungkin terjadi karena terdapat faktor-faktor yang mencegah variabel keputusan untuk ditentukan sedemikian mungkin. Faktor-faktor ini berperan sebagai batasan bagi variabel keputusan sehingga nilai variabel keputusan tidak melebihi batas. Dengan adanya batasan ini, nilai dari fungsi tujuan tidak akan bernilai tak hingga karena variabel-variabel keputusannya dibatasi.
 
-		\begin{equation*}
+		\begin{equation*}		
+			\setlength\arraycolsep{1.5pt}
 			\begin{array}{r c r c r}
 				2x_1 & + & x_2 & \leq & 100 \\
     			x_1 & + & x_2 & \leq & 80 \\
@@ -51,6 +52,7 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 
 Dengan keempat karakteristik di atas, setiap masalah optimasi dapat diubah ke dalam masalah linear programming untuk diselesaikan. Berikut contoh masalah linear programming:
 \begin{equation*}
+	\setlength\arraycolsep{1.5pt}
 	\begin{array}{r r c r c l}
 		\textit{max } &\multicolumn{5}{l}{z = 3x_1 + 2x_2}\\
 		\textit{s.t.} &2x_1 &+ &x_2 &\leq &100\\
@@ -163,8 +165,9 @@ Tidak semua masalah linear programming memiliki daerah \textit{feasible}. Apabil
 Setiap masalah linear programming harus diubah ke dalam bentuk standar sebelum diselesaikan. Berikut ini merupakan struktur dari bentuk standar pada masalah linear programming:
     	
 \begin{equation*}
+	\setlength\arraycolsep{1.5pt}
 	\begin{array}{r r c r c r c r c l}
-	    \textit{max}		& c_1x_1    & + & c_2x_2 	& + & \dots & + & c_nx_n \\
+	    \textit{max}		& \multicolumn{9}{l}{z = c_1x_1 + c_2x_2 + \dots + c_nx_n} \\
 		\textit{s.t.} 	& a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1 \\
     						& a_{21}x_1 & + & a_{22}x_2 & + & \dots & + & a_{2n}x_n & = & b_2 \\
                             & \multicolumn{7}{c}{\vdots}                            &   & \vdots \\
@@ -175,13 +178,59 @@ Setiap masalah linear programming harus diubah ke dalam bentuk standar sebelum d
 
 Bentuk standar masalah linear programming terdiri dari $n$ buah variabel keputusan $x$ dan $m$ buah persamaan batasan. Setiap batasan dalam bentuk standar harus dalam bentuk persamaan dan batasan non-negatif diberlakukan untuk setiap varibel keputusan. Bentuk standar linear programming dapat dinyatakan dalam notasi matriks seperti berikut ini:
         
-\begin{center}
-	\begin{tabular}{r l}
-    	\textit{max}   & $c^Tx$ \\
-        \textit{s.t.} & $Ax=b$ \textit{and} $x\geq0$
-	\end{tabular}    
-\end{center}
-        
+\begin{equation*}
+	\begin{array}{r l}
+    	\textit{max}   & z=C^Tx \\
+        \textit{s.t.} & Ax=b \textit{ and } x\geq0
+	\end{array}    
+\end{equation*}
+
+dengan
+
+%\begin{equation*}
+%	c = \left[
+%	\begin{array}{c}
+%    	c_1\\
+%    	c_2\\
+%    	\vdots\\
+%   	c_n
+%	\end{array}
+%	\right]    
+%\end{equation*}
+
+\begin{equation*}
+	A = \left[
+	\begin{array}{c c c c}
+    	a_{11} & a_{12} & \dots & a_{1n}\\
+    	a_{21} & a_{22} & \dots & a_{2n}\\
+    	\vdots & \vdots & & \vdots\\
+    	a_{m1} & a_{m2} & \dots & a_{mn}
+	\end{array}
+	\right]    
+\end{equation*}
+
+\begin{equation*}
+	x = \left[
+	\begin{array}{c}
+    	x_1\\
+    	x_2\\
+    	\vdots\\
+    	x_n
+	\end{array}
+	\right]    
+\end{equation*}
+
+\begin{equation*}
+	b = \left[
+	\begin{array}{c}
+    	b_1\\
+    	b_2\\
+    	\vdots\\
+    	b_m
+	\end{array}
+	\right]    
+\end{equation*}
+
 Pada notasi matriks, $x$ menunjukkan matriks kolom berdimensi $n$, $C^T$ menunjukkan matriks baris berdimensi $n$, $A$ menunjukkan matriks berdimensi $m\times n$, dan $b$ menunjukkan matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan batasan non-negatif untuk setiap variabel keputusan $x_i$. Untuk mengubah masalah linear programming ke bentuk standar, maka setiap batasan perlu diubah. Perubahan batasan dibedakan berdasarkan tandanya, yaitu sebagai berikut:
 		
 		\begin{itemize}
@@ -278,10 +327,98 @@ Metode simplex merupakan metode yang digunakan untuk menyelesaikan masalah linea
 \begin{enumerate}
 	\item Mengubah masalah linear programming ke dalam bentuk standar
 	\item Mencari \textit{basic feasible solution} (\textit{bfs}) dari bentuk standar.
-	\item Menentukan apakah \textit{bfs} pada saat ini sudah optimal.
+	\item Memeriksa apakah \textit{bfs} pada saat ini sudah optimal.
 	\item Apabila \textit{bfs} belum optimal, tentukan variabel non-basis mana yang akan menjadi variabel basis dan tentukan variabel basis mana yang akan menjadi variabel non-basis dengan tujuan mencari \textit{bfs} baru yang dapat meningkatkan nilai fungsi objektif.
 	\item Lakukan Operasi Baris Elementer (OBE) untuk mencari \textit{bfs} baru yang dapat meningkatkan nilai fungsi objektif. Lanjut ke langkah 3.
 \end{enumerate}
+
+Fungsi objektif yang berbentuk
+\begin{equation*}
+	z = c_1x_1 + c_2x_2 + \dots + c_nx_n
+\end{equation*}
+ditulis dalam bentuk
+\begin{equation*}
+	z - c_1x_1 - c_2x_2 - \dots - c_nx_n = 0
+\end{equation*}
+Bentuk fungsi objektif ini disebut sebagai baris 0.
+
+Untuk memahami penyelesaian masalah linear programming menggunakan metode simplex, akan digunakan sebuah contoh masalah linear programming sebagai berikut:
+\begin{equation*}
+	\setlength\arraycolsep{1.5pt}
+	\begin{array}{r r c r c r c l}
+		\textit{max } &\multicolumn{7}{l}{z = 60x_1 + 30x_2 + 20x_3}\\
+		\textit{s.t.} &8x_1 &+ &6x_2 &+ &x_3 &\leq &48\\
+		&4x_1 &+ &2x_2 &+ &1.5x_3 &\leq &20\\
+		&2x_1 &+ &1.5x_2 &+ &0.5x_3 &\leq &8\\
+		&&&x_2 &&&\leq &5\\
+		&&&&&x_1 &\geq &0\\
+		&&&&&x_2 &\geq &0\\
+		&&&&&x_3 &\geq &0\\
+	\end{array}
+\end{equation*}
+
+Langkah pertama adalah mengubah masalah ke bentuk standar, sehingga masalah ini dalam bentuk standar adalah sebagai berikut:
+
+\begin{equation*}
+	\setlength\arraycolsep{1.5pt}
+	\begin{array}{r r c r c r c r c r c r c r c l}
+		\textit{max } &\multicolumn{15}{l}{z = 60x_1 + 30x_2 + 20x_3}\\
+		\textit{s.t.} &8x_1 &+ &6x_2 &+ &x_3 &+ &s_1 &&&&&&&= &48\\
+		&4x_1 &+ &2x_2 &+ &1.5x_3 &&&+ &s_2 &&&&&= &20\\
+		&2x_1 &+ &1.5x_2 &+ &0.5x_3 &&&&&+ &s_3 &&&= &8\\
+		&&&x_2 && &&&&&&&+ &s_4 &= &5\\
+		\multicolumn{14}{r}{x_1, x_2, x_3, s_1, s_2, s_3, s_4} &\geq &0\\
+	\end{array}
+\end{equation*}
+
+Masalah dalam bentuk standar ini disajikan dalam bentuk tabel simplex seperti pada tabel~\ref{tab:tabel_simplex_0}. Pada tabel ini, baris pertama (baris 0) merupakan baris bagi fungsi objektif dan baris lainnya merupakan baris bagi variabel basis. Pada tabel simplex pertama, variabel basis terdiri dari variabel \textit{slack} dan variabel \textit{excess}.
+
+\begin{center}
+	\captionof{table}{Tabel simplex 0}
+	\label{tab:tabel_simplex_0}
+	$
+	\begin{array}{|r r r r r r r r|c|r c l|}
+		\hline
+		z & x_1 & x_2 & x_3 & s_1 & s_2 & s_3 & s_4 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}}\\
+		\hline
+		1 & -60 & -30 & -20 & 0 & 0 & 0 & 0 & 0 & z & = & 0\\
+		0 & 8 & 6 & 1 & 1 & 0 & 0 & 0 & 48 & s_1 & = & 48\\
+		0 & 4 & 2 & 1.5 & 0 & 1 & 0 & 0 & 20 & s_2 & = & 20\\
+		0 & 2 & 1.5 & 0.5 & 0 & 0 & 1 & 0 & 8 & s_3 & = & 8\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 5 & s_4 & = & 5\\
+		\hline
+	\end{array}
+	$
+\end{center}
+
+Kolom \textit{right hand side} (\textit{rhs}) menunjukkan nilai pada ruas kanan (nilai di sebelah kanan tanda sama dengan). Kolom \textit{basic variable} menunjukkan variabel basis beserta dengan nilainya. Kolom \textit{basic variable} juga menunjukkan solusi basis \textit{feasible} (\textit{bfs}) sehingga tabel~\ref{tab:tabel_simplex_0} menunjukkan \textit{bfs} dengan nilai \(z=0, x_1=0, x_2=0, x_3=0, s_1=48, s_2=20, s_3=8, \text{ dan } s_4=5\). Setiap variabel yang tidak berada di dalam kolom \textit{basic variable} menandakan bahwa variabel-variabel tersebut merupakan variabel non-basis sehingga bernilai 0.
+
+Langkah selanjutnya adalah memeriksa apakah \textit{bfs} sudah optimal. Pada langkah ini akan diperiksa apakah terdapat variabel negatif (untuk kasus maksimasi) pada baris 0 di setiap kolom variabel. Pada tabel~\ref{tab:tabel_simplex_0}, masih terdapat variabel negatif, yaitu pada variabel \(x_1, x_2, \text{ dan } x_3\).
+Hal ini menunjukkan bahwa \textit{bfs} saat ini masih belum optimal.
+
+Apabila \textit{bfs} pada saat ini masih belum optimal, maka perlu dilakukan proses \textit{pivotting}. Proses \textit{pivotting} adalah proses penukaran variabel basis dengan variabel non-basis. Variabel yang akan menjadi variabel basis disebut dengan \textit{entering variable} dan variabel basis yang akan digantikan disebut dengan \textit{leaving variable}. \textit{Entering variable} dipilih dengan cara memilih variabel yang bernilai paling negatif pada baris 0. Untuk mencari \textit{leaving variable} perlu dilakukan tes rasio. Tes rasio membandingkan nilai pada nilai \textit{rhs} dengan nilai pada kolom \textit{entering variable}. Tes rasio hanya perlu dilakukan pada baris yang variable pada kolom \textit{entering variable} bernilai lebih besar dari 0. \textit{Leaving variable} dipilih dengan cara memilih variabel pada baris yang menghasilkan rasio terkecil. Perpotongan antara kolom \textit{entering variable} dengan baris \textit{leaving variable}.merupakan suatu elemen yang disebut \textit{pivot element}.
+
+Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga perlu dilakukan proses \textit{pivotting}. Variabel \(x_1\) akan menjadi \textit{entering variable} karena bernilai paling negatif pada baris 0. Setelah dilakukan tes rasio sesuai, variabel \(s_3\) menjadi \textit{leaving variable} karena memiliki hasil tes rasio terkecil. Pada tabel~\ref{tab:tabel_pivotting_1} terdapat \textit{pivot element} yang dilingkari.
+
+\begin{center}
+	\captionof{table}{Tabel \textit{pivotting} 1}
+	\label{tab:tabel_pivotting_1}
+	$
+	\begin{array}{|r r r r r r r r|c|r c l|r c l|}
+		\hline
+		z & x_1 & x_2 & x_3 & s_1 & s_2 & s_3 & s_4 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}} & \multicolumn{3}{c|}{\textit{ratio}}\\
+		\hline
+		1 & -60 & -30 & -20 & 0 & 0 & 0 & 0 & 0 & z & = & 0 &&&\\
+		0 & 8 & 6 & 1 & 1 & 0 & 0 & 0 & 48 & s_1 & = & 48 & \nicefrac{48}{8} & = & 6\\
+		0 & 4 & 2 & 1.5 & 0 & 1 & 0 & 0 & 20 & s_2 & = & 20 & \nicefrac{20}{4} & = & 5\\
+		0 & \encircle{2} & 1.5 & 0.5 & 0 & 0 & 1 & 0 & 8 & s_3 & = & 8 & \nicefrac{8}{2} & = & 4\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 5 & s_4 & = & 5 &&&\\
+		\hline
+	\end{array}
+	$
+\end{center}
+
+Setelah menentukan \textit{entering variable} dan \textit{leaving variable}, akan dilakukan OBE. OBE dilakukan untuk membuat \textit{entering variable} menjadi variabel basis. Dengan OBE, \textit{pivot element} akan bernilai 1 dan variabel lain dalam kolom \textit{entering variabel} bernilai 0.
 
 \subsection{Metode Simplex 2}
 
