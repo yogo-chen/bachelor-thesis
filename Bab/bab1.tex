@@ -9,14 +9,15 @@ Kamera merupakan alat/komponen optik yang digunakan untuk mengambil citra/gambar
 
 Penempatan kamera CCTV di ruangan yang berbentuk sederhana (persegi panjang) tidaklah sulit. Kamera CCTV yang dibutuhkan biasanya berjumlah dua buah dan dipasang di kedua sudut ruangan yang merupakan satu diagonal. Namun, jika ruangan berukuran besar, maka tujuan penggunaan kamera CCTV pun tidak hanya untuk mendeteksi adanya orang, tetapi juga mengenali orang tersebut. Hal ini tentunya menyebabkan kesulitan dalam menentukan jumlah minimum dan lokasi penempatan kamera CCTV. Terdapat beberapa pendekatan yang dapat digunakan untuk menyelesaikan masalah ini, seperti dengan cara memasang kamera CCTV pada daerah-daerah yang dapat dimasuki orang. Tetapi pada kasus terburuk, orang bisa saja masuk melewati jalur-jalur yang tidak diduga, seperti tembok, atap, bawah tanah, dsb. Oleh karena itu, alangkah baiknya pemasangan kamera CCTV dilakukan hingga seluruh daerah di ruangan tersebut tercakup sepenuhnya.
 
-Penempatan kamera CCTV dapat dilakukan dalam berbagai lokasi dan berbagai arah pandang. Apabila penempatan kamera CCTV dilakukan tanpa adanya perhitungan, maka terdapat kemungkinan jumlah kamera yang terlalu banyak dan/atau seluruh lokasi yang tidak tercakup sepenuhnya. Pada penempatan kamera CCTV terdapat perhitungan tingkat \textit{overlap} (penumpukan jangkauan) dan tingkat \textit{out of bound} (jarak pandang terpotong). Penempatan kamera CCTV akan semakin baik apabila memiliki tingkat \textit{overlap} dan tingkat \textit{out of bound} yang semakin rendah.
+Penempatan kamera CCTV dapat dilakukan dalam berbagai lokasi dan berbagai arah pandang. Apabila penempatan kamera CCTV dilakukan tanpa adanya perhitungan, maka terdapat kemungkinan jumlah kamera yang terlalu banyak dan/atau seluruh lokasi yang tidak tercakup sepenuhnya. Pada penempatan kamera CCTV terdapat perhitungan tingkat \textit{overlap} (penumpukan jangkauan) dan tingkat \textit{out of bound} (jarak pandang terpotong). Overlap merupakan bagian ruangam yang dicakup oleh lebih dari 1 kamera CCTV. \textit{Out of bound} merupakan cakupan kamera CCTV yang jatuh di luar ruangan.
+%Penempatan kamera CCTV akan semakin baik apabila memiliki tingkat \textit{overlap} dan tingkat \textit{out of bound} yang semakin rendah.
 
-Pada skripsi ini, akan dibuat sebuah perangkat lunak yang akan menghasilkan jumlah minimum beserta dengan penempatan-penempatan kamera CCTV berdasarkan ukuran ruangan, jarak pandang efektif kamera CCTV, dan sudut pandang kamera CCTV. Penempatan kamera CCTV akan terdiri atas lokasi penempatan dan juga arah pandangnya. Perangkat lunak juga akan memberikan visualisasi guna membantu pengguna memahami penempatan setiap kamera CCTV pada ruangan yang dimasukkan. Hasil dari perangkat lunak ini dapat dipastikan menjadi hasil yang paling optimal yang berarti bahwa hasil akan memiliki jumlah kamera CCTV yang paling minimum yang mencakup seluruh isi ruangan.
+Pada skripsi ini, akan dibuat sebuah perangkat lunak yang akan menghasilkan jumlah minimum beserta dengan penempatan-penempatan kamera CCTV berdasarkan ukuran ruangan, jarak pandang efektif kamera CCTV, dan sudut pandang kamera CCTV. Penempatan kamera CCTV akan terdiri dari lokasi penempatan dan juga sudut arah pandangnya. Perangkat lunak juga akan memberikan visualisasi yang berguna untuk membantu pengguna memahami penempatan setiap kamera CCTV. Hasil dari perangkat lunak ini dipastikan menjadi hasil yang paling optimal yang berarti bahwa kamera CCTV berjumlah paling minimum yang dapat mencakup seluruh 	ruangan.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
 
-Berdasarkan deskripsi masalah yang dibahas sebelumnya, maka ditetapkan rumusan masalah sebagai berikut:
+Berdasarkan latar belakang masalah, maka ditetapkan rumusan masalah sebagai berikut:
 
 \begin{itemize}
 	\item Bagaimana cara menentukan jumlah minimum kamera CCTV dalam suatu ruangan?
@@ -26,24 +27,25 @@ Berdasarkan deskripsi masalah yang dibahas sebelumnya, maka ditetapkan rumusan m
 \section{Tujuan}
 \label{sec:tujuan}
 
-Berdasarkan rumusan masalah, maka tujuan dalam skripsi ini adalah sebagai berikut:
+Berdasarkan rumusan masalah, maka tujuan dalam skripsi ini adalah:
 
 \begin{itemize}
 	\item Mempelajari cara menentukan jumlah minimum kamera CCTV dalam suatu ruangan.
-	\item Membangun perangkat lunak yang dapat memvisualisasikan penempatan kamera-kamera CCTV dalam suatu ruangan.
+	\item Membangun perangkat lunak yang dapat mencari jumlah minimum kamera CCTV dan memvisualisasikan penempatan kamera-kamera CCTV dalam suatu ruangan.
 \end{itemize}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
-Untuk mempermudah pembuatan template ini, tentu ada hal-hal yang harus dibatasi, misalnya saja bahwa template ini bukan berupa style \LaTeX{} pada umumnya (dengan alasannya karena belum mampu jika diminta membuat seperti itu)
 
-\dtext{8}
+Masalah yang dibahas dalam skripsi ini memiliki batasan-batasan sebagai berikut:
+
+\begin{itemize}
+	\item Ruangan dimodelkan dalam bidang 2 dimensi berbentuk persegi panjang.
+	\item Spesifikasi kamera CCTV terdiri dari jarak pandang efektif dan besar sudut pandang.
+\end{itemize}
 
 \section{Metodologi}
 \label{sec:metlit}
-Tentunya akan diisi dengan metodologi yang serius sehingga templatenya terkesan lebih serius.
-
-\dtext{9}
 
 \section{Sistematika Pembahasan}
 \label{sec:sispem}

@@ -3,52 +3,43 @@
 \label{chap:teori}
 
 \section{Linear Programming}
-\label{linear_programming}
 
-Linear programming adalah teknik dalam ilmu matematika untuk menyelesaikan permasalahan yang berhubungan dengan optimasi. Teknik ini biasa digunakan dalam bidang produksi, manajemen operasional, penjadwalan, dan bidang-bidang lainnya yang melibatkan pengambilan keputusan. Pada bidang produksi, terdapat masalah ketika menentukan produk yang akan dihasilkan. Biasanya terdapat beberapa faktor yang menjadi pertimbangan seperti jumlah ketersedian sumber daya, jumlah pekerja, dan besar keuntungan yang didapatkan. Dengan adanya faktor-faktor tersebut, penentuan terhadap produk yang akan dihasilkan harus dilakukan dengan perhitungan yang tepat. Apabila permasalahan tersebut dapat dimodelkan dengan tepat, maka masalah dapat diselesaikan dengan teknik linear programming sehingga menghasilkan solusi terbaik dengan memperhatikan setiap faktor yang ada.
+Linear programming adalah sarana untuk menyelesaikan masalah optimasi~\cite{winston2004operations}. Optimasi merupakan usaha untuk memilih solusi terbaik dari suatu kumpulan solusi yang ada. Setiap masalah optimasi perlu diubah terlebih dahulu ke dalam bentuk masalah linear programming agar dapat diselesaikan menggunakan linear programming. Pada bagian ini, akan dibahas karakteristik dan cara menyelesaikan masalah linear programming.
 
 \subsection{Karakteristik}
-\label{karakteristik}
-
-Masalah linear programming memiliki ciri-ciri sebagai berikut:
+Masalah linear programming memiliki karakteristik sebagai berikut:
 
 \begin{itemize}
-	\item Variabel keputusan
-	
-		Di dalam masalah linear programming terdapat variabel-variabel keputusan. Variabel keputusan menunjukkan keputusan yang akan diambil.
-		
+	\item \textbf{Variabel keputusan}\\
+		Dalam masalah linear programming, terdapat variabel keputusan yang mendeskripsikan keputusan yang akan diambil. Contoh:
 		\begin{equation*}
 			\begin{split}
-				x_1 &= \text{jumlah produk A yang diproduksi} \\
-    			x_2 &= \text{jumlah produk B yang diproduksi}
+				x_1 &: \text{jumlah produk A yang diproduksi} \\
+    			x_2 &: \text{jumlah produk B yang diproduksi}
 			\end{split}
 		\end{equation*}
 		
-	\item Fungsi Tujuan
-	
-		Di dalam masalah linear programming terdapat tujuan yang akan dicapai. Fungsi tujuan menunjukkan tujuan yang akan dimaksimalkan atau diminimalkan.
+	\item \textbf{Fungsi Tujuan}\\
+		Dalam masalah linear programming, terdapat suatu keuntungan yang ingin dimaksimalkan atau suatu kerugian yang ingin diminimalkan dengan menggunakan  fungsi tujuan yang terdiri dari variabel-variabel keputusan. Contoh:
 		
 		\begin{equation*}
-			\text{maximize } z = 3x_1 + 2x_2
+			\textit{max } z = 3x_1 + 2x_2
 		\end{equation*}
 
-	\item Batasan
-	
-		Batasan dalam linear programming berfungsi untuk membatasi nilai variabel. Batasan juga dapat menunjukkan keterkaitan antar variabel keputusan.
+	\item \textbf{Batasan}\\
+		Dalam masalah linear programming, terdapat batasan-batasan yang membuat variabel keputusan memiliki nilai yang dibatasi. Batasan juga membuat suatu variabel keputusan berkaitan dengan variabel keputusan lainnya. Contoh:
 		%Fungsi tujuan ditentukan oleh variabel-variabel keputusan. Dalam fungsi tujuan yang memaksimalkan hasil, nilai dari setiap variabel keputusan dapat ditentukan sedemikian mungkin sehingga menghasilkan hasil sebesar-besarnya. Tentunya hal ini tidak mungkin terjadi karena terdapat faktor-faktor yang mencegah variabel keputusan untuk ditentukan sedemikian mungkin. Faktor-faktor ini berperan sebagai batasan bagi variabel keputusan sehingga nilai variabel keputusan tidak melebihi batas. Dengan adanya batasan ini, nilai dari fungsi tujuan tidak akan bernilai tak hingga karena variabel-variabel keputusannya dibatasi.
-		
+
 		\begin{equation*}
-			\begin{split}
-				2x_1 + x_2 &\leq 100 \\
-    			x_1 + x_2 &\leq 80 \\
-    			x_1 &\leq 40
-			\end{split}
+			\begin{array}{r c r c r}
+				2x_1 & + & x_2 & \leq & 100 \\
+    			x_1 & + & x_2 & \leq & 80 \\
+    			x_1 & & & \leq & 40
+			\end{array}
 		\end{equation*}
 		
-	\item Tanda Pembatas
-		
-		Tanda pembatas berfungsi untuk menyatakan apakah variabel keputusan dapat bernilai negatif atau tidak. Jika variabel keputusan \(x_i\) tidak dapat bernilai negatif maka ditambahkan tanda pembatas \(x_i \geq 0\) yang menyatakan bahwa variabel \(x_i\) tidak bernilai negatif. Namun, apabila nilai variabel keputusan tidak dibatasi atau dapat bernilai negatif, maka variabel tersebut disebut variabel bebas (\textit{unrestricted in sign}).
-		
+	\item \textbf{Batasan non-negatif}\\
+		Dalam masalah linear programming, batasan non-negatif (\(x_i\geq 0\)) pada variabel keputusan menyatakan bahwa variabel keputusan tersebut tidak dapat bernilai negatif. Dengan batasan non-negatif, variabel keputusan diharuskan untuk bernilai 0 atau positif. Contoh:
 		\begin{equation*}
 			\begin{split}
     			x_1 &\geq 0 \\
@@ -58,135 +49,123 @@ Masalah linear programming memiliki ciri-ciri sebagai berikut:
 		
 \end{itemize}
 
-Dengan keempat karakteristik di atas, setiap masalah optimasi dapat dimodelkan ke bentuk masalah linear programming. Berikut contoh masalah linear programming:
-
+Dengan keempat karakteristik di atas, setiap masalah optimasi dapat diubah ke dalam masalah linear programming untuk diselesaikan. Berikut contoh masalah linear programming:
 \begin{equation*}
 	\begin{array}{r r c r c l}
-		\text{maximize} &\multicolumn{5}{l}{z = 3x_1 + 2x_2}\\
-		\text{subject to} &2x_1 &+ &x_2 &\leq &100\\
+		\textit{max } &\multicolumn{5}{l}{z = 3x_1 + 2x_2}\\
+		\textit{s.t.} &2x_1 &+ &x_2 &\leq &100\\
 		&x_1 &+ &x_2 &\leq &80\\
 		&x_1 &&&\leq &40\\
-		&x_1 &&&\geq &0\\
+		&&&x_1 &\geq &0\\
 		&&&x_2 &\geq &0\\
 	\end{array}
 \end{equation*}
 
-\subsection{Daerah Solusi dan Solusi Optimal}
-\label{daerah_solusi_dan_solusi_optimal}
+	Tulisan ''\textit{s.t.}'' atau ''\textit{subject to}'' menandakan bahwa nilai dari setiap variabel keputusan harus memenuhi setiap batasan dan batasan non-negatif.
 
-Di dalam linear programming terdapat daerah solusi. Setiap batasan pada masalah linear programming akan menentukan daerah yang memenuhi batasan tersebut. Irisan dari gabungan daerah-daerah tersebut akan menghasilkan daerah solusi bagi masalah linear programming. Dengan adanya daerah solusi, maka masalah linear programming dapat diselesaikan karena memiliki solusi yang dibatasi.
+\subsection{Daerah \textit{Feasible} dan Solusi Optimal}
+Dalam masalah linear programming, terdapat daerah yang bernama daerah \textit{feasible}. Daerah \textit{feasible} dalam suatu masalah linear programming merupakan himpunan yang terdiri dari seluruh titik yang memenuhi setiap batasan dan batasan non-negatif~\cite{winston2004operations}. Dengan demikian, setiap titik yang berada di dalam daerah \textit{feasible} merupakan solusi terhadap permasalahan tersebut. Apabila dipilih suatu titik yang berada di luar daerah \textit{feasible}, maka titik ini disebut dengan titik \textit{infeasible}. Titik \textit{infeasible} bukan merupakan solusi bagi permasalahan karena titik ini tidak memenuhi setiap batasan dan batasan non-negatif. Untuk menggambarkan daerah \textit{feasibel}, digunakan contoh batasan-batasan sebagai berikut:
 
-%Solusi dari linear programming merupakan solusi yang tidak melanggar setiap batasan-batasannya. Dengan diketahuinya hal ini, bisa saja maka linear programming memiliki banyak solusi dengan tidak melanggar batasan manapun. Dalam linear programming, solusi-solusi ini berada dalam daerah yang disebut dengan daerah solusi (feasible reqion). Daerah ini berbentuk \textit{covex polytope} yang terdiri dari banyak titik sudut. Titik-titik sudut ini merupakan perpotongan dari setiap batasan dengan batasan-batasan lainnya. Dengan adanya daerah ini, pencarian solusi menjadi dibatasi sehingga tidak perlu memeriksa seluruh kemungkinan yang ada. 
+\begin{equation*}
+	\begin{array}{r c r c l}		
+		2x_1 &+ &x_2 &\leq &100\\
+		x_1 &+ &x_2 &\leq &80\\
+		x_1 &&&\leq &40\\
+		&&x_1 &\geq &0\\
+		&&x_2 &\geq &0\\
+	\end{array}
+\end{equation*}
 
-%Bila diketahui bahwa titik sudut dibentuk dari perpotongan antar batasan, maka hal ini tidak berlaku sebaliknya. Titik potong tidak selalu menjadi titik sudut bagi daerah solusi. Titik sudut merupakan titik potong yang tidak melanggar batasan-batasan. Apabila daerah solusi divisualisasikan dalam bentuk grafik atau lainnya, daerah solusi akan berbentuk \textit{convex polytope}.
+Pada contoh masalah tersebut, hanya terdapat 2 variabel keputusan sehingga dapat digambarkan dalam diagram kartesius. Pada gambar~\ref{fig:daerah_feasible} terlihat bahwa batasan-batasan membentuk daerah \textit{feasible}.
 
-%Bila daerah solusi sudah ditemukan, solusi optimal dapat dicari dengan memeriksa setiap kemungkinan yang berada di dalam daerah solusi. Walaupun demikian, pemeriksaan ini masih dianggap tidak efisien. Bila solusi optimal dapat berupa bilangan pecahan, maka pemeriksaan tidak dapat berakhir karena bilangan pecahan yang berada di antara dua batas berjumlah tak hingga.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.06]
+		\draw[gray!50, thin, step=20] (0,0) grid (80, 100);
+		\draw[very thick,->] (0,0) -- (90, 0) node[right] {$x_1$};
+		\draw[very thick,->] (0,0) -- (0, 110) node[above] {$x_2$};
+		\foreach \x in {20,40,50,60,80} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
+		\foreach \y in {20,40,60,80,100} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
+		\draw (0,100) -- node[above=5,right=5,sloped] {\tiny$2x_1+x_2\leq100$} (50,0);
+		\draw (0,80) -- node[above=5,left=5,sloped] {\tiny$x_1+x_2\leq80$} (80,0);
+		\draw (40,100) -- node[above,sloped] {\tiny$x_1\leq40$} (40,0);
+		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,80) -- (20,60) -- (40,20) -- (40,0) -- cycle;
+	\end{tikzpicture}
+	\caption[Daerah \textit{feasible}]{Daerah \textit{feasible}}
+	\label{fig:daerah_feasible}
+\end{figure}
 
-%Tentunya seluruh pemeriksaan ini dapat dihindari karena solusi optimal dari linear programming berada pada salah satu titik sudut di daerah solusi. Dengan diketahuinya hal ini, maka solusi optimal dapat dicari dengan mengecek setiap titik sudut yang berjumlah terhitung (\textit{finite}).
+Agar suatu masalah linear programming memiliki solusi optimal, maka daerah feasible harus berbentuk \textit{convex set}. Suatu himpunan titik \(S\) merupakan \textit{convex set} apabila segmen garis yang menghubungkan setiap pasang titik dalam himpunan \(S\) berada dalam himpunan \(S\)~\cite{winston2004operations}. Apabila masalah linear programming memiliki daerah \textit{feasible}, maka daerah tersebut berbentuk \textit{convex set}. Solusi optimal dari masalah tersebut berada pada salah satu \textit{corner point} pada daerah \textit{feasible}. \textit{Extreme point} adalah titik perpotongan antar batasan dan \textit{corner point} adalah \textit{extreme point} yang berada dalam daerah \textit{feasible}. Dengan adanya \textit{corner points}, solusi optimal dapat dicari karena berjumlah terhitung, sehingga tidak perlu memeriksa seluruh kemungkinan solusi masalah yang berjumlah tak hingga. Pada gambar~\ref{fig:corner_points}, titik A, B, C, D, dan E merupakan titik \textit{corner points} yang salah satu di antaranya akan menghasilkan solusi optimal.
 
-Apabila masalah linear programming memiliki daerah solusi seperti pada Gambar~\ref{fig:daerah_solusi}, maka masalah linear programming tersebut memiliki solusi optimal. Daerah solusi pada setiap masalah linear programaming berbentuk \textit{convex polytope} yang terdiri dari banyak titik sudut. Solusi optimal terdapat pada salah satu titik sudut.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[scale=0.06]
+		\draw[gray!50, thin, step=20] (0,0) grid (80, 100);
+		\draw[very thick,->] (0,0) -- (90, 0) node[right] {$x_1$};
+		\draw[very thick,->] (0,0) -- (0, 110) node[above] {$x_2$};
+		\foreach \x in {20,40,50,60,80} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
+		\foreach \y in {20,40,60,80,100} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
+		\draw (0,100) -- (50,0);
+		\draw (0,80) -- (80,0);
+		\draw (40,100) -- (40,0);
+		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,80) -- (20,60) -- (40,20) -- (40,0) -- cycle;
+		\filldraw [black] (0,0) circle (2);
+		\filldraw [black] (0,80) circle (2);
+		\filldraw [black] (20,60) circle (2);
+		\filldraw [black] (40,20) circle (2);
+		\filldraw [black] (40,0) circle (2);
+		\draw (0,0) node[left] {$A$};
+		\draw (0,80) node[above right] {$B$};
+		\draw (20,60) node[left] {$C$};
+		\draw (40,20) node[left] {$D$};
+		\draw (40,0) node[above left] {$E$};
+	\end{tikzpicture}
+	\caption[\textit{Corner points} pada daerah \textit{feasible}]{Corner points pada daerah \textit{feasible}}
+	\label{fig:corner_points}
+\end{figure}
+
+Tidak semua masalah linear programming memiliki daerah \textit{feasible}. Apabila batasan-batasan dalam masalah tidak dapat membentuk daerah \textit{feasible}, maka masalah tersebut tidak memiliki solusi apapun, sehingga solusi optimal dari masalah tersebut tidak dapat dicari. Gambar~\ref{fig:daerah_infeasible} menunjukkan contoh masalah linear programming yang tidak memiliki daerah \textit{feasible}.
 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
 		\draw[gray!50, thin, step=1] (0,0) grid (5,5);
-		\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x$};
-		\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$y$};
+		\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x_1$};
+		\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$x_2$};
 		\foreach \x in {0,...,5} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
 		\foreach \y in {1,...,5} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
-		\draw (0,4) -- (5, 1.5);
-		\draw (4,0) -- (4,5);
-		\draw (0,5) -- (5,0);
-		\filldraw [black] (0,0) circle (2pt);
-		\filldraw [black] (0,4) circle (2pt);
-		\filldraw [black] (2,3) circle (2pt);
-		\filldraw [black] (4,1) circle (2pt);
-		\filldraw [black] (4,0) circle (2pt);
-		\draw (0,0) node[left] {$A$};
-		\draw (0,4.1) node[above,right] {$B$};
-		\draw (2.1,3) node[above] {$C$};
-		\draw (4,1.1) node[right] {$D$};
-		\draw (4,0.2) node[right] {$E$};
-		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,4) -- (2,3) -- (4,1) -- (4,0) -- cycle;
+		\draw (3,0) -- node[above,sloped] {\small $x_1 + x_2 \leq 3$} (0,3);
+		\draw (5,0) -- node[above,sloped] {\small $x_1 + x_2 \geq 5$} (0,5);
 	\end{tikzpicture}
-	\caption{Daerah solusi}
-	\label{fig:daerah_solusi}
+	\caption[Tidak ada daerah \textit{feasible}]{Tidak ada daerah \textit{feasible}}
+	\label{fig:daerah_infeasible}
 \end{figure}
-
-Terdapat 3 jenis daerah solusi dalam masalah linear programming, yaitu:
-
-\begin{enumerate}
-	\item Daerah solusi yang dibatasi (\textit{bounded feasible region})
 	
-		Batasan-batasan menghasilkan daerah solusi yang berbentuk \textit{convex polytope}. Solusi optimal linear programming terdapat pada salah satu titik sudut. Gambar~\ref{fig:daerah_solusi_dibatasi} berikut menggambarkan daerah solusi yang dibatasi.
+%Batasan-batasan menghasilkan daerah solusi yang tidak tertutup. Daerah solusi ini memiliki jumlah solusi yang tak terhitung. Gambar~\ref{fig:daerah_solusi_tidak_dibatasi} berikut menggambarkan daerah solusi yang tidak dibatasi.
 			
-		\begin{figure}[H]
-    		\centering
-			\begin{tikzpicture}
-		    	\draw[gray!50, thin, step=1] (0,0) grid (5,5);
-				\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x$};
-				\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$y$};
-				\foreach \x in {0,...,5} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
-				\foreach \y in {1,...,5} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
-				\draw (0,4) -- node[above,near end,sloped] {\small $x + 2y \leq 8$} (5, 1.5);
-				\draw (4,0) -- node[right,near end] {\small $x \leq 4$} (4,5);
-				\draw (0,5) -- node[above,near start,sloped] {\small $x + y \leq 5$} (5,0);
-				\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,4) -- (2,3) -- (4,1) -- (4,0) -- cycle;
-			\end{tikzpicture}
-			\caption{Daerah solusi yang dibatasi}
-			\label{fig:daerah_solusi_dibatasi}
-		\end{figure}
-    	
-	\item Daerah solusi yang tidak dibatasi (\textit{unbounded feasible region})
-	
-		Batasan-batasan menghasilkan daerah solusi yang tidak tertutup. Daerah solusi ini memiliki jumlah solusi yang tak terhitung. Gambar~\ref{fig:daerah_solusi_tidak_dibatasi} berikut menggambarkan daerah solusi yang tidak dibatasi.
-			
-    	\begin{figure}[H]
-    		\centering
-			\begin{tikzpicture}
-				\draw[gray!50, thin, step=1] (0,0) grid (5,5);
-				\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x$};
-				\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$y$};
-				\foreach \x in {0,...,5} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
-				\foreach \y in {1,...,5} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
-				\draw (2,0) -- node[below,sloped] {\small $-2x + 3y \geq -4$} (5,2);
-				\draw (0,1) -- node[above,near end,sloped] {\small $4x - y \geq -1$} (1,5);
-				\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,1) -- (1,5) -- (5,5) -- (5,2) -- (2,0) -- cycle;
-			\end{tikzpicture}
-			\caption{Daerah solusi yang tidak dibatasi}
-			\label{fig:daerah_solusi_tidak_dibatasi}
-		\end{figure}
-
-	\item Tidak ada daerah solusi (\textit{infeasible region})
-
-		Batasan-batasan tidak membentuk daerah solusi sehingga masalah linear programming tidak memiliki solusi dan tidak dapat diselesaikan. Gambar~\ref{fig:tidak_ada_daerah_solusi} berikut menggambarkan tidak ada daerah solusi.
-			
-		\begin{figure}[H]
-    		\centering
-			\begin{tikzpicture}
-				\draw[gray!50, thin, step=1] (0,0) grid (5,5);
-				\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x$};
-				\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$y$};
-				\foreach \x in {0,...,5} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
-				\foreach \y in {1,...,5} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
-				\draw (3,0) -- node[above,sloped] {\small $x + y \leq 3$} (0,3);
-				\draw (5,0) -- node[above,sloped] {\small $x + y \geq 5$} (0,5);
-			\end{tikzpicture}
-			\caption{Tidak ada daerah solusi}
-			\label{fig:tidak_ada_daerah_solusi}
-    	\end{figure}
-
-\end{enumerate}
+%    	\begin{figure}[H]
+%    		\centering
+%			\begin{tikzpicture}
+%				\draw[gray!50, thin, step=1] (0,0) grid (5,5);
+%				\draw[very thick,->] (0,0) -- (5.2, 0) node[right] {$x$};
+%				\draw[very thick,->] (0,0) -- (0, 5.2) node[above] {$y$};
+%				\foreach \x in {0,...,5} \draw (\x,0.05) -- (\x,-0.05) node[below] {\small\x};
+%				\foreach \y in {1,...,5} \draw (-0.05,\y) -- (0.05,\y) node[left] {\small\y};
+%				\draw (2,0) -- node[below,sloped] {\small $-2x + 3y \geq -4$} (5,2);
+%				\draw (0,1) -- node[above,near end,sloped] {\small $4x - y \geq -1$} (1,5);
+%				\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,1) -- (1,5) -- (5,5) -- (5,2) -- (2,0) -- cycle;
+%			\end{tikzpicture}
+%			\caption{Daerah solusi yang tidak dibatasi}
+%			\label{fig:daerah_solusi_tidak_dibatasi}
+%		\end{figure}
 
 \subsection{Bentuk Standar}
-\label{bentuk_standar}
-
-Setiap model linear programming dapat dimodelkan ke dalam bentuk standar seperti berikut ini:
+Setiap masalah linear programming harus diubah ke dalam bentuk standar sebelum diselesaikan. Berikut ini merupakan struktur dari bentuk standar pada masalah linear programming:
     	
 \begin{equation*}
 	\begin{array}{r r c r c r c r c l}
-	    \text{maximize}		& c_1x_1    & + & c_2x_2 	& + & \dots & + & c_nx_n \\
-		\text{subject to} 	& a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1 \\
+	    \textit{max}		& c_1x_1    & + & c_2x_2 	& + & \dots & + & c_nx_n \\
+		\textit{s.t.} 	& a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1 \\
     						& a_{21}x_1 & + & a_{22}x_2 & + & \dots & + & a_{2n}x_n & = & b_2 \\
                             & \multicolumn{7}{c}{\vdots}                            &   & \vdots \\
                             & a_{m1}x_1 & + & a_{m2}x_2 & + & \dots & + & a_{mn}x_n & = & b_m \\
@@ -194,64 +173,26 @@ Setiap model linear programming dapat dimodelkan ke dalam bentuk standar seperti
 	\end{array}
 \end{equation*}
 
-Bentuk tersebut merupakan bentuk standar masalah linear programming yang terdiri dari $n$ buah variabel $x$ dan $m$ buah persamaan batasan. Variabel $b_i,c_i,a_{ij}$ merupakan konstanta dan $x_i$ merupakan variabel keputusan. 
-
-Bentuk standar tersebut dapat dinyatakan dalam notasi matriks seperti berikut ini:
+Bentuk standar masalah linear programming terdiri dari $n$ buah variabel keputusan $x$ dan $m$ buah persamaan batasan. Setiap batasan dalam bentuk standar harus dalam bentuk persamaan dan batasan non-negatif diberlakukan untuk setiap varibel keputusan. Bentuk standar linear programming dapat dinyatakan dalam notasi matriks seperti berikut ini:
         
 \begin{center}
 	\begin{tabular}{r l}
-    	\textit{maximize}   & $c^Tx$ \\
-        \textit{subject to} & $Ax=b$ and $x\geq0$
+    	\textit{max}   & $c^Tx$ \\
+        \textit{s.t.} & $Ax=b$ \textit{and} $x\geq0$
 	\end{tabular}    
 \end{center}
         
-Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matriks baris berdimensi $n$, $A$ adalah matriks berdimensi $m\times n$, dan $b$ adalah matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan variabel keputusan $x_i$ tidak dapat bernilai negatif.
-        
-%Langkah-langkah untuk mengubah masalah linear programming ke bentuk standar:
-
-%\begin{enumerate}
-%	\item Ubah tujuan agar memaksimalkan
-	
-%		Apabila bertujuan meminimalkan, maka ubah tujuan agar memaksimalkan dengan cara mengalikan fungsi tujuan dengan -1. Contoh:
-
-%		\begin{equation*}
-%			\text{minimize } z = x_1 + 2x_2
-%		\end{equation*}
+Pada notasi matriks, $x$ menunjukkan matriks kolom berdimensi $n$, $C^T$ menunjukkan matriks baris berdimensi $n$, $A$ menunjukkan matriks berdimensi $m\times n$, dan $b$ menunjukkan matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan batasan non-negatif untuk setiap variabel keputusan $x_i$. Untuk mengubah masalah linear programming ke bentuk standar, maka setiap batasan perlu diubah. Perubahan batasan dibedakan berdasarkan tandanya, yaitu sebagai berikut:
 		
-%		menjadi
-		
-%		\begin{equation*}
-%			\text{maximize } -z = -x_1 - 2x_2
-%		\end{equation*}
-		
-%	\item Ubah sisi kanan pertidaksamaan batasan sehingga tidak bernilai negatif
-	
-%		Apabila konstanta di sisi kanan pada pertidaksamaan batasan berupa bilangan negatif, maka kalikan kedua ruas pertidaksamaan dengan -1 sehingga sisi kanan tidak bernilai negatif. Contoh:
-		
-%		\begin{equation*}
-%			x_1 + 2x_2 \leq -20
-%		\end{equation*}
-		
-%		menjadi
-		
-%		\begin{equation*}
-%			-x_1 - 2x_2 \geq 20
-%		\end{equation*}
-
-%	\item Mengubah batasan ke dalam bentuk persamaan
-	
-		Untuk mengubah ke bentuk standar, maka pertidaksamaan pada batasan harus diubah menjadi persamaan. Perubahan dibedakan menjadi 2 berdasarkan jenis tandanya, yaitu:
-		
-		\begin{enumerate}
-			\item Pertidaksamaan lebih kecil (\(\leq\))		
-
-				Pertidaksamaan dengan tanda lebih kecil diubah ke bentuk persamaan dengan menambahkan variabel baru positif bernama \textit{slack}. Lalu tambahkan tanda pembatas tidak negatif untuk variabel \textit{slack} tersebut. Contoh:
+		\begin{itemize}
+			\item \textbf{Batasan dengan tanda pertidaksamaan \(\leq\)}\\
+				Pertidaksamaan pada batasan ini diubah ke dalam bentuk persamaan dengan menambahkan variabel positif \(s_i\) yang disebut \textit{slack} pada sisi kiri. Lalu ditambahkan batasan non-negatif untuk variabel \textit{slack} tersebut. Contoh:
 				
 				\begin{equation*}
 					x_1 + 2x_2 \leq 40
 				\end{equation*}
 				
-				menjadi
+				diubah menjadi
 				
 				\begin{equation*}
 					\begin{split}
@@ -260,23 +201,22 @@ Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matri
 					\end{split}
 				\end{equation*}
 			
-			\item Pertidaksamaan lebih besar (\(\geq\))
-			
-				Pertidaksamaan dengan tanda lebih besar diubah ke bentuk persamaan dengan menambahkan variabel baru negatif bernama \textit{surplus}. Lalu tambahkan tanda pembatas tidak negatif untuk variabel \textit{surplus} tersebut. Contoh:
+			\item \textbf{Batasan dengan tanda pertidaksamaan \(\geq\)}\\			
+				Pertidaksamaan pada batasan ini diubah ke dalam bentuk persamaan dengan menambahkan variabel negatif \(e_i\) yang disebut \textit{excess} pada sisi kiri. Lalu ditambahkan batasan non-negatif untuk variabel \textit{excess} tersebut. Contoh:
 				
 				\begin{equation*}
 					x_1 + 2x_2 \geq 40
 				\end{equation*}
 				
-				menjadi
+				diubah menjadi
 				
 				\begin{equation*}
 					\begin{split}
 						x_1 + 2x_2 - e_1 &= 40\\
 						e_1 &\geq 0
 					\end{split}
-				\end{equation*}
-		\end{enumerate}
+				\end{equation*}				
+		\end{itemize}
 		
 %	\item Mengsubtitusi variabel bebas
 	
@@ -309,16 +249,15 @@ Pada notasi matriks, $x$ adalah matriks kolom berdimensi $n$, $C^T$ adalah matri
 %		\end{equation*}
 %\end{enumerate}
 
-\subsection{Variabel Basis dan Non Basis}
-\label{variabel_basis_dan_non_basis}
-
-Masalah linear programming \(Ax = b\) yang terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah linear programming \(Ax = b\) memiliki solusi basis yang didapatkan dengan membuat \((n - m)\) buah variabel bernilai 0 dan menyelesaikan \(m\) buah variabel lainnya. Sebanyak \((n - m)\) buah variabel yang dibuat bernilai 0 disebut variabel non basis. Sedangkan sebanyak \(m\) buah variabel lainnya disebut variabel basis. Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. Berikut contoh sistem persamaan linear:
+\subsection{Variabel Basis dan Non-basis}
+Masalah linear programming \(Ax = b\) terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah ini memiliki solusi yang disebut dengan solusi basis apabila membuat \((n - m)\) buah variabel keputusan bernilai 0 dan menyelesaikan \(m\) buah variabel keputusan lainnya. Sebanyak \((n - m)\) buah variabel yang dibuat bernilai 0 disebut dengan variabel non-basis. Sedangkan \(m\) buah variabel lainnya disebut dengan variabel basis. Berikut contoh sistem persamaan linear:
+%Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. 
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
 	\begin{array}{r c r c r c l}
 		x_1 &+ &x_2 &  &    &= &3\\
-		    &  &x_2 &+ &x_3 &= &-1
+		    &- &x_2 &+ &x_3 &= &-1
 	\end{array}
 \end{equation*}
 
@@ -328,14 +267,23 @@ Pada sistem persamaan linear di atas, dipilih sebanyak 3 - 2 = 1 (3 variabel dan
 	\setlength\arraycolsep{1.5pt}
 	\begin{array}{r c r c r c l}
 		x_1 &+ &x_2 &  &    &= &3\\
-		    &  &x_2 &+ &0 &= &-1
+		    &- &x_2 &+ &0 &= &-1
 	\end{array}
 \end{equation*}
 
-Pada persamaan di atas didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1. Dengan demikian didapatkan solusi basis \(x_1\) = 2, \(x_2\) = 1, \(x_3\) = 0.
+Pada persamaan di atas didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1. Dengan demikian didapatkan solusi basis dengan nilai \(x_1\) = 2, \(x_2\) = 1, dan \(x_3\) = 0.
 
 \subsection{Metode Simplex}
-\label{metode_simplex}
+Metode simplex merupakan metode yang digunakan untuk menyelesaikan masalah linear programming. Berikut ini merupakan langkah-langkah metode simplex:
+\begin{enumerate}
+	\item Mengubah masalah linear programming ke dalam bentuk standar
+	\item Mencari \textit{basic feasible solution} (\textit{bfs}) dari bentuk standar.
+	\item Menentukan apakah \textit{bfs} pada saat ini sudah optimal.
+	\item Apabila \textit{bfs} belum optimal, tentukan variabel non-basis mana yang akan menjadi variabel basis dan tentukan variabel basis mana yang akan menjadi variabel non-basis dengan tujuan mencari \textit{bfs} baru yang dapat meningkatkan nilai fungsi objektif.
+	\item Lakukan Operasi Baris Elementer (OBE) untuk mencari \textit{bfs} baru yang dapat meningkatkan nilai fungsi objektif. Lanjut ke langkah 3.
+\end{enumerate}
+
+\subsection{Metode Simplex 2}
 
 Metode simplex merupakan metode yang digunakan untuk mencari solusi optimal dari masalah linear programming. Metode simplex bekerja secara beriterasi dengan menghasilkan solusi yang mendekati optimal pada setiap iterasinya. Iterasi ini akan dilakukan hingga tidak ditemukannya solusi yang lebih optimal. Berikut contoh masalah linear programming:
 
