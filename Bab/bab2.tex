@@ -401,7 +401,7 @@ Apabila \textit{bfs} pada saat ini masih belum optimal, maka perlu dilakukan pro
 Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga perlu dilakukan proses \textit{pivotting}. Variabel \(x_1\) akan menjadi \textit{entering variable} karena bernilai paling negatif pada baris 0. Setelah dilakukan tes rasio sesuai, variabel \(s_3\) menjadi \textit{leaving variable} karena memiliki hasil tes rasio terkecil. Tes rasio untuk \textit{bfs} baru pada contoh masalah dapat dilihat pada tabel~\ref{tab:tabel_pivotting_1}.
 
 \begin{center}
-	\captionof{table}{Tabel \textit{pivotting} 1}
+	\captionof{table}{Proses \textit{pivotting} 1}
 	\label{tab:tabel_pivotting_1}
 	$
 	\begin{array}{|r r r r r r r r|c|r c l|r c l|}
@@ -482,7 +482,7 @@ Karena nilai \(x_1\) bernilai 0 pada baris 4, maka tidak perlu dilakukan OBE pad
 Setelah mendapatkan tabel simplex~\ref{tab:tabel_simplex_1}, langkah selanjutnya adalah memeriksa apakah \textit{bfs} pada iterasi ini sudah optimal. Pada baris 0, terdapat nilai negatif, yaitu pada variabel \(x_3\), sehingga \textit{bfs} ini belum optimal. Maka  langkah selanjutnya adalah mencari \textit{entering variable} dan \textit{leaving variable}. \textit{Entering variable} didapatkan dengan memilih variabel yang bernilai paling negatif pada baris 0, yaitu variabel \(x_3\). \textit{Leaving variable} didapatkan dengan mencari rasio terkecil dari hasil tes rasio. Tes rasio dapat dilihat pada tabel~\ref{tab:tabel_pivotting_2}. Variabel \(s_2\) menghasilkan hasil tes rasio terkecil, sehingga variabel \(s_2\) menjadi \textit{leaving variable}.
 
 \begin{center}
-	\captionof{table}{Tabel \textit{pivotting} 2}
+	\captionof{table}{Proses \textit{pivotting} 2}
 	\label{tab:tabel_pivotting_2}
 	$
 	\begin{array}{|r r r r r r r r|c|r c l|r c l|}
@@ -560,200 +560,63 @@ Variabel \(x_3\) sudah bernilai 0 pada baris 4, maka baris 4 yang baru sama deng
 
 Langkah selanjutnya adalah memeriksa apakah \textit{bfs} saat ini sudah optimal. Pada baris 0, tidak ditemukan variabel bernilai negatif, sehingga \textit{bfs} pada tahap ini sudah optimal. Dengan demikian masalah ini memiliki solusi optimal bernilai 280 dengan variabel \(x_1=2, x_2=0, x_3=8, \text{ dan } x_4 = 0\).
 
-\subsection{Metode Simplex 2}
-
-Metode simplex merupakan metode yang digunakan untuk mencari solusi optimal dari masalah linear programming. Metode simplex bekerja secara beriterasi dengan menghasilkan solusi yang mendekati optimal pada setiap iterasinya. Iterasi ini akan dilakukan hingga tidak ditemukannya solusi yang lebih optimal. Berikut contoh masalah linear programming:
-
+Contoh yang dibahas sebelumnya merupakan contoh masalah linear programming dalam kasus maksimisasi. Untuk menyelesaikan masalah linear programming pada kasus minimasi, dapat dilakukan dengan mengubah tujuan minimasi menjadi tujuan maksimasi. Perubahan tujuan ini dilakukan dengan mengalikan fungsi tujuan dengan -1. Contoh:
 \begin{equation*}
-	\begin{array}{r c c c c l}
-		\text{maximize}   & 3x_1 & + & 2x_2 \\
-		\text{subject to} & 2x_1 & + & x_2  & \leq & 18 \\
-        					& 2x_1 & + & 3x_2 & \leq & 42 \\
-                           	& 3x_1 & + & x_2  & \leq & 24 \\
-                           	& \multicolumn{5}{l}{x_1\geq0,x_2\geq0} \\
+	\setlength\arraycolsep{1.5pt}
+	\begin{array}{r r c r c l}
+		\textit{min } &\multicolumn{5}{l}{z = 2x_1 - 3x_2}\\
+		\textit{s.t.} &x_1 &+ &x_2 &\leq &4\\
+		&x_1 &- &x_2 &\leq &6\\
+		&&&x_1 &\geq &0\\
+		&&&x_2 &\geq &0\\
 	\end{array}
 \end{equation*}
-        
-Langkah-langkah untuk menyelesaikan maslaah linear programming dengan menggunakan metode simplex:
 
-\begin{enumerate}
-	\item Mengubah masalah ke dalam bentuk standar
-	
-        Masalah linear programming diubah ke bentuk standar sesuai dengan langkah-langkah yang sudah dibahas sebelumnya.
-        
-        Berikut contoh masalah linear programming yang sudah diubah ke bentuk standar:
-        
-	    \begin{equation*}
-			\begin{array}{r c c c c c c c c c c l}
-    	    	\text{maximize}   & 3x_1 & + & 2x_2 & + & 0x_3 & + & 0x_4 & + & 0x_5\\
-	            \text{subject to} & 2x_1 & + & x_2  & + & x_3 &   &       &   &       & = & 18 \\
-                        	   		& 2x_1 & + & 3x_2 &   &       & + & x_4 &   &       & = & 42 \\
-                    	       		& 3x_1 & + & x_2  &   &       &   &       & + & x_5 & = & 24 \\
-                	           		& \multicolumn{11}{l}{x_1\geq0,x_2\geq0,x_3\geq0,x_4\geq0,x_5\geq0} \\
-        	\end{array}
-		\end{equation*}
-			
-	\item Membuat tabel \textit{simplex}\\
-		Tabel~\ref{tab:kerangka_tabel_simplex} merupakan kerangka tabel simplex yang terdiri dari 4 kolom utama, yaitu kolom basis, kolom $z$, kolom variabel non basis, dan kolom ruas kanan/rhs (\textit{right hand side}). Pada awalnya, baris $z$ berisi nilai negatif dari konstanta variabel pada fungsi tujuan dan $m$ baris berikutnya berisi konstanta variabel pada setiap persamaan batasan. $m$ baris terkahir ini diidentifikasikan sebagai baris basis.
-        	
-		\begin{table}[H]
-			\centering
-			\caption{Kerangka tabel simplex}
-			\label{tab:kerangka_tabel_simplex}
-			\begin{tabular}{|c|c|c c c c |c|}
-				\hline
-				basic & $z$ & $x_1$ & $x_2$ & \dots & $x_n$ & rhs \\
-				\hline
-				$z$ & 1 & $-c_1$ & $-c_2$ & \dots & $-c_n$ & 0 \\
-				\hline
-				$x_{n+1}$ & 0 & $a_{11}$ & $a_{12}$ & \dots & $a_{1n}$ & $b_1$ \\
-				$x_{n+2}$ & 0 & $a_{21}$ & $a_{22}$ & \dots & $a_{2n}$ & $b_2$ \\
-				\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-				$x_{n+m}$ & 0 & $a_{m1}$ & $a_{m2}$ & \dots & $a_{mn}$ & $b_m$ \\
-				\hline
-			\end{tabular}
-		\end{table}
-			
-		Tabel~\ref{tab:contoh_simplex_awal} berikut adalah tabel simplex awal untuk contoh masalah linear programming.
-			
-		\begin{table}[H]
-			\centering
-			\caption{Tabel simplex awal}
-			\label{tab:contoh_simplex_awal}
-			\begin{tabular}{|c|c|c c c c c|c|}
-				\hline
-				basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
-				\hline
-				$z$ & 1 & -3 & -2 & 0 & 0 & 0 & 0 \\
-				\hline
-				$x_3$ & 0 & 2 & 1 & 1 & 0 & 0 & 18\\
-				$x_4$ & 0 & 2 & 3 & 0 & 1 & 0 & 42\\
-				$x_5$ & 0 & 3 & 1 & 0 & 0 & 1 & 24\\
-				\hline
-			\end{tabular}
-		\end{table}
+Contoh tersebut merupakan contoh masalah linaer programming dengan tujuan minimasi. Untuk menyelesaikannya, fungsi objektif dikalikan dengan -1, sehingga tujuan berubah menjadi maksimasi. Contoh masalah berubah menjadi:
+\begin{equation*}
+	\setlength\arraycolsep{1.5pt}
+	\begin{array}{r r c r c l}
+		\textit{max } &\multicolumn{5}{l}{-z = -2x_1 + 3x_2}\\
+		\textit{s.t.} &x_1 &+ &x_2 &\leq &4\\
+		&x_1 &- &x_2 &\leq &6\\
+		&&&x_1 &\geq &0\\
+		&&&x_2 &\geq &0\\
+	\end{array}
+\end{equation*}
 
-	\item Mengecek solusi optimal
-	
-    	Apabila pada baris $z$ tidak terdapat variabel dengan nilai negatif, maka solusi optimal sudah ditemukan dan menandakan akhir dari iterasi. Solusi optimal terdapat pada setiap rhs dari setiap baris basis. Jika masih terdapat variabel dengan nilai negatif, maka langkah selanjutnya adalah melakukan proses \textit{pivoting}.
+Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk contoh masalah linaer programming kasus minimasi. Tabel~\ref{tab:tabel_simplex_minimasi_1} menunjukkan tabel simplex yang menghasilkan \textit{bfs} optimal dengan nilai \(-z=12, x_1=0, x_2=4, s_1=0, \text{ dan } s_2=10\). Dengan demikian, didapatkan solusi optimal sebesar -12 dengan variabel \(x_1=0 \text{ dan } x_2=4\).
 
-		Pada Tabel~\ref{tab:contoh_simplex_awal}, terdapat nilai negatif di baris $z$, yaitu pada variabel $x_1$ dan $x_2$. Sehingga dilanjutkan ke proses \textit{pivoting}.
+\begin{center}
+	\captionof{table}{Tabel simplex 0 untuk kasus minimasi}
+	\label{tab:tabel_simplex_minimasi_0}
+	$
+	\begin{array}{|r r r r r |c|r c l|r c l|}
+		\hline
+		-z & x_1 & x_2 & s_1 & s_2 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}} & \multicolumn{3}{c|}{\textit{ratio}}\\
+		\hline
+		1 & 2 & -3 & 0 & 0 & 0 & -z & = & 0 &&&\\
+		0 & 1 & \encircle{1} & 1 & 0 & 4 & s_1 & = & 4 & \nicefrac{4}{1} & = & 4\\
+		0 & 1 & -1 & 0 & 1 & 6 & s_2 & = & 6 &&&\\
+		\hline
+	\end{array}
+	$
+\end{center}
 
-	\item Melakukan proses \textit{pivoting}
-		
-    	Proses \textit{pivoting} merupakan proses penukaran satu variabel basis dengan satu variabel non basis. Variabel basis yang akan digantikan (keluar dari baris basis) disebut dengan \textit{leaving variable} dan variabel non basis yang akan menggantikan (masuk ke baris basis) disebut \textit{entering variable}. Ketentuan dalam pemilihan variabel yang akan ditukar adalah sebagai berikut:
-
-		\begin{itemize}
-    		\item \textit{Entering variable} dipilih berdasarkan nilai terkecil dalam baris $z$. Kolom dari \textit{entering variable} akan menjadi kolom pivot (\textit{pivot column}).
-    		
-    		\item \textit{Leaving variable} dipilih berdasarkan rasio tidak negatif terkecil antara rhs dengan nilai pada kolom pivot. Baris dari \textit{leaving variable} akan menjadi baris pivot (\textit{pivot row}).
-
-			\item Pivot merupakan nilai yang berada di perpotongan kolom pivot dan baris pivot.
-    	\end{itemize}
-
-    	Pada Tabel~\ref{tab:contoh_simplex_pemilihan_pivot}, $x_1$ menjadi \textit{entering variabel} karena bernilai paling kecil di baris $z$, yaitu $-3$. Sedangkan baris basis $x_5$ menjadi \textit{leaving variable} karena nilai rasionya yang paling kecil, yaitu 8. Perpotongan baris pivot dan kolom pivot menghasilkan pivot bernilai $3$.
-
-    	\begin{table}[H]
-    		\centering
-			\caption{Pemilihan pivot}
-    		\label{tab:contoh_simplex_pemilihan_pivot}			
-			\begin{tabular}{c|c|c|c c c c c|c|c}
-				\multicolumn{3}{c}{} & \multicolumn{6}{l}{\textit{pivot column}}\\
-				\multicolumn{3}{c}{} & $\downarrow$ & \multicolumn{5}{c}{}\\
-				\cline{2-9}
-				& basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs & ratio: \\
-				\cline{2-9}
-				& $z$ & 1 & -3 & -2 & 0 & 0 & 0 & 0 & $\frac{rhs_i}{pivotCol_{i}}$ \\
-				\cline{2-9}
-				& $x_3$ & 0 & 2 & 1 & 1 & 0 & 0 & 18 & $\frac{18}{2}=9$\\
-				& $x_4$ & 0 & 2 & 3 & 0 & 1 & 0 & 42 & $\frac{42}{2}=21$\\
-				\textit{pivot row} $\rightarrow$ & $x_5$ & 0 & \encircle{3} & 1 & 0 & 0 & 1 & 24 & $\frac{24}{3}=8$\\
-				\cline{2-9}
-			\end{tabular}
-		\end{table}
-    		
-    \item Memperbaharui tabel simplex
-    
-		Setiap nilai pada baris basis baru akan dibagi dengan nilai pivot sebelumnya. Sedangkan nilai pada baris basis lainnya dikurangi dengan hasil perkalian antara nilai kolom pivot yang bersangkutan dengan nilai baru pada baris pivot yang bersangkutan. Setelah diperbaharui, langkah selanjutnya adalah kembali pada pengecekan solusi optimal.
-
-		Pada Tabel~\ref{tab:contoh_simplex_pembaharuan_tabel_simplex}, $x_1$ menjadi baris basis yang baru. Setiap nilai pada baris tersebut dibagi dengan nilai pivot sebelumnya yang bernilai $3$. Setiap nilai pada baris basis lainnya diubah sesuai dengan ketentuan yang sudah dibahas sebelumnya.
-			
-		\begin{table}[H]
-			\centering
-			\caption{Pembaharuan tabel simplex}
-			\label{tab:contoh_simplex_pembaharuan_tabel_simplex}
-			\small
-			\begin{tabular}{|c|c|c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c @{\hspace{0.2cm}}c|c|c}
-				\hline
-				basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
-				\hline
-				$z$ & 1 & $-3-(-3\times\frac{3}{3})$ & $-2-(-3\times\frac{1}{3})$ & $0-(-3\times0)$ & $0-(-3\times0)$ & $0-(-3\times\frac{1}{3})$ & $0-(-3\times\frac{24}{3})$ \\
-				\hline
-				$x_3$ & 0 & $2-(2\times\frac{3}{3})$ & $1-(2\times\frac{1}{3})$ & $1-(2\times0)$ & $0-(2\times0)$ & $0-(2\times\frac{1}{3})$ & $18-(2\times\frac{24}{3})$ \\
-				$x_4$ & 0 & $2-(2\times\frac{3}{3})$ & $3-(2\times\frac{1}{3})$ & $0-(2\times0)$ & $1-(2\times0)$ & $0-(2\times\frac{1}{3})$ & $42-(2\times\frac{24}{3})$ \\
-				$x_1$ & 3 & $\frac{3}{3}$ & $\frac{1}{3}$ & 0 & 0 & $\frac{1}{3}$ & $\frac{24}{3}$ \\
-				\hline
-			\end{tabular}
-		\end{table}
-			
-		Tabel~\ref{tab:contoh_simplex_iterasi_1} berikut merupakan tabel simplex pada akhir iterasi ke-1:
-			
-		\begin{table}[H]
-			\centering
-			\caption{Tabel simplex iterasi ke-1}
-			\label{tab:contoh_simplex_iterasi_1}
-			\begin{tabular}{|c|c|c c c c c|c|c}
-				\hline
-				basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
-				\hline
-				$z$ & 1 & 0 & -1 & 0 & 0 & 1 & 24 \\
-				\hline
-				$x_3$ & 0 & 0 & $\frac{1}{3}$ & 1 & 0 & $-\frac{2}{3}$ & 2 \\
-				$x_4$ & 0 & 0 & $\frac{7}{3}$ & 0 & 1 & $-\frac{2}{3}$ & 26 \\
-				$x_1$ & 3 & 1 & $\frac{1}{3}$ & 0 & 0 & $\frac{1}{3}$ & 8 \\
-				\hline
-			\end{tabular}
-		\end{table}
-			
-		Pada iterasi ke-1 masih terdapat nilai negatif pada baris $z$, sehingga iterasi masih dilakukan hingga tidak terdapat nilai negatif pada baris $z$. Tabel~\ref{tab:contoh_simplex_iterasi_2} dan Tabel~\ref{tab:contoh_simplex_iterasi_3} berikut merupakan hasil iterasi ke-2 dan ke-3.
-			
-		\begin{table}[H]
-			\centering
-			\caption{Tabel simplex iterasi ke-2}
-			\label{tab:contoh_simplex_iterasi_2}
-			\begin{tabular}{|c|c|c c c c c|c|c}
-				\hline
-			 	basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
-				\hline
-				$z$ & 1 & 0 & 0 & 3 & 0 & -1 & 30 \\
-				\hline
-				$x_2$ & 2 & 0 & 1 & 3 & 0 & -2 & 6 \\
-				$x_4$ & 0 & 0 & 0 & -7 & 1 & 4 & 12 \\
-				$x_1$ & 3 & 1 & 0 & -1 & 0 & 1 & 6 \\
-				\hline
-			\end{tabular}
-		\end{table}
-
-		\begin{table}[H]
-			\centering
-			\caption{Tabel simplex iterasi ke-3}
-			\label{tab:contoh_simplex_iterasi_3}
-			\begin{tabular}{|c|c|c c c c c|c|c}
-				\hline
-			 	basic & $z$ & $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & rhs \\
-				\hline
-				$z$ & 1 & 0 & 0 & $\frac{5}{4}$ & $\frac{1}{4}$ & 0 & 33 \\
-				\hline
-				$x_2$ & 2 & 0 & 1 & $-\frac{1}{2}$ & $\frac{1}{2}$ & 0 & 12 \\
-				$x_5$ & 0 & 0 & 0 & $-\frac{7}{4}$& $\frac{1}{4}$ & 1 & 3 \\
-				$x_1$ & 3 & 1 & 0 & $\frac{3}{4}$ & $-\frac{1}{4}$ & 0 & 3 \\
-				\hline
-			\end{tabular}
-		\end{table}
-
-		Pada iterasi ke-3 sudah tidak terdapat nilai negatif pada baris $z$. Dengan demikian, solusi optimal sudah dicapai, yaitu pada titik $x_1 = 3$ dan $x_2=12$.
-
-\end{enumerate}
+\begin{center}
+	\captionof{table}{Tabel simplex 1 untuk kasus minimasi}
+	\label{tab:tabel_simplex_minimasi_1}
+	$
+	\begin{array}{|r r r r r |c|r c l|}
+		\hline
+		-z & x_1 & x_2 & s_1 & s_2 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}}\\
+		\hline
+		1 & 5 & 0 & 3 & 0 & 12 & -z & = & 12\\
+		0 & 1 & 1 & 1 & 0 & 4 & x_2 & = & 4\\
+		0 & 2 & 0 & 1 & 1 & 10 & s_2 & = & 10\\
+		\hline
+	\end{array}
+	$
+\end{center}
 
 \section{Integer Programming}
 \label{integer_programming}
