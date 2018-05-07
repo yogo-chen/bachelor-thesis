@@ -1,5 +1,5 @@
 \chapter{Implementasi dan Pengujian}
-Pada bab ini, akan dibahas hasil dari implementasi dan pengujian terhadap perangkat lunak yang dibangun. Pada saat tahap implementasi, terdapat spesifikasi lingkungan yang digunakan. Spesifikasi yang sama juga digunakan pada tahap pengujian. Pada tahap pengujian, terdapat 2 jenis pengujian, yaitu pengujian fungsional dan pengujian perangkat lunak.
+Pada bab ini, akan dibahas hasil dari implementasi dan pengujian terhadap perangkat lunak yang dibangun. Pada saat tahap implementasi, terdapat spesifikasi lingkungan yang digunakan. Spesifikasi yang sama juga digunakan pada tahap pengujian. Pada tahap pengujian, terdapat 2 jenis pengujian, yaitu pengujian fungsional dan pengujian eksperimental.
 
 \section{Lingkungan Implementasi Perangkat Keras}
 Berikut ini merupakan spesifikasi perangkat keras yang digunakan pada tahap implementasi:
@@ -17,7 +17,7 @@ Berikut ini merupakan spesifikasi perangkat lunak yang digunakan pada tahap impl
 \end{itemize}
 
 \section{Implementasi Antarmuka}
-Pada bagian ini, akan dibahas hasil implementasi antarmuka sesuai dengan perancangan antarmuka yang dilakukan pada bab sebelumnya. Antarmuka diimplementasikan dengan menggunakan pustaka antarmuka bernama JavaFX yang telah disediakan oleh Java. Berikut ini adalah hasil dari implementasi antarmuka:
+Pada bagian ini, akan dibahas hasil implementasi antarmuka sesuai dengan perancangan antarmuka yang dilakukan pada bab sebelumnya. Berikut ini adalah hasil dari implementasi antarmuka:
 \begin{itemize}
 	\item Antarmuka: \textbf{Penerima Masukan}\\
 	Gambar~\ref{fig:ui_input} menunjukkan tampilan antarmuka penerima masukan. Pada antarmuka ini terdapat kolom-kolom masukan yang dapat diisi oleh pengguna. Apabila pengguna telah selesai mengisi kolom-kolom tersebut, pengguna dapat menekan tombol ''\textit{submit}'' untuk diarahkan ke antarmuka simulasi penempatan kamera CCTV.
@@ -141,10 +141,10 @@ Pada bagian ini, perangkat lunak akan diuji untuk memastikan bahwa setiap fungsi
 
 %Pengujian perangkat lunak akan dilakukan dengan melakukan eksperimen-eksperimen, sehingga hasilnya dapat dianalisa. Eksperimen akan dibagi menjadi 2 bagian utama. Pada bagian pertama akan dilakukan eksperimen untuk menganalisa tingkat \textit{overlap} dan \textit{out of bound}. Bagian kedua akan dilakukan eksperimen untuk menganalisa jumlah kamera minimum.
 \section{Pengujian Eksperimental}
-Pada bagian ini akan dibahas pengujian yang dilakukan dengan eksperimen. Eksperimen yang dilakukan bertujuan untuk mendapatkan informasi mengenai korelasi masukan spesifikasi masalah dengan tingkat \textit{overlap} dan \textit{out of bound}. Pada setiap eksperimen, akan dijalankan proses pencarian minimum kamera CCTV untuk mendapatkan hasil yang dapat dianalisa.
+Pada bagian ini akan dibahas pengujian yang dilakukan dengan eksperimen. Eksperimen yang dilakukan bertujuan untuk mendapatkan informasi mengenai korelasi masukan spesifikasi masalah dengan tingkat \textit{overlap} dan \textit{out of bound}. Pada setiap eksperimen, akan dijalankan proses pencarian minimum kamera CCTV untuk mendapatkan hasil yang dapat dianalisa. Gambar tampilan perangkat lunak untuk setiap eksperimen dapat dilihat pada bagian lampiran.
 
 \subsection{Eksperimen Ukuran Cell}
-Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap ukuran cell. Eksperimen ini dilakukan sebanyak 3 kali dengan ukuran cell yang berbeda-beda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam ketiga eksperimen:
+Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap ukuran cell. Eksperimen ini dilakukan sebanyak 3 kali dengan ukuran cell yang berbeda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam eksperimen ini:
 \begin{enumerate}
 	\item Eksperimen pertama
 	\begin{itemize}
@@ -192,9 +192,10 @@ Berdasarkan eksperimen yang dilakukan, didapatkan hasil sebagai berikut:
 	\end{itemize}
 \end{enumerate}
 	
-Berdasarkan hasil tersebut, didapatkan bahwa semakin besar ukuran terbesar cell, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin besar. Hal ini disebabkan karena semakin kecil ukuran cell, maka akurasi ketercakup cell semakin besar, sehingga tingkat \textit{overlap} dan \textit{out of bound} semakin besar.
+Berdasarkan hasil tersebut, didapatkan bahwa semakin besar ukuran terbesar cell, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin besar.
+%Hal ini disebabkan karena semakin kecil ukuran cell, maka akurasi ketercakup cell semakin besar, sehingga tingkat \textit{overlap} dan \textit{out of bound} semakin besar.
 
-\subsection{Eksperimen Rasio Sisi Terpendek Ruangan dengan Jarak Pandang Kamera}
+\subsection{Eksperimen Rasio Sisi Terpendek Ruangan dengan Jarak Pandang Kamera CCTV}
 Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap rasio antara sisi terpendek ruangan dengan jarak pandang kamera CCTV. Eksperimen ini dilakukan sebanyak 4 kali dengan jarak pandang kamera CCTV yang berbeda sehingga didapatkan rasio yang berbeda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam eksperimen ini:
 
 \begin{enumerate}
@@ -262,7 +263,69 @@ Berdasarkan eksperimen yang dilakukan, didapatkan hasil sebagai berikut:
 \end{enumerate}
 Berdasarkan hasil tersebut, didapatkan bahwa semakin besar rasio sisi terpendek ruangan dengan jarak pandang kamera CCTV, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin kecil.
 
+\subsection{Eksperimen Besar Sudut Pandang Kamera CCTV}
+Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap besar sudut pandang kamera CCTV. Eksperimen ini dilakukan sebanyak 4 kali dengan besar sudut pandang kamera CCTV yang berbeda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam eksperimen ini:
 
+\begin{enumerate}
+	\item Eksperimen pertama
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 135 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+	\end{itemize}
+	
+	\item Eksperimen kedua
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 135 cm
+		\item Besar sudut pandang kamera CCTV: \(75^\circ\)
+		\item Ukuran cell: 25 cm
+	\end{itemize}
+	
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 135 cm
+		\item Besar sudut pandang kamera CCTV: \(60^\circ\)
+		\item Ukuran cell: 25 cm
+	\end{itemize}
+	
+	\item Eksperimen keempat
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 135 cm
+		\item Besar sudut pandang kamera CCTV: \(45^\circ\)
+		\item Ukuran cell: 25 cm
+	\end{itemize}
+\end{enumerate}
+
+Berdasarkan eksperimen yang dilakukan, didapatkan hasil sebagai berikut:
+\begin{enumerate}
+	\item Eksperimen pertama
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 14.58\%
+	\end{itemize}
+		
+	\item Eksperimen kedua
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 18.75\%
+	\end{itemize}
+	
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 16.15\%
+	\end{itemize}
+	\item Eksperimen keempat
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 8.33\%
+	\end{itemize}
+\end{enumerate}
+Berdasarkan hasil tersebut, tidak didapatkan perubahan korelasi besar sudut pandang kamera CCTV terhadap tingkat \textit{overlap} dan \textit{out of bound}.
 
 
 

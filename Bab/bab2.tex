@@ -2,7 +2,7 @@
 \chapter{Landasan Teori}
 \label{chap:teori}
 
-\section{Linear Programming}
+\section{Linear Programming~\cite{winston2004operations}}
 
 Linear programming adalah sarana untuk menyelesaikan masalah optimasi~\cite{winston2004operations}. Optimasi merupakan usaha untuk memilih solusi terbaik dari suatu kumpulan solusi yang ada. Setiap masalah optimasi perlu diubah terlebih dahulu ke dalam bentuk masalah linear programming agar dapat diselesaikan menggunakan linear programming. Pada bagian ini, akan dibahas karakteristik dan cara menyelesaikan masalah linear programming.
 
@@ -618,178 +618,66 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk co
 	$
 \end{center}
 
-\section{Integer Programming}
-\label{integer_programming}
+\section{Integer Programming~\cite{winston2004operations}}
 
-Integer programming merupakan teknik lanjutan dari linear programming yang dimana solusinya harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah branch and bound.
+Integer programming merupakan teknik lanjutan dari linear programming yang dimana setiap variabel pada solusi optimal harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah metode \textit{branch and bound}.
 
-\subsection{Branch and Bound}
-\label{branch_and_bound}
-Branch and bound merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah menjadi sub masalah akan terus dilakukan hingga didapatkan solusi berupa bilangan bulat. Berikut langkah-langkah metode branch and bound:
+\subsection{\textit{Branch and Bound}}
+\textit{Branch and bound} merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah akan terus dilakukan hingga didapatkan solusi optimal yang terdiri dari variabel berupa bilangan bulat. Berikut langkah-langkah metode \textit{branch and bound}:
 
 \begin{enumerate}
-	\item Selesaikan masalah menggunakan linear programming. Apabila solusi yang didapat berupa bilangan bulat, maka proses berhenti pada tahap ini. Solusi ini menjadi solusi akhir bagi permasalahan ini. Apabila sebaliknya, maka dilanjutkan ke tahap selanjutnya. Solusi pada tahap ini akan menjadi solusi batas atas yang akan digunakan sebagai pembanding di tahap-tahap selanjutnya.
+	\item Selesaikan masalah menggunakan metode simplex. Apabila solusi optimal yang didapatkan terdiri dari variabel berupa bilangan bulat, maka proses berhenti pada tahap ini. Solusi ini menjadi solusi optimal dalam permasalahan ini. Apabila sebaliknya, maka dilanjutkan ke tahap selanjutnya. Solusi pada tahap ini akan menjadi solusi batas atas yang akan digunakan sebagai pembanding di tahap-tahap selanjutnya.
 
-	\item Pecah masalah menjadi 2 sub masalah. Sub-sub masalah merupakan masalah yang sama dengan masalah sebelum dipecah namun memiliki sebuah tambahan batasan baru. Seelum menambah batasan baru tersebut, tentukan satu variabel keputusan dari masalah sebelum dipecah yang solusinya tidak berupa bilangan bulat. Lakukan pembulatan bilangan ke atas dan ke bawah terhadap solusi dari variabel keputusan tersebut. Lalu pada sub masalah pertama, tambahkan batasan untuk variabel keputusan tersebut agar bernilai lebih kecil daripada hasil pembulatan ke bawah. Sedangkan pada sub masalah kedua, tambahkan batasan untuk variabel keputusan tersebut agar bernilai lebih besar daripada hasil pembulatan ke atas.
+	\item Tentukan satu variabel yang nilainya pada solusi tidak berupa bilangan bulat. Variabel ini akan menjadi variabel terpilih yang akan digunakan di tahap selanjutnya.
+
+	\item Buat 2 sub masalah baru. Sub-sub masalah tersebut merupakan masalah yang sama dengan adanya sebuah tambahan batasan baru. Sub masalah pertama memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih kecil atau sama dengan pembulatan ke bawah dari nilai variabel terpilih. Sub masalah kedua memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih besar atau sama dengan pembulatan ke atas dari nilai variabel terpilih.
 	
-	\item Selesaikan sub masalah menggunakan linear programming dan periksa solusinya. Tahap ini dibedakan menjadi 3 berdasarkan solusinya, yaitu:
+	\item Selesaikan setiap sub masalah menggunakan metode simplex dan periksa solusinya.
 	\begin{itemize}
-		\item Solusi berupa bilangan bulat
+		\item Apabila setiap variabel pada solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi optimal dalam permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
 		
-		Apabila solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi akhir bagi permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
+		\item Apabila setiap variabel pada solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka dilanjukan pada tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah lagi karena tidak akan menghasilkan solusi yang lebih baik.
 		
-		\item Solusi tidak berupa bilangan bulat
-
-		Apabila solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka lakukan tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah karena tidak akan menghasilkan solusi yang lebih baik.
-		
-		\item Sub masalah tidak dapat diselesaikan
-		
-		Sub masalah ini tidak memiliki solusi sehingga tidak perlu dilanjutkan lagi.
-		
+		\item Apabila sub masalah tidak dapat diselesaikan (\textit{infeasible}), maka sub masalah ini tidak perlu dilanjutkan lagi.		
 	\end{itemize}
-	
-	\item Periksa apakah terdapat sub masalah yang belum diselesaikan. Apabila masih terdapat sub masalah yang belum diselesaikan, maka kembali ke tahap ke-3 untuk menyelesaikannya. Apabila seluruh sub masalah telah diselesaikan, maka lanjutkan ke tahap selanjutnya.
-	
-	\item Periksa solusi batas bawah. Apabila terdapat solusi batas bawah, maka solusi tersebut merupakan solusi akhir bagi permasalahan ini. Apabila tidak terdapat solusi batas bawah, maka permasalahan ini tidak memiliki solusi yang berupa bilangan bulat
-	 	
 \end{enumerate}
 
-\section{Template Skripsi FTIS UNPAR}
-\label{sec:template}
- 
-Akan dipaparkan bagaimana menggunakan template ini, termasuk petunjuk singkat membuat referensi, gambar dan tabel.
-Juga hal-hal lain yang belum terpikir sampai saat ini. 
- 
-\dtext{15-16}
+\section{Kakas \textit{lp{\_}solve}}
+Kakas \textit{lp{\_}solve} merupakan kakas perangkat lunak yang berguna untuk menyelesaikan masalah linear programming\footnote{http://lpsolve.sourceforge.net/5.5/}. Kakas ini dapat menerima masalah linear programming atau masalah integer programming. Kakas lp{\_}solve menggunakan metode \textit{branch and bound} untuk menyelesaikan masalah integer programming. Kakas ini dibangun dengan bahasa pemrograman ANSI C yang dapat dikompilasi dalam lingkungan Unix dan Windows. Untuk menggunakan kakas lp{\_}solve dalam lingkungan pemrograman Java, kakas lp{\_}solve menyediakan kakas penghubung dalam bahasa pemrograman Java sehingga aplikasi Java dapat menggunakan kakas lp{\_}solve. Berikut ini merupakan contoh penggunaan kakas lp{\_}solve dalam pemrograman Java:
+\begin{lstlisting}[language=Java, caption=Demo.java]
+import lpsolve.*;
 
-\subsection{Tabel}  
-Berikut adalah contoh pembuatan tabel. 
-Penempatan tabel dan gambar secara umum diatur secara otomatis oleh \LaTeX{}, perhatikan contoh di file bab2.tex untuk melihat bagaimana cara memaksa tabel ditempatkan sesuai keinginan kita.
+public class Demo {
 
-Perhatikan bawa berbeda dengan penempatan judul gambar gambar, keterangan tabel harus diletakkan di atas tabel!!
-Lihat Tabel~\ref{tab:contoh1} berikut ini:
+  public static void main(String[] args) {
+    try {
+      // Create a problem with 4 variables and 0 constraints
+      LpSolve solver = LpSolve.makeLp(0, 4);
 
-\begin{table}[H] %atau h saja untuk "kira kira di sini"
-	\centering 
-	\caption{Tabel contoh}
-	\label{tab:contoh1}
-	\begin{tabular}{cccc}
-		\toprule
-		& $v_{start}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
+      // add constraints
+      solver.strAddConstraint("3 2 2 1", LpSolve.LE, 4);
+      solver.strAddConstraint("0 4 3 1", LpSolve.GE, 3);
 
-		\midrule
-		$\tau_{1}$ & 1 & 12& 20\\
-		$\tau_{2}$ & 1 &  & 20\\
-		$\tau_{3}$ & 1 & 9 & 20\\
-		$\tau_{4}$ & 1 &  & 20\\
+      // set objective function
+      solver.strSetObjFn("2 3 -2 3");
 
-		\bottomrule
-		
-	\end{tabular} 
-\end{table}
-Tabel~\ref{tab:cthwarna1} dan Tabel~\ref{tab:cthwarna2} berikut ini adalah tabel dengan sel yang berwarna dan ada dua tabel yang bersebelahan. 
-\begin{table}[H]
-	\begin{minipage}[c]{0.49\linewidth}
-		\centering
-		\caption{Tabel bewarna(1)}
-		\label{tab:cthwarna1}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{2}$ & $\mathcal{S}_{1}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 5 \cellcolor{green}& 12& 20\\
-			$\tau_{2}$ & 1 & 8 \cellcolor{green}& & 20\\
-			$\tau_{3}$ & 1 & 2/8/17 \cellcolor{green}& 9 & 20\\
-			$\tau_{4}$ & 1 & \cellcolor{red}& & 20\\
-			
-			\bottomrule
+      // solve the problem
+      solver.solve();
 
-		\end{tabular}
-	\end{minipage}
-	\begin{minipage}[c]{0.49\linewidth}
-		
-		\centering 
-		\caption{Tabel bewarna(2)}
-		\label{tab:cthwarna2}
-		\begin{tabular}{ccccc}
-			\toprule
-			 & $v_{start}$ & $\mathcal{S}_{1}$ & $\mathcal{S}_{2}$ & $v_{end}$\\
-			
-			\midrule
-			$\tau_{1}$ & 1 & 12& 5 \cellcolor{red} &20\\
-			$\tau_{2}$ & 1 &  &  8 \cellcolor{green} &20\\
-			$\tau_{3}$ & 1 & 9 & 2/8/17 \cellcolor{green} &20\\
-			$\tau_{4}$ & 1 &   & \cellcolor{red} &20\\
-			
-			\bottomrule
-		
-		\end{tabular}
-	\end{minipage}
-\end{table}
+      // print solution
+      System.out.println("Value of objective function: " 
+        + solver.getObjective());
+      double[] var = solver.getPtrVariables();
+      for (int i = 0; i < var.length; i++) {
+        System.out.println("Value of var[" + i + "] = " + var[i]);
+      }
 
- 
-\subsection{Kutipan}
-\label{subs:kutipan} 
-Berikut contoh kutipan dari berbagai sumber, untuk keterangan lebih lengkap, silahkan membaca file referensi.bib yang disediakan juga di template ini.
-Contoh kutipan:
-\begin{itemize}
-	\item Buku:~\cite{berg:08:compgeom} 
-	\item Bab dalam buku:~\cite{kreveld:04:GIS}
-	\item Artikel dari Jurnal:~\cite{buchin:13:median}
-	\item Artikel dari prosiding seminar/konferensi:~\cite{kreveld:11:median}
-	\item Skripsi/Thesis/Disertasi:~\cite{lionov:02:animasi}~\cite{wiratma:10:following}~\cite{wiratma:22:later}
-	\item Technical/Scientific Report:~\cite{kreveld:07:watertight}
-	\item RFC (Request For Comments):~\cite{RFC1654}
-	\item Technical Documentation/Technical Manual:~\cite{Z.500}~\cite{unicode:16:stdv9}~\cite{google:16:and7}
-	\item Paten:~\cite{webb:12:comm}
-	\item Tidak dipublikasikan:~\cite{wiratma:09:median}~\cite{lionov:11:cpoly}
-	\item Laman web:~\cite{erickson:03:cgmodel}  
-	\item Lain-lain:~\cite{agung:12:tango}
-\end{itemize}    
-  
-\subsection{Gambar}
-
-Pada hampir semua editor, penempatan gambar di dalam dokumen \LaTeX{} tidak dapat dilakukan melalui proses {\it drag and drop}.
-Perhatikan contoh pada file bab2.tex untuk melihat bagaimana cara menempatkan gambar.
-Beberapa hal yang harus diperhatikan pada saat menempatkan gambar:
-\begin{itemize}
-	\item Setiap gambar {\bf harus} diacu di dalam teks (gunakan {\it field} {\sc label})
-	\item {\it Field} {\sc caption} digunakan untuk teks pengantar pada gambar. Terdapat dua bagian yaitu yang ada di antara tanda $[$ dan $]$ dan yang ada di antara tanda $\{$ dan $\}$. Yang pertama akan muncul di Daftar Gambar, sedangkan yang kedua akan muncul di teks pengantar gambar. Untuk skripsi ini, samakan isi keduanya.
-	\item Jenis file yang dapat digunakan sebagai gambar cukup banyak, tetapi yang paling populer adalah tipe {\sc png} (lihat Gambar~\ref{fig:ularpng}), tipe {\sc jpg} (Gambar~\ref{fig:ularjpg}) dan tipe {\sc pdf} (Gambar~\ref{fig:ularpdf})
-	\item Besarnya gambar dapat diatur dengan {\it field} {\sc scale}.
-	\item Penempatan gambar diatur menggunakan {\it placement specifier} (di antara tanda  $[$ dan $]$ setelah deklarasi gambar.
-	Yang umum digunakan adalah {\bf H} untuk menempatkan gambar {\bf sesuai} penempatannya di file .tex atau  {\bf h} yang berarti "kira-kira" di sini. \\
-	Jika tidak menggunakan {\it placement specifier}, \LaTeX{} akan menempatkan gambar secara otomatis untuk menghindari bagian kosong pada dokumen anda.
-	Walaupun cara ini sangat mudah, hindarkan terjadinya penempatan dua gambar secara berurutan. 	
-	\begin{itemize}
-		\item Gambar~\ref{fig:ularpng} ditempatkan di bagian atas halaman, walaupun penempatannya dilakukan setelah penulisan 3 paragraf setelah penjelasan ini.
-		\item Gambar~\ref{fig:ularjpg} dengan skala 0.5 ditempatkan di antara dua buah paragraf. Perhatikan penulisannya di dalam file bab2.tex!
-		\item Gambar~\ref{fig:ularpdf} ditempatkan menggunakan {\it specifier} {\bf h}.
-	\end{itemize}
-\end{itemize}
- 
-\dtext{17-18}
-\begin{figure} 
-	\centering  
-	\includegraphics[scale=1]{ular-png}  
-	\caption[Gambar {\it Serpentes} dalam format png]{Gambar {\it Serpentes} dalam format png} 
-	\label{fig:ularpng} 
-\end{figure} 
-
-\dtext{19-20}
-\begin{figure}[H]
-	\centering  
-	\includegraphics[scale=0.5]{ular-jpg}  
-	\caption[Ular kecil]{Ular kecil} 
-	\label{fig:ularjpg} 
-\end{figure} 
-\dtext{21-22}
-
-\begin{figure}[ht] 
-	\centering  
-	\includegraphics[scale=1]{ular-pdf}  
-	\caption[ {\it Serpentes} betina]{ {\it Serpentes} jantan} 
-	\label{fig:ularpdf} 
-\end{figure} 
- 
+      // delete the problem and free memory
+      solver.deleteLp();
+    }
+    catch (LpSolveException e) {
+       e.printStackTrace();
+    }
+  }
+}
+\end{lstlisting}

@@ -107,7 +107,7 @@ Pada rumus tersebut, titik (\(x_{cell},y_{cell}\)) menunjukkan titik tengah cell
 %	\theta = \tan^{-1}\left(\frac{y_2 - y_1}{x_2 - x_1}\right)
 %\end{equation*}
 %Sudut rotasi cell akan dibandingkan dengan sudut awal dan sudut akhir dari sudut pandang kamera CCTV. Apabila sudut rotasi berada di antara sudut awal dan sudut akhir, maka cell berada dalam sudut pandang kamera CCTV. Dengan memeriksa jarak dan sudut rotasi cell, cell-cell yang dicakup oleh kamera CCTV dapat ditemukan.
-
+\subsection{\textit{Overlap} dan \textit{Out of Bound}}
 Dengan pemodelan grid point, perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan dengan membandingkan jumlah cell. \textit{Overlap cell} adalah cell yang dicakup oleh lebih dari 1 kamera CCTV. \textit{Out of bound cell} adalah cell yang tercakup oleh kamera CCTV, tetapi berada di luar ruangan. Gambar~\ref{fig:daerah_overlap_out_of_bound} menggambarkan \textit{overlap cell} dan \textit{out of bound cell}. Tingkat \textit{overlap} dan \textit{out of bound} dapat dihitung dengan mengtotalkan jumlah cell yang dicakup dari setiap kamera CCTV dan membaginya dengan jumlah cell yang berada di dalam ruangan. Perhitungan tingkat \textit{overlap} dan \textit{out of bound} hanya bisa dilakukan apabila seluruh cell dalam ruangan telah tercakup sepenuhnya.
 
 \begin{figure}[h]
@@ -121,7 +121,7 @@ Dengan pemodelan grid point, perhitungan tingkat \textit{overlap} dan \textit{ou
 
 
 \section{Penyelesaian Masalah}
-Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV yang dapat mencakup seluruh daerah pada ruangan dengan maksimal tingkat overlap dan out of bound sebesar 35\%. Kamera-kamera CCTV tentu dapat ditempatkan dimana saja hingga seluruh daerah pada ruangan tercakup sepenuhnya. Namun penempatan-penempatan ini tidak selalu menghasilkan tingkat overlap dan out of bound yang bernilai maksimal sebesar 35\%. Cara ini tentu tidak efektif sehingga diperlukan metode lainnya untuk menyelesaikan masalah ini. Salah satu cara yang digunakan untuk menyelesaikan masalah ini adalah dengan menggunakan teknik linear programming.
+Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV yang dapat mencakup seluruh daerah pada ruangan. Kamera-kamera CCTV tentu dapat ditempatkan dimana saja hingga seluruh daerah pada ruangan tercakup sepenuhnya. Penempatan dengan cara ini tentu tidak efektif karena jumlah kamera CCTV tidak selalu berjumlah minimum sehingga diperlukan metode lainnya untuk menyelesaikan masalah ini. Salah satu cara yang digunakan untuk menyelesaikan masalah ini adalah dengan menggunakan teknik linear programming.
 
 \subsection{Variabel Keputusan}
 Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga setiap cell pada ruangan dicakup oleh minimal 1 kamera CCTV. Setiap penempatan kamera CCTV memiliki posisi dan arah pandang masing-masing. Dari seluruh kemungkinan ini akan dicari himpunan bagian yang dimana penempatan-penempatannya dapat mencakup seluruh daerah pada ruangan. Setiap kemungkinan penempatan memiliki 2 kemungkinan, yaitu diterapkan sebagai bagian dari solusi atau tidak. Dalam penyelesaian menggunakan teknik linear programming, setiap kemungkinan penempatan akan menjadi variabel keputusan. Variabel keputusan \(x_{ij\theta}\) akan merujuk pada penempatan kamera CCTV pada posisi \((i,j)\) dengan arah pandang \(\theta\). Karena setiap penempatan kamera CCTV memiliki 2 kemungkinan untuk diterapkan, maka setiap variabel keputusan dapat dinyatakan dengan nilai 0 atau 1. Apabila suatu variabel keputusan bernilai 1, maka penempatan kamera CCTV yang dirujuk akan diterapkan sebagai bagian dari solusi. Apabila benilai 0, maka penempatan kamera CCTV yang dirujuk tidak akan diterapkan. Karena variabel keputusan hanya bisa bernlai 0 dan 1 saja, masalah ini tidak diselesaikan menggunakan teknik linear programming biasa karena hasil dapat bernilai pecahan. Masalah ini perlu diselesaikan menggunakan teknik integer programming agar hasil dari setiap variabel keputusan hanya berupa bilangan bulat. Variabel keputusan dinyatakan dalam notasi berikut:
@@ -164,7 +164,7 @@ Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa s
 	\end{split}
 \end{equation*}
 
-\subsection{Bentuk Linear Programming}
+\subsection{Bentuk Masalah Linear Programming}
 Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
 \begin{equation*}
 	\begin{split}
@@ -183,12 +183,12 @@ Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhada
 Dalam perangkat lunak yang dibangun, hanya terdapat 1 jenis pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor dan aksi-aksi yang dapat dilakukannya.
 \begin{figure}[h]
 	\centering  
-	\includegraphics[scale=0.6]{use_case_diagram}
+	\includegraphics[scale=0.72]{use_case_diagram}
 	\caption[Diagram \textit{use case}]{Diagram \textit{use case}}
 	\label{fig:use_case_diagram}
 \end{figure}
 
-Berikut skenario dari setiap aksi pada diagram \textit{use case}:
+Berikut ini skenario dari setiap aksi pada diagram \textit{use case}:
 \begin{itemize}
 	\item Skenario: \textbf{Memasukkan Spesifikasi Masalah}
 	\begin{itemize}
