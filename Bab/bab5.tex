@@ -41,7 +41,7 @@ Pada bagian ini, akan dibahas hasil implementasi antarmuka sesuai dengan peranca
 %\section{Pengujian Perangkat Lunak}
 %Perangkat lunak yang telah diimplementasikan perlu diuji terlebih dahulu agar berjalan sebagaimana mestinya. Pada bagian ini akan dibahas 2 jenis pengujian yang dilakukan, yaitu pengujian fungsional dan pengujian metode penyelesaian masalah. Pada pengujian fungsional, perangkat lunak akan diuji agar bekerja sesuai fungsinya. Pada pengujian metode penyelesaian masalah, perangkat lunak akan diuji dengan eksperimen-eksperimen masalah untuk memastikan perangkat lunak dapat menyelesaikan masalah.
 
-\subsection{Pengujian Fungsional}
+\section{Pengujian Fungsional}
 Pada bagian ini, perangkat lunak akan diuji untuk memastikan bahwa setiap fungsi-fungsi dalam perangkat lunak dapat bekerja sesuai tujuannya. Pengujian ini dilakukan sesuai dengan skenario-skenario yang terdapat pada use case. Berikut ini pengujian-pengujian fungsional yang dilakukan:
 
 \begin{itemize}
@@ -106,7 +106,7 @@ Pada bagian ini, perangkat lunak akan diuji untuk memastikan bahwa setiap fungsi
 	
 	\begin{figure}[H]
 		\centering  
-		\includegraphics[scale=0.6]{testing_add_placement_visualization_pane_after}
+		\includegraphics[scale=0.45]{testing_add_placement_visualization_pane_after}
 		\caption[Tampilan panel visualisasi setelah menambah penempatan kamera CCTV]{Tampilan panel visualisasi setelah menambah penempatan kamera CCTV}
 		\label{fig:testing_add_placement_visualization_pane_after}
 	\end{figure}
@@ -125,7 +125,7 @@ Pada bagian ini, perangkat lunak akan diuji untuk memastikan bahwa setiap fungsi
 	
 	\begin{figure}[H]
 		\centering  
-		\includegraphics[scale=0.6]{testing_remove_placement_visualization_pane_after}
+		\includegraphics[scale=0.5]{testing_remove_placement_visualization_pane_after}
 		\caption[Tampilan panel visualisasi setelah membuang penempatan kamera CCTV]{Tampilan panel visualisasi setelah membuang penempatan kamera CCTV}
 		\label{fig:testing_remove_placement_visualization_pane_after}
 	\end{figure}	
@@ -134,48 +134,133 @@ Pada bagian ini, perangkat lunak akan diuji untuk memastikan bahwa setiap fungsi
 
 \end{itemize}
 
-\subsection{Pengujian Perangkat Lunak}
+%\section{Pengujian Perangkat Lunak}
 %Pada bagian ini akan dibahas pengujian yang bertujuan kebenaran metode penyelesaian masalah yang telah dibahas sebelumnya. Pada pemodelan masalah, telah dibahas pemodelan ruangan ke dalam bentuk grid point sehingga daerah dalam ruangan dimodelkan dalam bentuk cell-cell. Selain itu juga, telah dibahas bahwa cakupan kamera CCTV dinyatakan dalam bentuk kumpulan cell sehingga mencakup seluruh ruangan berarti sama dengan mencakup seluruh cell pada ruangan. Pemodelan masalah ini digunakan dalam metode penyelesaian masalah menggunakan teknik linear programming yang tujuannya adalah mencari penempatan-penempatan kamera CCTV yang berjumlah paling minimum yang mencakup seluruh ruangan. Sehingga tujuan dari pengujian ini adalah menguji apakah tujuan dari metode penyelesaian masalah tersebut telah tercapai.
 
-Pada pengujian ini akan dilakukan eksperimen-eksperimen untuk memastikan bahwa perangkat lunak dapat menyelesaikan permasalahan sesuai dengan tujuannya. Terdapat beberapa pengujian perangkat lunak yang dilakukan, yaitu:
+%Pada pengujian ini akan dilakukan eksperimen-eksperimen untuk memastikan bahwa perangkat lunak dapat menyelesaikan permasalahan sesuai dengan tujuannya. Terdapat beberapa pengujian perangkat lunak yang dilakukan, yaitu:
 
+%Pengujian perangkat lunak akan dilakukan dengan melakukan eksperimen-eksperimen, sehingga hasilnya dapat dianalisa. Eksperimen akan dibagi menjadi 2 bagian utama. Pada bagian pertama akan dilakukan eksperimen untuk menganalisa tingkat \textit{overlap} dan \textit{out of bound}. Bagian kedua akan dilakukan eksperimen untuk menganalisa jumlah kamera minimum.
+\section{Pengujian Eksperimental}
+Pada bagian ini akan dibahas pengujian yang dilakukan dengan eksperimen. Eksperimen yang dilakukan bertujuan untuk mendapatkan informasi mengenai korelasi masukan spesifikasi masalah dengan tingkat \textit{overlap} dan \textit{out of bound}. Pada setiap eksperimen, akan dijalankan proses pencarian minimum kamera CCTV untuk mendapatkan hasil yang dapat dianalisa.
+
+\subsection{Eksperimen Ukuran Cell}
+Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap ukuran cell. Eksperimen ini dilakukan sebanyak 3 kali dengan ukuran cell yang berbeda-beda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam ketiga eksperimen:
 \begin{enumerate}
-	\item Eksperimen tingkat ketercakupan
-	\item Eksperimen tingkat \textit{overlap} dan \textit{out of bound}
-\end{enumerate}
-
-Pengujian dilakukan dengan menjalankan beberapa eksperimen. Pada setiap eksperimen akan dijalankan proses pencarian jumlah penempatan minimum dengan menekan tombol ''\textit{auto place camera}''. Hasil yang didapatkan dari setiap eksperimen akan dibandingkan satu sama lain sehingga menghasilkan kesimpulan. Berikut ini eksperimen yang dilakukan beserta dengan hasilnya:
-
-\begin{enumerate}
-	\item Eksperimen ke-1\\
-	Masukan:
+	\item Eksperimen pertama
 	\begin{itemize}
-		\item Lebar ruangan: 300 cm
-		\item Panjang ruangan: 200 cm
-		\item Jarak pandang kamera CCTV: 135 cm
+		\item Lebar ruangan: 800 cm
+		\item Panjang ruangan: 600 cm
+		\item Jarak pandang kamera CCTV: 275 cm
 		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
-		\item Ukuran terbesar cell: 25 cm
+		\item Ukuran cell: 100 cm
+	\end{itemize}
+		
+	\item Eksperimen kedua
+	\begin{itemize}
+		\item Lebar ruangan: 800 cm
+		\item Panjang ruangan: 600 cm
+		\item Jarak pandang kamera CCTV: 275 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 50 cm
+	\end{itemize}
+		
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Lebar ruangan: 800 cm
+		\item Panjang ruangan: 600 cm
+		\item Jarak pandang kamera CCTV: 275 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+	\end{itemize}
+\end{enumerate}
+	
+Berdasarkan eksperimen yang dilakukan, didapatkan hasil sebagai berikut:
+\begin{enumerate}
+	\item Eksperimen pertama
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 0\%
 	\end{itemize}
 	
-	Hasil:
+	\item Eksperimen kedua
 	\begin{itemize}
-		\item Ukuran grid point: 8 \(\times\) 12
-		\item Lebar cell: 25 cm
-		\item Panjang cell: 25 cm
-		\item Tingkat ketercakupan: 100\% (96/96 cells)
 		\item Tingkat \textit{overlap} dan \textit{out of bound}: 14.58\%
-		\item Jumlah kamera CCTV: 5 buah
-		\item Penempatan kamera CCTV:
-		\begin{enumerate}
-			\item Pada titik (75, 125) dengan sudut arah pandang \(85^\circ\)
-			\item Pada titik (125, 125) dengan sudut arah pandang \(195^\circ\)
-			\item Pada titik (225, 125) dengan sudut arah pandang \(85^\circ\)
-			\item Pada titik (225, 175) dengan sudut arah pandang \(155^\circ\)
-			\item Pada titik (300, 200) dengan sudut arah pandang \(130^\circ\)
-		\end{enumerate}
+	\end{itemize}
+	
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 25\%
+	\end{itemize}
+\end{enumerate}
+	
+Berdasarkan hasil tersebut, didapatkan bahwa semakin besar ukuran terbesar cell, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin besar. Hal ini disebabkan karena semakin kecil ukuran cell, maka akurasi ketercakup cell semakin besar, sehingga tingkat \textit{overlap} dan \textit{out of bound} semakin besar.
+
+\subsection{Eksperimen Rasio Sisi Terpendek Ruangan dengan Jarak Pandang Kamera}
+Pada eksperimen ini akan dianalisa tingkat \textit{overlap} dan \textit{out of bound} terhadap rasio antara sisi terpendek ruangan dengan jarak pandang kamera CCTV. Eksperimen ini dilakukan sebanyak 4 kali dengan jarak pandang kamera CCTV yang berbeda sehingga didapatkan rasio yang berbeda. Berikut ini merupakan spesifikasi masalah yang digunakan dalam eksperimen ini:
+
+\begin{enumerate}
+	\item Eksperimen pertama
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 300 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+		\item Rasio \(\frac{\text{sisi terpendek ruangan}}{\text{jarak pandang kamera CCTV}}\) = 1
+	\end{itemize}
+	
+	\item Eksperimen kedua
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 150 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+		\item Rasio \(\frac{\text{sisi terpendek ruangan}}{\text{jarak pandang kamera CCTV}}\) = 2
+	\end{itemize}
+	
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 100 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+		\item Rasio \(\frac{\text{sisi terpendek ruangan}}{\text{jarak pandang kamera CCTV}}\) = 3
+	\end{itemize}
+	
+	\item Eksperimen keempat
+	\begin{itemize}
+		\item Lebar ruangan: 400 cm
+		\item Panjang ruangan: 300 cm
+		\item Jarak pandang kamera CCTV: 75 cm
+		\item Besar sudut pandang kamera CCTV: \(90^\circ\)
+		\item Ukuran cell: 25 cm
+		\item Rasio \(\frac{\text{sisi terpendek ruangan}}{\text{jarak pandang kamera CCTV}}\) = 4
 	\end{itemize}
 \end{enumerate}
 
+Berdasarkan eksperimen yang dilakukan, didapatkan hasil sebagai berikut:
+\begin{enumerate}
+	\item Eksperimen pertama
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 75\%
+	\end{itemize}
+		
+	\item Eksperimen kedua
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 16.67\%
+	\end{itemize}
+	
+	\item Eksperimen ketiga
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 8.33\%
+	\end{itemize}
+	\item Eksperimen keempat
+	\begin{itemize}
+		\item Tingkat \textit{overlap} dan \textit{out of bound}: 0\%
+	\end{itemize}
+\end{enumerate}
+Berdasarkan hasil tersebut, didapatkan bahwa semakin besar rasio sisi terpendek ruangan dengan jarak pandang kamera CCTV, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin kecil.
 
 
 
