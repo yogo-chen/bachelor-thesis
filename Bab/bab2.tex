@@ -398,7 +398,7 @@ Hal ini menunjukkan bahwa \textit{bfs} saat ini masih belum optimal.
 
 Apabila \textit{bfs} pada saat ini masih belum optimal, maka perlu dilakukan proses \textit{pivotting}. Proses \textit{pivotting} adalah proses penukaran variabel basis dengan variabel non-basis. Variabel yang akan menjadi variabel basis disebut dengan \textit{entering variable} dan variabel basis yang akan digantikan disebut dengan \textit{leaving variable}. \textit{Entering variable} dipilih dengan cara memilih variabel yang bernilai paling negatif pada baris 0. Untuk mencari \textit{leaving variable} perlu dilakukan tes rasio. Tes rasio membandingkan nilai pada nilai \textit{rhs} dengan nilai pada kolom \textit{entering variable}. Tes rasio hanya perlu dilakukan pada baris yang variable pada kolom \textit{entering variable} bernilai lebih besar dari 0. \textit{Leaving variable} dipilih dengan cara memilih variabel pada baris yang menghasilkan rasio terkecil. Perpotongan antara kolom \textit{entering variable} dengan baris \textit{leaving variable}.merupakan suatu elemen yang disebut \textit{pivot element}.
 
-Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga perlu dilakukan proses \textit{pivotting}. Variabel \(x_1\) akan menjadi \textit{entering variable} karena bernilai paling negatif pada baris 0. Setelah dilakukan tes rasio sesuai, variabel \(s_3\) menjadi \textit{leaving variable} karena memiliki hasil tes rasio terkecil. Pada tabel~\ref{tab:tabel_pivotting_1} terdapat \textit{pivot element} yang dilingkari.
+Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga perlu dilakukan proses \textit{pivotting}. Variabel \(x_1\) akan menjadi \textit{entering variable} karena bernilai paling negatif pada baris 0. Setelah dilakukan tes rasio sesuai, variabel \(s_3\) menjadi \textit{leaving variable} karena memiliki hasil tes rasio terkecil. Tes rasio untuk \textit{bfs} baru pada contoh masalah dapat dilihat pada tabel~\ref{tab:tabel_pivotting_1}.
 
 \begin{center}
 	\captionof{table}{Tabel \textit{pivotting} 1}
@@ -418,7 +418,147 @@ Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga p
 	$
 \end{center}
 
-Setelah menentukan \textit{entering variable} dan \textit{leaving variable}, akan dilakukan OBE. OBE dilakukan untuk membuat \textit{entering variable} menjadi variabel basis. Dengan OBE, \textit{pivot element} akan bernilai 1 dan variabel lain dalam kolom \textit{entering variabel} bernilai 0.
+Setelah menentukan \textit{entering variable} dan \textit{leaving variable}, akan dilakukan OBE. OBE dilakukan untuk membuat \textit{entering variable} menjadi variabel basis, sehingga \textit{entering variable} pada baris {leaving variable} bernilai 1 dan variabel lain pada kolom \textit{entering variable} bernilai 0. Setelah OBE dilakukan, baris \textit{leaving variable} akan memiliki \textit{entering variable} sebagai variabel basis.
+
+Dalam contoh masalah, telah ditentukan \textit{entering variable} dan \textit{leaving variable}. Variabel yang menjadi \textit{entering variable} adalah variabel \(x_1\) yang berada pada kolom \(x_1\). Variabel yang menjadi \textit{Leaving variable} adalah variabel \(s_3\) yang berada pada baris 3. Dengan OBE, \textit{entering variable} pada baris 3 akan dibuat bernilai 1 dan variabel lain pada kolom \textit{entering variable} akan dibuat bernilai 0. Berikut ini urutan OBE yang dilakukan:
+\begin{enumerate}
+	\item Untuk mendapatkan variabel \(x_1\) bernilai 1 pada baris 3, maka baris 3' baru dapat dibentuk dari baris 3 lama yang dikalikan dengan \(\nicefrac{1}{2}\).\\
+	\begin{equation*}
+		\frac{1}{2}R_3 \rightarrow R_3'
+	\end{equation*}
+	sehingga baris 3' baru menjadi
+	\begin{equation*}
+		x_1 + 0.75x_2 + 0.25x_3 + 0.5s_3 = 4
+	\end{equation*}
+	
+	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 0, maka baris 0' baru dapat dibentuk dari baris 3' baru yang dikalikan 60 dan ditambahkan dengan baris 0 lama.\\
+	\begin{equation*}
+		60R_3 + R_0 \rightarrow R_0'
+	\end{equation*}
+	sehingga baris 0' baru menjadi
+	\begin{equation*}
+		z + 15x_2 - 5x_3 + 30s_3 = 240
+	\end{equation*}
+
+	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 1, maka baris 1' baru dapat dibentuk dari baris 3' baru yang dikalikan -8 dan ditambahkan dengan baris 1 lama.\\
+	\begin{equation*}
+		-8R_3 + R_1 \rightarrow R_1'
+	\end{equation*}
+	sehingga baris 1' baru menjadi
+	\begin{equation*}
+		-x_3 + s_1 - 4s_3 = 16
+	\end{equation*}
+
+	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 2, maka baris 2' baru dapat dibentuk dari baris 3' baru yang dikalikan -4 dan ditambahkan dengan baris 2 lama.\\
+	\begin{equation*}
+		-4R_2 + R_2 \rightarrow R_2'
+	\end{equation*}
+	sehingga baris 2' baru menjadi
+	\begin{equation*}
+		-x_2 + 0.5x_3 + s_2 - 2s_3 = 4
+	\end{equation*}
+\end{enumerate}
+
+Karena nilai \(x_1\) bernilai 0 pada baris 4, maka tidak perlu dilakukan OBE pada baris 4, sehingga baris 4' baru sama dengan baris 4 lama. \textit{Entering variable} menggantikan \textit{leaving variable} pada baris 3 sehingga \(x_1\) menjadi variabel basis yang baru. Setelah melakukan OBE, maka didapatkan tabel simplex baru seperti pada tabel~\ref{tab:tabel_simplex_1} yang menunjukkan \textit{bfs} dengan nilai \(z=240, x_1=4, x_2=0, x_3=0, s_1=16, s_2=4, s_3=0, \text{ dan } s_4=5\).
+
+\begin{center}
+	\captionof{table}{Tabel simplex 1}
+	\label{tab:tabel_simplex_1}
+	$
+	\begin{array}{|r r r r r r r r|c|r c l|}
+		\hline
+		z & x_1 & x_2 & x_3 & s_1 & s_2 & s_3 & s_4 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}}\\
+		\hline
+		1 & 0 & 15 & -5 & 0 & 0 & 30 & 0 & 240 & z & = & 240\\
+		0 & 0 & 0 & -1 & 1 & 0 & -4 & 0 & 16 & s_1 & = & 16\\
+		0 & 0 & -1 & 0.5 & 0 & 1 & -2 & 0 & 4 & s_2 & = & 4\\
+		0 & 1 & 0.75 & 0.25 & 0 & 0 & 0.5 & 0 & 4 & x_1 & = & 4\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 5 & s_4 & = & 5\\
+		\hline
+	\end{array}
+	$
+\end{center}
+
+Setelah mendapatkan tabel simplex~\ref{tab:tabel_simplex_1}, langkah selanjutnya adalah memeriksa apakah \textit{bfs} pada iterasi ini sudah optimal. Pada baris 0, terdapat nilai negatif, yaitu pada variabel \(x_3\), sehingga \textit{bfs} ini belum optimal. Maka  langkah selanjutnya adalah mencari \textit{entering variable} dan \textit{leaving variable}. \textit{Entering variable} didapatkan dengan memilih variabel yang bernilai paling negatif pada baris 0, yaitu variabel \(x_3\). \textit{Leaving variable} didapatkan dengan mencari rasio terkecil dari hasil tes rasio. Tes rasio dapat dilihat pada tabel~\ref{tab:tabel_pivotting_2}. Variabel \(s_2\) menghasilkan hasil tes rasio terkecil, sehingga variabel \(s_2\) menjadi \textit{leaving variable}.
+
+\begin{center}
+	\captionof{table}{Tabel \textit{pivotting} 2}
+	\label{tab:tabel_pivotting_2}
+	$
+	\begin{array}{|r r r r r r r r|c|r c l|r c l|}
+		\hline
+		z & x_1 & x_2 & x_3 & s_1 & s_2 & s_3 & s_4 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}} & \multicolumn{3}{c|}{\textit{ratio}}\\
+		\hline
+		1 & 0 & 15 & -5 & 0 & 0 & 30 & 0 & 240 & z & = & 240 &&&\\
+		0 & 0 & 0 & -1 & 1 & 0 & -4 & 0 & 16 & s_1 & = & 16 &&&\\
+		0 & 0 & -1 & \encircle{0.5} & 0 & 1 & -2 & 0 & 4 & s_2 & = & 4 & \nicefrac{4}{0.5} & = & 8\\
+		0 & 1 & 0.75 & 0.25 & 0 & 0 & 0.5 & 0 & 4 & x_1 & = & 4 & \nicefrac{4}{0.25} & = & 16\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 5 & s_4 & = & 5 &&&\\
+		\hline
+	\end{array}
+	$
+\end{center}
+
+Selanjutnya dilakukan OBE untuk membuat \textit{entering variable} \(x_3\) menjadi variabel basis. Berikut ini urutan OBE yang dilakukan:
+\begin{enumerate}
+	\item Untuk mendapatkan variabel \(x_3\) bernilai 1 pada baris 2, maka baris 2'' baru dapat dibentuk dari baris 2' lama yang dikalikan dengan 2.\\
+	\begin{equation*}
+		2R_2' \rightarrow R_2''
+	\end{equation*}
+	sehingga baris 2'' baru menjadi
+	\begin{equation*}
+		-2x_2 + x_3 + 2s_2 - 4s_3 = 8
+	\end{equation*}
+	
+	\item Untuk mendapatkan variabel \(x_3\) bernilai 0 pada baris 0, maka baris 0'' baru dapat dibentuk dari baris 2'' baru yang dikalikan 5 dan ditambahkan dengan baris 0' lama.\\
+	\begin{equation*}
+		5R_2'' + R_0' \rightarrow R_0''
+	\end{equation*}
+	sehingga baris 0'' baru menjadi
+	\begin{equation*}
+		z + 5x_2 + 10s_2 + 10s_3 = 280
+	\end{equation*}
+	
+	\item Untuk mendapatkan variabel \(x_3\) bernilai 0 pada baris 1, maka baris 1'' baru dapat dibentuk dari baris 2'' baru yang ditambahkan dengan baris 1' lama.\\
+	\begin{equation*}
+		R_2'' + R_1' \rightarrow R_1''
+	\end{equation*}
+	sehingga baris 1'' baru menjadi
+	\begin{equation*}
+		-2x_2 + s_1 + 2s_2 - 8s_3 = 24
+	\end{equation*}
+	
+	\item Untuk mendapatkan variabel \(x_3\) bernilai 0 pada baris 3, maka baris 3'' baru dapat dibentuk dari baris 2'' baru yang dikalikan \(-\nicefrac{1}{4}\) dan ditambahkan dengan baris 3' lama.\\
+	\begin{equation*}
+		-\frac{1}{4}R_2'' + R_3' \rightarrow R_3''
+	\end{equation*}
+	sehingga baris 3'' baru menjadi
+	\begin{equation*}
+		x_1 + 1.25x_2 - 0.5s_2 + 1.5s_3 = 2
+	\end{equation*}
+\end{enumerate}
+
+Variabel \(x_3\) sudah bernilai 0 pada baris 4, maka baris 4 yang baru sama dengan baris 4 yang lama. Variabel \(x_3\) menjadi variabel basis baru yang menggantikan variabel \(s_2\). Setelah melakukan OBE, didapatkan tabel simplex~\ref{tab:tabel_simplex_2} yang menunjukkan \textit{bfs} dengan nilai \(z=280, x_1=2, x_2=0, x_3=8, s_1=24, s_2=0, s_3=0, \text{ dan } s_4=5\).
+
+\begin{center}
+	\captionof{table}{Tabel simplex 2}
+	\label{tab:tabel_simplex_2}
+	$
+	\begin{array}{|r r r r r r r r|c|r c l|}
+		\hline
+		z & x_1 & x_2 & x_3 & s_1 & s_2 & s_3 & s_4 & \textit{rhs} & \multicolumn{3}{c|}{\textit{basic variable}}\\
+		\hline
+		1 & 0 & 5 & 0 & 0 & 10 & 10 & 0 & 280 & z & = & 280\\
+		0 & 0 & -2 & 0 & 1 & 2 & -8 & 0 & 24 & s_1 & = & 24\\
+		0 & 0 & -2 & 1 & 0 & 2 & -4 & 0 & 8 & x_3 & = & 8\\
+		0 & 1 & 1.25 & 0 & 0 & -0.5 & 1.5 & 0 & 2 & x_1 & = & 2\\
+		0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 5 & s_4 & = & 5\\
+		\hline
+	\end{array}
+	$
+\end{center}
+
+Langkah selanjutnya adalah memeriksa apakah \textit{bfs} saat ini sudah optimal. Pada baris 0, tidak ditemukan variabel bernilai negatif, sehingga \textit{bfs} pada tahap ini sudah optimal. Dengan demikian masalah ini memiliki solusi optimal bernilai 280 dengan variabel \(x_1=2, x_2=0, x_3=8, \text{ dan } x_4 = 0\).
 
 \subsection{Metode Simplex 2}
 
