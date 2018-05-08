@@ -93,11 +93,11 @@ Pada contoh masalah tersebut, hanya terdapat 2 variabel keputusan sehingga dapat
 		\draw (40,100) -- node[above,sloped] {\tiny$x_1\leq40$} (40,0);
 		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,80) -- (20,60) -- (40,20) -- (40,0) -- cycle;
 	\end{tikzpicture}
-	\caption[Daerah \textit{feasible}]{Daerah \textit{feasible}}
+	\caption[Masalah linear programming tanpa daerah \textit{feasible}]{Masalah linear programming tanpa daerah \textit{feasible}}
 	\label{fig:daerah_feasible}
 \end{figure}
 
-Agar suatu masalah linear programming memiliki solusi optimal, maka daerah feasible harus berbentuk \textit{convex set}. Suatu himpunan titik \(S\) merupakan \textit{convex set} apabila segmen garis yang menghubungkan setiap pasang titik dalam himpunan \(S\) berada dalam himpunan \(S\)~\cite{winston2004operations}. Apabila masalah linear programming memiliki daerah \textit{feasible}, maka daerah tersebut berbentuk \textit{convex set}. Solusi optimal dari masalah tersebut berada pada salah satu \textit{corner point} pada daerah \textit{feasible}. \textit{Extreme point} adalah titik perpotongan antar batasan dan \textit{corner point} adalah \textit{extreme point} yang berada dalam daerah \textit{feasible}. Dengan adanya \textit{corner points}, solusi optimal dapat dicari karena berjumlah terhitung, sehingga tidak perlu memeriksa seluruh kemungkinan solusi masalah yang berjumlah tak hingga. Pada gambar~\ref{fig:corner_points}, titik A, B, C, D, dan E merupakan titik \textit{corner points} yang salah satu di antaranya akan menghasilkan solusi optimal.
+Agar suatu masalah linear programming memiliki solusi optimal, maka daerah \textit{feasible} harus berbentuk \textit{convex set}. Suatu himpunan titik \(S\) merupakan \textit{convex set} apabila segmen garis yang menghubungkan setiap pasang titik dalam himpunan \(S\) berada dalam himpunan \(S\)~\cite{winston2004operations}. Apabila masalah linear programming memiliki daerah \textit{feasible}, maka daerah tersebut berbentuk \textit{convex set}. Solusi optimal dari masalah tersebut berada pada salah satu \textit{corner point} pada daerah \textit{feasible}. \textit{Extreme point} adalah titik perpotongan antar batasan dan \textit{corner point} adalah \textit{extreme point} yang berada dalam daerah \textit{feasible}. Dengan adanya \textit{corner points}, solusi optimal dapat dicari karena berjumlah terhitung, sehingga tidak perlu memeriksa seluruh kemungkinan solusi masalah yang berjumlah tak hingga. Pada gambar~\ref{fig:corner_points}, titik A, B, C, D, dan E merupakan titik \textit{corner points} yang salah satu di antaranya akan menghasilkan solusi optimal.
 
 \begin{figure}[H]
 	\centering
@@ -584,7 +584,7 @@ Contoh tersebut merupakan contoh masalah linaer programming dengan tujuan minima
 	\end{array}
 \end{equation*}
 
-Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk contoh masalah linaer programming kasus minimasi. Tabel~\ref{tab:tabel_simplex_minimasi_1} menunjukkan tabel simplex yang menghasilkan \textit{bfs} optimal dengan nilai \(-z=12, x_1=0, x_2=4, s_1=0, \text{ dan } s_2=10\). Dengan demikian, didapatkan solusi optimal sebesar -12 dengan variabel \(x_1=0 \text{ dan } x_2=4\).
+Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk contoh masalah linear programming kasus minimasi. Tabel~\ref{tab:tabel_simplex_minimasi_1} menunjukkan tabel simplex yang menghasilkan \textit{bfs} optimal dengan nilai \(-z=12, x_1=0, x_2=4, s_1=0, \text{ dan } s_2=10\). Dengan demikian, didapatkan solusi optimal sebesar -12 dengan variabel \(x_1=0 \text{ dan } x_2=4\).
 
 \begin{center}
 	\captionof{table}{Tabel simplex 0 untuk kasus minimasi}
@@ -620,9 +620,9 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk co
 
 \section{Integer Programming~\cite{winston2004operations}}
 
-Integer programming merupakan teknik lanjutan dari linear programming yang dimana setiap variabel pada solusi optimal harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah metode \textit{branch and bound}.
+Integer programming merupakan teknik lanjutan dari linear programming di mana setiap variabel pada solusi optimal harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah metode \textit{branch and bound}.
 
-\subsection{\textit{Branch and Bound}}
+\subsection{Metode \textit{Branch and Bound}}
 \textit{Branch and bound} merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah akan terus dilakukan hingga didapatkan solusi optimal yang terdiri dari variabel berupa bilangan bulat. Berikut langkah-langkah metode \textit{branch and bound}:
 
 \begin{enumerate}
@@ -630,16 +630,21 @@ Integer programming merupakan teknik lanjutan dari linear programming yang diman
 
 	\item Tentukan satu variabel yang nilainya pada solusi tidak berupa bilangan bulat. Variabel ini akan menjadi variabel terpilih yang akan digunakan di tahap selanjutnya.
 
-	\item Buat 2 sub masalah baru. Sub-sub masalah tersebut merupakan masalah yang sama dengan adanya sebuah tambahan batasan baru. Sub masalah pertama memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih kecil atau sama dengan pembulatan ke bawah dari nilai variabel terpilih. Sub masalah kedua memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih besar atau sama dengan pembulatan ke atas dari nilai variabel terpilih.
-	
+	\item Buat 2 sub masalah baru. Sub-sub masalah tersebut merupakan masalah yang sama dengan adanya sebuah tambahan batasan baru. 
+	\begin{enumerate}
+		\item Sub masalah pertama memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih kecil atau sama dengan pembulatan ke bawah dari nilai variabel terpilih.
+		
+		\item Sub masalah kedua memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih besar atau sama dengan pembulatan ke atas dari nilai variabel terpilih.
+	\end{enumerate}
+		
 	\item Selesaikan setiap sub masalah menggunakan metode simplex dan periksa solusinya.
-	\begin{itemize}
+	\begin{enumerate}
 		\item Apabila setiap variabel pada solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi optimal dalam permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
 		
 		\item Apabila setiap variabel pada solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka dilanjukan pada tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah lagi karena tidak akan menghasilkan solusi yang lebih baik.
 		
 		\item Apabila sub masalah tidak dapat diselesaikan (\textit{infeasible}), maka sub masalah ini tidak perlu dilanjutkan lagi.		
-	\end{itemize}
+	\end{enumerate}
 \end{enumerate}
 
 \section{Kakas \textit{lp{\_}solve}}

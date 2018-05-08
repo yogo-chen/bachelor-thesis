@@ -5,7 +5,7 @@ Masalah yang dibahas di skripsi ini perlu dirumuskan terlebih dahulu agar dapat 
 
 
 \subsection{Ruangan}
-Dalam masalah, terdapat sebuah ruangan yang harus dicakup sepenuhnya oleh kamera-kamera CCTV. Ruangan dapat diartikan sebagai sebuah bidang 3 dimensi yang memiliki rongga di dalamnya. Ruangan ini pada umumnya memiliki bentuk yang beragam sesuai dengan arsitekturnya pada saat dibangun. Berbeda dengan ruangan tersebut, ruangan yang dibahas dalam masalah ini memiliki ukuran dimensi dan bentuk yang dibatasi. Ruangan tidak dimodelkan dalam bentuk 3 dimensi, melainkan dalam bidang 2 dimensi yang berbentuk persegi panjang. Dengan pemodelan ini, ruangan akan meiliki 2 parameter utama yang menentukan ukuran ruangan, yaitu ukuran panjang dan ukuran lebar. Ukuran panjang dan ukuran lebar ini memiliki satuan berupa sentimeter(cm). Pemodelan ruangan dapat dipahami lebih lanjut pada gambar~\ref{fig:model_ruangan}.
+Dalam masalah, terdapat sebuah ruangan yang harus dicakup sepenuhnya oleh kamera-kamera CCTV. Ruangan dapat diartikan sebagai sebuah bidang 3 dimensi yang memiliki rongga di dalamnya. Ruangan ini pada umumnya memiliki bentuk yang beragam sesuai dengan arsitekturnya pada saat dibangun. Berbeda dengan ruangan tersebut, ruangan yang dibahas dalam masalah ini memiliki ukuran dimensi dan bentuk yang dibatasi. Ruangan tidak dimodelkan dalam bentuk 3 dimensi, tetapi dalam bidang 2 dimensi yang berbentuk persegi panjang. Dengan pemodelan ini, ruangan akan memiliki 2 parameter utama yang menentukan ukuran ruangan, yaitu ukuran panjang dan ukuran lebar. Ukuran panjang dan ukuran lebar ini memiliki satuan berupa sentimeter(cm). Pemodelan ruangan dapat dipahami lebih lanjut pada gambar~\ref{fig:model_ruangan}.
 
 \begin{figure}[H]
 	\centering  
@@ -17,7 +17,7 @@ Dalam masalah, terdapat sebuah ruangan yang harus dicakup sepenuhnya oleh kamera
 %Dengan diketahuinya spesifikasi ruangan, maka akan diketahui daerah yang harus dicakup oleh kamera-kamera CCTV. Kamera-kamera CCTV akan ditempatkan dengan sedemian rupa sehingga seluruh daerah dapat tercakup. Untuk menyatakan posisi penempatan kamera CCTV, pemodelan masalah juga menggunakan sistem koordinat kertesius sehingga posisi penempatan dapat dinyatakan dalam koordinat x dan y. Dengan demikian, posisi penempatan kamera CCTV dapat dipahami lebih mudah.
 
 \subsection{Kamera CCTV}
-Kamera CCTV yang beredar di pasaran memiliki spesifikasi yang sangat beragam. Dalam masalah ini, jenis kamera CCTV akan dibatasi sehingga hanya berjumlah 1 buah saja. Kamera CCTV sendiri memiliki berbagai parameter seperti jarak pandang, lebar sudut pandang, tingkat resolusi, dan parameter-parameter lainnya. Dalam masalah ini, terdapat 2 parameter utama yang digunakan, yaitu jarak pandang efektif dan lebar sudut pandang. Jarak pandang efektif merupakan jarak pandang terjauh kamera CCTV untuk mengenali suatu objek yang akan dipantau. Jarak pandang efektif dinyatakan dalam ukuran bersatuan sentimeter(cm) dan lebar sudut pandang dinyatakan dalam ukuran derajat. Pemodelan kamera CCTV dapat dipahami lebih lanjut pada gambar~\ref{fig:model_kamera}.
+Kamera CCTV yang beredar di pasaran memiliki spesifikasi yang sangat beragam. Dalam skripsi ini, jenis kamera CCTV yang digunakan dibatasi sehingga tidak bervariasi, yaitu hanya menggunakan 1 jenis kamera CCTV saja. Kamera CCTV sendiri memiliki berbagai parameter seperti jarak pandang, lebar sudut pandang, tingkat resolusi, dan parameter-parameter lainnya. Dalam masalah ini, terdapat 2 parameter yang digunakan, yaitu jarak pandang efektif dan lebar sudut pandang. Jarak pandang efektif merupakan jarak pandang terjauh kamera CCTV untuk mengenali suatu objek yang akan dipantau. Jarak pandang efektif dinyatakan dalam ukuran bersatuan sentimeter(cm) dan lebar sudut pandang dinyatakan dalam ukuran derajat. Pemodelan kamera CCTV dapat dipahami lebih lanjut pada gambar~\ref{fig:model_kamera}.
 
 %Hingga saat ini, sudah terdapat banyak jenis kamera CCTV yang diproduksi. Setiap kamera CCTV tersebut memiliki spesifikasinya masing-masing. Dalam permasalahan ini, terdapat 2 spesifikasi kamera CCTV yang digunakan, yaitu jarak pandang efektif dan besar sudut pandang. Gambar~\ref{fig:model_kamera} memodelkan kamera CCTV dengan kedua spesifikasi tersebut. Jarak pandang efektif adalah jarak pandang terjauh kamera CCTV untuk mengenali objek yang akan dipantau. Besar sudut pandang menunjukkan lebar pantauan kamera CCTV. Dalam permasalahan ini, jenis kamera CCTV yang digunakan hanya berjumlah 1 buah.
 
@@ -41,11 +41,19 @@ Setiap kamera CCTV dapat ditempatkan di mana saja selama berada di dalam ruangan
 \subsection{Daerah Cakupan}
 Daerah cakupan kamera CCTV memiliki bentuk yang tidak sederhana sehingga menjadi sulit ketika akan diolah. Terdapat 3 kasus yang menjelaskan daerah cakupan dengan bentuk yang tidak sederhana ini, yaitu:
 \begin{enumerate}
-	\item Kasus yang terjadi ketika penempatan kamera-kamera CCTV yang dilakukan dengan sedemikian rupa sehingga menghasilkan suatu daerah yang memiliki bentuk yang tidak sederhana.
-	\item Kasus yang terjadi ketika terdapat 2 atau lebih penempatan kamera CCTV yang mencakup suatu daerah yang sama sehingga daerah irisan tersebut memiliki bentuk yang tidak sederhana.
-	\item Kasus yang terjadi ketika suatu penempatan kamera CCTV mencakup daerah di luar ruangan sehingga daerah tersebut memiliki bentuk yang tidak sederhana.
+	\item Kasus ketika menghitung luas daerah yang tidak \textit{overlap} dan tidak \textit{out of bound}. Contoh kasus ini dapat dilihat pada gambar~\ref{fig:daerah_rumit} pada daerah yang dilabeli nomor 1.
+	\item Kasus ketika menghitung luas daerah \textit{overlap}. Contoh kasus ini dapat dilihat pada gambar~\ref{fig:daerah_rumit} pada daerah yang dilabeli nomor 2.
+	\item Kasus ketika menghitung luas daerah \textit{out of bound}. Contoh kasus ini dapat dilihat pada gambar~\ref{fig:daerah_rumit} pada daerah yang dilabeli nomor 3.
 \end{enumerate}
-Dengan adanya ketiga kasus ini, maka daerah cakupan perlu didefinisikan dan dimodelkan lebih lanjut agar kasus tersebut dapat dihindari. Ruangan dapat dimodelkan lebih lanjut sehingga berbentuk grid point seperti pada gambar~\ref{fig:model_ruangan_grid_point}. Grid point akan memecah ruangan ke dalam bagian-bagian yang lebih kecil yang disebut dengan cell.
+
+\begin{figure}[h]
+	\centering  
+	\includegraphics[scale=0.5]{daerah_rumit}
+	\caption[Contoh masalah yang memiliki kasus bentuk daerah tidak sederhana]{Contoh masalah yang memiliki kasus bentuk daerah tidak sederhana} 
+	\label{fig:daerah_rumit}
+\end{figure}
+
+Daerah-daerah dalam ketiga kasus tersebut dapat berbentuk tidak sederhana, sehingga sulit untuk diolah. Dengan adanya ketiga kasus ini, maka daerah cakupan perlu didefinisikan dan dimodelkan lebih lanjut agar kasus tersebut dapat dihindari. Ruangan dapat dimodelkan lebih lanjut sehingga berbentuk grid point seperti pada gambar~\ref{fig:model_ruangan_grid_point}. Grid point akan memecah ruangan ke dalam bagian-bagian yang lebih kecil yang disebut dengan cell.
 
 \begin{figure}[h]
 	\centering  
@@ -168,15 +176,15 @@ Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa s
 Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
 \begin{equation*}
 	\begin{split}
-		\textit{minimize } & z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}\\
-		\textit{subject to } & \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
+		\textit{min } & z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}\\
+		\textit{s.t. } & \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
 		& 0 \leq p \leq (s_p - 1), 0 \leq q \leq (s_q - 1)\\
 		& x_{ij\theta} \in \{0,1\}
 	\end{split}
 \end{equation*}
 
-\section{Analisis Kebutuhan Prangkat Lunak}
-Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan sekanrio-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
+\section{Analisis Kebutuhan Perangkat Lunak}
+Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan skenario-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
 %Pada subbab ini akan dijelaskan deskripsi dari perangkat lunak yang akan dibangun. Perangkat lunak yang dibangun akan disesuaikan dengan pemodelan masalah yang telah dibahas sebelumnya. Perangkat lunak akan menggunakan fitur tampilan antarmuka grafis untuk memudahkan interaksi pengguna dengan perangkat lunak. Perangkat lunak akan mengsimulasikan masalah penempatan kamera CCTV dengan masukan yang dimasukkan oleh pengguna. Hasil dari masukan pengguna akan diolah oleh perangkat lunak dan hasilnya akan ditampilkan. Rancangan perangkat lunak yang terdiri dari diagram use case, diagram kelas, masukan, dan keluaran akan dibahas pada bagian ini.
 
 \subsection{Diagram \textit{Use Case}}
