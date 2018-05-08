@@ -63,6 +63,7 @@ Daerah-daerah dalam ketiga kasus tersebut dapat berbentuk tidak sederhana, sehin
 \end{figure}
 
 Cell tidak selalu berbentuk persegi, namun dapat berbentuk persegi panjang. Hal ini dikarenakan susunan cell-cell harus menghasilkan ukuran yang sama dengan ukuran ruangan. Untuk menentukan ukuran cell, ditentukan sebuah ukuran yang menyatakan ukuran terbesar yang dapat dimiliki cell. Ukuran ini akan digunakan untuk menentukan ukuran cell yang apabila disusun akan menghasilkan ukuran ruangan. Berikut ini merupakan rumus yang digunakan untuk mencari ukuran cell:
+
 \begin{equation*}
 	\begin{split}
 		\text{columns }&= \left\lceil\frac{\text{room width}}{\text{max cell size}}\right\rceil\\
@@ -71,6 +72,7 @@ Cell tidak selalu berbentuk persegi, namun dapat berbentuk persegi panjang. Hal 
 		\text{cell length }&= \frac{\text{room length}}{\text{rows}}\\
 	\end{split}
 \end{equation*}
+
 Dengan rumus ini, akan didapatkan ukuran panjang dan ukuran lebar cell yang tidak melebihi ukuran terbesar cell. Apabila ukuran cell ini dikalikan dengan jumlah kolom dan jumlah baris grid point, maka akan didapatkan ukuran yang sama dengan ukuran ruangan.
 
 Setiap cell berfungsi merepresentasikan sebagian daerah dalam ruangan yang berupa satu kesatuan sehingga kasus bentuk daerah yang tidak sederhana dapat dihindari. Dengan pemodelan menggunakan grid point, maka daerah cakupan dari suatu kamera CCTV dapat dinyatakan dalam bentuk kumpulan cell. Gambar~\ref{fig:daerah_cakupan_sebelum_grid_point} dan gambar~\ref{fig:daerah_cakupan_sesudah_grid_point} menunjukkan perbandingan daerah cakupan kamera CCTV ketika sebelum dan sesudah dimodelkannya ruangan dalam bentuk grid point.
@@ -133,6 +135,7 @@ Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempat
 
 \subsection{Variabel Keputusan}
 Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga setiap cell pada ruangan dicakup oleh minimal 1 kamera CCTV. Setiap penempatan kamera CCTV memiliki posisi dan arah pandang masing-masing. Dari seluruh kemungkinan ini akan dicari himpunan bagian yang dimana penempatan-penempatannya dapat mencakup seluruh daerah pada ruangan. Setiap kemungkinan penempatan memiliki 2 kemungkinan, yaitu diterapkan sebagai bagian dari solusi atau tidak. Dalam penyelesaian menggunakan teknik linear programming, setiap kemungkinan penempatan akan menjadi variabel keputusan. Variabel keputusan \(x_{ij\theta}\) akan merujuk pada penempatan kamera CCTV pada posisi \((i,j)\) dengan arah pandang \(\theta\). Karena setiap penempatan kamera CCTV memiliki 2 kemungkinan untuk diterapkan, maka setiap variabel keputusan dapat dinyatakan dengan nilai 0 atau 1. Apabila suatu variabel keputusan bernilai 1, maka penempatan kamera CCTV yang dirujuk akan diterapkan sebagai bagian dari solusi. Apabila benilai 0, maka penempatan kamera CCTV yang dirujuk tidak akan diterapkan. Karena variabel keputusan hanya bisa bernlai 0 dan 1 saja, masalah ini tidak diselesaikan menggunakan teknik linear programming biasa karena hasil dapat bernilai pecahan. Masalah ini perlu diselesaikan menggunakan teknik integer programming agar hasil dari setiap variabel keputusan hanya berupa bilangan bulat. Variabel keputusan dinyatakan dalam notasi berikut:
+
 \begin{equation*}
 	x_{ij\theta} =
 	\left \{
@@ -147,12 +150,14 @@ Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga seti
 
 \subsection{Fungsi Tujuan}
 Solusi yang diharapkan dari masalah ini adalah mendapatkan penempatan-penempatan kamera CCTV yang paling minimum untuk mencakup seluruh daerah dalam ruangan. Dengan semakin sedikitnya penempatan-penempatan kamera CCTV yang digunakan, tingkat overlap dan out of bound juga akan semakin kecil. Sebelumnya telah diketahui bahwa setiap variabel keputusan hanya bisa bernilai 0 atau 1 saja. Jumlah penempatan kamera CCTV pun dapat dicari dengan menjumlahkan seluruh variabel keputusan. Fungsi tujuan dalam linear programming dapat dinyatakan sebagai jumlah penempatan kamera CCTV akan diminimumkan. Fungsi tujuan dituliskan dalam notasi berikut:
+
 \begin{equation*}
 	\textit{min }z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}
 \end{equation*}
 
 \subsection{Batasan}
 Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan harus tercakup sepenuhnya. Berdasarkan pemodelan, ruangan dimodelkan dalam bentuk grid point sehingga daerah pada ruangan dimodelkan dalam bentuk cell. Agar seluruh daerah pada ruangan tercakup sepenuhnya, maka setiap cell harus dicakup oleh minimal 1 kamera CCTV. Terdapat sebuah fungsi biner yang digunakan untuk mengetahui apakah suatu penempatan kamera CCTV dapat mencakup suatu cell. Fungsi biner ini akan menghasilkan nilai 1 apabila suatu penempatan kamera CCTV dapat mencakup suatu cell. Apabila sebaliknya, maka fungsi biner ini akan menghasilkan nilai 0. Fungsi tersebut ditulis sebagai berikut:
+
 \begin{equation*}
 	cov(i,j,\theta,p,q) =
 	\left \{
@@ -164,7 +169,9 @@ Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan haru
 		\end{tabular}
 	\right.
 \end{equation*}
+
 Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa setiap cell harus dicakup oleh minimal 1 penempatan kamera CCTV. Fungsi biner sebelumnya akan digunakan untuk menyatakan hubungan ketercakupan cell dengan penempatan kamera CCTV. Batasan tersebut ditulis sebagai berikut:
+
 \begin{equation*}
 	\begin{split}
 		& \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
@@ -174,6 +181,7 @@ Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa s
 
 \subsection{Bentuk Masalah Linear Programming}
 Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
+
 \begin{equation*}
 	\begin{split}
 		\textit{min } & z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}\\
