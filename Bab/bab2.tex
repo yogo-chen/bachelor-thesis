@@ -2,16 +2,16 @@
 \chapter{Landasan Teori}
 \label{chap:teori}
 
-\section{Linear Programming~\cite{winston2004operations}}
+\section{\textit{Linear Programming}}
 
-Linear programming adalah sarana untuk menyelesaikan masalah optimasi~\cite{winston2004operations}. Optimasi merupakan usaha untuk memilih solusi terbaik dari suatu kumpulan solusi yang ada. Setiap masalah optimasi perlu diubah terlebih dahulu ke dalam bentuk masalah linear programming agar dapat diselesaikan menggunakan linear programming. Pada bagian ini, akan dibahas karakteristik dan cara menyelesaikan masalah linear programming.
+\textit{Linear programming} adalah sarana untuk menyelesaikan masalah optimasi~\cite{winston2004operations}. Optimasi merupakan usaha untuk memilih solusi terbaik dari suatu kumpulan solusi yang ada. Setiap masalah optimasi perlu diubah terlebih dahulu ke dalam bentuk masalah \textit{linear programming} agar dapat diselesaikan menggunakan \textit{linear programming}. Pada bagian ini, akan dibahas karakteristik dan cara menyelesaikan masalah \textit{linear programming}.
 
 \subsection{Karakteristik}
-Masalah linear programming memiliki karakteristik sebagai berikut:
+Masalah \textit{linear programming} memiliki karakteristik sebagai berikut:
 
 \begin{itemize}
 	\item \textbf{Variabel keputusan}\\
-		Dalam masalah linear programming, terdapat variabel keputusan yang mendeskripsikan keputusan yang akan diambil. Contoh:
+		Dalam masalah \textit{linear programming}, terdapat variabel keputusan yang mendeskripsikan keputusan yang akan diambil. Contoh:
 		
 		\begin{equation*}
 			\begin{split}
@@ -21,14 +21,14 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 		\end{equation*}
 		
 	\item \textbf{Fungsi Tujuan}\\
-		Dalam masalah linear programming, terdapat suatu keuntungan yang ingin dimaksimalkan atau suatu kerugian yang ingin diminimalkan dengan menggunakan  fungsi tujuan yang terdiri dari variabel-variabel keputusan. Contoh:
+		Dalam masalah \textit{linear programming}, terdapat suatu keuntungan yang ingin dimaksimalkan atau suatu kerugian yang ingin diminimalkan dengan menggunakan  fungsi tujuan yang terdiri dari variabel-variabel keputusan. Contoh:
 		
 		\begin{equation*}
 			\textit{max } z = 3x_1 + 2x_2
 		\end{equation*}
 
 	\item \textbf{Batasan}\\
-		Dalam masalah linear programming, terdapat batasan-batasan yang membuat variabel keputusan memiliki nilai yang dibatasi. Batasan juga membuat suatu variabel keputusan berkaitan dengan variabel keputusan lainnya. Contoh:
+		Dalam masalah \textit{linear programming}, terdapat batasan-batasan yang membuat variabel keputusan memiliki nilai yang dibatasi. Batasan juga membuat suatu variabel keputusan berkaitan dengan variabel keputusan lainnya. Contoh:
 		
 		\begin{equation*}		
 			\setlength\arraycolsep{1.5pt}
@@ -40,7 +40,7 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 		\end{equation*}
 		
 	\item \textbf{Batasan non-negatif}\\
-		Dalam masalah linear programming, batasan non-negatif (\(x_i\geq 0\)) pada variabel keputusan menyatakan bahwa variabel keputusan tersebut tidak dapat bernilai negatif. Dengan batasan non-negatif, variabel keputusan diharuskan untuk bernilai 0 atau positif. Contoh:
+		Dalam masalah \textit{linear programming}, batasan non-negatif (\(x_i\geq 0\)) pada variabel keputusan menyatakan bahwa variabel keputusan tersebut tidak dapat bernilai negatif. Dengan batasan non-negatif, variabel keputusan diharuskan untuk bernilai 0 atau positif. Contoh:
 		
 		\begin{equation*}
 			\begin{split}
@@ -51,7 +51,7 @@ Masalah linear programming memiliki karakteristik sebagai berikut:
 		
 \end{itemize}
 
-Dengan keempat karakteristik di atas, setiap masalah optimasi dapat diubah ke dalam masalah linear programming untuk diselesaikan. Berikut contoh masalah linear programming:
+Dengan keempat karakteristik di atas, setiap masalah optimasi dapat diubah ke dalam masalah \textit{linear programming} untuk diselesaikan. Berikut contoh masalah \textit{linear programming}:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -68,7 +68,7 @@ Dengan keempat karakteristik di atas, setiap masalah optimasi dapat diubah ke da
 	Tulisan ''\textit{s.t.}'' atau ''\textit{subject to}'' menandakan bahwa nilai dari setiap variabel keputusan harus memenuhi setiap batasan dan batasan non-negatif.
 
 \subsection{Daerah \textit{Feasible} dan Solusi Optimal}
-Dalam masalah linear programming, terdapat daerah yang bernama daerah \textit{feasible}. Daerah \textit{feasible} dalam suatu masalah linear programming merupakan himpunan yang terdiri dari seluruh titik yang memenuhi setiap batasan dan batasan non-negatif~\cite{winston2004operations}. Dengan demikian, setiap titik yang berada di dalam daerah \textit{feasible} merupakan solusi terhadap permasalahan tersebut. Apabila dipilih suatu titik yang berada di luar daerah \textit{feasible}, maka titik ini disebut dengan titik \textit{infeasible}. Titik \textit{infeasible} bukan merupakan solusi bagi permasalahan karena titik ini tidak memenuhi setiap batasan dan batasan non-negatif. Untuk menggambarkan daerah \textit{feasibel}, digunakan contoh batasan-batasan sebagai berikut:
+Dalam masalah \textit{linear programming}, terdapat daerah yang bernama daerah \textit{feasible}. Daerah \textit{feasible} dalam suatu masalah \textit{linear programming} merupakan himpunan yang terdiri dari seluruh titik yang memenuhi setiap batasan dan batasan non-negatif~\cite{winston2004operations}. Dengan demikian, setiap titik yang berada di dalam daerah \textit{feasible} merupakan solusi terhadap permasalahan tersebut. Apabila dipilih suatu titik yang berada di luar daerah \textit{feasible}, maka titik ini disebut dengan titik \textit{infeasible}. Titik \textit{infeasible} bukan merupakan solusi bagi permasalahan karena titik ini tidak memenuhi setiap batasan dan batasan non-negatif. Untuk menggambarkan daerah \textit{feasibel}, digunakan contoh batasan-batasan sebagai berikut:
 
 \begin{equation*}
 	\begin{array}{r c r c l}		
@@ -95,11 +95,11 @@ Pada contoh masalah tersebut, hanya terdapat 2 variabel keputusan sehingga dapat
 		\draw (40,100) -- node[above,sloped] {\tiny$x_1\leq40$} (40,0);
 		\fill[blue!50!cyan,opacity=0.3] (0,0) -- (0,80) -- (20,60) -- (40,20) -- (40,0) -- cycle;
 	\end{tikzpicture}
-	\caption[Contoh masalah linear programming dengan daerah \textit{feasible}]{Contoh masalah linear programming dengan daerah \textit{feasible}}
+	\caption[Contoh masalah \textit{linear programming} dengan daerah \textit{feasible}]{Contoh masalah \textit{linear programming} dengan daerah \textit{feasible}}
 	\label{fig:daerah_feasible}
 \end{figure}
 
-Agar suatu masalah linear programming memiliki solusi optimal, maka daerah \textit{feasible} harus berbentuk \textit{convex set}. Suatu himpunan titik \(S\) merupakan \textit{convex set} apabila segmen garis yang menghubungkan setiap pasang titik dalam himpunan \(S\) berada dalam himpunan \(S\)~\cite{winston2004operations}. Apabila masalah linear programming memiliki daerah \textit{feasible}, maka daerah tersebut berbentuk \textit{convex set}. Solusi optimal dari masalah tersebut berada pada salah satu \textit{corner point} pada daerah \textit{feasible}. \textit{Extreme point} adalah titik perpotongan antar batasan dan \textit{corner point} adalah \textit{extreme point} yang berada dalam daerah \textit{feasible}. Dengan adanya \textit{corner points}, solusi optimal dapat dicari karena berjumlah terhitung, sehingga tidak perlu memeriksa seluruh kemungkinan solusi masalah yang berjumlah tak hingga. Pada gambar~\ref{fig:corner_points}, titik A, B, C, D, dan E merupakan titik \textit{corner points} yang salah satu di antaranya akan menghasilkan solusi optimal.
+Agar suatu masalah \textit{linear programming} memiliki solusi optimal, maka daerah \textit{feasible} harus berbentuk \textit{convex set}. Suatu himpunan titik \(S\) merupakan \textit{convex set} apabila segmen garis yang menghubungkan setiap pasang titik dalam himpunan \(S\) berada dalam himpunan \(S\)~\cite{winston2004operations}. Apabila masalah \textit{linear programming} memiliki daerah \textit{feasible}, maka daerah tersebut berbentuk \textit{convex set}. Solusi optimal dari masalah tersebut berada pada salah satu \textit{corner point} pada daerah \textit{feasible}. \textit{Extreme point} adalah titik perpotongan antar batasan dan \textit{corner point} adalah \textit{extreme point} yang berada dalam daerah \textit{feasible}. Dengan adanya \textit{corner points}, solusi optimal dapat dicari karena berjumlah terhitung, sehingga tidak perlu memeriksa seluruh kemungkinan solusi masalah yang berjumlah tak hingga. Pada gambar~\ref{fig:corner_points}, titik A, B, C, D, dan E merupakan titik \textit{corner points} yang salah satu di antaranya akan menghasilkan solusi optimal.
 
 \begin{figure}[H]
 	\centering
@@ -128,7 +128,7 @@ Agar suatu masalah linear programming memiliki solusi optimal, maka daerah \text
 	\label{fig:corner_points}
 \end{figure}
 
-Tidak semua masalah linear programming memiliki daerah \textit{feasible}. Apabila batasan-batasan dalam masalah tidak dapat membentuk daerah \textit{feasible}, maka masalah tersebut tidak memiliki solusi apapun, sehingga solusi optimal dari masalah tersebut tidak dapat dicari. Gambar~\ref{fig:daerah_infeasible} menunjukkan contoh masalah linear programming yang tidak memiliki daerah \textit{feasible}.
+Tidak semua masalah \textit{linear programming} memiliki daerah \textit{feasible}. Apabila batasan-batasan dalam masalah tidak dapat membentuk daerah \textit{feasible}, maka masalah tersebut tidak memiliki solusi apapun, sehingga solusi optimal dari masalah tersebut tidak dapat dicari. Gambar~\ref{fig:daerah_infeasible} menunjukkan contoh masalah \textit{linear programming} yang tidak memiliki daerah \textit{feasible}.
 
 \begin{figure}[H]
 	\centering
@@ -141,7 +141,7 @@ Tidak semua masalah linear programming memiliki daerah \textit{feasible}. Apabil
 		\draw (3,0) -- node[above,sloped] {\small $x_1 + x_2 \leq 3$} (0,3);
 		\draw (5,0) -- node[above,sloped] {\small $x_1 + x_2 \geq 5$} (0,5);
 	\end{tikzpicture}
-	\caption[Contoh masalah linear programming tanpa daerah \textit{feasible}]{Contoh masalah linear programming tanpa daerah \textit{feasible}}
+	\caption[Contoh masalah \textit{linear programming} tanpa daerah \textit{feasible}]{Contoh masalah \textit{linear programming} tanpa daerah \textit{feasible}}
 	\label{fig:daerah_infeasible}
 \end{figure}
 	
@@ -164,7 +164,7 @@ Tidak semua masalah linear programming memiliki daerah \textit{feasible}. Apabil
 %		\end{figure}
 
 \subsection{Bentuk Standar}
-Setiap masalah linear programming harus diubah ke dalam bentuk standar sebelum diselesaikan. Berikut ini merupakan struktur dari bentuk standar pada masalah linear programming:
+Setiap masalah \textit{linear programming} harus diubah ke dalam bentuk standar sebelum diselesaikan. Berikut ini merupakan struktur dari bentuk standar pada masalah \textit{linear programming}:
     	
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -178,7 +178,7 @@ Setiap masalah linear programming harus diubah ke dalam bentuk standar sebelum d
 	\end{array}
 \end{equation*}
 
-Bentuk standar masalah linear programming terdiri dari $n$ buah variabel keputusan $x$ dan $m$ buah persamaan batasan. Setiap batasan dalam bentuk standar harus dalam bentuk persamaan dan batasan non-negatif diberlakukan untuk setiap varibel keputusan. Bentuk standar linear programming dapat dinyatakan dalam notasi matriks seperti berikut ini:
+Bentuk standar masalah \textit{linear programming} terdiri dari $n$ buah variabel keputusan $x$ dan $m$ buah persamaan batasan. Setiap batasan dalam bentuk standar harus dalam bentuk persamaan dan batasan non-negatif diberlakukan untuk setiap varibel keputusan. Bentuk standar \textit{linear programming} dapat dinyatakan dalam notasi matriks seperti berikut ini:
         
 \begin{equation*}
 	\begin{array}{r l}
@@ -233,7 +233,7 @@ dengan
 	\right]    
 \end{equation*}
 
-Pada notasi matriks, $x$ menunjukkan matriks kolom berdimensi $n$, $C^T$ menunjukkan matriks baris berdimensi $n$, $A$ menunjukkan matriks berdimensi $m\times n$, dan $b$ menunjukkan matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan batasan non-negatif untuk setiap variabel keputusan $x_i$. Untuk mengubah masalah linear programming ke bentuk standar, maka setiap batasan perlu diubah. Perubahan batasan dibedakan berdasarkan tandanya, yaitu sebagai berikut:
+Pada notasi matriks, $x$ menunjukkan matriks kolom berdimensi $n$, $C^T$ menunjukkan matriks baris berdimensi $n$, $A$ menunjukkan matriks berdimensi $m\times n$, dan $b$ menunjukkan matriks kolom berdimensi $m$. Matriks $x\geq0$ menunjukkan batasan non-negatif untuk setiap variabel keputusan $x_i$. Untuk mengubah masalah \textit{linear programming} ke bentuk standar, maka setiap batasan perlu diubah. Perubahan batasan dibedakan berdasarkan tandanya, yaitu sebagai berikut:
 		
 		\begin{itemize}
 			\item \textbf{Batasan dengan tanda pertidaksamaan \(\leq\)}\\
@@ -301,7 +301,7 @@ Pada notasi matriks, $x$ menunjukkan matriks kolom berdimensi $n$, $C^T$ menunju
 %\end{enumerate}
 
 \subsection{Variabel Basis dan Non-basis}
-Masalah linear programming \(Ax = b\) terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah ini memiliki solusi yang disebut dengan solusi basis apabila membuat \((n - m)\) buah variabel keputusan bernilai 0 dan menyelesaikan \(m\) buah variabel keputusan lainnya. Sebanyak \((n - m)\) buah variabel yang dibuat bernilai 0 disebut dengan variabel non-basis. Sedangkan \(m\) buah variabel lainnya disebut dengan variabel basis. Berikut contoh sistem persamaan linear:
+Masalah \textit{linear programming} \(Ax = b\) terdiri dari \(m\) buah persamaan batasan dan \(n\) buah variabel keputusan. Masalah ini memiliki solusi yang disebut dengan solusi basis apabila membuat \((n - m)\) buah variabel keputusan bernilai 0 dan menyelesaikan \(m\) buah variabel keputusan lainnya. Sebanyak \((n - m)\) buah variabel yang dibuat bernilai 0 disebut dengan variabel non-basis. Sedangkan \(m\) buah variabel lainnya disebut dengan variabel basis. Berikut contoh sistem persamaan linear:
 %Variabel basis merupakan variabel yang diselesaikan setelah membuat variabel lain menjadi variabel non basis. 
 
 \begin{equation*}
@@ -324,10 +324,10 @@ Pada sistem persamaan linear di atas, dipilih sebanyak 3 - 2 = 1 (3 variabel dan
 
 Pada persamaan di atas didapatkan nilai \(x_1\) = 2 dan \(x_2\) = 1. Dengan demikian didapatkan solusi basis dengan nilai \(x_1\) = 2, \(x_2\) = 1, dan \(x_3\) = 0.
 
-\subsection{Metode Simplex}
-Metode simplex merupakan metode yang digunakan untuk menyelesaikan masalah linear programming. Berikut ini merupakan langkah-langkah metode simplex:
+\subsection{Metode \textit{Simplex}}
+Metode \textit{simplex} merupakan metode yang digunakan untuk menyelesaikan masalah \textit{linear programming}. Berikut ini merupakan langkah-langkah metode \textit{simplex}:
 \begin{enumerate}
-	\item Mengubah masalah linear programming ke dalam bentuk standar
+	\item Mengubah masalah \textit{linear programming} ke dalam bentuk standar.
 	\item Mencari \textit{basic feasible solution} (\textit{bfs}) dari bentuk standar.
 	\item Memeriksa apakah \textit{bfs} pada saat ini sudah optimal.
 	\item Apabila \textit{bfs} belum optimal, tentukan variabel non-basis mana yang akan menjadi variabel basis dan tentukan variabel basis mana yang akan menjadi variabel non-basis dengan tujuan mencari \textit{bfs} baru yang dapat meningkatkan nilai fungsi objektif.
@@ -348,7 +348,7 @@ ditulis dalam bentuk
 
 Bentuk fungsi objektif ini disebut sebagai baris 0.
 
-Untuk memahami penyelesaian masalah linear programming menggunakan metode simplex, akan digunakan sebuah contoh masalah linear programming sebagai berikut:
+Untuk memahami penyelesaian masalah \textit{linear programming} menggunakan metode \textit{simplex}, akan digunakan sebuah contoh masalah \textit{linear programming} sebagai berikut:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -378,10 +378,10 @@ Langkah pertama adalah mengubah masalah ke bentuk standar, sehingga masalah ini 
 	\end{array}
 \end{equation*}
 
-Masalah dalam bentuk standar ini disajikan dalam bentuk tabel simplex seperti pada tabel~\ref{tab:tabel_simplex_0}. Pada tabel ini, baris pertama (baris 0) merupakan baris bagi fungsi objektif dan baris lainnya merupakan baris bagi variabel basis. Pada tabel simplex pertama, variabel basis terdiri dari variabel \textit{slack} dan variabel \textit{excess}.
+Masalah dalam bentuk standar ini disajikan dalam bentuk tabel \textit{simplex} seperti pada tabel~\ref{tab:tabel_simplex_0}. Pada tabel ini, baris pertama (baris 0) merupakan baris bagi fungsi objektif dan baris lainnya merupakan baris bagi variabel basis. Pada tabel \textit{simplex} pertama, variabel basis terdiri dari variabel \textit{slack} dan variabel \textit{excess}.
 
 \begin{center}
-	\captionof{table}{Tabel simplex 0}
+	\captionof{table}{Tabel \textit{simplex} 0}
 	\label{tab:tabel_simplex_0}
 	$
 	\begin{array}{|r r r r r r r r|c|r c l|}
@@ -479,10 +479,10 @@ Dalam contoh masalah, telah ditentukan \textit{entering variable} dan \textit{le
 
 \end{enumerate}
 
-Karena nilai \(x_1\) bernilai 0 pada baris 4, maka tidak perlu dilakukan OBE pada baris 4, sehingga baris 4' baru sama dengan baris 4 lama. \textit{Entering variable} menggantikan \textit{leaving variable} pada baris 3 sehingga \(x_1\) menjadi variabel basis yang baru. Setelah melakukan OBE, maka didapatkan tabel simplex baru seperti pada tabel~\ref{tab:tabel_simplex_1} yang menunjukkan \textit{bfs} dengan nilai \(z=240, x_1=4, x_2=0, x_3=0, s_1=16, s_2=4, s_3=0, \text{ dan } s_4=5\).
+Karena nilai \(x_1\) bernilai 0 pada baris 4, maka tidak perlu dilakukan OBE pada baris 4, sehingga baris 4' baru sama dengan baris 4 lama. \textit{Entering variable} menggantikan \textit{leaving variable} pada baris 3 sehingga \(x_1\) menjadi variabel basis yang baru. Setelah melakukan OBE, maka didapatkan tabel \textit{simplex} baru seperti pada tabel~\ref{tab:tabel_simplex_1} yang menunjukkan \textit{bfs} dengan nilai \(z=240, x_1=4, x_2=0, x_3=0, s_1=16, s_2=4, s_3=0, \text{ dan } s_4=5\).
 
 \begin{center}
-	\captionof{table}{Tabel simplex 1}
+	\captionof{table}{Tabel \textit{simplex} 1}
 	\label{tab:tabel_simplex_1}
 	$
 	\begin{array}{|r r r r r r r r|c|r c l|}
@@ -499,7 +499,7 @@ Karena nilai \(x_1\) bernilai 0 pada baris 4, maka tidak perlu dilakukan OBE pad
 	$
 \end{center}
 
-Setelah mendapatkan tabel simplex~\ref{tab:tabel_simplex_1}, langkah selanjutnya adalah memeriksa apakah \textit{bfs} pada iterasi ini sudah optimal. Pada baris 0, terdapat nilai negatif, yaitu pada variabel \(x_3\), sehingga \textit{bfs} ini belum optimal. Maka  langkah selanjutnya adalah mencari \textit{entering variable} dan \textit{leaving variable}. \textit{Entering variable} didapatkan dengan memilih variabel yang bernilai paling negatif pada baris 0, yaitu variabel \(x_3\). \textit{Leaving variable} didapatkan dengan mencari rasio terkecil dari hasil tes rasio. Tes rasio dapat dilihat pada tabel~\ref{tab:tabel_pivotting_2}. Variabel \(s_2\) menghasilkan hasil tes rasio terkecil, sehingga variabel \(s_2\) menjadi \textit{leaving variable}.
+Setelah mendapatkan tabel \textit{simplex}~\ref{tab:tabel_simplex_1}, langkah selanjutnya adalah memeriksa apakah \textit{bfs} pada iterasi ini sudah optimal. Pada baris 0, terdapat nilai negatif, yaitu pada variabel \(x_3\), sehingga \textit{bfs} ini belum optimal. Maka  langkah selanjutnya adalah mencari \textit{entering variable} dan \textit{leaving variable}. \textit{Entering variable} didapatkan dengan memilih variabel yang bernilai paling negatif pada baris 0, yaitu variabel \(x_3\). \textit{Leaving variable} didapatkan dengan mencari rasio terkecil dari hasil tes rasio. Tes rasio dapat dilihat pada tabel~\ref{tab:tabel_pivotting_2}. Variabel \(s_2\) menghasilkan hasil tes rasio terkecil, sehingga variabel \(s_2\) menjadi \textit{leaving variable}.
 
 \begin{center}
 	\captionof{table}{Proses \textit{pivotting} 2}
@@ -570,10 +570,10 @@ Selanjutnya dilakukan OBE untuk membuat \textit{entering variable} \(x_3\) menja
 	\end{equation*}
 \end{enumerate}
 
-Variabel \(x_3\) sudah bernilai 0 pada baris 4, maka baris 4 yang baru sama dengan baris 4 yang lama. Variabel \(x_3\) menjadi variabel basis baru yang menggantikan variabel \(s_2\). Setelah melakukan OBE, didapatkan tabel simplex~\ref{tab:tabel_simplex_2} yang menunjukkan \textit{bfs} dengan nilai \(z=280, x_1=2, x_2=0, x_3=8, s_1=24, s_2=0, s_3=0, \text{ dan } s_4=5\).
+Variabel \(x_3\) sudah bernilai 0 pada baris 4, maka baris 4 yang baru sama dengan baris 4 yang lama. Variabel \(x_3\) menjadi variabel basis baru yang menggantikan variabel \(s_2\). Setelah melakukan OBE, didapatkan tabel \textit{simplex}~\ref{tab:tabel_simplex_2} yang menunjukkan \textit{bfs} dengan nilai \(z=280, x_1=2, x_2=0, x_3=8, s_1=24, s_2=0, s_3=0, \text{ dan } s_4=5\).
 
 \begin{center}
-	\captionof{table}{Tabel simplex 2}
+	\captionof{table}{Tabel \textit{simplex} 2}
 	\label{tab:tabel_simplex_2}
 	$
 	\begin{array}{|r r r r r r r r|c|r c l|}
@@ -592,7 +592,7 @@ Variabel \(x_3\) sudah bernilai 0 pada baris 4, maka baris 4 yang baru sama deng
 
 Langkah selanjutnya adalah memeriksa apakah \textit{bfs} saat ini sudah optimal. Pada baris 0, tidak ditemukan variabel bernilai negatif, sehingga \textit{bfs} pada tahap ini sudah optimal. Dengan demikian masalah ini memiliki solusi optimal bernilai 280 dengan variabel \(x_1=2, x_2=0, x_3=8, \text{ dan } x_4 = 0\).
 
-Contoh yang dibahas sebelumnya merupakan contoh masalah linear programming dalam kasus maksimisasi. Untuk menyelesaikan masalah linear programming pada kasus minimasi, dapat dilakukan dengan mengubah tujuan minimasi menjadi tujuan maksimasi. Perubahan tujuan ini dilakukan dengan mengalikan fungsi tujuan dengan -1. Contoh:
+Contoh yang dibahas sebelumnya merupakan contoh masalah \textit{linear programming} dalam kasus maksimisasi. Untuk menyelesaikan masalah \textit{linear programming} pada kasus minimasi, dapat dilakukan dengan mengubah tujuan minimasi menjadi tujuan maksimasi. Perubahan tujuan ini dilakukan dengan mengalikan fungsi tujuan dengan -1. Contoh:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -605,7 +605,7 @@ Contoh yang dibahas sebelumnya merupakan contoh masalah linear programming dalam
 	\end{array}
 \end{equation*}
 
-Contoh tersebut merupakan contoh masalah linaer programming dengan tujuan minimasi. Untuk menyelesaikannya, fungsi objektif dikalikan dengan -1, sehingga tujuan berubah menjadi maksimasi. Contoh masalah berubah menjadi:
+Contoh tersebut merupakan contoh masalah \textit{linaer programming} dengan tujuan minimasi. Untuk menyelesaikannya, fungsi objektif dikalikan dengan -1, sehingga tujuan berubah menjadi maksimasi. Contoh masalah berubah menjadi:
 
 \begin{equation*}
 	\setlength\arraycolsep{1.5pt}
@@ -618,10 +618,10 @@ Contoh tersebut merupakan contoh masalah linaer programming dengan tujuan minima
 	\end{array}
 \end{equation*}
 
-Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk contoh masalah linear programming kasus minimasi. Tabel~\ref{tab:tabel_simplex_minimasi_1} menunjukkan tabel simplex yang menghasilkan \textit{bfs} optimal dengan nilai \(-z=12, x_1=0, x_2=4, s_1=0, \text{ dan } s_2=10\). Dengan demikian, didapatkan solusi optimal sebesar -12 dengan variabel \(x_1=0 \text{ dan } x_2=4\).
+Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel \textit{simplex} awal untuk contoh masalah \textit{linear programming} kasus minimasi. Tabel~\ref{tab:tabel_simplex_minimasi_1} menunjukkan tabel \textit{simplex} yang menghasilkan \textit{bfs} optimal dengan nilai \(-z=12, x_1=0, x_2=4, s_1=0, \text{ dan } s_2=10\). Dengan demikian, didapatkan solusi optimal sebesar -12 dengan variabel \(x_1=0 \text{ dan } x_2=4\).
 
 \begin{center}
-	\captionof{table}{Tabel simplex 0 untuk kasus minimasi}
+	\captionof{table}{Tabel \textit{simplex} 0 untuk kasus minimasi}
 	\label{tab:tabel_simplex_minimasi_0}
 	$
 	\begin{array}{|r r r r r |c|r c l|r c l|}
@@ -637,7 +637,7 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk co
 \end{center}
 
 \begin{center}
-	\captionof{table}{Tabel simplex 1 untuk kasus minimasi}
+	\captionof{table}{Tabel \textit{simplex} 1 untuk kasus minimasi}
 	\label{tab:tabel_simplex_minimasi_1}
 	$
 	\begin{array}{|r r r r r |c|r c l|}
@@ -652,71 +652,110 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel simplex awal untuk co
 	$
 \end{center}
 
-\section{Integer Programming~\cite{winston2004operations}}
+%\section{Integer Programming}
+%
+%Integer programming merupakan teknik lanjutan dari linear programming di mana setiap variabel pada solusi optimal harus berupa bilangan bulat~\cite{winston2004operations}. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah metode \textit{branch and bound}.
+%
+%\subsection{Metode \textit{Branch and Bound}}
+%\textit{Branch and bound} merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah akan terus dilakukan hingga didapatkan solusi optimal yang terdiri dari variabel berupa bilangan bulat. Berikut langkah-langkah metode \textit{branch and bound}:
+%
+%\begin{enumerate}
+%	\item Selesaikan masalah menggunakan metode simplex. Apabila solusi optimal yang didapatkan terdiri dari variabel berupa bilangan bulat, maka proses berhenti pada tahap ini. Solusi ini menjadi solusi optimal dalam permasalahan ini. Apabila sebaliknya, maka dilanjutkan ke tahap selanjutnya. Solusi pada tahap ini akan menjadi solusi batas atas yang akan digunakan sebagai pembanding di tahap-tahap selanjutnya.
+%
+%	\item Tentukan satu variabel yang nilainya pada solusi tidak berupa bilangan bulat. Variabel ini akan menjadi variabel terpilih yang akan digunakan di tahap selanjutnya.
+%
+%	\item Buat 2 sub masalah baru. Sub-sub masalah tersebut merupakan masalah yang sama dengan adanya sebuah tambahan batasan baru. 
+%	\begin{enumerate}
+%		\item Sub masalah pertama memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih kecil atau sama dengan pembulatan ke bawah dari nilai variabel terpilih.
+%		
+%		\item Sub masalah kedua memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih besar atau sama dengan pembulatan ke atas dari nilai variabel terpilih.
+%	\end{enumerate}
+%		
+%	\item Selesaikan setiap sub masalah menggunakan metode simplex dan periksa solusinya.
+%	\begin{enumerate}
+%		\item Apabila setiap variabel pada solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi optimal dalam permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
+%		
+%		\item Apabila setiap variabel pada solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka dilanjukan pada tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah lagi karena tidak akan menghasilkan solusi yang lebih baik.
+%		
+%		\item Apabila sub masalah tidak dapat diselesaikan (\textit{infeasible}), maka sub masalah ini tidak perlu dilanjutkan lagi.		
+%	\end{enumerate}
+%\end{enumerate}
 
-Integer programming merupakan teknik lanjutan dari linear programming di mana setiap variabel pada solusi optimal harus berupa bilangan bulat. Terdapat beberapa metode yang dapat digunakan untuk menyelesaikan masalah integer programming, salah satunya adalah metode \textit{branch and bound}.
+\section{\textit{Binary Integer Programming}}
+\textit{Binary integer programming} adalah lanjutan dari linear programming di mana setiap variabel keputusan pada solusi optimal harus bernilai 0 atau 1. Bentuk umum masalah \textit{binary integer programming} adalah seperti berikut:
 
-\subsection{Metode \textit{Branch and Bound}}
-\textit{Branch and bound} merupakan metode penyelesaian masalah integer programming dengan memecah masalah menjadi sub-sub masalah. Pemecahan masalah akan terus dilakukan hingga didapatkan solusi optimal yang terdiri dari variabel berupa bilangan bulat. Berikut langkah-langkah metode \textit{branch and bound}:
+\begin{equation}
+\begin{array}{r l}
+\textit{min}   & z=C^Tx \\
+\textit{s.t.} & Ax\geq b \\
+& x \in \{0,1\}
+\end{array}    
+\end{equation}
 
-\begin{enumerate}
-	\item Selesaikan masalah menggunakan metode simplex. Apabila solusi optimal yang didapatkan terdiri dari variabel berupa bilangan bulat, maka proses berhenti pada tahap ini. Solusi ini menjadi solusi optimal dalam permasalahan ini. Apabila sebaliknya, maka dilanjutkan ke tahap selanjutnya. Solusi pada tahap ini akan menjadi solusi batas atas yang akan digunakan sebagai pembanding di tahap-tahap selanjutnya.
+Terdapat sebuah algoritma yang diciptakan oleh Egon Balas~\cite{balas1965additive} bernama \textit{Balas's additive} yang digunakan untuk menyelesaikan masalah \textit{binary integer programming}. Algoritma \textit{Balas's additive} akan dibahas lebih lanjut pada~\ref{balas_additive}.
 
-	\item Tentukan satu variabel yang nilainya pada solusi tidak berupa bilangan bulat. Variabel ini akan menjadi variabel terpilih yang akan digunakan di tahap selanjutnya.
+\subsection{Algoritma \textit{Balas's Additive}}
+\label{balas_additive}
+Setiap masalah \textit{binary integer programming} memiliki kemungkinan solusi berjumlah \(2^n\) karena setiap variabel hanya dapat bernilai 0 atau 1 saja. Apabila menggunakan algoritma \textit{Balas's additive}, maka solusi optimal dari masalah \textit{binary integer programming} dalam kasus umum (\textit{average case}) dapat ditemukan tanpa perlu memeriksa semua \(2^n\) kemungkinan. Dengan demikian, algoritma \textit{Balas's additive} dapat digunakan untuk menemukan solusi optimal bagi masalah \textit{binary integer programming} secara efisien.
 
-	\item Buat 2 sub masalah baru. Sub-sub masalah tersebut merupakan masalah yang sama dengan adanya sebuah tambahan batasan baru. 
-	\begin{enumerate}
-		\item Sub masalah pertama memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih kecil atau sama dengan pembulatan ke bawah dari nilai variabel terpilih.
-		
-		\item Sub masalah kedua memiliki tambahan batasan baru yang menyatakan bahwa variabel terpilih harus bernilai lebih besar atau sama dengan pembulatan ke atas dari nilai variabel terpilih.
-	\end{enumerate}
-		
-	\item Selesaikan setiap sub masalah menggunakan metode simplex dan periksa solusinya.
-	\begin{enumerate}
-		\item Apabila setiap variabel pada solusi berupa bilangan bulat, maka bandingkan solusi ini dengan solusi batas atas. Apabila solusi ini sama dengan batas atas, maka solusi ini merupakan solusi optimal dalam permasalahan ini dan proses berhenti pada tahap ini. Apabila solusi lebih buruk dari solusi batas atas, maka bandingkan dengan solusi batas bawah. Apabila solusi ini lebih baik daripada solusi batas bawah, maka jadikanlah solusi ini sebagai solusi batas bawah yang baru.
-		
-		\item Apabila setiap variabel pada solusi tidak berupa bilangan bulat, maka periksa apakah solusi ini lebih baik daripada solusi batas bawah. Apabila lebih baik, maka dilanjukan pada tahap ke-2 untuk memecah sub masalah ini. Apabila tidak lebih baik, maka sub masalah ini tidak perlu dipecah lagi karena tidak akan menghasilkan solusi yang lebih baik.
-		
-		\item Apabila sub masalah tidak dapat diselesaikan (\textit{infeasible}), maka sub masalah ini tidak perlu dilanjutkan lagi.		
-	\end{enumerate}
-\end{enumerate}
+Untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}, maka masalah perlu diubah terlebih dahulu sesuai dengan ketentuan-ketentuan berikut ini:
 
-\section{Kakas \textit{lp{\_}solve}}
-Kakas \textit{lp{\_}solve} merupakan kakas perangkat lunak yang berguna untuk menyelesaikan masalah linear programming\footnote{http://lpsolve.sourceforge.net/5.5/}. Kakas ini dapat menerima masalah linear programming atau masalah integer programming. Kakas lp{\_}solve menggunakan metode \textit{branch and bound} untuk menyelesaikan masalah integer programming. Kakas ini dibangun dengan bahasa pemrograman ANSI C yang dapat dikompilasi dalam lingkungan Unix dan Windows. Untuk menggunakan kakas lp{\_}solve dalam lingkungan pemrograman Java, kakas lp{\_}solve menyediakan kakas penghubung dalam bahasa pemrograman Java sehingga aplikasi Java dapat menggunakan kakas lp{\_}solve. Berikut ini merupakan contoh penggunaan kakas lp{\_}solve dalam pemrograman Java:
-\begin{lstlisting}[language=Java, caption=Demo.java]
-import lpsolve.*;
+\begin{itemize}
+	\item Fungsi tujuan dinyatakan dalam bentuk \textit{min} \(z=\sum_{j=1}^{n}c_jx_j\)
+	\item Sebanyak \(m\) batasan harus dinyatakan dalam bentuk pertidaksamaan \(\sum a_{ij} x_j\geq b_i\) untuk \(i=1,2,\dots,m\)
+	\item Setiap variabel \(x_j\) dimana \(j=1,2,\dots,n\) merupakan variabel biner (variabel yang hanya dapat bernilai 0 atau 1).
+	\item Koefisien setiap varibel pada fungsi tujuan tidak bernilai negatif.
+	\item Setiap variabel pada fungsi tujuan diurutkan berdasarkan koefisiennya sehingga \(0\leq c_1 \leq c_2 \leq \dots \leq c_n\)
+\end{itemize}
 
-public class Demo {
+Algoritma \textit{Balas's additive} memilih untuk membuat seluruh variabel bernilai 0 agar mendapatkan nilai \(z\) yang paling minimum. Hal ini dikarenakan fungsi tujuan bersifat minimasi dan koefisien pada seluruh variabel tidak bernilai negatif. Apabila terdapat batasan yang tidak dapat dipenuhi akibat dibuatnya seluruh variabel bernilai 0, maka algoritma akan memilih variabel dengan indeks yang terdekat dengan 1 untuk dibuat bernilai 1. Hal ini menyebabkan nilai \(z\) meningkat dengan nilai sekecil mungkin karena variabel telah terurut menaik berdasarkan koefisiennya.
 
-  public static void main(String[] args) {
-    try {
-      // Create a problem with 4 variables and 0 constraints
-      LpSolve solver = LpSolve.makeLp(0, 4);
+Dalam menjalankan prosedurnya, algoritma \textit{Balas's additive} menggunakan paradigma algoritma \textit{branch and bound}~\cite{narendra1977branch}. \textit{Branch and bound} merupakan algoritma yang berfungsi untuk mendapatkan subhimpunan terbaik dari suatu himpunan yang dilakukan secara efisien tanpa melibatkan \textit{exhaustive search}. Pada \textit{branch and bound} terdapat 2 proses penting, yaitu \textit{branching} dan \textit{bounding}. Proses \textit{branching} bertujuan untuk membagi himpunan solusi menjadi beberapa himpunan solusi yang lebih kecil. Proses \textit{bounding} bertujuan untuk menetapkan nilai \textit{bounding} dari suatu himpunan solusi. Nilai ini digunakan sebagai penentu kelayakan himpunan untuk ditelusuri (dengan \textit{branching}) lebih lanjut.
 
-      // add constraints
-      solver.strAddConstraint("3 2 2 1", LpSolve.LE, 4);
-      solver.strAddConstraint("0 4 3 1", LpSolve.GE, 3);
+Algoritma \textit{branch and bound} diterapkan dalam algoritma \textit{Balas's additive} untuk mendapatkan solusi optimal dari seluruh kemungkinan solusi yang ada. \textit{Branch and bound} dilakukan dengan menggunakan struktur data pohon biner (\textit{binary tree}). Tingkat kedalaman pada pohon biner berhubungan dengan urutan variabel sehingga setiap tingkat kedalaman mengacu pada setiap variabel sesuai dengan urutannya. Contoh, apabila suatu \textit{node} berada pada kedalaman di tingkat ke-2, maka node tersebut mengacu pada variabel ke-2. Setiap \textit{node} menunjukkan nilai dari variabel yang diacunya. Pohon yang digunakan merupakan pohon biner karena setiap variabel hanya dapat bernilai 0 atau 1 saja, sehingga setiap percabangan (\textit{branching}) akan menghasilkan 2 \textit{node}, yaitu \textit{node} dengan \(x_N=0\) dan \textit{node} dengan \(x_N=1\) di mana \(x_N\) adalah \(x\) \textit{now} (\(x\) pada saat ini) berbeda dengan \(x_n\) (\(x\) terakhir dalam kumpulan \(x\)). Proses \textit{bounding} pada algoritma \textit{Balas's additive} dibedakan menjadi 2 berdasarkan nilai \(x_N\), yaitu:
+\begin{itemize}
+	\item Apabila \textit{node} pada saat ini bernilai 1, \(x_N = 1\), maka algoritma berasumsi bahwa \textit{node} pada saat ini dapat memiliki solusi \textit{feasible} sehingga nilai \textit{bounding} untuk \textit{node} ini adalah \(\sum_{j=1}^{N} c_j x_j\).
+	
+	\item Apabila \textit{node} pada saat ini bernilai 0, \(x_N = 0\), maka nilai \textit{bounding} dari \textit{node} ini adalah \(\sum_{j=1}^{N} c_j x_j + c_{N+1}\).
+\end{itemize}
+Solusi yang didapat dari nilai \textit{bounding} belum tentu merupakan solusi \textit{feasible}. Untuk menentukan apakah solusi bersifat \textit{feasible}, asumsikan bahwa variabel setelah \(x_N\) (saat \(x_N=1\)) atau \(x_{N+1}\) (saat \(x_N=0\)) bernilai 0. Selanjutnya uji solusi terhadap batasan-batasan. Jika tidak ada batasan yang dilanggar, maka \textit{node} dinyatakan sebagai \textit{fathomed} sehingga tidak perlu dilakukannya proses \textit{branching} pada \textit{node} tersebut. Hal ini dikarenakan bahwa turunan dari \textit{node} tersebut tidak akan menghasilkan solusi yang lebih baik jika dibandingkan dengan solusi yang didapat pada \textit{node} tersebut. Solusi \textit{feasible} ini kemudian dibandingkan dengan \textit{incumbent} yang telah ditemukan sebelumnya. Apabila lebih baik, maka solusi ini menjadi \textit{incumbent} yang baru. Apabila node memiliki solusi yang bersifat \textit{infeasible}, maka akan dilakukan proses \textit{branching} dan kembali mengulang proses \textit{bounding} untuk setiap \textit{node} anaknya. Namun sebelum melakukan proses \textit{branching}, akan dilakukan pengecekan untuk memastikan bahwa turunan dari \textit{node} tersebut memiliki kemungkinan untuk menghasilkan solusi \textit{feasible}. Hal ini dilakukan dengan cara memeriksa setiap batasan. Pada setiap batasan, akan dihitung kemungkinan nilai terbesar pada ruas kiri dengan cara menjumlahkan total ruas kiri untuk variabel yang sudah bernilai dengan total ruas kiri terbesar untuk variabel yang belum bernilai. Nilai ruas kiri terbesar untuk variabel yang belum bernilai dapat dicari dengan menjumlahkan setiap variabel berkoefisien positif yang belum bernilai. Jika terdapat 1 atau lebih batasan di mana penjumlahan ruas kiri menghasilkan nilai yang lebih kecil daripada nilai di ruas kanan, maka \textit{node} tersebut dinyatakan sebagai \textit{fathomed} sehingga tidak perlu dilakukannya proses \textit{branching} pada \textit{node} tersebut. Hal ini dikarenakan oleh berapa pun nilai dari variabel yang belum bernilai, batasan tersebut akan tetap gagal untuk dipenuhi karena kemungkinan nilai terbesar pada ruas kiri lebih kecil daripada nilai pada ruas kanan.
 
-      // set objective function
-      solver.strSetObjFn("2 3 -2 3");
-
-      // solve the problem
-      solver.solve();
-
-      // print solution
-      System.out.println("Value of objective function: " 
-        + solver.getObjective());
-      double[] var = solver.getPtrVariables();
-      for (int i = 0; i < var.length; i++) {
-        System.out.println("Value of var[" + i + "] = " + var[i]);
-      }
-
-      // delete the problem and free memory
-      solver.deleteLp();
-    }
-    catch (LpSolveException e) {
-       e.printStackTrace();
-    }
-  }
-}
-\end{lstlisting}
+%\section{Kakas \textit{lp{\_}solve}}
+%Kakas \textit{lp{\_}solve} merupakan kakas perangkat lunak yang berguna untuk menyelesaikan masalah linear programming\footnote{http://lpsolve.sourceforge.net/5.5/}. Kakas ini dapat menerima masalah linear programming atau masalah integer programming. Kakas lp{\_}solve menggunakan metode \textit{branch and bound} untuk menyelesaikan masalah integer programming. Kakas ini dibangun dengan bahasa pemrograman ANSI C yang dapat dikompilasi dalam lingkungan Unix dan Windows. Untuk menggunakan kakas lp{\_}solve dalam lingkungan pemrograman Java, kakas lp{\_}solve menyediakan kakas penghubung dalam bahasa pemrograman Java sehingga aplikasi Java dapat menggunakan kakas lp{\_}solve. Berikut ini merupakan contoh penggunaan kakas lp{\_}solve dalam pemrograman Java:
+%\begin{lstlisting}[language=Java, caption=Demo.java]
+%import lpsolve.*;
+%
+%public class Demo {
+%
+%  public static void main(String[] args) {
+%    try {
+%      // Create a problem with 4 variables and 0 constraints
+%      LpSolve solver = LpSolve.makeLp(0, 4);
+%
+%      // add constraints
+%      solver.strAddConstraint("3 2 2 1", LpSolve.LE, 4);
+%      solver.strAddConstraint("0 4 3 1", LpSolve.GE, 3);
+%
+%      // set objective function
+%      solver.strSetObjFn("2 3 -2 3");
+%
+%      // solve the problem
+%      solver.solve();
+%
+%      // print solution
+%      System.out.println("Value of objective function: " 
+%        + solver.getObjective());
+%      double[] var = solver.getPtrVariables();
+%      for (int i = 0; i < var.length; i++) {
+%        System.out.println("Value of var[" + i + "] = " + var[i]);
+%      }
+%
+%      // delete the problem and free memory
+%      solver.deleteLp();
+%    }
+%    catch (LpSolveException e) {
+%       e.printStackTrace();
+%    }
+%  }
+%}
+%\end{lstlisting}
