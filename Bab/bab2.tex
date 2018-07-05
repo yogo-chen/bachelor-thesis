@@ -682,6 +682,7 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel \textit{simplex} awal
 %\end{enumerate}
 
 \section{\textit{Binary Integer Programming}}
+\label{sec:bip}
 \textit{Binary integer programming} adalah lanjutan dari linear programming di mana setiap variabel keputusan pada solusi optimal harus bernilai 0 atau 1. Bentuk umum masalah \textit{binary integer programming} adalah seperti berikut:
 
 \begin{equation}
@@ -761,3 +762,95 @@ Setiap node menunjukkan solusi yang belum tentu bersifat \textit{feasible} sehin
 %  }
 %}
 %\end{lstlisting}
+
+\section{Penelitian Terkait}
+Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas penelitian ini adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan diasumsikan berbentuk persegi panjang.
+
+Daerah cakupan kamera berbentuk segitiga seperti pada gambar~\ref{fig:fieldofviewhorster}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{fieldofviewhorster}
+	\caption[Pemodelan daerah cakupan kamera]{Pemodelan daerah cakupan kamera}
+	\label{fig:fieldofviewhorster}
+\end{figure}
+Kamera ditempatkan pada posisi \(c_x,x_y\) dan menghadap ke arah \(\varphi\). Untuk mendapatkan daerah cakupan kamera, mulanya kamera ditranslasi ke titik \textit{origin} pada sistem koordinat:
+\begin{equation}
+	x'=x-c_x
+\end{equation}
+\begin{equation}
+	y'=y-c_y
+\end{equation}
+Selanjutnya, daerah cakupan diputar sehingga sumbu pandang menjadi paralel terhadap sumbu x:
+\begin{equation}
+	x''=\cos(\varphi)\cdot x'+\sin(\varphi)\cdot y'
+\end{equation}
+\begin{equation}
+	y''=-\sin(\varphi)\cdot x'+\cos(\varphi)\cdot y'
+\end{equation}
+Daerah cakupan kamera dapat ditentukan dengan garis \(l_1,l_2,l_3\):
+\begin{equation}
+	l_1:x''\leq d
+\end{equation}
+\begin{equation}
+	l_2:y''\leq \frac{a}{2d}\cdot x''
+\end{equation}
+\begin{equation}
+	l_3:y''\geq-\frac{a}{2d}\cdot x''
+\end{equation}
+Dengan subtitusi, didapatkan daerah cakupan kamera berdasarkan tiga persamaan berikut ini:
+\begin{equation}
+	\cos(\varphi)\cdot(x-c_x)+\sin(\varphi)\cdot(y-c_y)'\leq d
+	\label{eq:l1}
+\end{equation}
+\begin{equation}
+	-\sin(\varphi)\cdot(x-c_x)+\cos(\varphi)\cdot(y-c_y)\leq \frac{a}{2d}\cdot (\cos(\varphi)\cdot(x-c_x)+\sin(\varphi)\cdot(y-c_y))	\label{eq:l2}
+\end{equation}
+\begin{equation}
+	-\sin(\varphi)\cdot(x-c_x)+\cos(\varphi)\cdot(y-c_y)\geq- \frac{a}{2d}\cdot (\cos(\varphi)\cdot(x-c_x)+\sin(\varphi)\cdot(y-c_y))
+	\label{eq:l3}
+\end{equation}
+
+Ruangan dimodelkan dengan membentuk \textit{grid points} 2 dimensi dengan jarak antar titik sebesar \(f_a\). Kamera hanya dapat diletakkan pada titik dalam \textit{grid point} dan cakupan kamera hanya periksa terhadap titik dalam \textit{grid point}. Ruangan berbentuk persegi panjang terdiri dari ukuran lebar \(w\) dan tinggi \(h\) tanpa penghalang apapun di dalamnya.
+
+Titik penempatan kamera dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) sesuai dengan dimensi \(x-\) dan \(y-\) pada \textit{grid point}. Selain itu, terdapat himpunan \(s_\varphi\) yang menyatakan arah pandang yang memungkinkan bagi setiap kamera. Kamera yang ditempatkan pada (\(c_x,c_y\)) dengan arah pandang \(\varphi\) dapat mencakup \textit{grid point} (\(x,y\)) jika dan hanya jika persamaan~\ref{eq:l1},~\ref{eq:l2}, dan~\ref{eq:l3} terpenuhi.
+
+Masalah dimodelkan ke dalam bentuk \textit{linear programming} dengan tujuan mendapatkan jumlah kamera minimum berdasarkan \textit{grid point} dan model kamera yang diberikan dengan tetap memastikan bahwa setiap titik pada \textit{grid point} tercakup oleh setidaknya satu kamera. Variabel biner \(x_{ij\varphi}\) didefinisikan sebagai berikut:
+\begin{equation}
+	x_{ij\varphi}=\left\{
+		\begin{array}{cl}
+			1 & \text{jika kamera yang ditempatkan pada \textit{grid point} }(i,j)\\\\
+			0 & \text{jika sebaliknya}
+		\end{array}
+	\right.
+\end{equation}
+Total kamera \(N\) didapatkan dengan:
+\begin{equation}
+	N=\sum_{\varphi=0}^{s_\varphi-1}\sum_{i=0}^{s_i-1}\sum_{j=0}^{s_j-1}x_{ij\varphi}
+\end{equation}
+Untuk menentukan ketercakupan titik, dibentuk fungsi biner \(c(i1,j1,\varphi1,i2,j2)\):
+\begin{equation}
+	c(i1,j1,\varphi1,i2,j2)=\left \{
+		\begin{array}{cl}
+			1 & \text{jika kamera yang ditempatkan pada \textit{grid point} }(i1,j1)\\
+			 & \text{dengan arah pandang }\varphi{1}\text{ dapat mencakup \textit{grid point} }(i2,j2)\\\\
+			 0 & \text{jika sebaliknya}
+		\end{array}
+	\right.
+\end{equation}
+Dengan demikian masalah dapat diformulasikan ke dalam bentuk \textit{linear programming} sebagai berikut:
+\begin{equation}
+	\begin{split}
+		\textit{min } & \sum_{\varphi=0}^{s_\varphi-1}\sum_{i=0}^{s_i-1}\sum_{j=0}^{s_j-1}x_{ij\varphi}\\
+		\textit{s.t. } & \sum_{\varphi{1}=0}^{s_\varphi-1}\sum_{i1=0}^{s_i-1}\sum_{j1=0}^{s_j-1}x_{i1,j1,\varphi{1}}\cdot c(i1,j1,\varphi1,i2,j2)\geq 1\\
+		&0\leq i2\leq(s_x-1), 0\leq j2\leq(s_y-1)
+	\end{split}
+	\label{eq:lpformhorster}
+\end{equation}
+Batasan pada~\ref{eq:lpformhorster} memastikan bahwa setiap titik pada \textit{grid point} akan dicakup oleh setidaknya 1 kamera. Untuk memastikan bahwa hanya terdapat maksimal 1 kamera yang dapat ditempatkan pada setiap titik, maka dapat ditambahkan batasan berikut ini:
+\begin{equation}
+	\begin{split}
+		\sum_{\varphi=0}^{s_\varphi-1}x_{ij\varphi}&\leq 1\\
+		0\leq i\leq(s_x-1), 0&\leq j\leq(s_y-1)
+	\end{split}
+\end{equation}
+Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\cdot s_y\cdot s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah \textit{linear programming} ini dapat diselesaikan menggunakan teknik \textit{binary integer programming}~\ref{sec:bip}.
