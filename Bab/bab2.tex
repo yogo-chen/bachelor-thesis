@@ -3,6 +3,7 @@
 \label{chap:teori}
 
 \section{\textit{Linear Programming}}
+\label{lp}
 
 \textit{Linear programming} adalah sarana untuk menyelesaikan masalah optimasi~\cite{winston2004operations}. Optimasi merupakan usaha untuk memilih solusi terbaik dari suatu kumpulan solusi yang ada. Setiap masalah optimasi perlu diubah terlebih dahulu ke dalam bentuk masalah \textit{linear programming} agar dapat diselesaikan menggunakan \textit{linear programming}. Pada bagian ini, akan dibahas karakteristik dan cara menyelesaikan masalah \textit{linear programming}.
 
@@ -403,7 +404,7 @@ Kolom \textit{right hand side} (\textit{rhs}) menunjukkan nilai pada ruas kanan 
 Langkah selanjutnya adalah memeriksa apakah \textit{bfs} sudah optimal. Pada langkah ini akan diperiksa apakah terdapat variabel negatif (untuk kasus maksimasi) pada baris 0 di setiap kolom variabel. Pada tabel~\ref{tab:tabel_simplex_0}, masih terdapat variabel negatif, yaitu pada variabel \(x_1, x_2, \text{ dan } x_3\).
 Hal ini menunjukkan bahwa \textit{bfs} saat ini masih belum optimal.
 
-Apabila \textit{bfs} pada saat ini masih belum optimal, maka perlu dilakukan proses \textit{pivotting}. Proses \textit{pivotting} adalah proses penukaran variabel basis dengan variabel non-basis. Variabel yang akan menjadi variabel basis disebut dengan \textit{entering variable} dan variabel basis yang akan digantikan disebut dengan \textit{leaving variable}. \textit{Entering variable} dipilih dengan cara memilih variabel yang bernilai paling negatif pada baris 0. Untuk mencari \textit{leaving variable} perlu dilakukan tes rasio. Tes rasio membandingkan nilai pada nilai \textit{rhs} dengan nilai pada kolom \textit{entering variable}. Tes rasio hanya perlu dilakukan pada baris yang variable pada kolom \textit{entering variable} bernilai lebih besar dari 0. \textit{Leaving variable} dipilih dengan cara memilih variabel pada baris yang menghasilkan rasio terkecil. Perpotongan antara kolom \textit{entering variable} dengan baris \textit{leaving variable}.merupakan suatu elemen yang disebut \textit{pivot element}.
+Apabila \textit{bfs} pada saat ini masih belum optimal, maka perlu dilakukan proses \textit{pivotting}. Proses \textit{pivotting} adalah proses penukaran variabel basis dengan variabel non-basis. Variabel yang akan menjadi variabel basis disebut dengan \textit{entering variable} dan variabel basis yang akan digantikan disebut dengan \textit{leaving variable}. \textit{Entering variable} dipilih dengan cara memilih variabel yang bernilai paling negatif pada baris 0. Untuk mencari \textit{leaving variable} perlu dilakukan tes rasio. Tes rasio membandingkan nilai pada nilai \textit{rhs} dengan nilai pada kolom \textit{entering variable}. Tes rasio hanya perlu dilakukan pada baris yang variable pada kolom \textit{entering variable} bernilai lebih besar dari 0. \textit{Leaving variable} dipilih dengan cara memilih variabel pada baris yang menghasilkan rasio terkecil. Perpotongan antara kolom \textit{entering variable} dengan baris \textit{leaving variable} merupakan suatu elemen yang disebut \textit{pivot element}.
 
 Dalam contoh masalah, \textit{bfs} pada saat ini masih belum optimal, sehingga perlu dilakukan proses \textit{pivotting}. Variabel \(x_1\) akan menjadi \textit{entering variable} karena bernilai paling negatif pada baris 0. Setelah dilakukan tes rasio sesuai, variabel \(s_3\) menjadi \textit{leaving variable} karena memiliki hasil tes rasio terkecil. Tes rasio untuk \textit{bfs} baru pada contoh masalah dapat dilihat pada tabel~\ref{tab:tabel_pivotting_1}.
 
@@ -444,7 +445,7 @@ Dalam contoh masalah, telah ditentukan \textit{entering variable} dan \textit{le
 	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 0, maka baris 0' baru dapat dibentuk dari baris 3' baru yang dikalikan 60 dan ditambahkan dengan baris 0 lama.\\
 
 	\begin{equation*}
-		60R_3 + R_0 \rightarrow R_0'
+		60R_3' + R_0 \rightarrow R_0'
 	\end{equation*}
 
 	sehingga baris 0' baru menjadi
@@ -456,7 +457,7 @@ Dalam contoh masalah, telah ditentukan \textit{entering variable} dan \textit{le
 	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 1, maka baris 1' baru dapat dibentuk dari baris 3' baru yang dikalikan -8 dan ditambahkan dengan baris 1 lama.\\
 
 	\begin{equation*}
-		-8R_3 + R_1 \rightarrow R_1'
+		-8R_3' + R_1 \rightarrow R_1'
 	\end{equation*}
 
 	sehingga baris 1' baru menjadi
@@ -468,7 +469,7 @@ Dalam contoh masalah, telah ditentukan \textit{entering variable} dan \textit{le
 	\item Untuk mendapatkan variabel \(x_1\) bernilai 0 pada baris 2, maka baris 2' baru dapat dibentuk dari baris 3' baru yang dikalikan -4 dan ditambahkan dengan baris 2 lama.\\
 
 	\begin{equation*}
-		-4R_2 + R_2 \rightarrow R_2'
+		-4R_3' + R_2 \rightarrow R_2'
 	\end{equation*}
 
 	sehingga baris 2' baru menjadi
@@ -683,7 +684,7 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel \textit{simplex} awal
 
 \section{\textit{Binary Integer Programming}}
 \label{sec:bip}
-\textit{Binary integer programming} adalah lanjutan dari linear programming di mana setiap variabel keputusan pada solusi optimal harus bernilai 0 atau 1. Bentuk umum masalah \textit{binary integer programming} adalah seperti berikut:
+\textit{Binary integer programming} adalah lanjutan dari \textit{linear programming}~(\ref{lp}) di mana setiap variabel keputusan pada solusi optimal harus bernilai 0 atau 1. Bentuk umum masalah \textit{binary integer programming} adalah seperti berikut:
 
 \begin{equation}
 \begin{array}{r l}
@@ -693,11 +694,11 @@ Tabel~\ref{tab:tabel_simplex_minimasi_0} menunjukkan tabel \textit{simplex} awal
 \end{array}    
 \end{equation}
 
-Terdapat sebuah algoritma yang diciptakan oleh Egon Balas~\cite{balas1965additive} bernama \textit{Balas's additive} yang digunakan untuk menyelesaikan masalah \textit{binary integer programming}. Algoritma \textit{Balas's additive} akan dibahas lebih lanjut pada~\ref{balas_additive}.
+Terdapat sebuah algoritma yang diciptakan oleh Egon Balas~\cite{balas1965additive} bernama \textit{Balas's additive} yang digunakan untuk menyelesaikan masalah \textit{binary integer programming}. Algoritma \textit{Balas's additive} dibahas lebih lanjut pada~\ref{balas_additive}.
 
 \subsection{Algoritma \textit{Balas's Additive}}
 \label{balas_additive}
-Setiap masalah \textit{binary integer programming} memiliki kemungkinan solusi berjumlah \(2^n\) karena setiap variabel hanya dapat bernilai 0 atau 1 saja. Apabila menggunakan algoritma \textit{Balas's additive}, maka solusi optimal dari masalah \textit{binary integer programming} pada umumnya (\textit{average case}) dapat ditemukan tanpa perlu memeriksa seluruh \(2^n\) kemungkinan. Dengan demikian, algoritma \textit{Balas's additive} dapat digunakan untuk menemukan solusi optimal bagi masalah \textit{binary integer programming} secara efisien.
+Setiap masalah \textit{binary integer programming} memiliki kemungkinan solusi berjumlah \(2^n\) karena setiap variabel hanya dapat bernilai 0 atau 1 saja. Apabila menggunakan algoritma \textit{Balas's additive}, maka solusi optimal dari masalah \textit{binary integer programming} dapat ditemukan tanpa perlu memeriksa seluruh \(2^n\) kemungkinan. Dengan demikian, algoritma \textit{Balas's additive} dapat digunakan untuk menemukan solusi optimal bagi masalah \textit{binary integer programming} secara efisien.
 
 Untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}, maka masalah perlu diubah terlebih dahulu berdasarkan ketentuan-ketentuan berikut ini:
 
@@ -709,11 +710,11 @@ Untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algo
 	\item Setiap variabel pada fungsi tujuan diurutkan menaik berdasarkan koefisiennya sehingga \(0\leq c_1 \leq c_2 \leq \dots \leq c_n\).
 \end{itemize}
 
-Pengurutan variabel secara menaik berdasarkan koefisiennya bertujuan agar nilai \(z\) meningkat dengan nilai seminimum mungkin pada setiap iterasi. Mulanya algoritma \textit{Balas's additive} akan membuat seluruh variabel bernilai 0 agar mendapatkan nilai \(z\) yang paling minimum. Apabila solusi bersifat \textit{infeasible}, maka algoritma akan memilih variabel dengan indeks yang terdekat dengan 1 untuk bernilai 1. Hal ini akan menyebabkan nilai \(z\) meningkat dengan nilai terkecil karena variabel telah terurut menaik berdasarkan koefisiennya.
+Pengurutan variabel secara menaik berdasarkan koefisiennya bertujuan agar nilai \(z\) meningkat seminimum mungkin pada setiap iterasinya. Mulanya algoritma \textit{Balas's additive} akan membuat seluruh variabel bernilai 0 agar mendapatkan nilai \(z\) yang paling minimum. Apabila solusi bersifat \textit{infeasible}, maka algoritma secara beriterasi akan membuat variabel-variabel terdekat dengan indeks 1 untuk bernilai 1. Dengan demikian, nilai \(z\) akan meningkat dengan nilai seminimum mungkin pada setiap iterasinya karena variabel telah terurut menaik berdasarkan koefisiennya.
 
-Algoritma \textit{Balas's additive} menggunakan paradigma algoritma \textit{branch and bound}~\cite{narendra1977branch} untuk mendapatkan solusi optimal dari seluruh kemungkinan solusi yang ada. \textit{Branch and bound} merupakan algoritma yang dapat mencari solusi terbaik dari suatu himpunan solusi tanpa melibatkan \textit{exhaustive search}. \textit{Branch and bound} bekerja dengan cara dengan membagi himpunan solusi menjadi beberapa subhimpunan secara rekursi hingga mendapatkan solusi terbaik. Pembagian ini hanya dilakukan pada setiap subhimpunan yang dapat menghasilkan solusi terbaik. \textit{Branch and bound} menggunakan struktur data \textit{tree} di mana \textit{root} menunjukkan himpunan keseluruhan solusi dan cabang menunjukkan subhimpunannya. Terdapat 2 proses utama dalam \textit{branch and bound}, yaitu \textit{branching} dan \textit{bounding}. \textit{Branching} berfungsi untuk membagi himpunan solusi menjadi beberapa subhimpunan yang lebih kecil. \textit{Bounding} berfungsi untuk menetapkan nilai \textit{bound} bagi suatu subhimpunan. Nilai \textit{bound} merupakan nilai pembanding dalam menentukan subhimpunan mana yang akan dibagi.
+Algoritma \textit{Balas's additive} menggunakan paradigma algoritma \textit{branch and bound}~\cite{narendra1977branch} untuk mendapatkan solusi optimal dari seluruh kemungkinan solusi yang ada. \textit{Branch and bound} merupakan algoritma yang dapat mencari solusi terbaik dari suatu himpunan solusi tanpa melibatkan \textit{exhaustive search}. \textit{Branch and bound} bekerja dengan cara membagi dan memeriksa subhimpunan solusi secara rekusi hingga mendapatkan subhimpunan yang memiliki solusi yang paling baik. Setiap subhimpunan memiliki nilai \textit{bound} yang menyatakan kualitas dari solusi yang dimiliki oleh masing-masing subhimpunan. Nilai \textit{bound} ini menjadi pembanding sebelum melakukan pembagian subhimpunan. Apabila nilai \textit{bound} suatu subhimpunan lebih buruk daripada solusi yang telah ditemukan sebelumnya, maka pembagian subhimpunan tidak dilakukan karena telah dipastikan bahwa subhimpunannya tidak akan dapat menghasilkan solusi yang lebih baik. \textit{Branch and bound} menggunakan struktur data \textit{tree} di mana \textit{root} menunjukkan himpunan keseluruhan solusi dan cabang menunjukkan subhimpunannya. Terdapat 2 proses utama dalam \textit{branch and bound}, yaitu \textit{branching} dan \textit{bounding}. \textit{Branching} berfungsi untuk membagi himpunan solusi menjadi beberapa subhimpunan yang lebih kecil. \textit{Bounding} berfungsi untuk menetapkan nilai \textit{bound} dari suatu subhimpunan.
 
-\textit{Branch and bound} pada algoritma \textit{Balas's additive} dilakukan dengan menggunakan struktur data \textit{binary tree} karena setiap percabangan menghasilkan 2 \textit{node} di mana salah satu node menunjukkan variabel bernilai 0 dan node lainnya menunjukkan variabel bernilai 1. Setiap tingkat kedalaman pada \textit{binary tree} mengacu pada setiap variabel sesuai dengan urutan yang telah dilakukan sebelumnya. \textit{Branching} terhadap suatu \textit{node} akan menghasilkan 2 \textit{node} baru, yaitu \textit{node} \(x_N=0\) dan \textit{node} \(x_N=1\) di mana \(x_N\) merupakan variabel \(x\) \textit{now} (\(x\) yang diacu oleh \textit{node} pada saat ini) bukan variabel \(x_n\) (\(x\) terakhir dalam kumpulan \(x\)). \textit{Bounding} pada algoritma \textit{Balas's additive} dibedakan menjadi 2 berdasarkan nilai \(x_N\), yaitu:
+\textit{Branch and bound} pada algoritma \textit{Balas's additive} menggunakan struktur data \textit{binary tree} karena setiap percabangan menghasilkan 2 \textit{node} di mana salah satu node menunjukkan variabel bernilai 0 dan node lainnya menunjukkan variabel bernilai 1. Setiap \textit{node} menunjukkan nilai dari variabel yang ditujunya sesuai dengan tingkat kedalaman \textit{node} pada pohon biner. \textit{Branching} terhadap suatu \textit{node} akan menghasilkan 2 \textit{node} baru, yaitu \textit{node} \(x_N=0\) dan \textit{node} \(x_N=1\) di mana \(x_N\) merupakan variabel \(x\) yang diacu oleh \textit{node} pada saat ini yang berbeda dengan variabel terakhir (\(x_n\)) dalam kumpulan \(x\). \textit{Bounding} pada algoritma \textit{Balas's additive} dibedakan menjadi 2 berdasarkan nilai \(x_N\), yaitu:
 
 \begin{itemize}
 	\item Apabila \(x_N = 1\), maka algoritma berasumsi bahwa \textit{node} pada saat ini dapat menghasilkan solusi \textit{feasible} sehingga nilai \textit{bound} untuk \textit{node} ini adalah \(\sum_{j=1}^{N} c_j x_j\). Karena variabel telah diurutkan sebelumnya, maka nilai \textit{bound} ini dipastikan menjadi yang paling rendah untuk saat ini.
@@ -721,7 +722,7 @@ Algoritma \textit{Balas's additive} menggunakan paradigma algoritma \textit{bran
 	\item Apabila \(x_N = 0\), maka nilai \textit{bound} dari \textit{node} ini adalah \(\sum_{j=1}^{N} c_j x_j + c_{N+1}\). \textit{Node} ini terbentuk karena \textit{node} sebelumnya memiliki solusi yang bersifat \textit{infeasible}. Hal tersebut disebabkan oleh adanya batasan \(\geq\) yang tidak terpenuhi karena total ruas kiri yang lebih kecil daripada ruas kanan. Apabila variabel saat ini bernilai 0, maka batasan tersebut tetap tidak akan terpenuhi sehingga setidaknya harus terdapat 1 variabel lainnya yang bernilai 1, yaitu \(x_{N+1}\). Variabel tersebut dipilih untuk memastikan bahwa nilai \textit{bound} pada saat ini merupakan yang paling rendah.
 \end{itemize}
 
-Setiap node menunjukkan solusi yang belum tentu bersifat \textit{feasible} sehingga perlu dilakukannya pengecekan. Untuk menentukan apakah solusi bersifat \textit{feasible}, maka akan diasumsikan bahwa variabel setelah \(x_N\) (saat \(x_N=1\)) atau \(x_{N+1}\) (saat \(x_N=0\)) bernilai 0. Selanjutnya, solusi ini akan diuji terhadap setiap batasan. Apabila tidak terdapat batasan yang dilanggar, maka solusi bersifat \textit{feasible} dan \textit{node} dinyatakan \textit{fathomed} sehingga tidak perlu dilakukan \textit{branching}. \textit{Branching} tidak perlu dilakukan karena turunannya tidak akan menghasilkan solusi yang lebih baik. Hal ini telah dipastikan ketika melakukan proses \textit{bounding}. Solusi \textit{feasible} ini kemudian dibandingkan dengan \textit{incumbent} yang telah ditemukan sebelumnya. Apabila lebih baik, maka solusi ini menjadi \textit{incumbent} yang baru. Apabila \textit{node} memiliki solusi yang bersifat \textit{infeasible}, maka akan dilakukan \textit{branching}. Namun sebelum melakukan \textit{branching}, akan dilakukan pengecekan untuk mengetahui apakah turunan dari \textit{node} dapat menghasilkan solusi \textit{feasible}. Pengecekan dilakukan dengan memastikan bahwa setiap batasan memiliki kemungkinan untuk dipenuhi, yaitu dengan memastikan bahwa ruas kiri dengan kemungkinan variabel tersisanya dapat menghasilkan total yang tidak lebih kecil daripada ruas kanan. Total ruas kiri terbesar dapat dicari dengan menjumlahkan ruas kiri untuk variabel hingga saat ini dengan total nilai koefisien positif untuk variabel tersisa. Apabila terdapat 1 atau lebih batasan di mana total ruas kiri lebih kecil daripada nilai ruas kanan, maka \textit{node} tersebut dinyatakan \textit{fathomed} sehingga tidak perlu dilakukan \textit{branching}. \textit{Branching} tidak perlu dilakukan karena batasan tidak dapat dipenuhi dengan berapa pun nilai dari variabel tersisa. Apabila setiap batasan memiliki kemungkinan untuk dipenuhi, maka akan dilakukan \textit{branching} pada \textit{node} tersebut.
+Setiap \textit{node} menunjukkan solusi yang belum tentu bersifat \textit{feasible} sehingga perlu dilakukannya pengecekan. Untuk menentukan apakah solusi bersifat \textit{feasible}, maka akan diasumsikan bahwa variabel setelah \(x_N\) (saat \(x_N=1\)) atau \(x_{N+1}\) (saat \(x_N=0\)) bernilai 0. Selanjutnya, solusi ini akan diuji terhadap setiap batasan. Apabila tidak terdapat batasan yang dilanggar, maka solusi bersifat \textit{feasible} dan \textit{node} dinyatakan \textit{fathomed} sehingga tidak perlu dilakukan \textit{branching}. \textit{Branching} tidak perlu dilakukan karena turunannya tidak akan menghasilkan solusi yang lebih baik. Hal ini telah dipastikan ketika melakukan proses \textit{bounding}. Solusi \textit{feasible} ini kemudian dibandingkan dengan \textit{incumbent} yang telah ditemukan sebelumnya. Apabila lebih baik, maka solusi ini menjadi \textit{incumbent} yang baru. Apabila \textit{node} memiliki solusi yang bersifat \textit{infeasible}, maka akan dilakukan \textit{branching}. Namun sebelum melakukan \textit{branching}, akan dilakukan pengecekan untuk mengetahui apakah turunan dari \textit{node} dapat menghasilkan solusi \textit{feasible}. Pengecekan dilakukan dengan memastikan bahwa setiap batasan memiliki kemungkinan untuk dipenuhi, yaitu dengan memastikan bahwa ruas kiri dapat menghasilkan total yang tidak lebih kecil daripada ruas kanan. Total ruas kiri terbesar dapat dicari dengan menjumlahkan ruas kiri untuk variabel yang telah didapatkan hingga saat ini dengan total penjumlahan nilai koefisien positif pada variabel tersisa. Apabila terdapat 1 atau lebih batasan di mana total ruas kiri terbesar bernilai lebih kecil dibandingkan dengan nilai ruas kanan, maka \textit{node} tersebut dinyatakan \textit{fathomed} sehingga tidak perlu dilakukan \textit{branching}. \textit{Branching} tidak perlu dilakukan karena batasan tersebut tidak akan dapat dipenuhi dengan berapa pun nilai dari variabel yang tersisa. Sebaliknya, apabila setiap batasan memiliki kemungkinan untuk dipenuhi, maka \textit{branching} akan dilakukan pada \textit{node} tersebut dan seluruh proses sebelumnya akan kembali dilakukan.
 
 %\section{Kakas \textit{lp{\_}solve}}
 %Kakas \textit{lp{\_}solve} merupakan kakas perangkat lunak yang berguna untuk menyelesaikan masalah linear programming\footnote{http://lpsolve.sourceforge.net/5.5/}. Kakas ini dapat menerima masalah linear programming atau masalah integer programming. Kakas lp{\_}solve menggunakan metode \textit{branch and bound} untuk menyelesaikan masalah integer programming. Kakas ini dibangun dengan bahasa pemrograman ANSI C yang dapat dikompilasi dalam lingkungan Unix dan Windows. Untuk menggunakan kakas lp{\_}solve dalam lingkungan pemrograman Java, kakas lp{\_}solve menyediakan kakas penghubung dalam bahasa pemrograman Java sehingga aplikasi Java dapat menggunakan kakas lp{\_}solve. Berikut ini merupakan contoh penggunaan kakas lp{\_}solve dalam pemrograman Java:
@@ -764,16 +765,15 @@ Setiap node menunjukkan solusi yang belum tentu bersifat \textit{feasible} sehin
 %\end{lstlisting}
 
 \section{Penelitian Terkait}
-Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas penelitian ini adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan diasumsikan berbentuk persegi panjang.
+Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas pada penelitian mereka adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan juga diasumsikan berbentuk persegi panjang.
 
-Daerah cakupan kamera berbentuk segitiga seperti pada gambar~\ref{fig:fieldofviewhorster}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{fieldofviewhorster}
 	\caption[Pemodelan daerah cakupan kamera]{Pemodelan daerah cakupan kamera}
 	\label{fig:fieldofviewhorster}
 \end{figure}
-Kamera ditempatkan pada posisi \(c_x,x_y\) dan menghadap ke arah \(\varphi\). Untuk mendapatkan daerah cakupan kamera, mulanya kamera ditranslasi ke titik \textit{origin} pada sistem koordinat:
+Pada penelitian ini, daerah cakupan kamera dimodelkan dalam bentuk segitiga seperti pada gambar~\ref{fig:fieldofviewhorster}. Kamera ditempatkan pada posisi \(c_x,x_y\) dan menghadap ke arah \(\varphi\). Untuk mendapatkan daerah cakupan kamera, mulanya kamera ditranslasi ke titik \textit{origin} pada sistem koordinat:
 \begin{equation}
 	x'=x-c_x
 \end{equation}
@@ -810,15 +810,15 @@ Dengan subtitusi, didapatkan daerah cakupan kamera berdasarkan tiga persamaan be
 	\label{eq:l3}
 \end{equation}
 
-Ruangan dimodelkan dengan membentuk \textit{grid points} 2 dimensi dengan jarak antar titik sebesar \(f_a\). Kamera hanya dapat diletakkan pada titik dalam \textit{grid point} dan cakupan kamera hanya periksa terhadap titik dalam \textit{grid point}. Ruangan berbentuk persegi panjang terdiri dari ukuran lebar \(w\) dan tinggi \(h\) tanpa penghalang apapun di dalamnya.
+Ruangan dimodelkan menggunakan \textit{grid points} 2 dimensi dengan jarak antar titik sebesar \(f_a\). Kamera hanya dapat diletakkan pada titik dalam \textit{grid point} dan cakupan kamera hanya diperiksa terhadap titik dalam \textit{grid point}. Ruangan berbentuk persegi panjang yang terdiri dari ukuran lebar \(w\) dan tinggi \(h\) tanpa penghalang apapun di dalamnya.
 
-Titik penempatan kamera dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) sesuai dengan dimensi \(x-\) dan \(y-\) pada \textit{grid point}. Selain itu, terdapat himpunan \(s_\varphi\) yang menyatakan arah pandang yang memungkinkan bagi setiap kamera. Kamera yang ditempatkan pada (\(c_x,c_y\)) dengan arah pandang \(\varphi\) dapat mencakup \textit{grid point} (\(x,y\)) jika dan hanya jika persamaan~\ref{eq:l1},~\ref{eq:l2}, dan~\ref{eq:l3} terpenuhi.
+Titik penempatan kamera dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) sesuai dengan dimensi \(x-\) dan \(y-\) pada \textit{grid point}. Selain itu, terdapat himpunan \(s_\varphi\) yang menyatakan arah pandang yang memungkinkan bagi setiap kamera. Kamera yang ditempatkan pada (\(c_x,c_y\)) dengan arah pandang \(\varphi\) dapat mencakup \textit{grid point} (\(x,y\)) jika dan hanya jika persamaan~\ref{eq:l1},~\ref{eq:l2}, dan~\ref{eq:l3} dapat dipenuhi.
 
 Masalah dimodelkan ke dalam bentuk \textit{linear programming} dengan tujuan mendapatkan jumlah kamera minimum berdasarkan \textit{grid point} dan model kamera yang diberikan dengan tetap memastikan bahwa setiap titik pada \textit{grid point} tercakup oleh setidaknya satu kamera. Variabel biner \(x_{ij\varphi}\) didefinisikan sebagai berikut:
 \begin{equation}
 	x_{ij\varphi}=\left\{
 		\begin{array}{cl}
-			1 & \text{jika kamera yang ditempatkan pada \textit{grid point} }(i,j)\\\\
+			1 & \text{jika kamera ditempatkan pada \textit{grid point} }(i,j)\\\\
 			0 & \text{jika sebaliknya}
 		\end{array}
 	\right.
@@ -837,7 +837,7 @@ Untuk menentukan ketercakupan titik, dibentuk fungsi biner \(c(i1,j1,\varphi1,i2
 		\end{array}
 	\right.
 \end{equation}
-Dengan demikian masalah dapat diformulasikan ke dalam bentuk \textit{linear programming} sebagai berikut:
+Dengan demikian masalah dapat diformulasikan ke dalam bentuk \textit{linear programming} menjadi seperti berikut:
 \begin{equation}
 	\begin{split}
 		\textit{min } & \sum_{\varphi=0}^{s_\varphi-1}\sum_{i=0}^{s_i-1}\sum_{j=0}^{s_j-1}x_{ij\varphi}\\
@@ -853,4 +853,4 @@ Batasan pada~\ref{eq:lpformhorster} memastikan bahwa setiap titik pada \textit{g
 		0\leq i\leq(s_x-1), 0&\leq j\leq(s_y-1)
 	\end{split}
 \end{equation}
-Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\cdot s_y\cdot s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah \textit{linear programming} ini dapat diselesaikan menggunakan teknik \textit{binary integer programming}~\ref{sec:bip}.
+Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\times s_y\times s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah \textit{linear programming} merupakan masalah \textit{binary integer programming}~(\ref{sec:bip}) dan dapat diselesaikan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}).
