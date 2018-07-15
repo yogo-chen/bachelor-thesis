@@ -765,6 +765,7 @@ Setiap \textit{node} menunjukkan solusi yang belum tentu bersifat \textit{feasib
 %\end{lstlisting}
 
 \section{Penelitian Terkait}
+\label{penelitian_horster}
 Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas pada penelitian mereka adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan juga diasumsikan berbentuk persegi panjang.
 
 \begin{figure}[H]
@@ -853,4 +854,4 @@ Batasan pada~\ref{eq:lpformhorster} memastikan bahwa setiap titik pada \textit{g
 		0\leq i\leq(s_x-1), 0&\leq j\leq(s_y-1)
 	\end{split}
 \end{equation}
-Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\times s_y\times s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah \textit{linear programming} merupakan masalah \textit{binary integer programming}~(\ref{sec:bip}) dan dapat diselesaikan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}).
+Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\times s_y\times s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah ini termasuk ke dalam masalah \textit{binary integer programming}~(\ref{sec:bip}) yang dapat diselesaikan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}).
