@@ -2,7 +2,7 @@
 Pada bagian ini, masalah akan dianalisi lebih lanjut. Awalnya, masalah akan dimodelkan terlebih dahulu. Hasil dari pemodelan masalah akan digunakan untuk membentuk masalah \textit{linear program} yang akan diselesaikan menggunakan teknik \textit{linear programming}. Dengan menggunakan \textit{linear programming}, solusi optimal bagi masalah dapat ditemukan, yaitu solusi berupa kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Analisis kembali dilanjutkan hingga tahap kebutuhan dari perangkat lunak yang akan dibangun.
 
 \section{Pemodelan Masalah}
-Masalah yang dibahasa pada penelitian ini perlu dimodelkan terlebih dahulu agar menjadi lebih konkret. Pemodelan masalah terdiri dari pemodelan ruangan, kamera CCTV, dan cakupan kamera CCTV. Pemodelan yang dilakukan pada penelitian sebelumnya~(\ref{penelitian_horster}) akan diterapkan kembali pada penelitian ini dengan adanya modifikasi. Modifikasi dilakukan pada pemodelan ruangan dan pemodelan cakupan kamera CCTV. Sebelumnya, ruangan dimodelkan menggunakan \textit{grid point} sehingga suatu bagian daerah dalam ruangan dinyatakan dalam bentuk titik. Sedangkan pada penelitian ini, suatu bagian dalam ruangan dinyatakan dalam bentuk \textit{cell}. Modifikasi pemodelan ruangan turut disertai dengan modifikasi pemodelan daerah cakupan kamera CCTV. Sebelumnya, daerah cakupan kamera CCTV terdiri dari kumpulan titik. Namun, karena suatu daerah dalam ruangan dinyatakan dalam bentuk \textit{cell}, maka daerah cakupan kamera CCTV pada penelitian ini berubah sehingga terdiri dari kumpulan \textit{cell}.
+Masalah yang dibahas pada penelitian ini perlu dimodelkan terlebih dahulu agar menjadi konkret. Pemodelan masalah terdiri dari pemodelan ruangan, kamera CCTV, dan cakupan kamera CCTV. Pemodelan yang dilakukan pada penelitian sebelumnya~(\ref{penelitian_horster}) akan diterapkan kembali pada penelitian ini dengan adanya modifikasi. Modifikasi dilakukan pada pemodelan ruangan dan pemodelan cakupan kamera CCTV. Sebelumnya, ruangan dimodelkan menggunakan \textit{grid point} sehingga suatu bagian daerah dalam ruangan dinyatakan dalam bentuk titik. Sedangkan pada penelitian ini, suatu bagian dalam ruangan dinyatakan dalam bentuk \textit{cell}. Modifikasi pemodelan ruangan turut disertai dengan modifikasi pemodelan daerah cakupan kamera CCTV. Sebelumnya, cakupan kamera CCTV terdiri dari kumpulan titik. Namun, karena suatu daerah dalam ruangan dinyatakan dalam bentuk \textit{cell}, maka cakupan kamera CCTV pada penelitian ini berubah sehingga terdiri dari kumpulan \textit{cell}.
 
 %Masalah yang dibahas di skripsi ini perlu dirumuskan terlebih dahulu agar dapat diselesaikan. Masalah akan dipecah menjadi beberapa elemen sehingga fungsi dari setiap elemen dapat dipahami lebih mudah. Setiap elemen akan memiliki keterhubungan satu dengan yang lainnya sehingga apabila disatukan akan merepresentasikan masalah yang dibahas. Dengan merumuskan masalah, maka masalah dapat dimodelkan menjadi elemen-elemen yang dapat dipahami secara konkret baik bagi penulis maupun pembaca.
 
@@ -20,7 +20,7 @@ Bentuk ruangan pada masalah ini dibatasi sehingga berbentuk persegi panjang dala
 
 %Dengan diketahuinya spesifikasi ruangan, maka akan diketahui daerah yang harus dicakup oleh kamera-kamera CCTV. Kamera-kamera CCTV akan ditempatkan dengan sedemian rupa sehingga seluruh daerah dapat tercakup. Untuk menyatakan posisi penempatan kamera CCTV, pemodelan masalah juga menggunakan sistem koordinat kertesius sehingga posisi penempatan dapat dinyatakan dalam koordinat x dan y. Dengan demikian, posisi penempatan kamera CCTV dapat dipahami lebih mudah.
 
-Ruangan akan dipecah menjadi matriks \textit{cell} di mana masing-masing \textit{cell} menunjukkan bagian daerah terkecil dalam ruangan seperti pada gambar~\ref{fig:model_ruangan_cell}.
+Ruangan akan dipecah menjadi matriks \textit{cell} yang berukuran lebih kecil seperti pada gambar~\ref{fig:model_ruangan_cell}. Hal ini bertujuan agar daerah dalam ruangan dinyatakan dalam kumpulan daerah yang lebih kecil. Setiap bagian daerah yang lebih kecil tersebut disebut sebagai \textit{cell}. \textit{Cell} juga menyatakan bagian daerah terkecil yang tidak dapat dibagi lagi.
 
 \begin{figure}[h]
 	\centering  
@@ -29,8 +29,7 @@ Ruangan akan dipecah menjadi matriks \textit{cell} di mana masing-masing \textit
 	\label{fig:model_ruangan_cell}
 \end{figure}
 
-Ukuran \textit{cell} dapat ditentukan berdasarkan ukuran terbesar yang dapat dimiliki oleh \textit{cell}. Didefinisikan variabel sebagai berikut:
-
+Ukuran \textit{cell} dapat ditentukan berdasarkan ukuran daerah terkecil. Namun, apabila \textit{cell} diharuskan berbentuk persegi, maka terdapat kemungkinan di mana susunan \textit{cell} tidak dapat membentuk ukuran ruangan yang utuh. Untuk menyiasati hal tersebut, \textit{cell} dibuat dapat berbentuk persegi panjang dan ukurannya didapatkan berdasarkan suatu ukuran. Ukuran tersebut adalah ukuran terbesar \textit{cell} yang menyatakan ukuran terbesar yang dapat dimiliki \textit{cell} sehingga ukuran panjang dan lebarnya tidak melebihi ukuran ini. Terdapat perhitungan yang dilakukan untuk mendapatkan ukuran \textit{cell} berdasarkan ukuran terbesar cell. Didefinisikan variabel sebagai berikut:
 \begin{equation}
 	\begin{split}
 		l &: \text{panjang ruangan}\\
@@ -40,9 +39,7 @@ Ukuran \textit{cell} dapat ditentukan berdasarkan ukuran terbesar yang dapat dim
 		m &: \text{ukuran terbesar \textit{cell}}\\
 	\end{split}
 \end{equation}
-
-Selanjutnya akan dicari ukuran matriks yang menghasilkan ukuran \textit{cell} yang tidak melebihi ukuran terbesar \textit{cell}:
-
+Selanjutnya, akan dicari ukuran matriks berdasarkan ukuran ruangan dan ukuran terbesar \textit{cell}:
 \begin{equation}
 	\begin{split}
 		cols &: \text{jumlah kolom pada matriks \textit{cell}}\\
@@ -51,18 +48,17 @@ Selanjutnya akan dicari ukuran matriks yang menghasilkan ukuran \textit{cell} ya
 		rows &= \text{ceil}\left(\frac{w}{m}\right)\\
 	\end{split}
 \end{equation}
-
-Setelah mendapatkan ukuran matriks, ukuran ruangan akan dibagi berdasarkan ukuran matriks sehingga didapatkan ukuran \textit{cell} yang tidak melebihi ukuran terbesar \textit{cell}:
-
+Setelah mendapatkan ukuran matriks, ukuran ruangan akan dibagi berdasarkan ukuran matriks:
 \begin{equation}
 	\begin{split}
 		l_c &= \frac{l}{cols}\\
 		w_c &= \frac{w}{rows}\\
 	\end{split}
 \end{equation}
+Dengan demikian, didapatkan ukuran \textit{cell} berdasarkan ukuran terbesar \textit{cell}. Ukuran ini merupakan ukuran terbesar yang tidak melebihi ukuran terbesar \textit{cell}.
 
 \subsection{Kamera CCTV}
-Kamera CCTV yang digunakan dalam masalah ini berbentuk sebagian lingkaran dalam bidang 2 dimensi. Kamera CCTV memiliki beragam parameter spesifikasi. Namun pada masalah ini, hanya terdapat 2 parameter spesifikasi yang digunakan, yaitu jarak pandang dan besar sudut pandang seperti pada gambar~\ref{fig:model_kamera}. Kedua parameter ini menentukan daerah yang dicakup oleh kamera CCTV. Jarak pandang menggunakan satuan ukuran sentimeter (cm) dan besar sudut pandang menggunakan satuan ukuran derajat (\(^\circ\)).
+Kamera CCTV pada masalah ini dimodelkan dalam bentuk sebagian lingkaran pada bidang 2 dimensi. Kamera CCTV memiliki parameter spesifikasi yang beragam. Namun, pada masalah ini, hanya digunakan 2 parameter spesifikasi, yaitu jarak pandang dan besar sudut pandang seperti pada gambar~\ref{fig:model_kamera}. Kedua parameter ini menentukan daerah yang dapat dicakup oleh kamera CCTV. Jarak pandang dinyatakan dalam satuan ukuran sentimeter (cm) dan besar sudut pandang dinyatakan dalam satuan ukuran derajat (\(^\circ\)).
 
 %Kamera CCTV yang beredar di pasaran memiliki spesifikasi yang sangat beragam. Dalam skripsi ini, jenis kamera CCTV yang digunakan dibatasi sehingga tidak bervariasi, yaitu hanya menggunakan 1 jenis kamera CCTV saja. Kamera CCTV sendiri memiliki berbagai parameter seperti jarak pandang, lebar sudut pandang, tingkat resolusi, dan parameter-parameter lainnya. Dalam masalah ini, terdapat 2 parameter yang digunakan, yaitu jarak pandang efektif dan lebar sudut pandang. Jarak pandang efektif merupakan jarak pandang terjauh kamera CCTV untuk mengenali suatu objek yang akan dipantau. Jarak pandang efektif dinyatakan dalam ukuran bersatuan sentimeter(cm) dan lebar sudut pandang dinyatakan dalam ukuran derajat. Pemodelan kamera CCTV dapat dipahami lebih lanjut pada gambar~\ref{fig:model_kamera}.
 
@@ -75,7 +71,7 @@ Kamera CCTV yang digunakan dalam masalah ini berbentuk sebagian lingkaran dalam 
 	\label{fig:model_kamera}
 \end{figure}
 
-Penempatan kamera CCTV dalam ruangan dinyatakan dalam 2 parameter, yaitu posisi penempatan dan arah pandang seperti pada gambar~\ref{fig:model_penempatan_kamera}. Posisi penempatan kamera CCTV dinyatakan dalam koordinat pada sistem koordinat kartesius 2 dimensi (\(x,y\)). Arah pandang menunjukkan arah yang dituju kamera CCTV. Arah pandang kamera CCTV dinyatakan dalam besar sudut derajat (\(^\circ\)) antara arah yang dituju dengan garis \(0^\circ\).
+Penempatan kamera CCTV dalam ruangan terdiri dari 2 bagian, yaitu posisi penempatan dan sudut arah pandang seperti pada gambar~\ref{fig:model_penempatan_kamera}. Posisi penempatan kamera CCTV dinyatakan dalam titik koordinat kartesius 2 dimensi (\(x,y\)). Sudut arah pandang menunjukkan arah yang dituju kamera CCTV. Arah pandang kamera CCTV dinyatakan dalam jarak sudut derajat (\(^\circ\)) antara arah yang dituju dengan garis \(0^\circ\).
 
 %\subsection{Penempatan Kamera CCTV}
 %Setiap kamera CCTV dapat ditempatkan di mana saja selama berada di dalam ruangan. Penempatan kamera CCTV terdiri dari 2 komponen utama, yaitu posisi penempatan dan arah pandang. Posisi dan arah pandang akan mempengaruhi daerah cakupan kamera CCTV yang bersangkutan. Posisi penempatan dimodelkan dengan menggunakan sistem koordinat kartesius sehingga dapat dinyatakan dalam bentuk koordinat (x,y). Sumbu \(y\) pada sistem koordinat yang digunakan akan dibalik agar sesuai dengan lingkungan grafis pada layar komputer. Arah padang kamera CCTV dinyatakan sebagai besar sudut perpotongan antara garis tengah kamera CCTV dengan garis \(0^\circ\) yang dituliskan dalam satuan derajat. Dengan demikian, penempatan kamera CCTV terdiri atas posisi penempatan dan arah pandang yang dituju. Pemodelan penempatan kamera CCTV dapat dipahami lebih lanjut pada gambar~\ref{fig:model_penempatan_kamera}.
@@ -88,7 +84,7 @@ Penempatan kamera CCTV dalam ruangan dinyatakan dalam 2 parameter, yaitu posisi 
 \end{figure}
 
 \subsection{Cakupan Kamera CCTV}
-Dengan pemecahan ruangan ke dalam matriks \textit{cell}, maka cakupan kamera CCTV dinyatakan dalam bentuk kumpulan cell. Contoh cakupan kamera CCTV dapat dilihat pada gambar~\ref{fig:cakupan_kamera_cctv}.
+Dengan pemecahan ruangan ke dalam matriks \textit{cell}, maka cakupan kamera CCTV terdiri dari kumpulan cell. Contoh cakupan kamera CCTV dapat dilihat pada gambar~\ref{fig:cakupan_kamera_cctv}.
 
 \begin{figure}[h]
 	\centering  
@@ -97,7 +93,7 @@ Dengan pemecahan ruangan ke dalam matriks \textit{cell}, maka cakupan kamera CCT
 	\label{fig:cakupan_kamera_cctv}
 \end{figure}
 
-Setiap \textit{cell} memiliki titik tengah yang berada di tengah \textit{cell}. Titik tengah digunakan untuk menentukan ketercakupan \textit{cell} oleh suatu penempatan kamera CCTV. Untuk menentukan apakah suatu \textit{cell} dapat dicakup oleh suatu penempatan kamera CCTV, maka dilakukan 2 buah pengecekan. Pengecekan pertama dilakukan untuk memastikan bahwa jarak titik tengah \textit{cell} terhadap titik penempatan kamera CCTV lebih kecil atau sama dengan jarak pandang kamera CCTV. Untuk melakukannya, terlebih dahulu didefinisikan variabel sebagai berikut:
+Setiap \textit{cell} memiliki titik tengah yang berada di tengah \textit{cell}. Titik tengah digunakan untuk menentukan ketercakupan \textit{cell} oleh suatu penempatan kamera CCTV. Untuk menentukan apakah suatu \textit{cell} dapat dicakup oleh suatu penempatan kamera CCTV, maka perlu dilakukan 2 jenis pengecekan. Pengecekan pertama dilakukan untuk memastikan bahwa jarak titik tengah \textit{cell} terhadap titik penempatan kamera CCTV lebih kecil atau sama dengan jarak pandang kamera CCTV. Untuk melakukannya, terlebih dahulu didefinisikan variabel sebagai berikut:
 \begin{equation}
 	\begin{split}
 		(x_{cam},y_{cam}) &: \text{titik penempatan kamera CCTV}\\
@@ -150,21 +146,21 @@ Selanjutnya, akan dicari sudut pandang awal, sudut pandang akhir, dan sudut rota
 		\beta_{cell} &= \text{atan2}((y_{cell}-y_{cam}),(x_{cell}-x_{cam}))
 	\end{split}
 \end{equation}
-Pengecekan kedua dibedakan berdasarkan sudut pandang awal dan sudut pandang akhir. Apabila sudut pandang awal lebih kecil daripada sudut pandang akhir, maka kedua pernyataan berikut harus dipenuhi agar pengecekan kedua dapat dinyatakan berhasil:
+Pengecekan kedua dibedakan berdasarkan sudut pandang awal dan sudut pandang akhir. Apabila sudut pandang awal lebih kecil daripada sudut pandang akhir \((\beta_{start}<\beta_{end})\), maka kedua pernyataan berikut harus dipenuhi agar pengecekan kedua dinyatakan berhasil:
 \begin{equation}
 	\begin{split}
 		\beta_{start} &< \beta_{cell}\\
 		\beta_{cell} &< \beta_{end}\\
 	\end{split}
 \end{equation}
-Apabila sudut pandang awal tidak lebih kecil daripada sudut pandang akhir, maka minimal satu dari kedua pernyataan berikut harus dipenuhi agar pengecekan kedua dapat dinyatakan berhasil:
+Apabila sudut pandang awal lebih besar atau sama dengan sudut pandang akhir \((\beta_{start}\geq\beta_{end})\), maka minimal satu dari kedua pernyataan berikut harus dipenuhi agar pengecekan kedua dinyatakan berhasil:
 \begin{equation}
 	\begin{split}
 		\beta_{start} &< \beta_{cell}\\
 		\beta_{cell} &< \beta_{end}\\
 	\end{split}
 \end{equation}
-Dengan memenuhi pengecekan pertama dan kedua, maka \textit{cell} dinyatakan tercakup oleh suatu penempatan kamera CCTV.
+Dengan memenuhi pengecekan pertama dan kedua, maka \textit{cell} dinyatakan tercakup oleh penempatan kamera CCTV.
 
 %Daerah cakupan kamera CCTV memiliki bentuk yang tidak sederhana sehingga menjadi sulit ketika akan diolah. Terdapat 3 kasus yang menjelaskan daerah cakupan dengan bentuk yang tidak sederhana ini, yaitu:
 %\begin{enumerate}
@@ -245,11 +241,11 @@ Dengan memenuhi pengecekan pertama dan kedua, maka \textit{cell} dinyatakan terc
 %\end{equation*}
 %Sudut rotasi cell akan dibandingkan dengan sudut awal dan sudut akhir dari sudut pandang kamera CCTV. Apabila sudut rotasi berada di antara sudut awal dan sudut akhir, maka cell berada dalam sudut pandang kamera CCTV. Dengan memeriksa jarak dan sudut rotasi cell, cell-cell yang dicakup oleh kamera CCTV dapat ditemukan.
 %\subsection{\textit{Overlap} dan \textit{Out of Bound}}
-Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan dengan membandingkan jumlah \textit{cell}. \textit{Overlap cell} adalah \textit{cell} yang dicakup oleh lebih dari 1 kamera CCTV, sedangkan \textit{out of bound cell} adalah \textit{cell} di luar ruangan yang tercakup oleh kamera CCTV. Gambar~\ref{fig:daerah_overlap_out_of_bound} menggambarkan penempatan kamera CCTV yang menghasilkan \textit{overlap cell} dan \textit{out of bound cell}. Tingkat \textit{overlap} dan \textit{out of bound} dapat dihitung dengan mennjumlahkan semua \textit{cell} yang dicakup dari setiap kamera CCTV dan membaginya dengan jumlah \textit{cell} yang berada di dalam ruangan. Perhitungan tingkat \textit{overlap} dan \textit{out of bound} hanya dilakukan apabila seluruh \textit{cell} dalam ruangan telah tercakup oleh kamera CCTV.
+Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan dengan membandingkan jumlah \textit{cell}. \textit{Overlap cell} adalah \textit{cell} yang dicakup oleh lebih dari 1 kamera CCTV, sedangkan \textit{out of bound cell} adalah \textit{cell} di luar ruangan yang tercakup oleh kamera CCTV. Gambar~\ref{fig:daerah_overlap_out_of_bound} menggambarkan penempatan kamera CCTV yang menghasilkan \textit{overlap cell} dan \textit{out of bound cell}. Tingkat \textit{overlap} dan \textit{out of bound} dapat dihitung dengan menjumlahkan semua \textit{cell} yang dicakup dari setiap kamera CCTV dan membaginya dengan jumlah \textit{cell} yang berada di dalam ruangan. Perhitungan tingkat \textit{overlap} dan \textit{out of bound} hanya dilakukan apabila seluruh \textit{cell} dalam ruangan telah tercakup oleh kamera CCTV.
 
 \begin{figure}[h]
 	\centering  
-	\includegraphics[scale=0.5]{daerah_overlap_out_of_bound}
+	\includegraphics[scale=0.4]{daerah_overlap_out_of_bound}
 	\caption[\textit{Overlap cell} dan \textit{out of bound cell}]{\textit{Overlap cell} dan \textit{out of bound cell}}
 	\label{fig:daerah_overlap_out_of_bound}
 \end{figure}
@@ -257,66 +253,72 @@ Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan d
 %Setiap cell dalam ruangan memiliki ukuran yang sama dengan cell-cell lainnya. Panjang harizontal dan vertikal dari cell tidak selalu berukuran sama sehingga cell dapat berbentuk persegi panjang. Penentuan ukuran cell merupakan bagian yang akan diteliti pada bagian eksperimen.
 
 
-\section{Penyelesaian Masalah}
-Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV yang dapat mencakup seluruh daerah pada ruangan. Kamera-kamera CCTV tentu dapat ditempatkan dimana saja hingga seluruh daerah pada ruangan tercakup sepenuhnya. Penempatan dengan cara ini tentu tidak efektif karena jumlah kamera CCTV tidak selalu berjumlah minimum sehingga diperlukan metode lainnya untuk menyelesaikan masalah ini. Salah satu cara yang digunakan untuk menyelesaikan masalah ini adalah dengan menggunakan teknik linear programming.
+\section{Penyelesaian Masalah dengan \textit{Linear Programming}}
+Setelah memodelkan masalah, masalah akan diselesaikan dengan menggunakan teknik \textit{linear programming}. Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh ruangan. Berdasarkan pemodelan masalah, ruangan telah dibagi ke dalam matriks \textit{cell} sehingga solusi penempatan kamera CCTV harus mencakup seluruh \textit{cell} dalam ruangan. Model masalah \textit{linear program} yang merepresentasikan masalah ini akan didefinisikan terlebih dahulu. Selanjutnya, model masalah \textit{linear program} akan diselesaikan dengan teknik \textit{linear programming}.
 
-\subsection{Variabel Keputusan}
-Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga setiap cell pada ruangan dicakup oleh minimal 1 kamera CCTV. Setiap penempatan kamera CCTV memiliki posisi dan arah pandang masing-masing. Dari seluruh kemungkinan ini akan dicari himpunan bagian yang dimana penempatan-penempatannya dapat mencakup seluruh daerah pada ruangan. Setiap kemungkinan penempatan memiliki 2 kemungkinan, yaitu diterapkan sebagai bagian dari solusi atau tidak. Dalam penyelesaian menggunakan teknik linear programming, setiap kemungkinan penempatan akan menjadi variabel keputusan. Variabel keputusan \(x_{ij\theta}\) akan merujuk pada penempatan kamera CCTV pada posisi \((i,j)\) dengan arah pandang \(\theta\). Karena setiap penempatan kamera CCTV memiliki 2 kemungkinan untuk diterapkan, maka setiap variabel keputusan dapat dinyatakan dengan nilai 0 atau 1. Apabila suatu variabel keputusan bernilai 1, maka penempatan kamera CCTV yang dirujuk akan diterapkan sebagai bagian dari solusi. Apabila benilai 0, maka penempatan kamera CCTV yang dirujuk tidak akan diterapkan. Karena variabel keputusan hanya bisa bernlai 0 dan 1 saja, masalah ini tidak diselesaikan menggunakan teknik linear programming biasa karena hasil dapat bernilai pecahan. Masalah ini perlu diselesaikan menggunakan teknik integer programming agar hasil dari setiap variabel keputusan hanya berupa bilangan bulat. Variabel keputusan dinyatakan dalam notasi berikut:
+%Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV yang dapat mencakup seluruh daerah pada ruangan. Kamera-kamera CCTV tentu dapat ditempatkan dimana saja hingga seluruh daerah pada ruangan tercakup sepenuhnya. Penempatan dengan cara ini tentu tidak efektif karena jumlah kamera CCTV tidak selalu berjumlah minimum sehingga diperlukan metode lainnya untuk menyelesaikan masalah ini. Salah satu cara yang digunakan untuk menyelesaikan masalah ini adalah dengan menggunakan teknik linear programming.
 
-\begin{equation*}
-	x_{ij\theta} =
+\subsection{Variabel}
+Variabel dalam model masalah \textit{linear program} ini terdiri dari seluruh kemungkinan penempatan kamera CCTV. Penempatan kamera CCTV dapat dilakukan di setiap titik sudut pada setiap \textit{cell} yang dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) berdasarkan sumbu \(x\) dan sumbu \(y\). Sudut-sudut arah pandang penempatan kamera CCTV dinyatakan dalam himpunan \(s_\varphi\). Kemungkinan sudut arah pandang kamera CCTV dibangun berdasarkan \(n\) jumlah kemungkinan arah pandang sehingga \(s_\varphi = \left\{\frac{m}{n} \times 2\pi \lvert m = 1,2,\dots,n \right\}\). Setelah membangun seluruh kemungkinan penempatan, dilanjutkan dengan memetakan setiap kemungkinan penemaptan kamera CCTV dengan variabel pada model masalah \textit{linear program}. Variabel yang digunakan merupakan variabel biner dengan definisi berikut:
+\begin{equation}
+	x_{ij\varphi} =
 	\left \{
-  		\begin{tabular}{cl}
-  			1 & jika kamera CCTV ditempatkan pada posisi $(i,j)$\\
-  			  & dengan arah pandang $\theta$\\
-  			  &  \\
-  			0 & jika kamera CCTV tidak ditempatkan
-  		\end{tabular}
-  	\right.
-\end{equation*}
+		\begin{array}{ll}
+			1 & \text{jika kamera CCTV ditempatkan pada titik }  (i,j)\text{ dengan}\\
+			& \text{arah pandang } \varphi\\\\
+			0 & \text{jika sebaliknya}
+		\end{array}
+	\right.
+\end{equation}
+
+%Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga setiap cell pada ruangan dicakup oleh minimal 1 kamera CCTV. Setiap penempatan kamera CCTV memiliki posisi dan arah pandang masing-masing. Dari seluruh kemungkinan ini akan dicari himpunan bagian yang dimana penempatan-penempatannya dapat mencakup seluruh daerah pada ruangan. Setiap kemungkinan penempatan memiliki 2 kemungkinan, yaitu diterapkan sebagai bagian dari solusi atau tidak. Dalam penyelesaian menggunakan teknik linear programming, setiap kemungkinan penempatan akan menjadi variabel keputusan. Variabel keputusan \(x_{ij\theta}\) akan merujuk pada penempatan kamera CCTV pada posisi \((i,j)\) dengan arah pandang \(\theta\). Karena setiap penempatan kamera CCTV memiliki 2 kemungkinan untuk diterapkan, maka setiap variabel keputusan dapat dinyatakan dengan nilai 0 atau 1. Apabila suatu variabel keputusan bernilai 1, maka penempatan kamera CCTV yang dirujuk akan diterapkan sebagai bagian dari solusi. Apabila benilai 0, maka penempatan kamera CCTV yang dirujuk tidak akan diterapkan. Karena variabel keputusan hanya bisa bernlai 0 dan 1 saja, masalah ini tidak diselesaikan menggunakan teknik linear programming biasa karena hasil dapat bernilai pecahan. Masalah ini perlu diselesaikan menggunakan teknik integer programming agar hasil dari setiap variabel keputusan hanya berupa bilangan bulat. Variabel keputusan dinyatakan dalam notasi berikut:
 
 \subsection{Fungsi Tujuan}
-Solusi yang diharapkan dari masalah ini adalah mendapatkan penempatan-penempatan kamera CCTV yang paling minimum untuk mencakup seluruh daerah dalam ruangan. Dengan semakin sedikitnya penempatan-penempatan kamera CCTV yang digunakan, tingkat overlap dan out of bound juga akan semakin kecil. Sebelumnya telah diketahui bahwa setiap variabel keputusan hanya bisa bernilai 0 atau 1 saja. Jumlah penempatan kamera CCTV pun dapat dicari dengan menjumlahkan seluruh variabel keputusan. Fungsi tujuan dalam linear programming dapat dinyatakan sebagai jumlah penempatan kamera CCTV akan diminimumkan. Fungsi tujuan dituliskan dalam notasi berikut:
+Fungsi tujuan dalam model masalah \textit{linear program} ini dinyatakan dalam bentuk minimasi dari seluruh kemungkinan penempatan kamera CCTV. Dengan fungsi tujuan ini, maka solusi dari model masalah \textit{linear program} ini merepresentasikan penempatan kamera CCTV yang berjumlah minimum. Berikut ini merupakan notasi fungsi tujuan pada model masalah \textit{linear program} ini:
+\begin{equation}
+\textit{min }z = \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\varphi}
+\end{equation}
 
-\begin{equation*}
-	\textit{min }z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}
-\end{equation*}
+%Solusi yang diharapkan dari masalah ini adalah mendapatkan penempatan-penempatan kamera CCTV yang paling minimum untuk mencakup seluruh daerah dalam ruangan. Dengan semakin sedikitnya penempatan-penempatan kamera CCTV yang digunakan, tingkat overlap dan out of bound juga akan semakin kecil. Sebelumnya telah diketahui bahwa setiap variabel keputusan hanya bisa bernilai 0 atau 1 saja. Jumlah penempatan kamera CCTV pun dapat dicari dengan menjumlahkan seluruh variabel keputusan. Fungsi tujuan dalam linear programming dapat dinyatakan sebagai jumlah penempatan kamera CCTV akan diminimumkan. Fungsi tujuan dituliskan dalam notasi berikut:
 
 \subsection{Batasan}
-Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan harus tercakup sepenuhnya. Berdasarkan pemodelan, ruangan dimodelkan dalam bentuk grid point sehingga daerah pada ruangan dimodelkan dalam bentuk cell. Agar seluruh daerah pada ruangan tercakup sepenuhnya, maka setiap cell harus dicakup oleh minimal 1 kamera CCTV. Terdapat sebuah fungsi biner yang digunakan untuk mengetahui apakah suatu penempatan kamera CCTV dapat mencakup suatu cell. Fungsi biner ini akan menghasilkan nilai 1 apabila suatu penempatan kamera CCTV dapat mencakup suatu cell. Apabila sebaliknya, maka fungsi biner ini akan menghasilkan nilai 0. Fungsi tersebut ditulis sebagai berikut:
-
-\begin{equation*}
-	cov(i,j,\theta,p,q) =
+%Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan harus tercakup sepenuhnya. Berdasarkan pemodelan, ruangan dimodelkan dalam bentuk grid point sehingga daerah pada ruangan dimodelkan dalam bentuk cell. Agar seluruh daerah pada ruangan tercakup sepenuhnya, maka setiap cell harus dicakup oleh minimal 1 kamera CCTV. Terdapat sebuah fungsi biner yang digunakan untuk mengetahui apakah suatu penempatan kamera CCTV dapat mencakup suatu cell. Fungsi biner ini akan menghasilkan nilai 1 apabila suatu penempatan kamera CCTV dapat mencakup suatu cell. Apabila sebaliknya, maka fungsi biner ini akan menghasilkan nilai 0. Fungsi tersebut ditulis sebagai berikut:
+Selain mendapatkan penempatan kamera CCTV yang berjumlah minimum, setiap \textit{cell} dalam ruangan harus tercakup oleh kamera CCTV. Untuk memenuhinya, pada model masalah \textit{linear program} akan ditambahkan batasan di mana setiap cell harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Terdapat fungsi biner yang berfungsi untuk menyatakan ketercakupan \textit{cell} oleh suatu penempatan kamera CCTV. Fungsi biner tersebut adalah sebagai berikut:
+\begin{equation}
+	cov(i,j,\varphi,p,q) =
 	\left \{
-		\begin{tabular}{cl}
-			1 & jika kamera CCTV pada posisi $(i,j)$ dengan arah pandang $\theta$\\
-  			  & dapat mencakup cell $(p,q)$\\
+		\begin{array}{ll}
+			1 & \text{jika kamera CCTV ditempatkan pada titik } (i,j) \text{ dengan}\\
+  			  & \text{arah pandang } \varphi \text{ dapat mencakup \textit{cell} pada baris } p\text{ kolom } q\\
   			  & \\
-  			0 & jika sebaliknya
-		\end{tabular}
+  			0 & \text{jika sebaliknya}
+		\end{array}
 	\right.
-\end{equation*}
+\end{equation}
 
-Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa setiap cell harus dicakup oleh minimal 1 penempatan kamera CCTV. Fungsi biner sebelumnya akan digunakan untuk menyatakan hubungan ketercakupan cell dengan penempatan kamera CCTV. Batasan tersebut ditulis sebagai berikut:
-
-\begin{equation*}
+%Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa setiap cell harus dicakup oleh minimal 1 penempatan kamera CCTV. Fungsi biner sebelumnya akan digunakan untuk menyatakan hubungan ketercakupan cell dengan penempatan kamera CCTV. Batasan tersebut ditulis sebagai berikut:
+Fungsi biner tersebut digunakan menyatakan ketercakupan \textit{cell} oleh setiap kemungkinan penempatan kamera CCTV pada batasan. Berikut ini merupakan batasan pada model masalah \textit{linear program} ini:
+\begin{equation}
 	\begin{split}
-		& \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
+		& \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\varphi} \times cov(i,j,\varphi,p,q) \geq 1\\
 		& 0 \leq p \leq (s_p - 1), 0 \leq q \leq (s_q - 1)
 	\end{split}
-\end{equation*}
+\end{equation}
 
-\subsection{Bentuk Masalah Linear Programming}
-Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
-
-\begin{equation*}
+\subsection{Model Masalah \textit{Linear Program}}
+Pada model masalah \textit{linear program}, variabel terdiri dari seluruh kemungkinan penempatan kamera CCTV. Fungsi tujuan ditujukan untuk mendapatkan penempatan kamera CCTV yang berjumlah minimum. Agar seluruh ruangan dapat tercakup, maka ditambahkan batasan di mana setiap \textit{cell} dalam ruangan harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Dengan menggabungkan ketiganya, didapatkan model masalah \textit{linear program} sebagai berikut:
+\begin{equation}
 	\begin{split}
-		\textit{min } & z = \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\theta}\\
-		\textit{s.t. } & \sum_{\theta=0}^{s_{\theta}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\theta} \times cov(i,j,\theta,p,q) \geq 1\\
+		\textit{min } & z = \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\varphi}\\
+		\textit{s.t. } & \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\varphi} \times cov(i,j,\varphi,p,q) \geq 1\\
 		& 0 \leq p \leq (s_p - 1), 0 \leq q \leq (s_q - 1)\\
-		& x_{ij\theta} \in \{0,1\}
+		& x_{ij\varphi} \in \{0,1\}
 	\end{split}
-\end{equation*}
+\end{equation}
+
+Model ini akan diselesaikan dengan teknik \textit{linear programming}. Namun, karena variabel yang digunakan merupakan variabel biner, maka model masalah \textit{linear program} ini dapat diselesaikan dengan teknik \textit{binary integer programming}~(\ref{sec:bip}) menggunakan algortima \textit{Balas's additive}~(\ref{balas_additive}).
+
+%Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
 
 \section{Analisis Kebutuhan Perangkat Lunak}
 Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan skenario-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
