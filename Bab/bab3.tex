@@ -321,38 +321,40 @@ Model ini akan diselesaikan dengan teknik \textit{linear programming}. Namun, ka
 %Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
 
 \section{Analisis Kebutuhan Perangkat Lunak}
-Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan skenario-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
+Pada bagian ini, akan dibahas mengenai analisis kebutuhan dari perangkat lunak yang akan dibangun. Terdapat diagram \textit{use case} dan skenario untuk menjelaskan aksi yang dapat dilakukan pengguna terhadap perangkat lunak. Perangkat lunak yang dibangun dapat menerima masukan-masukan masalah dan menghasilkan keluaran yang sesuai dengan masukan tersebut. Terdapat juga diagram kelas sederhana untuk membangun perangkat lunak yang akan dikembangkan lebih lanjut pada tahap perancangan.
+
+%Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan skenario-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
 %Pada subbab ini akan dijelaskan deskripsi dari perangkat lunak yang akan dibangun. Perangkat lunak yang dibangun akan disesuaikan dengan pemodelan masalah yang telah dibahas sebelumnya. Perangkat lunak akan menggunakan fitur tampilan antarmuka grafis untuk memudahkan interaksi pengguna dengan perangkat lunak. Perangkat lunak akan mengsimulasikan masalah penempatan kamera CCTV dengan masukan yang dimasukkan oleh pengguna. Hasil dari masukan pengguna akan diolah oleh perangkat lunak dan hasilnya akan ditampilkan. Rancangan perangkat lunak yang terdiri dari diagram use case, diagram kelas, masukan, dan keluaran akan dibahas pada bagian ini.
 
-\subsection{Diagram \textit{Use Case}}
-Dalam perangkat lunak yang dibangun, hanya terdapat 1 jenis pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor dan aksi-aksi yang dapat dilakukannya.
+\subsection{Diagram \textit{Use Case} dan Skenario}
+Dalam perangkat lunak yang dibangun, hanya terdapat 1 jenis aktor, yaitu pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor beserta dengan aksi yang dapat dilakukannya.
 \begin{figure}[h]
 	\centering  
-	\includegraphics[scale=0.72]{use_case_diagram}
+	\includegraphics[scale=0.6]{use_case_diagram}
 	\caption[Diagram \textit{use case}]{Diagram \textit{use case}}
 	\label{fig:use_case_diagram}
 \end{figure}
 
-Berikut ini skenario dari setiap aksi pada diagram \textit{use case}:
+Berikut ini skenario dari aksi pada diagram \textit{use case}:
 \begin{itemize}
 	\item Skenario: \textbf{Memasukkan Spesifikasi Masalah}
 	\begin{itemize}
 		\item Aktor: Pengguna
 		\item Langkah:
 		\begin{enumerate}
-			\item Aktor memasukkan spesifikasi masalah yang terdiri dari ukuran ruangan dan spesifikasi kamera CCTV dan dilanjutkan dengan menekan tombol ''\textit{submit}''.
-			\item Sistem menampilkan tampilan simulasi penempatan kamera CCTV.
+			\item Aktor memasukkan spesifikasi masalah dan dilanjutkan dengan menekan tombol ''\textit{submit}''.
+			\item Sistem menampilkan tampilan penempatan kamera CCTV.
 		\end{enumerate}
 	\end{itemize}
-	\item Skenario: \textbf{Menambah Penempatan Kamera CCTV}
-	\begin{itemize}
-		\item Aktor: Pengguna
-		\item Langkah:
-		\begin{enumerate}
-			\item Aktor memilih posisi penempatan kamera CCTV dan mengisi sudut arah pandang penempatan kamera CCTV dan dilanjutkan dengan menekan tombol ''\textit{add camera}''.
-			\item Sistem menambahkan penempatan ke dalam simulasi dan memperbaharui tampilan simulasi.
-		\end{enumerate}
-	\end{itemize}
+%	\item Skenario: \textbf{Menambah Penempatan Kamera CCTV}
+%	\begin{itemize}
+%		\item Aktor: Pengguna
+%		\item Langkah:
+%		\begin{enumerate}
+%			\item Aktor memilih posisi penempatan kamera CCTV dan mengisi sudut arah pandang penempatan kamera CCTV dan dilanjutkan dengan menekan tombol ''\textit{add camera}''.
+%			\item Sistem menambahkan penempatan ke dalam simulasi dan memperbaharui tampilan simulasi.
+%		\end{enumerate}
+%	\end{itemize}
 %	\item Skenario: \textbf{Menyelesaikan Masalah Secara Otomatis}
 %	\begin{itemize}
 %		\item Aktor: Pengguna
@@ -365,23 +367,48 @@ Berikut ini skenario dari setiap aksi pada diagram \textit{use case}:
 %			\item Sistem memperbaharui panel informasi.
 %		\end{enumerate}
 %	\end{itemize}
-	\item Skenario: \textbf{Membuang Penempatan Kamera CCTV}
-	\begin{itemize}
-		\item Aktor: Pengguna
-		\item Langkah:
-		\begin{enumerate}
-			\item Aktor memilih penempatan kamera CCTV yang akan dibuang dan menekan tombol ''\textit{remove}''.
-			\item Sistem membuang penempatan dari simulasi dan memperbaharui tampilan simulasi.
-		\end{enumerate}
-	\end{itemize}
+%	\item Skenario: \textbf{Membuang Penempatan Kamera CCTV}
+%	\begin{itemize}
+%		\item Aktor: Pengguna
+%		\item Langkah:
+%		\begin{enumerate}
+%			\item Aktor memilih penempatan kamera CCTV yang akan dibuang dan menekan tombol ''\textit{remove}''.
+%			\item Sistem membuang penempatan dari simulasi dan memperbaharui tampilan simulasi.
+%		\end{enumerate}
+%	\end{itemize}
 \end{itemize}
 
-\subsection{Diagram Kelas}
-Pada bagian ini terdapat diagram kelas sederhana yang menunjukkan kelas-kelas yang akan digunakan untuk merancang perangkat lunak. Diagram kelas sederhana dapat dilihat pada gambar~\ref{fig:class_diagram_basic}.
+\subsection{Kebutuhan Masukan Perangkat Lunak}
+Berdasarkan pemodelan masalah dan penyelesaian masalah dengan teknik \textit{linear programming}, ditetapkan masukan-masukan perangkat lunak sebagai berikut:
+\begin{itemize}
+	\item Panjang ruangan dalam satuan ukuran sentimeter (cm).
+	\item Lebar ruangan dalam satuan ukuran sentimeter (cm).
+	\item Jarak pandang kamera CCTV dalam satuan ukuran sentimeter (cm).
+	\item Besar sudut pandang kamera CCTV dalam satuan sudut derajat (\(^\circ\)).
+	\item Ukuran terbesar \textit{cell} dalam satuan ukuran sentimeter (cm).
+	\item Jumlah kemungkinan sudut pandang penempatan kamera CCTV.
+\end{itemize}
+
+\subsection{Kebutuhan Keluaran Perangkat Lunak}
+Perangkat lunak akan mencari solusi berdasarkan masukan yang telah diberikan pengguna. Solusi tersebut berupa penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Informasi mengenai solusi tersebut akan dikembalikan oleh perangkat lunak kepada pengguna, yaitu sebagai berikut:
+\begin{itemize}
+	\item Posisi dan sudut arah pandang dari setiap penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan.
+\end{itemize}
+
+\subsection{Diagram Kelas Sederhana}
+\label{subsec:diagram_kelas_sederhana}
+Pada bagian ini terdapat diagram kelas sederhana yang menunjukkan rancangan awal kelas-kelas yang akan digunakan untuk membangun perangkat lunak. Terdapat 2 \textit{package} utama yang digunakan untuk memodelkan dan menyelesaikan masalah. \textit{Package} pertama adalah \textit{package} model yang berisi kelas-kelas untuk memodelkan masalah. \textit{Package} kedua adalah \textit{package} bip yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming}. Di dalam \textit{package} bip terdapat \textit{subpackage} balasadditive yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}. Diagram kelas sederhana untuk kedua \textit{package} tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_basic} dan~\ref{fig:class_diagram_bip_basic}.
 
 \begin{figure}[h]
 	\centering  
-	\includegraphics[scale=0.6]{class_diagram_basic}
-	\caption[Diagram kelas sederhana]{Diagram kelas sederhana}
-	\label{fig:class_diagram_basic}
+	\includegraphics[scale=0.6]{class_diagram_model_basic}
+	\caption[Diagram kelas sederhana untuk \textit{package} model]{Diagram kelas sederhana untuk \textit{package} model}
+	\label{fig:class_diagram_model_basic}
+\end{figure}
+
+\begin{figure}[h]
+	\centering  
+	\includegraphics[scale=0.6]{class_diagram_bip_basic}
+	\caption[Diagram kelas sederhana untuk \textit{package} bip dan \textit{subpackage} balasadditive]{Diagram kelas sederhana untuk \textit{package} bip dan \textit{subpackage} balasadditive}
+	\label{fig:class_diagram_bip_basic}
 \end{figure}

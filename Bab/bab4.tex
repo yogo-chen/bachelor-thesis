@@ -1,11 +1,11 @@
 \chapter{Perancangan}
 
 \section{Perancangan Antarmuka}
-Dalam perangkat lunak yang dibangun, tampilan yang digunakan adalah tampilan antarmuka grafis. Tampilan antarmuka ini berguna untuk mempermudah interaksi pengguna dengan perangkat lunak. Selain mempermudah, tampilan ini digunakan agar dapat menghasilkan visualisasi penempatan kamera CCTV sehingga pengguna dapat memahami penempatan-penempatan tersebut. Pada bagian ini akan dijelaskan bentuk dari setiap antarmuka. Berikut bentuk antarmuka-antarmuka tersebut:
+Perangkat lunak yang dibangun akan menggunakan tampilan antarmuka grafis. Tampilan antarmuka ini digunakan agar mempermudah interaksi pengguna dengan perangkat lunak. Selain itu, jenis tampilan ini juga digunakan untuk menghasilkan visualisasi penempatan kamera CCTV sehingga pengguna dapat memahami penempatan-penempatan tersebut secara visual. Pada bagian ini akan dijelaskan bentuk dari setiap antarmuka yang terdapat dalam perangkat lunak. Berikut bentuk antarmuka tersebut:
 
 \begin{itemize}
 	\item Antarmuka: \textbf{Penerima Masukan}\\
-	Antarmuka ini berfungsi untuk menerima masukan dari pengguna. Antarmuka ini dapat dilihat pada gambar~\ref{fig:input_mockup}. Pada antarmuka ini terdapat kolom-kolom masukan yang dapat diisi oleh pengguna. Pengguna dapat mengisi ukuran ruangan, spesifikasi kamera CCTV, dan ukuran terbesar cell pada kolom-kolom tersebut. Apabila pengguna sudah yakin dengan masukannya, maka pengguna dapat menekan tombol ''\textit{submit}'' yang akan mengarahkan pengguna pada antarmuka simulasi penempatan kamera CCTV.
+	Antarmuka ini berfungsi untuk menerima masukan dari pengguna seperti pada gambar~\ref{fig:input_mockup}. Pada antarmuka ini terdapat kolom-kolom masukan yang dapat diisi oleh pengguna. Pengguna dapat mengisi ukuran ruangan, spesifikasi kamera CCTV, ukuran terbesar cell, dan jumlah kemungkinan arah pandang kamera CCTV pada kolom tersebut. Apabila pengguna sudah yakin dengan masukan yang diberikan, maka pengguna dapat menekan tombol ''\textit{submit}'' yang akan mengarahkan pengguna pada antarmuka penempatan kamera CCTV.
 
 	\begin{figure}[h]
 		\centering  
@@ -14,33 +14,38 @@ Dalam perangkat lunak yang dibangun, tampilan yang digunakan adalah tampilan ant
 		\label{fig:input_mockup}
 	\end{figure}
 
-	\item Antarmuka: \textbf{Simulasi Penempatan Kamera CCTV}\\
-	Antarmuka ini berfungsi untuk melakukan kegiatan simulasi penempatan kamera CCTV. Antarmuka ini dapat dilihat pada gambar~\ref{fig:simulator_mockup}. Di dalam antarmuka ini terdapat 3 bagian, yaitu:
+	\item Antarmuka: \textbf{Penempatan Kamera CCTV}\\
+	Antarmuka ini berfungsi untuk menampilkan solusi masalah penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan seperti pada gambar~\ref{fig:simulator_mockup}. Di dalam antarmuka ini terdapat 2 bagian, yaitu:
 	\begin{itemize}
-		\item Panel informasi yang berada di bagian kiri antarmuka.\\
-		Panel ini berfungsi untuk memberikan informasi-informasi yang terdiri dari ukuran ruangan, spesifikasi kamera CCTV, informasi simulasi, dan daftar penempatan kamera CCTV. Pada bagian informasi simulasi terdapat informasi persentase ketercakupan dan persentase tingkat \textit{overlap} dan \textit{out of bound}. Pada bagian daftar penempatan kamera CCTV, terdapat penempatan-penempatan yang sedang diterapkan dalam simulasi. Pada setiap penempatan terdapat tombol ''\textit{remove}'' yang apabila ditekan akan membuang penempatan tersebut.
+		\item Panel informasi\\
+		Panel ini berada di bagian kiri antarmuka yang berfungsi untuk memberikan informasi mengenai spesifikasi masalah dan solusi masalah. Solusi masalah yang terdiri dari penempatan-penempatan kamera CCTV dapat dilihat pada bagian daftar kamera CCTV (\textit{Camera List}). Pada setiap baris penempatan terdapat informasi titik lokasi penempatan dan juga sudut arah pandang yang dituju.
 		
-		\item Panel visualisasi penempatan kamera CCTV yang berada di bagian kanan antarmuka.\\
-		Panel ini berfungsi untuk menampilkan visualisasi penempatan kamera CCTV sesuai dengan penempatan-penempatan yang sedang diterapkan pada simulasi.
-		
-		\item Panel penambah kamera CCTV yang berada di atas panel visualisasi.\\
-		Panel ini berfungsi untuk melakukan penempatan kamera CCTV baru. Pengguna dapat melakukan 2 jenis penambahan penempatan, yaitu penambahan sesuai dengan keinginan pengguna dan penambahan secara otomatis. Apabila pengguna ingin melakukan penambahan sesuai dengan keinginan, maka pengguna dapat memilih posisi dan mengisi sudut arah pandang dan dilanjutkan dengan menekan tombol ''\textit{add camera}''. Apabila pengguna ingin melakukan penambahan secara otomatis, maka pengguna dapat menekan tombol ''\textit{auto place camera}''. Dengan melakukan penambahan secara otomatis, sistem akan mencari penempatan-penempatan tersedikit yang dapat mencakup seluruh cell yang belum tercakup. Selama proses penambahan otomatis berjalan, tombol ''\textit{add camera}'' dan tombol ''\textit{auto place camera}'' akan dinon-aktifkan dan diaktifkan kembali apabila proses telah selesai.
+		\item Panel visualisasi penempatan kamera CCTV\\
+		Panel ini berada di bagian kanan antarmuka yang berfungsi untuk menampilkan visualisasi matriks \textit{cell} dan penempatan kamera CCTV.
 	\end{itemize}
 	\begin{figure}[h]
 		\centering  
-		\includegraphics[scale=0.5]{simulator_mockup}
+		\includegraphics[scale=0.4]{simulator_mockup}
 		\caption[Perancangan antarmuka penempatan kamera CCTV]{Perancangan antarmuka penempatan kamera CCTV}
 		\label{fig:simulator_mockup}
 	\end{figure}
 \end{itemize}
 
 \section{Perancangan Kelas}
-Pada bagian ini akan dijelaskan kelas-kelas yang digunakan dalam membangun perangkat lunak. Diagram kelas rinci dapat dilihat pada gambar~\ref{fig:class_diagram_complete}.
+Rancangan awal kelas-kelas yang telah dipaparkan di~\ref{subsec:diagram_kelas_sederhana} akan dikembangkan lebih lanjut. Kelas-kelas yang digunakan untuk memodelkan masalah diletakkan dalam \textit{package} model. Kelas-kelas untuk memodelkan dan menyelesaikan masalah \textit{binary integer programming} diletakkan pada \textit{package} bip. Diagram kelas rinci untuk kedua package tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_complete} dan~\ref{fig:class_diagram_bip_complete}.
+
 \begin{sidewaysfigure}
 	\centering  
-	\includegraphics[scale=0.38]{class_diagram_complete}
-	\caption[Diagram kelas rinci]{Diagram kelas rinci}
-	\label{fig:class_diagram_complete}
+	\includegraphics[scale=0.38]{class_diagram_model_complete}
+	\caption[Diagram kelas rinci untuk \textit{package} model]{Diagram kelas rinci untuk \textit{package} model}
+	\label{fig:class_diagram_model_complete}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}
+	\centering  
+	\includegraphics[scale=0.33]{class_diagram_bip_complete}
+	\caption[Diagram kelas rinci untuk \textit{package} bip dan \textit{subpackage} balasadditive]{Diagram kelas rinci untuk \textit{package} bip dan \textit{subpackage} balasadditive}
+	\label{fig:class_diagram_bip_complete}
 \end{sidewaysfigure}
 
 \subsection{Kelas \textit{Angle}}
@@ -58,7 +63,6 @@ Kelas ini merepresentasikan sudut dan menangani fungsi-fungsi yang berhubungan d
 	\item \textbf{\textit{radians} \(\rightarrow\) \textit{double}}\\
 	Atribut ini berguna untuk menampung sudut dalam bentuk radian.
 \end{itemize}
-
 Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Angle}:
 \begin{itemize}
 	\item \textbf{\textit{rotationAngle}(\textit{point} \(\rightarrow\) \textit{Point}, \textit{center} \(\rightarrow\) \textit{Point}) \(\rightarrow\) \textit{Angle}}\\
@@ -102,7 +106,6 @@ Kelas ini merepresentasikan titik koordinat 2D. Diagram kelas \textit{Point} dap
 	\item \textbf{\textit{y} \(\rightarrow\) \textit{double}}\\
 	Atribut ini berguna untuk menampung nilai titik pada sumbu y.
 \end{itemize}
-
 Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Point}:
 \begin{itemize}
 	\item \textbf{\textit{twoDecimalPointFloatNumber}(\textit{number} \(\rightarrow\) \textit{double}) \(\rightarrow\) \textit{String}}\\
@@ -119,10 +122,10 @@ Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Point}:
 	\label{fig:class_camera_specification}
 \end{figure}
 
-Kelas ini merepresentasikan spesifikasi kamera CCTV yang terdiri dari jarak pandang efektif dan besar sudut pandang. Diagram kelas \textit{CameraSpecification} dapat dilihat pada gambar~\ref{fig:class_camera_specification}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{CameraSpecification}:
+Kelas ini merepresentasikan spesifikasi kamera CCTV yang terdiri dari jarak pandang dan besar sudut pandang. Diagram kelas \textit{CameraSpecification} dapat dilihat pada gambar~\ref{fig:class_camera_specification}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{CameraSpecification}:
 \begin{itemize}
 	\item \textbf{\textit{range} \(\rightarrow\) \textit{double}}\\
-	Atribut ini berguna untuk menampung jarak pandang efektif kamera CCTV.
+	Atribut ini berguna untuk menampung jarak pandang kamera CCTV.
 	\item \textbf{\textit{wideAngle} \(\rightarrow\) \textit{Angle}}\\
 	Atribut ini berguna untuk menampung besar sudut pandang kamera CCTV.
 \end{itemize}
@@ -177,38 +180,38 @@ Kelas ini merepresentasikan cell. Diagram kelas \textit{Cell} dapat dilihat pada
 	Atribut ini berguna untuk menampung dimensi cell.
 \end{itemize}
 
-\subsection{Kelas \textit{GridPoint}}
+\subsection{Kelas \textit{CellMatrix}}
 \begin{figure}[H]
 	\centering  
-	\includegraphics[scale=0.6]{class_grid_point}
-	\caption[Diagram kelas \textit{GridPoint}]{Diagram kelas \textit{GridPoint}}
-	\label{fig:class_grid_point}
+	\includegraphics[scale=0.6]{class_cell_matrix}
+	\caption[Diagram kelas \textit{CellMatrix}]{Diagram kelas \textit{CellMatrix}}
+	\label{fig:class_cell_matrix}
 \end{figure}
 
-Kelas ini merepresentasikan grid point yang terdiri dari matriks cell. Diagram kelas \textit{GridPoint} dapat dilihat pada gambar~\ref{fig:class_grid_point}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{GridPoint}:
+Kelas ini merepresentasikan matriks \textit{cell} dalam ruangan. Diagram kelas \textit{MatrixCell} dapat dilihat pada gambar~\ref{fig:class_cell_matrix}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{CellMatrix}:
 \begin{itemize}
 	\item \textbf{\textit{rows} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah baris grid point secara keseluruhan.
+	Atribut ini berguna untuk menampung jumlah baris matriks \textit{cell} secara keseluruhan.
 	\item \textbf{\textit{columns} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah kolom grid point secara keseluruhan.
+	Atribut ini berguna untuk menampung jumlah kolom matriks \textit{cell} secara keseluruhan.
 	\item \textbf{\textit{innerRows} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah baris grid point bagian dalam.
+	Atribut ini berguna untuk menampung jumlah baris matriks \textit{cell} bagian dalam.
 	\item \textbf{\textit{innerColumns} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah kolom grid point bagian dalam.
+	Atribut ini berguna untuk menampung jumlah kolom matriks \textit{cell} bagian dalam.
 	\item \textbf{\textit{verticalMargins} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah margin vertikal grid point.
+	Atribut ini berguna untuk menampung jumlah margin vertikal matriks \textit{cell}.
 	\item \textbf{\textit{horizontalMargins} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung jumlah margin horizontal grid point.
+	Atribut ini berguna untuk menampung jumlah margin horizontal matriks \textit{cell}.
 	\item \textbf{\textit{startRow} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung indeks baris pertama dalam grid point bagian dalam.
+	Atribut ini berguna untuk menampung indeks baris pertama matriks \textit{cell} bagian dalam.
 	\item \textbf{\textit{startColumn} \(\rightarrow\) \textit{int}}\\
-	Atribut ini berguna untuk menampung indeks kolom pertama dalam grid point bagian dalam.
+	Atribut ini berguna untuk menampung indeks kolom pertama matriks \textit{cell} bagian dalam.
 	\item \textbf{\textit{cellMatrix} \(\rightarrow\) \textit{Cell}[ ][ ]}\\
-	Atribut ini berguna untuk menampung matriks cell 2 dimensi.
+	Atribut ini berguna untuk menampung matriks \textit{cell} 2 dimensi.
 	\item \textbf{\textit{innerCellList} \(\rightarrow\) \textit{ArrayList}<\textit{Cell}>}\\
-	Atribut ini berguna untuk menampung cell-cell yang berada pada grid point bagian dalam.
+	Atribut ini berguna untuk menampung seluruh \textit{cell} pada matriks \textit{cell} bagian dalam.
 	\item \textbf{\textit{cellDimension} \(\rightarrow\) \textit{Dimension}}\\
-	Atribut ini berguna untuk menampung dimensi cell.
+	Atribut ini berguna untuk menampung dimensi \textit{cell}.
 \end{itemize}
 
 \subsection{Kelas \textit{Room}}
@@ -219,40 +222,39 @@ Kelas ini merepresentasikan grid point yang terdiri dari matriks cell. Diagram k
 	\label{fig:class_room}
 \end{figure}
 
-Kelas ini merepresentasikan ruangan yang dapat diisi oleh kamera-kamera CCTV. Kelas ini merupakan turunan dari kelas \textit{GridPoint}. Diagram kelas \textit{Room} dapat dilihat pada gambar~\ref{fig:class_room}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{Room}:
+Kelas ini merepresentasikan ruangan yang dapat diisi oleh kamera-kamera CCTV. Kelas ini merupakan turunan dari kelas \textit{CellMatrix}. Diagram kelas \textit{Room} dapat dilihat pada gambar~\ref{fig:class_room}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{Room}:
 \begin{itemize}
 	\item \textbf{\textit{roomDimension} \(\rightarrow\) \textit{Dimension}}\\
 	Atribut ini berguna untuk menampung dimensi ruangan.
 	\item \textbf{\textit{cameraSpecification} \(\rightarrow\) \textit{CameraSpecification}}\\
-	Atribut ini berguna untuk menampung spesifikasi kamera CCTV yang akan ditempatkan dalam ruangan.
+	Atribut ini berguna untuk menampung spesifikasi dari kamera CCTV yang akan ditempatkan dalam ruangan.
 	\item \textbf{\textit{preferedPlacingPoints} \(\rightarrow\) \textit{Point}[ ]}\\
 	Atribut ini berguna untuk menampung posisi-posisi yang dapat ditempati oleh kamera CCTV.
 	\item \textbf{\textit{cameraPlacementList} \(\rightarrow\) \textit{ArrayList}<\textit{CameraPlacement}>}\\
 	Atribut ini berguna untuk menampung daftar penempatan kamera CCTV.
 	\item \textbf{\textit{coveringCameraMap} \(\rightarrow\) \textit{HashMap}<\textit{Cell}, \textit{ArrayList}{<\textit{CameraPlacement}>}>}\\
-	Atribut ini berguna untuk menampung pemetaan cell dengan penempatan-penempatan kamera CCTV yang dapat mencakup cell tersebut.
+	Atribut ini berguna untuk menampung pemetaan \textit{cell} dengan penempatan kamera CCTV yang dapat mencakup \textit{cell} tersebut.
 \end{itemize}
-
 Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Room}:
 \begin{itemize}
 	\item \textbf{\textit{build}(\textit{roomDimension} \(\rightarrow\) \textit{Dimension}, \textit{cameraSpecification} \(\rightarrow\) \textit{CameraSpecification}, \textit{maximumCellSize} \(\rightarrow\) \textit{double}) \(\rightarrow\) \textit{Room}}\\
-	Fungsi ini merupakan fungsi statis yang berguna untuk membuat objek \textit{Room} yang dimana jumlah baris, jumlah kolom, jumlah margin vertikal, jumlah margin horizontal, dan ukuran cell akan ditentukan berdasarkan ukuran ruangan \textit{roomDimension}, spesifikasiKamera \textit{cameraSpecification}, dan ukuran terbesar cell \textit{maximumCellSize}.
+	Fungsi ini merupakan fungsi statis yang berguna untuk membuat objek \textit{Room} yang dimana jumlah baris, jumlah kolom, jumlah margin vertikal, jumlah margin horizontal, dan ukuran cell akan ditentukan berdasarkan ukuran ruangan \textit{roomDimension}, spesifikasi kamera \textit{cameraSpecification}, dan ukuran terbesar cell \textit{maximumCellSize}.
 	\item \textbf{\textit{addCameraPlacement}(\textit{placement} \(\rightarrow\) \textit{CameraPlacement}) \(\rightarrow\) \textit{void}}\\
 	Fungsi ini berguna untuk menambahkan penempatan kamera CCTV ke dalam daftar penempatan kamera CCTV dan memperbaharui pemetaan cell pada atribut \textit{coveringCameraMap}.
 	\item \textbf{\textit{removeCameraPlacement}(\textit{placement} \(\rightarrow\) \textit{CameraPlacement}) \(\rightarrow\) \textit{void}}\\
 	Fungsi ini berguna untuk membuang penempatan kamera CCTV dari daftar penempatan kamera CCTV dan memperbaharui pemetaan cell pada atribut \textit{coveringCameraMap}.
 	\item \textbf{\textit{findCoverage}(\textit{placement} \(\rightarrow\) \textit{CameraPlacement}) \(\rightarrow\) \textit{Cell}[ ]}\\
-	Fungsi ini berguna untuk mendapatkan cell-cell yang tercakup oleh penempatan \textit{placement}.
+	Fungsi ini berguna untuk mendapatkan \textit{cell} yang tercakup oleh penempatan kamera CCTV \textit{placement}.
 	\item \textbf{\textit{isCoveredCell}(\textit{cell} \(\rightarrow\) \textit{Cell}) \(\rightarrow\) \textit{boolean}}\\
-	Fungsi ini berguna untuk mengetahui apakah cell \textit{cell} telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	Fungsi ini berguna untuk mengetahui apakah \textit{cell} telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
 	\item \textbf{\textit{getCoveredCell}() \(\rightarrow\) \textit{Cell}[ ]}\\
-	Fungsi ini berguna untuk mendapatkan cell-cell yang telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	Fungsi ini berguna untuk mendapatkan \textit{cell} yang telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
 	\item \textbf{\textit{getInnerCoveredCell}() \(\rightarrow\) \textit{Cell}[ ]}\\
-	Fungsi ini berguna untuk mendapatkan cell-cell yang berada pada grid point bagian dalam dan telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	Fungsi ini berguna untuk mendapatkan \textit{cell} yang berada pada matriks \textit{cell} bagian dalam yang telah tercakup oleh setidaknya 1 penempatan kamera CCTV.
 	\item \textbf{\textit{isShouldBeCoveredCell}(\textit{cell} \(\rightarrow\) \textit{Cell}) \(\rightarrow\) \textit{boolean}}\\
-	Fungsi ini berguna untuk mengetahui apakah cell \textit{cell} berada pada grid point bagian dalam dan belum tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	Fungsi ini berguna untuk mengetahui apakah \textit{cell} berada pada matriks \textit{cell} bagian dalam dan belum tercakup oleh setidaknya 1 penempatan kamera CCTV.
 	\item \textbf{\textit{getShouldBeCoveredCell}() \(\rightarrow\) \textit{Cell}[ ]}\\
-	Fungsi ini berguna untuk mendapatkan cell-cell yang berada pada grid point bagian dalam dan belum tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	Fungsi ini berguna untuk mendapatkan \textit{cell} yang berada pada matriks \textit{cell} bagian dalam dan belum tercakup oleh setidaknya 1 penempatan kamera CCTV.
 	\item \textbf{\textit{getOverlapAndOutOfBoundPercentage}() \(\rightarrow\) \textit{double}}\\
 	Fungsi ini berguna untuk mendapatkan persentase \textit{overlap} dan \textit{out of bound}.
 \end{itemize}
@@ -265,41 +267,235 @@ Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Room}:
 	\label{fig:class_minimum_camera_placement_solver}
 \end{figure}
 
-Kelas ini merepresentasikan pemecah masalah penempatan kamera CCTV dalam ruangan agar berjumlah minimum. Kelas ini merupakan kelas abstrak. Diagram kelas \textit{MinimumCameraPlacementSolver} dapat dilihat pada gambar~\ref{fig:class_minimum_camera_placement_solver}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{MinimumCameraPlacementSolver}:
+Kelas ini merepresentasikan pemecah masalah penempatan kamera CCTV dalam ruangan yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Kelas ini merupakan kelas abstrak. Diagram kelas \textit{MinimumCameraPlacementSolver} dapat dilihat pada gambar~\ref{fig:class_minimum_camera_placement_solver}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{MinimumCameraPlacementSolver}:
 \begin{itemize}
 	\item \textbf{\textit{room} \(\rightarrow\) \textit{Room}}\\
-	Atribut ini berguna untuk menampung ruangan yang akan diselesaikan masalahnya.
+	Atribut ini berguna untuk menampung ruangan yang di mana masalah penempatan kamera CCTV-nya akan diselesaikan.
+	\item \textbf{\textit{possibleOrientation} \(\rightarrow\) \textit{int}}\\
+	Atribut ini berguna untuk menampung jumlah kemungkinan sudut arah pandang kamera CCTV.
 \end{itemize}
-
 Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Room}:
 \begin{itemize}
 	\item \textbf{\textit{solve}() \(\rightarrow\) \textit{void}}\\
-	Fungsi ini merupakan fungsi abstrak yang bertujuan untuk menyelesaikan masalah penempatan kamera CCTV dalam ruangan agar berjumlah minimum.
+	Fungsi ini merupakan fungsi abstrak yang bertujuan untuk menyelesaikan masalah penempatan kamera CCTV dalam ruangan yang berjumlah minimum yang dapat mencakup sekuruh isi ruangan.
 	\item \textbf{\textit{generateDirectionAngles}() \(\rightarrow\) \textit{Angle}[ ]}\\
-	Fungsi ini beguna untuk menghasilkan sudut-sudut arah pandang yang akan digunakan dalam penyelesaian masalah.
+	Fungsi ini berguna untuk menghasilkan sudut-sudut arah pandang berdasarkan jumlah kemungkinan sudut arah pandang \textit{possibleOrientation}.
 \end{itemize}
 
-\subsection{Kelas \textit{MinimumCameraPlacementSolverLPSolve}}
+\subsection{Kelas \textit{MinimumCameraPlacementSolverBalasAdditive}}
 \begin{figure}[H]
 	\centering  
-	\includegraphics[scale=0.6]{class_minimum_camera_placement_solver_lp_solve}
-	\caption[Diagram kelas \textit{MinimumCameraPlacementSolverLPSolve}]{Diagram kelas \textit{MinimumCameraPlacementSolverLPSolve}}
-	\label{fig:class_minimum_camera_placement_solver_lp_solve}
+	\includegraphics[scale=0.6]{class_minimum_camera_placement_solver_balas_additive}
+	\caption[Diagram kelas \textit{MinimumCameraPlacementSolverBalasAdditive}]{Diagram kelas \textit{MinimumCameraPlacementSolverBalasAdditive}}
+	\label{fig:class_minimum_camera_placement_solver_balas_additive}
 \end{figure}
 
-Kelas ini merepresentasikan pemecah masalah penempatan kamera CCTV dalam ruangan agar berjumlah minimum dengan menggunakan kakas \textit{lp{\_}solve}. Kelas ini merupakan turunan dari kelas MinimumCameraPlacementSolver. Diagram kelas \textit{MinimumCameraPlacementSolverLPSolve} dapat dilihat pada gambar~\ref{fig:class_minimum_camera_placement_solver_lp_solve}. Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{MinimumCameraPlacementSolverLPSolve}:
+Kelas ini merepresentasikan pemecah masalah penempatan kamera CCTV dalam ruangan yang berjumlah minimum yang dapat mencakup seluruh isi ruangan dengan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}). Kelas ini merupakan turunan dari kelas MinimumCameraPlacementSolver. Diagram kelas \textit{MinimumCameraPlacementSolverBalasAdditive} dapat dilihat pada gambar~\ref{fig:class_minimum_camera_placement_solver_balas_additive}. Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{MinimumCameraPlacementSolverBalasAdditive}:
 \begin{itemize}
 	\item \textbf{\textit{solve}() \(\rightarrow\) \textit{void}}\\
-	Fungsi ini berguna untuk menyelesaikan masalah penempatan kamera CCTV dalam ruangan agar berjumlah minimum dengan menggunakan kakas \textit{lp{\_}solve}.
+	Fungsi ini berguna untuk menyelesaikan masalah penempatan kamera CCTV dalam ruangan yang berjumlah minimum yang dapat mencakup seluruh isi ruangan menggunakan algoritma \textit{Balas's additive}.
 \end{itemize}
 
+\subsection{Kelas \textit{Variable}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_variable}
+	\caption[Diagram kelas \textit{Variable}]{Diagram kelas \textit{Variable}}
+	\label{fig:class_variable}
+\end{figure}
 
+Kelas ini merepresentasikan variabel. Diagram kelas \textit{Variable} dapat dilihat pada gambar~\ref{fig:class_variable}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{Variable}:
+\begin{itemize}
+	\item \textbf{\textit{name} $\rightarrow$ \textit{String}}\\
+	Atribut ini berguna untuk menampung nama variabel.
+\end{itemize}
 
+\subsection{Kelas \textit{BIPFunction}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_bip_function}
+	\caption[Diagram kelas \textit{BIPFunction}]{Diagram kelas \textit{BIPFunction}}
+	\label{fig:class_bip_function}
+\end{figure}
 
+Kelas ini merepresentasikan persamaan yang terdiri dari variabel biner. Diagram kelas \textit{BIPFunction} dapat dilihat pada gambar~\ref{fig:class_bip_function}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BIPFunction}:
+\begin{itemize}
+	\item \textbf{\textit{variableCoefMap} $\rightarrow$ \textit{HashMap}<\textit{Variable}, \textit{Double}>}\\
+	Atribut ini berguna untuk menampung koefisien dari setiap variabel.
+\end{itemize}
+Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{BIPFunction}:
+\begin{itemize}
+	\item \textbf{\textit{getVariableList}() $\rightarrow$ \textit{ArrayList}<\textit{Variable}>}\\
+	Fungsi ini berguna untuk mendapatkan variabel yang terdapat dalam persamaan.
+	\item \textbf{\textit{addVariable}(\textit{variable} $\rightarrow$ \textit{Variable}, \textit{coefficient} $\rightarrow$ \textit{double}) $\rightarrow$ \textit{void}}\\
+	Fungsi ini berguna untuk menambahkan variabel beserta koefisiennya ke dalam persamaan.
+	\item \textbf{\textit{getCoefficient}(\textit{variable} $\rightarrow$ \textit{Variable}) $\rightarrow$ \textit{double}}\\
+	Fungsi ini berguna untuk mendapatkan koefisien dari variabel \textit{variable}.
+	\item \textbf{\textit{getResult}(\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>) $\rightarrow$ \textit{double}}\\
+	Fungsi ini berguna untuk mendapatkan hasil persamaan berdasarkan daftar variabel yang bernilai 1.
+\end{itemize}
 
+\subsection{Kelas \textit{BIPConstraint}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_bip_constraint}
+	\caption[Diagram kelas \textit{BIPConstraint}]{Diagram kelas \textit{BIPConstraint}}
+	\label{fig:class_bip_constraint}
+\end{figure}
+Kelas ini merepresentasikan batasan dalam masalah \textit{binary integer programming}. Diagram kelas \textit{BIPConstraint} dapat dilihat pada gambar~\ref{fig:class_bip_constraint}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BIPConstraint}:
+\begin{itemize}
+	\item \textbf{\textit{leftHandSideFunction} $\rightarrow$ \textit{BIPFunction}}\\
+	Atribut ini berguna untuk menampung persamaan pada ruas kiri batasan.
+	\item \textbf{\textit{rightHandSideValue} $\rightarrow$ \textit{double}}\\
+	Atribut ini berguna untuk menampung nilai pada ruas kanan batasan.
+\end{itemize}
+Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{BIPConstraint}:
+\begin{itemize}
+	\item \textbf{\textit{isSatisfied}(\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>) $\rightarrow$ \textit{boolean}}\\
+	Fungsi ini berguna untuk mengetahui apakah batasan dapat dipenuhi berdasarkan daftar variabel yang bernilai 1.
+\end{itemize}
 
+\subsection{Kelas \textit{BIPProblem}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_bip_problem}
+	\caption[Diagram kelas \textit{BIPProblem}]{Diagram kelas \textit{BIPProblem}}
+	\label{fig:class_bip_problem}
+\end{figure}
+Kelas ini merepresentasikan model masalah \textit{binary integer programming}. Diagram kelas \textit{BIPProblem} dapat dilihat pada gambar~\ref{fig:class_bip_problem}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BIPProblem}:
+\begin{itemize}
+	\item \textbf{\textit{objectiveFunction} $\rightarrow$ \textit{BIPFunction}}\\
+	Atribut ini berguna untuk menampung persaman fungsi tujuan.
+	\item \textbf{\textit{constraintList} $\rightarrow$ \textit{ArrayList}<\textit{BIPConstraint}>}\\
+	Atribut ini berguna untuk menampung batasan-batasan.
+\end{itemize}
+Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{BIPProblem}:
+\begin{itemize}
+	\item \textbf{\textit{addConstraint}(\textit{constraint} $\rightarrow$ \textit{BIPConstraint}) $\rightarrow$ \textit{void}}\\
+	Fungsi ini berguna untuk menambahkan batasan pada model masalah \textit{binary integer programming}.
+	\item \textbf{\textit{checkFeasible}(\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>) $\rightarrow$ \textit{BIPFeasibilityCheckResult}}\\
+	Fungsi ini berguna untuk mengembalikan hasil pengecekan solusi \textit{feasible} berdasarkan daftar variabel bernilai 1.
+\end{itemize}
 
+\subsection{Kelas \textit{BIPFeasibilityCheckResult}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_bip_feasibility_check_result}
+	\caption[Diagram kelas \textit{BIPFeasibilityCheckResult}]{Diagram kelas \textit{BIPFeasibilityCheckResult}}
+	\label{fig:class_bip_feasibility_check_result}
+\end{figure}
+Kelas ini merepresentasikan hasil pengecekan solusi \textit{feasible} pada masalah \textit{binary integer programming}. Diagram kelas \textit{BIPFeasibilityCheckResult} dapat dilihat pada gambar~\ref{fig:class_bip_feasibility_check_result}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BIPFeasibilityCheckResult}:
+\begin{itemize}
+	\item \textbf{\textit{blpProblem} $\rightarrow$ \textit{BLPProblem}}\\
+	Atribut ini berguna untuk menampung model masalah \textit{binary integer programming}.
+	\item \textbf{\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{\textit{Variable}}>}\\
+	Atribut ini berguna untuk menampung solusi berupa daftar variabel yang bernilai 1.
+	\item \textbf{\textit{objectiveFunctionValue} $\rightarrow$ \textit{double}}\\
+	Atribut ini berfungsi untuk menampung nilai hasil fungsi tujuan.
+	\item \textbf{\textit{unsatisfiedConstraintList} $\rightarrow$ \textit{ArrayList}<\textit{BIPConstraint}>}\\
+	Atribut ini berfungsi untuk menampung batasan-batasan yang tidak dipenuhi.
+	\item \textbf{\textit{isFeasible} $\rightarrow$ \textit{boolean}}\\
+	Atribut ini berfungsi untuk menampung apakah solusi bersifat \textit{feasible}.
+\end{itemize}
 
+\subsection{Kelas \textit{Node}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_node}
+	\caption[Diagram kelas \textit{Node}]{Diagram kelas \textit{Node}}
+	\label{fig:class_node}
+\end{figure}
+Kelas ini merepresentasikan \textit{node} yang digunakan dalam algoritma \textit{Balas's additive}. Diagram kelas \textit{Node} dapat dilihat pada gambar~\ref{fig:class_node}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{Node}:
+\begin{itemize}
+	\item \textbf{\textit{parent} $\rightarrow$ \textit{Node}}\\
+	Atribut ini berguna untuk menampung orang tua dari \textit{node} ini.
+	\item \textbf{\textit{variable} $\rightarrow$ \textit{Variable}}\\
+	Atribut ini berguna untuk menampung variabel yang dituju oleh \textit{node} ini.
+	\item \textbf{\textit{isZero} $\rightarrow$ \textit{boolean}}\\
+	Atribut ini berguna untuk menampung apakah variabel pada \textit{node} ini bernilai 1.
+	\item \textbf{\textit{boundValue} $\rightarrow$ \textit{double}}\\
+	Atribut ini berguna untuk menampung nilai \textit{bound} dari \textit{node} ini.
+	\item \textbf{\textit{status} $\rightarrow$ \textit{NodeStatus}}\\
+	Atribut ini berguna untuk menampung status dari \textit{node} ini.
+\end{itemize}
+Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Node}:
+\begin{itemize}
+	\item \textbf{\textit{valueOneVariableList}() $\rightarrow$ \textit{ArrayList}<\textit{Variable}>}\\
+	Fungsi ini berguna untuk menghasilkan daftar variabel bernilai 1 yang dimulai dari \textit{node} ini hingga \textit{root node}.
+\end{itemize}
 
+\subsection{Kelas \textit{NodeStatus}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{enum_node_status}
+	\caption[Diagram kelas \textit{NodeStatus}]{Diagram kelas \textit{NodeStatus}}
+	\label{fig:enum_node_status}
+\end{figure}
+Kelas ini merepresentasikan status yang dapat dimiliki oleh \textit{node}. Diagram kelas \textit{NodeStatus} dapat dilihat pada gambar~\ref{fig:enum_node_status}. Berikut ini merupakan pilihan-pilihan status yang terdapat pada kelas \textit{NodeStatus}:
+\begin{itemize}
+	\item \textbf{\textit{FATHOMED\_FEASIBLE} $\rightarrow$ \textit{NodeStatus}}\\
+	Pilihan ini menyatakan status \textit{fathomed} dengan alasan solusi \textit{feasible}.
+	\item \textbf{\textit{FATHOMED\_BOUND} $\rightarrow$ \textit{NodeStatus}}\\
+	Pilihan ini menyatakan status \textit{fathomed} dengan alasan nilai \textit{bound} yang lebih buruk daripada solusi \textit{incumbent}.
+	\item \textbf{\textit{FATHOMED\_IMPOSSIBLE} $\rightarrow$ \textit{NodeStatus}}\\
+	Pilihan ini menyatakan status \textit{fathomed} dengan alasan \textit{impossible} atau tidak dapat menghasilkan \textit{incumbent}.
+	\item \textbf{\textit{INFEASIBLE} $\rightarrow$ \textit{NodeStatus}}\\
+	Pilihan ini menyatakan status \textit{infeasible}
+\end{itemize}
 
+\subsection{Kelas BalasAdditiveBIPSolver}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_balas_additive_bip_solver}
+	\caption[Diagram kelas \textit{BalasAdditiveBIPSolver}]{Diagram kelas \textit{BalasAdditiveBIPSolver}}
+	\label{fig:class_balas_additive_bip_solver}
+\end{figure}
+Kelas ini merepresentasikan metode penyelesaian masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}. Diagram kelas \textit{BalasAdditiveBIPSolver} dapat dilihat pada gambar~\ref{fig:class_balas_additive_bip_solver}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BalasAdditiveBIPSolver}:
+\begin{itemize}
+	\item \textbf{\textit{bipProblem} $\rightarrow$ \textit{BIPProblem}}\\
+	Atribut ini berguna untuk menampung model masalah \textit{binary integer programming} yang akan diselesaikan.
+	\item \textbf{\textit{sortedVariables} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>}\\
+	Atribut ini berfungsi untuk menampung variabel biner yang telah diurut menaik berdasarkan koefisiennya.
+\end{itemize}
+Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{BalasAdditiveBIPSolver}:
+\begin{itemize}
+	\item \textbf{\textit{solve}() $\rightarrow$ \textit{BalasAdditiveBIPSolverResult}}\\
+	Fungsi ini berguna untuk mendapatkan solusi masalah \textit{bipProblem} menggunakan algoritma \textit{Balas's additive}.
+	\item \textbf{\textit{objectiveFunction}() $\rightarrow$ \textit{BIPFunction}}\\
+	Fungsi ini berguna untuk mendapatkan fungsi tujuan dari masalah \textit{bipProblem}.
+	\item \textbf{\textit{indexOf}(\textit{variable} $\rightarrow$ \textit{Variable}) $\rightarrow$ \textit{int}}\\
+	Fungsi ini berguna untuk mendapatkan indeks \textit{variable} dalam daftar variabel yang telah terurut.
+	\item \textbf{\textbf{sortVariablesByCoefficient}() $\rightarrow$ \textbf{void}}\\
+	Fungsi ini berguna untuk mengurutkan variabel secara menaik berdasarkan koefisiennya.
+	\item \textbf{\textit{branch}(\textit{node} $\rightarrow$ \textit{Node}) $\rightarrow$ \textit{Node} [ ]}\\
+	Fungsi ini berguna untuk membuat cabang \textit{node}-0 dan \textit{node}-1 dari \textit{node}.
+	\item \textbf{\textit{boundValue}(\textit{node} $\rightarrow$ \textit{Node}) $\rightarrow$ \textit{double}}\\
+	Fungsi ini berguna untuk menghitung nilai \textit{bound} dari \textit{node}.
+	\item \textbf{\textit{isBoundValueWorseThanCurrentIncumbent}(\textit{node} $\rightarrow$ \textit{Node}, \textit{currentIncumbentObjectiveValue} $\rightarrow$ \textit{double}) $\rightarrow$ \textit{boolean}}\\
+	Fungsi ini berguna untuk mengetahui apakah nilai \textit{bound} pada \textit{node} lebih buruk daripada nilai solusi \textit{incumbent}.
+	\item \textbf{\textit{isBetterThanCurrentIncumbent}(\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>, \textit{currentIncumbentObjectiveValue} $\rightarrow$ \textit{double}) $\rightarrow$ \textit{boolean}}\\
+	Fungsi ini berguna untuk mengetahui apakah daftar variabel bernilai 1 dapat menghasilkan solusi yang lebih baik daripada solusi \textit{incumbent}.
+	\item \textbf{\textit{isImpossibleToContinue}(\textit{node} $\rightarrow$ \textit{Node}) $\rightarrow$ \textit{boolean}}\\
+	Fungsi ini berguna untuk mengetahui apakah \textit{node} tidak mungkin untuk menghasilkan \textit{incumbent}.
+	\item \textbf{\textit{isConstraintImpossibleToSatisfy}(\textit{constraint} $\rightarrow$ \textit{BIPConstraint}, \textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>, \textit{freeVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>) $\rightarrow$ \textit{boolean}}\\
+	Fungsi ini berguna untuk mengetahui apakah \textit{constraint} dapat dipenuhi berdasarkan daftar variabel bernilai 1 dan daftar variabel bebas.
+\end{itemize}
 
+\subsection{Kelas \textit{BalasAdditiveBIPSolverResult}}
+\begin{figure}[H]
+	\centering  
+	\includegraphics[scale=0.6]{class_balas_additive_bip_solver_result}
+	\caption[Diagram kelas \textit{BalasAdditiveBIPSolverResult}]{Diagram kelas \textit{BalasAdditiveBIPSolverResult}}
+	\label{fig:class_balas_additive_bip_solver_result}
+\end{figure}
+Kelas ini merepresentasikan hasil dari penyelesaian masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}. Diagram kelas \textit{BalasAdditiveBIPSolverResult} dapat dilihat pada gambar~\ref{fig:class_balas_additive_bip_solver_result}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{BalasAdditiveBIPSolverResult}:
+\begin{itemize}
+	\item \textbf{\textit{bipProblem} $\rightarrow$ \textit{BIPProblem}}\\
+	Atribut ini berguna untuk menampung model masalah \textit{binary integer programming}.
+	\item \textbf{\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>}\\
+	Atribut ini berguna untuk menampung solusi penyelesaian berupa daftar variabel yang bernilai~1.
+	\item \textbf{\textit{enumeratedNodeList} $\rightarrow$ \textit{ArrayList}<\textit{Node}>}\\
+	Atribut ini berfungsi untuk menampung daftar \textit{node} yang diperiksa selama melakukan penyelesaian masalah menggunakan algoritma \textit{Balas's additive}.
+	\item \textbf{\textit{solvingTime} $\rightarrow$ \textit{long}}\\
+	Atribut ini berfungsi untuk menampung waktu yang digunakan dalam menyelesaikan masalah dalam satuan milisekon.
+\end{itemize}
