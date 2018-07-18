@@ -32,7 +32,7 @@ Perangkat lunak yang dibangun akan menggunakan tampilan antarmuka grafis. Tampil
 \end{itemize}
 
 \section{Perancangan Kelas}
-Rancangan awal kelas-kelas yang telah dipaparkan di~\ref{subsec:diagram_kelas_sederhana} akan dikembangkan lebih lanjut. Kelas-kelas yang digunakan untuk memodelkan masalah diletakkan dalam \textit{package} model. Kelas-kelas untuk memodelkan dan menyelesaikan masalah \textit{binary integer programming} diletakkan pada \textit{package} bip. Diagram kelas rinci untuk kedua package tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_complete} dan~\ref{fig:class_diagram_bip_complete}.
+Rancangan awal kelas-kelas yang telah dipaparkan di~\ref{subsec:diagram_kelas_sederhana} akan dikembangkan lebih lanjut pada bagian ini. Kelas-kelas yang digunakan untuk memodelkan masalah diletakkan dalam \textit{package} model. Kelas-kelas untuk memodelkan dan menyelesaikan masalah \textit{binary integer programming} diletakkan pada \textit{package} bip. Diagram kelas rinci untuk kedua package tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_complete} dan~\ref{fig:class_diagram_bip_complete}.
 
 \begin{sidewaysfigure}
 	\centering  
@@ -326,11 +326,11 @@ Kelas ini merepresentasikan persamaan yang terdiri dari variabel biner. Diagram 
 Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{BIPFunction}:
 \begin{itemize}
 	\item \textbf{\textit{getVariableList}() $\rightarrow$ \textit{ArrayList}<\textit{Variable}>}\\
-	Fungsi ini berguna untuk mendapatkan variabel yang terdapat dalam persamaan.
+	Fungsi ini berguna untuk mendapatkan daftar variabel yang terdapat dalam persamaan.
 	\item \textbf{\textit{addVariable}(\textit{variable} $\rightarrow$ \textit{Variable}, \textit{coefficient} $\rightarrow$ \textit{double}) $\rightarrow$ \textit{void}}\\
 	Fungsi ini berguna untuk menambahkan variabel beserta koefisiennya ke dalam persamaan.
 	\item \textbf{\textit{getCoefficient}(\textit{variable} $\rightarrow$ \textit{Variable}) $\rightarrow$ \textit{double}}\\
-	Fungsi ini berguna untuk mendapatkan koefisien dari variabel \textit{variable}.
+	Fungsi ini berguna untuk mendapatkan koefisien \textit{variable}.
 	\item \textbf{\textit{getResult}(\textit{valueOneVariableList} $\rightarrow$ \textit{ArrayList}<\textit{Variable}>) $\rightarrow$ \textit{double}}\\
 	Fungsi ini berguna untuk mendapatkan hasil persamaan berdasarkan daftar variabel yang bernilai 1.
 \end{itemize}
@@ -408,7 +408,7 @@ Kelas ini merepresentasikan hasil pengecekan solusi \textit{feasible} pada masal
 Kelas ini merepresentasikan \textit{node} yang digunakan dalam algoritma \textit{Balas's additive}. Diagram kelas \textit{Node} dapat dilihat pada gambar~\ref{fig:class_node}. Berikut ini merupakan atribut-atribut yang terdapat pada kelas \textit{Node}:
 \begin{itemize}
 	\item \textbf{\textit{parent} $\rightarrow$ \textit{Node}}\\
-	Atribut ini berguna untuk menampung orang tua dari \textit{node} ini.
+	Atribut ini berguna untuk menampung \textit{node} orang tua dari \textit{node} ini.
 	\item \textbf{\textit{variable} $\rightarrow$ \textit{Variable}}\\
 	Atribut ini berguna untuk menampung variabel yang dituju oleh \textit{node} ini.
 	\item \textbf{\textit{isZero} $\rightarrow$ \textit{boolean}}\\
@@ -431,7 +431,7 @@ Berikut ini merupakan fungsi-fungsi yang terdapat pada kelas \textit{Node}:
 	\caption[Diagram kelas \textit{NodeStatus}]{Diagram kelas \textit{NodeStatus}}
 	\label{fig:enum_node_status}
 \end{figure}
-Kelas ini merepresentasikan status yang dapat dimiliki oleh \textit{node}. Diagram kelas \textit{NodeStatus} dapat dilihat pada gambar~\ref{fig:enum_node_status}. Berikut ini merupakan pilihan-pilihan status yang terdapat pada kelas \textit{NodeStatus}:
+Kelas ini merepresentasikan status yang dapat dimiliki \textit{node}. Diagram kelas \textit{NodeStatus} dapat dilihat pada gambar~\ref{fig:enum_node_status}. Berikut ini merupakan pilihan-pilihan status yang terdapat pada kelas \textit{NodeStatus}:
 \begin{itemize}
 	\item \textbf{\textit{FATHOMED\_FEASIBLE} $\rightarrow$ \textit{NodeStatus}}\\
 	Pilihan ini menyatakan status \textit{fathomed} dengan alasan solusi \textit{feasible}.
@@ -440,7 +440,7 @@ Kelas ini merepresentasikan status yang dapat dimiliki oleh \textit{node}. Diagr
 	\item \textbf{\textit{FATHOMED\_IMPOSSIBLE} $\rightarrow$ \textit{NodeStatus}}\\
 	Pilihan ini menyatakan status \textit{fathomed} dengan alasan \textit{impossible} atau tidak dapat menghasilkan \textit{incumbent}.
 	\item \textbf{\textit{INFEASIBLE} $\rightarrow$ \textit{NodeStatus}}\\
-	Pilihan ini menyatakan status \textit{infeasible}
+	Pilihan ini menyatakan status \textit{infeasible}.
 \end{itemize}
 
 \subsection{Kelas BalasAdditiveBIPSolver}

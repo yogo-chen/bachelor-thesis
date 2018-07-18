@@ -766,7 +766,7 @@ Setiap \textit{node} menunjukkan solusi yang belum tentu bersifat \textit{feasib
 
 \section{Penelitian Terkait}
 \label{penelitian_horster}
-Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas pada penelitian mereka adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan juga diasumsikan berbentuk persegi panjang.
+Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan sebelumnya oleh Horster dan Lienhart~\cite{horster2006approximating}. Masalah yang dibahas pada penelitian mereka adalah cara menentukan jumlah sensor visual minimum beserta dengan lokasi penempatan dan arah pandangnya. Masalah ini dibatasi pada bidang 2D dan ruangan yang digunakan diasumsikan berbentuk persegi panjang.
 
 \begin{figure}[H]
 	\centering
@@ -774,7 +774,7 @@ Penelitian untuk mencari penempatan sensor visual secara optimal telah dilakukan
 	\caption[Pemodelan daerah cakupan kamera]{Pemodelan daerah cakupan kamera}
 	\label{fig:fieldofviewhorster}
 \end{figure}
-Pada penelitian ini, daerah cakupan kamera dimodelkan dalam bentuk segitiga seperti pada gambar~\ref{fig:fieldofviewhorster}. Kamera ditempatkan pada posisi \(c_x,x_y\) dan menghadap ke arah \(\varphi\). Untuk mendapatkan daerah cakupan kamera, mulanya kamera ditranslasi ke titik \textit{origin} pada sistem koordinat:
+Pada penelitian ini, daerah cakupan kamera dimodelkan dalam bentuk segitiga seperti pada gambar~\ref{fig:fieldofviewhorster}. Kamera ditempatkan pada posisi \(c_x,c_y\) dan menghadap ke arah \(\varphi\). Untuk mendapatkan daerah cakupan kamera, mulanya kamera ditranslasi ke titik \textit{origin} pada sistem koordinat:
 \begin{equation}
 	x'=x-c_x
 \end{equation}
@@ -811,11 +811,11 @@ Dengan subtitusi, didapatkan daerah cakupan kamera berdasarkan tiga persamaan be
 	\label{eq:l3}
 \end{equation}
 
-Ruangan dimodelkan menggunakan \textit{grid points} 2 dimensi dengan jarak antar titik sebesar \(f_a\). Kamera hanya dapat diletakkan pada titik dalam \textit{grid point} dan cakupan kamera hanya diperiksa terhadap titik dalam \textit{grid point}. Ruangan berbentuk persegi panjang yang terdiri dari ukuran lebar \(w\) dan tinggi \(h\) tanpa penghalang apapun di dalamnya.
+Ruangan dimodelkan menggunakan \textit{grid point} 2 dimensi dengan jarak antar titik sebesar \(f_a\). Kamera hanya dapat diletakkan pada titik \textit{grid point} dan cakupan kamera hanya diperiksa terhadap titik \textit{grid point}. Ruangan berbentuk persegi panjang sehingga ukuran ruangan terdiri dari lebar \(w\) dan tinggi \(h\). Di dalam ruangan tidak terdapat penghalang apapun.
 
-Titik penempatan kamera dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) sesuai dengan dimensi \(x-\) dan \(y-\) pada \textit{grid point}. Selain itu, terdapat himpunan \(s_\varphi\) yang menyatakan arah pandang yang memungkinkan bagi setiap kamera. Kamera yang ditempatkan pada (\(c_x,c_y\)) dengan arah pandang \(\varphi\) dapat mencakup \textit{grid point} (\(x,y\)) jika dan hanya jika persamaan~\ref{eq:l1},~\ref{eq:l2}, dan~\ref{eq:l3} dapat dipenuhi.
+Titik penempatan kamera dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) sesuai dengan dimensi \(x-\) dan \(y-\) pada \textit{grid point}. Selain itu, terdapat himpunan \(s_\varphi\) yang menyatakan arah pandang yang memungkinkan bagi setiap kamera. Kamera yang ditempatkan pada (\(c_x,c_y\)) dengan arah pandang \(\varphi\) dapat mencakup \textit{grid point} (\(x,y\)) jika pernyataan~\ref{eq:l1},~\ref{eq:l2}, dan~\ref{eq:l3} dipenuhi.
 
-Masalah dimodelkan ke dalam bentuk \textit{linear programming} dengan tujuan mendapatkan jumlah kamera minimum berdasarkan \textit{grid point} dan model kamera yang diberikan dengan tetap memastikan bahwa setiap titik pada \textit{grid point} tercakup oleh setidaknya satu kamera. Variabel biner \(x_{ij\varphi}\) didefinisikan sebagai berikut:
+Masalah dimodelkan ke dalam bentuk masalah \textit{binary integer programming} dengan tujuan mendapatkan jumlah kamera minimum berdasarkan \textit{grid point} dan model kamera yang diberikan dengan tetap memastikan bahwa setiap titik pada \textit{grid point} tercakup oleh setidaknya satu kamera. Berikut ini merupakan definisi variabel biner \(x_{ij\varphi}\) yang digunakan dalam model masalah \textit{binary integer programming}:
 \begin{equation}
 	x_{ij\varphi}=\left\{
 		\begin{array}{cl}
@@ -824,7 +824,7 @@ Masalah dimodelkan ke dalam bentuk \textit{linear programming} dengan tujuan men
 		\end{array}
 	\right.
 \end{equation}
-Total kamera \(N\) didapatkan dengan:
+Total kamera (\(N\)) didapatkan dengan fungsi tujuan berikut ini:
 \begin{equation}
 	N=\sum_{\varphi=0}^{s_\varphi-1}\sum_{i=0}^{s_i-1}\sum_{j=0}^{s_j-1}x_{ij\varphi}
 \end{equation}
@@ -838,7 +838,7 @@ Untuk menentukan ketercakupan titik, dibentuk fungsi biner \(c(i1,j1,\varphi1,i2
 		\end{array}
 	\right.
 \end{equation}
-Dengan demikian masalah dapat diformulasikan ke dalam bentuk \textit{linear programming} menjadi seperti berikut:
+Dengan demikian masalah dapat diformulasikan ke dalam bentuk masalah \textit{binary integer programming} berikut:
 \begin{equation}
 	\begin{split}
 		\textit{min } & \sum_{\varphi=0}^{s_\varphi-1}\sum_{i=0}^{s_i-1}\sum_{j=0}^{s_j-1}x_{ij\varphi}\\
@@ -854,4 +854,4 @@ Batasan pada~\ref{eq:lpformhorster} memastikan bahwa setiap titik pada \textit{g
 		0\leq i\leq(s_x-1), 0&\leq j\leq(s_y-1)
 	\end{split}
 \end{equation}
-Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{linear programing} ini adalah sebesar \(s_x\times s_y\times s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{linear programming} juga akan semakin besar. Karena variabel yang digunakan bersifat biner, maka masalah ini termasuk ke dalam masalah \textit{binary integer programming}~(\ref{sec:bip}) yang dapat diselesaikan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}).
+Jumlah variabel \(x_{ij\varphi}\) dalam model \textit{binary integer programming} ini adalah sebesar \(s_x\times s_y\times s_\varphi\). Jika ukuran \textit{grid point} diperbesar, maka jumlah variabel dan batasan pada model \textit{binary integer programming} juga akan semakin besar. Karena masalah ini merupakan masalah \textit{binary integer programming}~(\ref{sec:bip}), maka masalah ini dapat diselesaikan dengan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}).

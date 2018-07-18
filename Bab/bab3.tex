@@ -1,5 +1,5 @@
 \chapter{Analisis}
-Pada bagian ini, masalah akan dianalisi lebih lanjut. Awalnya, masalah akan dimodelkan terlebih dahulu. Hasil dari pemodelan masalah akan digunakan untuk membentuk masalah \textit{linear program} yang akan diselesaikan menggunakan teknik \textit{linear programming}. Dengan menggunakan \textit{linear programming}, solusi optimal bagi masalah dapat ditemukan, yaitu solusi berupa kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Analisis kembali dilanjutkan hingga tahap kebutuhan dari perangkat lunak yang akan dibangun.
+Pada bagian ini, masalah akan dianalisi lebih lanjut. Awalnya, masalah akan dimodelkan terlebih dahulu sebelum diselesaikan. Hasil dari pemodelan masalah akan digunakan untuk membentuk model masalah \textit{binary integer programming}~(\ref{sec:bip}) yang akan diselesaikan menggunakan algoritma \textit{Balas's additive}~(\ref{balas_additive}). Dengan model masalah \textit{binary integer programming}, solusi optimal masalah dapat ditemukan, yaitu solusi berupa penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Selanjutnya, pemodelan dan penyelesaian tersebut akan digunakan untuk merancang perangkat lunak yang dapat menerima masalah ini dan menyelesaikannya. Setiap kebutuhan perangkat lunak yang terdiri dari masukan, keluaran, dan kelas-kelas akan dibahas lebih lanjut pada bagian analisis kebutuhan perangkat lunak.
 
 \section{Pemodelan Masalah}
 Masalah yang dibahas pada penelitian ini perlu dimodelkan terlebih dahulu agar menjadi konkret. Pemodelan masalah terdiri dari pemodelan ruangan, kamera CCTV, dan cakupan kamera CCTV. Pemodelan yang dilakukan pada penelitian sebelumnya~(\ref{penelitian_horster}) akan diterapkan kembali pada penelitian ini dengan adanya modifikasi. Modifikasi dilakukan pada pemodelan ruangan dan pemodelan cakupan kamera CCTV. Sebelumnya, ruangan dimodelkan menggunakan \textit{grid point} sehingga suatu bagian daerah dalam ruangan dinyatakan dalam bentuk titik. Sedangkan pada penelitian ini, suatu bagian dalam ruangan dinyatakan dalam bentuk \textit{cell}. Modifikasi pemodelan ruangan turut disertai dengan modifikasi pemodelan daerah cakupan kamera CCTV. Sebelumnya, cakupan kamera CCTV terdiri dari kumpulan titik. Namun, karena suatu daerah dalam ruangan dinyatakan dalam bentuk \textit{cell}, maka cakupan kamera CCTV pada penelitian ini berubah sehingga terdiri dari kumpulan \textit{cell}.
@@ -241,7 +241,7 @@ Dengan memenuhi pengecekan pertama dan kedua, maka \textit{cell} dinyatakan terc
 %\end{equation*}
 %Sudut rotasi cell akan dibandingkan dengan sudut awal dan sudut akhir dari sudut pandang kamera CCTV. Apabila sudut rotasi berada di antara sudut awal dan sudut akhir, maka cell berada dalam sudut pandang kamera CCTV. Dengan memeriksa jarak dan sudut rotasi cell, cell-cell yang dicakup oleh kamera CCTV dapat ditemukan.
 %\subsection{\textit{Overlap} dan \textit{Out of Bound}}
-Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan dengan membandingkan jumlah \textit{cell}. \textit{Overlap cell} adalah \textit{cell} yang dicakup oleh lebih dari 1 kamera CCTV, sedangkan \textit{out of bound cell} adalah \textit{cell} di luar ruangan yang tercakup oleh kamera CCTV. Gambar~\ref{fig:daerah_overlap_out_of_bound} menggambarkan penempatan kamera CCTV yang menghasilkan \textit{overlap cell} dan \textit{out of bound cell}. Tingkat \textit{overlap} dan \textit{out of bound} dapat dihitung dengan menjumlahkan semua \textit{cell} yang dicakup dari setiap kamera CCTV dan membaginya dengan jumlah \textit{cell} yang berada di dalam ruangan. Perhitungan tingkat \textit{overlap} dan \textit{out of bound} hanya dilakukan apabila seluruh \textit{cell} dalam ruangan telah tercakup oleh kamera CCTV.
+Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan dengan membandingkan jumlah \textit{cell}. \textit{Overlap cell} adalah \textit{cell} yang dicakup oleh lebih dari 1 kamera CCTV, sedangkan \textit{out of bound cell} adalah \textit{cell} di luar ruangan yang tercakup oleh kamera CCTV. Gambar~\ref{fig:daerah_overlap_out_of_bound} menggambarkan penempatan kamera CCTV yang menghasilkan \textit{overlap cell} dan \textit{out of bound cell}. Tingkat \textit{overlap} dan \textit{out of bound} dapat dihitung dengan membandingkan jumlah \textit{overlap cell} dan \textit{out of bound cell} dengan total \textit{cell} dalam ruangan. Perhitungan tingkat \textit{overlap} dan \textit{out of bound} hanya dilakukan apabila seluruh \textit{cell} dalam ruangan telah tercakup oleh kamera CCTV.
 
 \begin{figure}[h]
 	\centering  
@@ -253,13 +253,14 @@ Perhitungan tingkat \textit{overlap} dan \textit{out of bound} dapat dilakukan d
 %Setiap cell dalam ruangan memiliki ukuran yang sama dengan cell-cell lainnya. Panjang harizontal dan vertikal dari cell tidak selalu berukuran sama sehingga cell dapat berbentuk persegi panjang. Penentuan ukuran cell merupakan bagian yang akan diteliti pada bagian eksperimen.
 
 
-\section{Penyelesaian Masalah dengan \textit{Linear Programming}}
-Setelah memodelkan masalah, masalah akan diselesaikan dengan menggunakan teknik \textit{linear programming}. Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh ruangan. Berdasarkan pemodelan masalah, ruangan telah dibagi ke dalam matriks \textit{cell} sehingga solusi penempatan kamera CCTV harus mencakup seluruh \textit{cell} dalam ruangan. Model masalah \textit{linear program} yang merepresentasikan masalah ini akan didefinisikan terlebih dahulu. Selanjutnya, model masalah \textit{linear program} akan diselesaikan dengan teknik \textit{linear programming}.
+\section{Penyelesaian Masalah}
+Setelah memodelkan masalah, masalah akan dimodelkan ke dalam bentuk masalah \textit{binary integer programming}. Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Berdasarkan pemodelan masalah, ruangan telah dibagi ke dalam matriks \textit{cell} sehingga solusi penempatan kamera CCTV harus mencakup seluruh \textit{cell} dalam ruangan. 
+Untuk mendapatkan solusi tersebut, akan dibangun seluruh kemungkinan penempatan kamera CCTV. Dari setiap kemungkinan tersebut, akan dipilih penempatan-penempatan kamera CCTV berjumlah minimum yang dapat mencakup seluruh \textit{cell} dalam ruangan. Pemilihan dapat dilakukan dengan memeriksa seluruh kombinasi kemungkinan penempatan hingga didapatkan kombinasi yang sesuai dengan kriteria solusi. Namun, metode ini bukan merupakan metode efisien karena bersifat \textit{exhaustive search} sehingga dibutuhkan metode lainnya yang dapat mencari kombinasi penempatan kamera CCTV tanpa melibatkan \textit{exhaustive search}. Salah satu metodenya adalah memodelkan masalah ke dalam bentuk masalah \textit{binary integer programming} dan menyelesaikannya menggunakan algoritma \textit{Balas's additive}. Pada~\ref{balas_additive} telah dibahas bagaimana algoritma ini dapat menyelesaikan masalah \textit{binary integer programming} secara efisien tanpa melibatkan \textit{exhaustive search}. Dengan demikian, solusi dari masalah ini dapat ditemukan dengan memodelkan masalah ke dalam bentuk masalah \textit{binary integer programming} dan menyelesaikannya menggunakan algoritma Balas's additive.
 
 %Dalam masalah ini, terdapat tujuan yang akan dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV yang dapat mencakup seluruh daerah pada ruangan. Kamera-kamera CCTV tentu dapat ditempatkan dimana saja hingga seluruh daerah pada ruangan tercakup sepenuhnya. Penempatan dengan cara ini tentu tidak efektif karena jumlah kamera CCTV tidak selalu berjumlah minimum sehingga diperlukan metode lainnya untuk menyelesaikan masalah ini. Salah satu cara yang digunakan untuk menyelesaikan masalah ini adalah dengan menggunakan teknik linear programming.
 
 \subsection{Variabel}
-Variabel dalam model masalah \textit{linear program} ini terdiri dari seluruh kemungkinan penempatan kamera CCTV. Penempatan kamera CCTV dapat dilakukan di setiap titik sudut pada setiap \textit{cell} yang dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) berdasarkan sumbu \(x\) dan sumbu \(y\). Sudut-sudut arah pandang penempatan kamera CCTV dinyatakan dalam himpunan \(s_\varphi\). Kemungkinan sudut arah pandang kamera CCTV dibangun berdasarkan \(n\) jumlah kemungkinan arah pandang sehingga \(s_\varphi = \left\{\frac{m}{n} \times 2\pi \lvert m = 1,2,\dots,n \right\}\). Setelah membangun seluruh kemungkinan penempatan, dilanjutkan dengan memetakan setiap kemungkinan penemaptan kamera CCTV dengan variabel pada model masalah \textit{linear program}. Variabel yang digunakan merupakan variabel biner dengan definisi berikut:
+Variabel dalam model masalah \textit{binary integer programming} ini terdiri dari seluruh kemungkinan penempatan kamera CCTV. Penempatan kamera CCTV dapat dilakukan di setiap titik sudut pada setiap \textit{cell} yang dinyatakan dalam himpunan \(s_x\) dan himpunan \(s_y\) berdasarkan sumbu \(x\) dan sumbu \(y\). Seluruh kemungkinan sudut arah pandang penempatan kamera CCTV akan dibangun berdasarkan jumlah kemungkinan arah pandang (\(n\)) dan dinyatakan dalam himpunan~\(s_\varphi\) sehingga \(s_\varphi = \left\{\frac{m}{n} \times 2\pi \lvert m = 1,2,\dots,n \right\}\). Setelah membangun seluruh kemungkinan penempatan kamera CCTV, didefinisikan variabel biner sebagai berikut:
 \begin{equation}
 	x_{ij\varphi} =
 	\left \{
@@ -274,7 +275,7 @@ Variabel dalam model masalah \textit{linear program} ini terdiri dari seluruh ke
 %Pada awalnya ditentukan seluruh kemungkinan penempatan kamera CCTV sehingga setiap cell pada ruangan dicakup oleh minimal 1 kamera CCTV. Setiap penempatan kamera CCTV memiliki posisi dan arah pandang masing-masing. Dari seluruh kemungkinan ini akan dicari himpunan bagian yang dimana penempatan-penempatannya dapat mencakup seluruh daerah pada ruangan. Setiap kemungkinan penempatan memiliki 2 kemungkinan, yaitu diterapkan sebagai bagian dari solusi atau tidak. Dalam penyelesaian menggunakan teknik linear programming, setiap kemungkinan penempatan akan menjadi variabel keputusan. Variabel keputusan \(x_{ij\theta}\) akan merujuk pada penempatan kamera CCTV pada posisi \((i,j)\) dengan arah pandang \(\theta\). Karena setiap penempatan kamera CCTV memiliki 2 kemungkinan untuk diterapkan, maka setiap variabel keputusan dapat dinyatakan dengan nilai 0 atau 1. Apabila suatu variabel keputusan bernilai 1, maka penempatan kamera CCTV yang dirujuk akan diterapkan sebagai bagian dari solusi. Apabila benilai 0, maka penempatan kamera CCTV yang dirujuk tidak akan diterapkan. Karena variabel keputusan hanya bisa bernlai 0 dan 1 saja, masalah ini tidak diselesaikan menggunakan teknik linear programming biasa karena hasil dapat bernilai pecahan. Masalah ini perlu diselesaikan menggunakan teknik integer programming agar hasil dari setiap variabel keputusan hanya berupa bilangan bulat. Variabel keputusan dinyatakan dalam notasi berikut:
 
 \subsection{Fungsi Tujuan}
-Fungsi tujuan dalam model masalah \textit{linear program} ini dinyatakan dalam bentuk minimasi dari seluruh kemungkinan penempatan kamera CCTV. Dengan fungsi tujuan ini, maka solusi dari model masalah \textit{linear program} ini merepresentasikan penempatan kamera CCTV yang berjumlah minimum. Berikut ini merupakan notasi fungsi tujuan pada model masalah \textit{linear program} ini:
+Fungsi tujuan dalam model masalah \textit{binary integer programming} ini dinyatakan dalam bentuk minimasi dari seluruh kemungkinan penempatan kamera CCTV. Dengan fungsi tujuan ini, maka solusi dari model masalah \textit{linear program} ini merepresentasikan penempatan kamera CCTV yang berjumlah minimum. Berikut ini merupakan fungsi tujuan dalam model masalah \textit{binary integer programming} ini:
 \begin{equation}
 \textit{min }z = \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\varphi}
 \end{equation}
@@ -283,7 +284,7 @@ Fungsi tujuan dalam model masalah \textit{linear program} ini dinyatakan dalam b
 
 \subsection{Batasan}
 %Selain mencari jumlah kamera CCTV yang minimal, seluruh daerah pada ruangan harus tercakup sepenuhnya. Berdasarkan pemodelan, ruangan dimodelkan dalam bentuk grid point sehingga daerah pada ruangan dimodelkan dalam bentuk cell. Agar seluruh daerah pada ruangan tercakup sepenuhnya, maka setiap cell harus dicakup oleh minimal 1 kamera CCTV. Terdapat sebuah fungsi biner yang digunakan untuk mengetahui apakah suatu penempatan kamera CCTV dapat mencakup suatu cell. Fungsi biner ini akan menghasilkan nilai 1 apabila suatu penempatan kamera CCTV dapat mencakup suatu cell. Apabila sebaliknya, maka fungsi biner ini akan menghasilkan nilai 0. Fungsi tersebut ditulis sebagai berikut:
-Selain mendapatkan penempatan kamera CCTV yang berjumlah minimum, setiap \textit{cell} dalam ruangan harus tercakup oleh kamera CCTV. Untuk memenuhinya, pada model masalah \textit{linear program} akan ditambahkan batasan di mana setiap cell harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Terdapat fungsi biner yang berfungsi untuk menyatakan ketercakupan \textit{cell} oleh suatu penempatan kamera CCTV. Fungsi biner tersebut adalah sebagai berikut:
+Selain mendapatkan penempatan kamera CCTV yang berjumlah minimum, setiap \textit{cell} dalam ruangan harus tercakup oleh kamera CCTV. Untuk memenuhinya, pada model masalah \textit{linear program} akan ditambahkan batasan di mana setiap cell harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Terdapat fungsi biner yang digunakan untuk menyatakan ketercakupan \textit{cell} oleh suatu penempatan kamera CCTV. Berikut ini merupakan fungsi biner tersebut:
 \begin{equation}
 	cov(i,j,\varphi,p,q) =
 	\left \{
@@ -297,7 +298,7 @@ Selain mendapatkan penempatan kamera CCTV yang berjumlah minimum, setiap \textit
 \end{equation}
 
 %Dalam bentuk linear programming akan ditambahkan batasan yang menyatakan bahwa setiap cell harus dicakup oleh minimal 1 penempatan kamera CCTV. Fungsi biner sebelumnya akan digunakan untuk menyatakan hubungan ketercakupan cell dengan penempatan kamera CCTV. Batasan tersebut ditulis sebagai berikut:
-Fungsi biner tersebut digunakan menyatakan ketercakupan \textit{cell} oleh setiap kemungkinan penempatan kamera CCTV pada batasan. Berikut ini merupakan batasan pada model masalah \textit{linear program} ini:
+Fungsi biner tersebut digunakan menyatakan ketercakupan \textit{cell} oleh setiap kemungkinan penempatan kamera CCTV pada batasan. Berikut ini merupakan batasan pada model masalah \textit{binary integer programming} ini:
 \begin{equation}
 	\begin{split}
 		& \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{i,j,\varphi} \times cov(i,j,\varphi,p,q) \geq 1\\
@@ -305,8 +306,8 @@ Fungsi biner tersebut digunakan menyatakan ketercakupan \textit{cell} oleh setia
 	\end{split}
 \end{equation}
 
-\subsection{Model Masalah \textit{Linear Program}}
-Pada model masalah \textit{linear program}, variabel terdiri dari seluruh kemungkinan penempatan kamera CCTV. Fungsi tujuan ditujukan untuk mendapatkan penempatan kamera CCTV yang berjumlah minimum. Agar seluruh ruangan dapat tercakup, maka ditambahkan batasan di mana setiap \textit{cell} dalam ruangan harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Dengan menggabungkan ketiganya, didapatkan model masalah \textit{linear program} sebagai berikut:
+\subsection{Model Masalah \textit{Binary Integer Programming}}
+Variable pada model masalah \textit{binary integer programming} ini terdiri dari seluruh kemungkinan penempatan kamera CCTV. Fungsi tujuan ditujukan untuk mendapatkan penempatan kamera CCTV yang berjumlah minimum. Agar seluruh isi ruangan dapat tercakup, maka ditambahkan batasan di mana setiap \textit{cell} dalam ruangan harus dicakup oleh setidaknya 1 penempatan kamera CCTV. Dengan menggabungkan ketiganya, didapatkan model masalah \textit{binary integer programming} sebagai berikut:
 \begin{equation}
 	\begin{split}
 		\textit{min } & z = \sum_{\varphi=0}^{s_{\varphi}-1} \sum_{i=0}^{s_i-1} \sum_{j=0}^{s_j-1} x_{ij\varphi}\\
@@ -316,18 +317,17 @@ Pada model masalah \textit{linear program}, variabel terdiri dari seluruh kemung
 	\end{split}
 \end{equation}
 
-Model ini akan diselesaikan dengan teknik \textit{linear programming}. Namun, karena variabel yang digunakan merupakan variabel biner, maka model masalah \textit{linear program} ini dapat diselesaikan dengan teknik \textit{binary integer programming}~(\ref{sec:bip}) menggunakan algortima \textit{Balas's additive}~(\ref{balas_additive}).
-
+Selanjutnya, model ini akan diselesaikan menggunakan algoritma \textit{Balas's additive} sehingga didapatkan solusi berupa kombinasi penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan.
 %Masalah yang dibahas di dalam skripsi ini dapat diubah ke dalam bentuk yang dapat diselesaikan dengan teknik linear programming. Setiap penempatan kamera CCTV pada ruangan menjadi variabel-variabel keputusan yang menunjukkan apakah akan diterapkan sebagai solusi atau tidak. Fungsi tujuan berfungsi untuk menyatakan bahwa penempatan-penempatan kamera CCTV harus berjumlah minimum sehingga sesuai dengan solusi yang diharapkan. Selain mendapatkan jumlah penempatan kamera CCTV yang minimum, terdapat batasan-batasan yang menyatakan bahwa seluruh daerah pada ruangan juga harus tercakup sepenuhnya. Apabila digabungkan, maka bentuk masalah ini dalam bentuk linear programming adalah seperti berikut:
 
 \section{Analisis Kebutuhan Perangkat Lunak}
-Pada bagian ini, akan dibahas mengenai analisis kebutuhan dari perangkat lunak yang akan dibangun. Terdapat diagram \textit{use case} dan skenario untuk menjelaskan aksi yang dapat dilakukan pengguna terhadap perangkat lunak. Perangkat lunak yang dibangun dapat menerima masukan-masukan masalah dan menghasilkan keluaran yang sesuai dengan masukan tersebut. Terdapat juga diagram kelas sederhana untuk membangun perangkat lunak yang akan dikembangkan lebih lanjut pada tahap perancangan.
+Pada bagian ini, akan dibahas mengenai kebutuhan dari perangkat lunak yang akan dibangun. Terdapat diagram \textit{use case} dan skenario untuk menjelaskan aksi yang dapat dilakukan pengguna terhadap perangkat lunak. Perangkat lunak yang dibangun dapat menerima masukan-masukan masalah dan menghasilkan keluaran yang sesuai dengan masukan tersebut. Terdapat juga diagram kelas sederhana yang digunakan untuk membangun perangkat lunak. Diagram kelas sederhana ini akan dikembangkan lebih lanjut pada tahap perancangan.
 
 %Pada subbab ini, akan dijelaskan aksi-aksi yang dapat dilakukan pengguna terhadap perangkat lunak melalui diagram \textit{use case} dan skenario-skenario. Selain penjelasan aksi-aksi, terdapat juga diagram kelas sederhana yang akan dikembangkan lebih lanjut pada tahap perancangan perangkat lunak. 
 %Pada subbab ini akan dijelaskan deskripsi dari perangkat lunak yang akan dibangun. Perangkat lunak yang dibangun akan disesuaikan dengan pemodelan masalah yang telah dibahas sebelumnya. Perangkat lunak akan menggunakan fitur tampilan antarmuka grafis untuk memudahkan interaksi pengguna dengan perangkat lunak. Perangkat lunak akan mengsimulasikan masalah penempatan kamera CCTV dengan masukan yang dimasukkan oleh pengguna. Hasil dari masukan pengguna akan diolah oleh perangkat lunak dan hasilnya akan ditampilkan. Rancangan perangkat lunak yang terdiri dari diagram use case, diagram kelas, masukan, dan keluaran akan dibahas pada bagian ini.
 
 \subsection{Diagram \textit{Use Case} dan Skenario}
-Dalam perangkat lunak yang dibangun, hanya terdapat 1 jenis aktor, yaitu pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor beserta dengan aksi yang dapat dilakukannya.
+Pada perangkat lunak yang dibangun, hanya terdapat 1 buah aktor, yaitu pengguna. Diagram \textit{use case} pada gambar~\ref{fig:use_case_diagram} menunjukkan aktor beserta dengan aksi yang dapat dilakukannya.
 \begin{figure}[h]
 	\centering  
 	\includegraphics[scale=0.6]{use_case_diagram}
@@ -342,7 +342,7 @@ Berikut ini skenario dari aksi pada diagram \textit{use case}:
 		\item Aktor: Pengguna
 		\item Langkah:
 		\begin{enumerate}
-			\item Aktor memasukkan spesifikasi masalah dan dilanjutkan dengan menekan tombol ''\textit{submit}''.
+			\item Aktor memasukkan spesifikasi masalah pada kolom masukan yang telah disediakan dan dilanjutkan dengan menekan tombol ''\textit{submit}''.
 			\item Sistem menampilkan tampilan penempatan kamera CCTV.
 		\end{enumerate}
 	\end{itemize}
@@ -379,7 +379,7 @@ Berikut ini skenario dari aksi pada diagram \textit{use case}:
 \end{itemize}
 
 \subsection{Kebutuhan Masukan Perangkat Lunak}
-Berdasarkan pemodelan masalah dan penyelesaian masalah dengan teknik \textit{linear programming}, ditetapkan masukan-masukan perangkat lunak sebagai berikut:
+Berdasarkan pemodelan masalah dan penyelesaian masalah menggunakan \textit{binary integer programming}, ditetapkan masukan untuk perangkat lunak sebagai berikut:
 \begin{itemize}
 	\item Panjang ruangan dalam satuan ukuran sentimeter (cm).
 	\item Lebar ruangan dalam satuan ukuran sentimeter (cm).
@@ -390,14 +390,14 @@ Berdasarkan pemodelan masalah dan penyelesaian masalah dengan teknik \textit{lin
 \end{itemize}
 
 \subsection{Kebutuhan Keluaran Perangkat Lunak}
-Perangkat lunak akan mencari solusi berdasarkan masukan yang telah diberikan pengguna. Solusi tersebut berupa penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Informasi mengenai solusi tersebut akan dikembalikan oleh perangkat lunak kepada pengguna, yaitu sebagai berikut:
+Perangkat lunak akan mencari solusi masalah berdasarkan masukan yang telah diberikan pengguna dan menghasilkan keluaran berupa:
 \begin{itemize}
 	\item Posisi dan sudut arah pandang dari setiap penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan.
 \end{itemize}
 
 \subsection{Diagram Kelas Sederhana}
 \label{subsec:diagram_kelas_sederhana}
-Pada bagian ini terdapat diagram kelas sederhana yang menunjukkan rancangan awal kelas-kelas yang akan digunakan untuk membangun perangkat lunak. Terdapat 2 \textit{package} utama yang digunakan untuk memodelkan dan menyelesaikan masalah. \textit{Package} pertama adalah \textit{package} model yang berisi kelas-kelas untuk memodelkan masalah. \textit{Package} kedua adalah \textit{package} bip yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming}. Di dalam \textit{package} bip terdapat \textit{subpackage} balasadditive yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}. Diagram kelas sederhana untuk kedua \textit{package} tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_basic} dan~\ref{fig:class_diagram_bip_basic}.
+Pada bagian ini terdapat diagram kelas sederhana yang menunjukkan rancangan awal kelas-kelas yang akan digunakan untuk membangun perangkat lunak. Kelas-kelas tersebut dikelompokkan ke dalam 2 \textit{package}. \textit{Package} pertama adalah \textit{package} model yang berisi kelas-kelas untuk memodelkan masalah. \textit{Package} kedua adalah \textit{package} bip yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming}. Di dalam \textit{package} bip terdapat \textit{subpackage} balasadditive yang berisi kelas-kelas untuk menyelesaikan masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}. Diagram kelas sederhana untuk kedua \textit{package} tersebut dapat dilihat pada gambar~\ref{fig:class_diagram_model_basic} dan~\ref{fig:class_diagram_bip_basic}.
 
 \begin{figure}[h]
 	\centering  
