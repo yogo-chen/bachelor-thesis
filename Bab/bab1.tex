@@ -5,72 +5,77 @@
 \section{Latar Belakang}
 \label{sec:label}
 
-Kamera merupakan alat/komponen optik yang digunakan untuk mengambil citra/gambar. Salah satu penggunaan kamera dalam kehidupan sehari-hari adalah kamera CCTV (\textit{closed-circuit television}). Kamera CCTV digunakan untuk memantau suatu lokasi dengan tujuan pengawasan dan keamanan. Kamera CCTV pada umumnya dipasang pada tempat strategis sehingga memiliki tingkat jangkauan yang baik. Kamera CCTV bekerja dengan cara merekam lokasi dalam jangkauannya secara terus menerus dan menyimpan hasil rekamannya dalam media penyimpanan. Rekaman ini biasanya digunakan oleh petugas keamanan untuk memantau lokasi tersebut dari tempat yang berbeda sehingga petugas tidak perlu mendatangi lokasi tersebut. Petugas hanya perlu datang apabila melihat hal-hal yang mencurigakan dari hasil rekaman CCTV.
+Kamera merupakan alat optik yang digunakan untuk mengambil gambar. Salah satu penggunaan kamera dalam kehidupan sehari-hari adalah kamera CCTV (\textit{closed-circuit television}). Kamera CCTV digunakan untuk memantau suatu lokasi dengan tujuan pengawasan dan keamanan. Kamera CCTV pada umumnya dipasang di tempat yang strategis agar mendapat cakupan seefektif mungkin. Kamera CCTV bekerja dengan cara mengirimkan sinyal video menuju monitor khusus CCTV yang pada umumnya berada di tempat yang berbeda. Monitor ini akan dipantau oleh petugas keamaanan sehingga petugas keamanan dapat memantau lokasi tersebut tanpa perlu mendatanginya secara langsung.
 
-Penempatan kamera CCTV di ruangan yang berbentuk sederhana (persegi panjang) relatif tidak sulit. Kamera CCTV yang dibutuhkan pada umumnya berjumlah dua buah dan dipasang di kedua sudut ruangan yang merupakan satu diagonal sehingga saling berhadapan. Namun, jika ruangan berukuran besar, maka tujuan penggunaan kamera CCTV tidak hanya untuk mendeteksi adanya orang, tetapi juga mengenali orang tersebut. Hal ini menyebabkan kesulitan dalam menentukan jumlah minimum dan lokasi penempatan kamera CCTV. Terdapat beberapa pendekatan yang dapat digunakan untuk menyelesaikan masalah ini, seperti dengan cara memasang kamera CCTV pada daerah-daerah yang dapat dimasuki orang. Tetapi pada kasus terburuk, orang bisa saja masuk melewati jalur-jalur yang tidak diduga, seperti tembok, atap, bawah tanah, dsb. Oleh karena itu, alangkah baiknya pemasangan kamera CCTV dilakukan hingga seluruh daerah pada ruangan tersebut dapat tercakup.
+Penempatan kamera CCTV dalam ruangan yang berbentuk sederhana (persegi panjang) relatif tidak sulit. Kamera CCTV yang dibutuhkan pada umumnya berjumlah dua buah dan dipasang di kedua sudut ruangan yang merupakan satu diagonal sehingga saling berhadapan. Namun, jika ruangan berukuran besar, maka penempatan kamera CCTV dengan cara tersebut menjadi tidak efektif karena kamera CCTV tidak dapat memantau bagian ruangan yang berjarak terlalu jauh dari lokasi penempatan kamera CCTV. Untuk mengatasi masalah ini, pada ruangan tersebut dapat ditambahkan kamera-kamera CCTV hingga seluruh bagian dalam ruangan tercakup oleh kamera CCTV. Hal ini menyebabkan masalah lainnya, yaitu ketika menentukan jumlah minimum kamera CCTV yang dibutuhkan beserta dengan lokasi penempatannya. Apabila kamera CCTV yang dipasang berjumlah terlalu banyak, maka terdapat bagian ruangan yang setidaknya dicakup oleh 2 atau lebih kamera CCTV sehingga tidak efisien.
 
-Penempatan kamera CCTV dapat dilakukan di berbagai lokasi dalam berbagai arah pandang. Apabila penempatan kamera CCTV dilakukan tanpa adanya perhitungan, maka terdapat kemungkinan di mana jumlah kamera akan terlalu banyak dan/atau. Dalam penempatan kamera CCTV terdapat perhitungan tingkat \textit{overlap} dan tingkat \textit{out of bound}. \textit{Overlap} merupakan bagian ruangam yang dicakup oleh lebih dari 1 kamera CCTV. Sedangkan, \textit{out of bound} adalah cakupan kamera CCTV yang terhalang oleh sisi ruangan.
-%Penempatan kamera CCTV akan semakin baik apabila memiliki tingkat \textit{overlap} dan tingkat \textit{out of bound} yang semakin rendah.
+%Penempatan kamera CCTV dapat dilakukan di berbagai lokasi dalam berbagai arah pandang. Apabila penempatan kamera CCTV dilakukan tanpa adanya perhitungan, maka terdapat kemungkinan di mana jumlah kamera akan terlalu banyak dan/atau. Dalam penempatan kamera CCTV terdapat perhitungan tingkat \textit{overlap} dan tingkat \textit{out of bound}. \textit{Overlap} merupakan bagian ruangam yang dicakup oleh lebih dari 1 kamera CCTV. Sedangkan, \textit{out of bound} adalah cakupan kamera CCTV yang terhalang oleh sisi ruangan.
 
-Pada skripsi ini, akan dibuat sebuah perangkat lunak yang akan mencari penempatan-penempatan kamera CCTV yang berjumlah minimum berdasarkan ukuran ruangan, jarak pandang efektif kamera CCTV, dan sudut pandang kamera CCTV. Penempatan kamera CCTV terdiri dari lokasi penempatan dan sudut arah pandang yang dituju. Selain itu, perangkat lunak juga akan menghasilkan visualisasi dari solusi yang didapatkan. Dengan adanya visualisasi, penempatan-penempatan kamera CCTV dapat dipahami dengan lebih baik.
+Pada penelitian ini, masalah tersebut akan dianalisi lebih lanjut dan diselesaikan. Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Terdapat metode yang digunakan untuk menyelesaikan masalah ini, yaitu dengan menggunakan metode \textit{binary integer programming}. \textit{Binary integer programming} merupakan metode untuk mendapatkan solusi terbaik dari suatu masalah dengan cara memodelkannya ke dalam bentuk matematika. Setelah memodelkan masalah ke dalam bentuk \textit{binary integer programming}, hasil pemodelan tersebut akan diselesaikan menggunakan algoritma \textit{Balas's additive}. \textit{Balas's additive} merupakan algoritma yang dapat mencari solusi terbaik bagi masalah \textit{binary integer programming} yang dilakukan secara efisien tanpa melibatkan \textit{exhaustive search}. Dengan demikian, masalah ini dapat diselesaikan dan solusinya dapat ditemukan. 
+
+Pada penelitian ini juga akan dibangun sebuah perangkat lunak yang dapat menyelesaikan masalah tersebut. Analisis pemodelan dan penyelesaian masalah yang dilakukan akan diterapkan dalam perangkat lunak ini sehingga perangkat lunak dapat menerima masukan masalah dan menghasilkan solusinya. Perangkat lunak yang dibangun akan menggunakan tampilan antarmuka grafis dengan tujuan memvisualisasikan solusi penempatan kamera CCTV dalam ruangan. Dengan visualisasi, solusi penempatan kamera CCTV dalam ruangan akan lebih mudah untuk dipahami.
 
 \section{Rumusan Masalah}
 \label{sec:rumusan}
 
-Berdasarkan latar belakang masalah, maka ditetapkan rumusan masalah sebagai berikut:
+Berdasarkan latar belakang masalah yang telah dibahas sebelumnya, ditetapkan rumusan masalah sebagai berikut:
 
 \begin{itemize}
-	\item Bagaimana cara mencari jumlah minimum penempatan kamera CCTV dalam suatu ruangan yang dapat mencakup seluruh ruangan?
-	\item Bagaimana cara memvisualisasikan penempatan-penempatan kamera CCTV dalam suatu ruangan?
+	\item Bagaimana cara memodelkan masalah ini ke dalam bentuk masalah \textit{binary integer programming}?
+	\item Bagaimana cara menyelesaikan masalah ini dalam bentuk masalah \textit{binary integer programming} dengan menggunakan algoritma \textit{Balas's additive}?
+	\item Bagaimana cara membangun perangkat lunak yang dapat menyelesaikan masalah ini?
 \end{itemize}
 
 \section{Tujuan}
 \label{sec:tujuan}
 
-Berdasarkan rumusan masalah, maka tujuan dalam skripsi ini adalah:
+Berdasarkan rumusan masalah yang telah dijabarkan sebelumnya, ditetapkan tujuan penelitian sebagai berikut:
 
 \begin{itemize}
-	\item Mempelajari cara menentukan jumlah minimum penempatan kamera CCTV dalam suatu ruangan yang dapat mencakup seluruh ruangan.
-	\item Membangun perangkat lunak yang dapat mencari jumlah minimum penempatan kamera CCTV dan memvisualisasikan penempatan-penempatan kamera CCTV dalam suatu ruangan.
+	\item Menganalisis cara memodelkan masalah ini ke dalam bentuk masalah \textit{binary integer programming}.
+	\item Menganalisi cara menyelesaikan masalah ini dalam bentuk masalah \textit{binary integer programming} dengan menggunakan algoritma \textit{Balas's additive}.
+	\item Membagun perangkat lunak yang menerapkan analisis pemodelan dan penyelesaian masalah sehingga dapat menerima masukan masalah dan menyelesaikannya.
 \end{itemize}
 
 \section{Batasan Masalah}
 \label{sec:batasan}
 
-Dalam pembahasan masalah ini, terdapat batasan-batasan masalah sebagai berikut:
+Dalam pembahasan masalah ini, terdapat batasan-batasan sebagai berikut:
 
 \begin{itemize}
-	\item Ruangan dimodelkan dalam bidang 2 dimensi berbentuk persegi panjang.
-	\item Spesifikasi kamera CCTV yang digunakan terdiri dari jarak pandang efektif dan besar sudut pandang.
+	\item Pemodelan masalah dilakukan pada bidang 2 dimensi.
+	\item Kamera CCTV yang digunakan merupakan kamera statis.
+	\item Ruangan yang digunakan berbentuk persegi panjang yang terdiri dari ukuran panjang dan ukuran lebar. Kedua ukuran tersebut dinyatakan dalam satuan sentimeter (cm).
+	\item Daerah cakupan kamera CCTV berbentuk sebagian lingkaran di mana lokasi penempatan kamera CCTV merupakan titik pusat sebagian lingkaran.
+	\item Spesifikasi kamera CCTV yang digunakan terdiri dari jarak pandang dan besar sudut pandang. Keduanya digunakan untuk menentukan daerah cakupan kamera CCTV di mana jarak pandang menunjukkan jari-jari sebagian lingkaran dan sudut pandang menunjukkan besar sudut sebagian lingkaran. Parameter jarak pandang dinyatakan dalam satuan sentimeter~(cm) dan parameter sudut pandang dinyatakan dalam satuan sudut derajat~(\(^\circ\)).
 \end{itemize}
 
 \section{Metodologi}
 \label{sec:metlit}
-\begin{itemize}
-	\item Mempelajari metode linear programming
-	\item Mempelajari metode integer programming
-	\item Mempelajari penggunaan kakas \textit{lp{\_}solve}
-	\item Melakukan pemodelan masalah
-	\item Menerapkan metode linear programming dalam penyelesaian masalah
-	\item Merancang perangkat lunak
-	\item Membangun perangkat lunak
-	\item Menguji perangkat lunak
-	\item Membuat kesimpulan
-\end{itemize}
+Berikut ini merupakan langkah-langkah yang dalam melakukan penelitian ini:
+\begin{enumerate}
+	\item Melakukan studi pustaka mengenai metode \textit{linear programming} untuk memahami dasar \textit{linear programming} sebelum mempelajari \textit{binary integer programming}.
+	\item Melakukan studi pustaka mengenai metode \textit{binary integer programming} untuk memodelkan masalah ini ke dalam bentuk masalah \textit{binary integer programming}.
+	\item Melakukan studi pustaka mengenai algoritma \textit{Balas's additive} untuk melakukan penyelesaian masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive}.
+	\item Melakukan analisis pemodelan masalah ke dalam bentuk \textit{binary integer programming}.
+	\item Melakukan perancangan dan pengimplementasian perangkat lunak.
+	\item Melakukan pengujian perangkat lunak.
+	\item Membuat kesimpulan.
+\end{enumerate}
 
 \section{Sistematika Pembahasan}
 \label{sec:sispem}
 \begin{itemize}
 	\item \textbf{Bab 1 Pendahuluan}\\
-	Pada bagian ini akan dijelaskan latar belakang masalah, rumusan masalah, tujuan dan batasan masalah. Terdapat penjelasan mengenai metodologi yang digunakan dalam melakukan penelitian ini.
+	Pada bagian ini dijelaskan latar belakang masalah yang diangkat dalam penelitian ini. Berdasarkan latar belakang masalah tersebut, ditentukan rumusan masalah dan tujuan dalam penelitian ini. Selain itu, terdapat batasan yang ada pada penelitian ini. Setiap langka yang dilakukan dalam penelitian ini dibahas pada bagian metodologi.
 	\item \textbf{Bab 2 Landasan Teori}\\
-	Pada bagian ini terdapat pembahasan teori-teori yang digunakan untuk menyelesaikan masalah. Terdapat teori mengenai linear programming dan integer programming. Selain itu, terdapat penjelasan mengenai kakas \textit{lp{\_}solve} yang digunakan untuk membantu menyelesaikan masalah.
+	Pada bagian ini terdapat pembahasan mengenai teori-teori yang digunakan dalam penelitian ini. Terdapat teori \textit{linear programming} dan teori \textit{binary integer programming} yang digunakan untuk memodelkan masalah ini ke dalam bentuk masalah \textit{binary integer programming}. Penyelesaian masalah \textit{binary integer programming} akan dibahas pada bagian algoritma \textit{Balas's additive}. Selain itu, terdapat juga penjelasan mengenai penelitian terkait yang telah dilakukan sebelumnya.
 	\item \textbf{Bab 3 Analisis}\\
-	Pada bagian ini terdapat penjelasan mengenai pemodelan masalah dan cara penyelesaian masalah menggunakan metode linear programming. Selain itu, terdapat analisis kebutuhan perangkat lunak yang terdiri dari diagram \textit{use case} dan diagram kelas sederhana.
+	Pada bagian ini terdapat penjelasan mengenai analisis pemodelan masalah dan analisis penyelesaian masalah menggunakan metode \textit{binary integer programming}. Selain itu, terdapat analisis kebutuhan perangkat lunak yang terdiri dari diagram \textit{use case} dan diagram kelas sederhana.
 	\item \textbf{Bab 4 Perancangan}\\
-	Pada bagian ini dijelaskan bentuk perancangan antarmuka dan perancangan kelas diagram rinci yang digunakan untuk membangun perangkat lunak.
-	\item \textbf{Bab 5 Pengujian}\\
-	Pada bagian ini dibahas hasil-hasil pengujian yang dilakukan. Pengujian terdiri dari pengujian fungsional dan pengujian eksperimental.
+	Pada bagian ini dibahas mengenai perancangan antarmuka dan perancangan kelas diagram rinci yang akan digunakan untuk membangun perangkat lunak.
+	\item \textbf{Bab 5 Implementasi dan Pengujian}\\
+	Pada bagian ini akan dibahas mengenai hasil implementasi dan pengujian perangkat lunak yang dilakukan.
 	\item \textbf{Bab 6 Kesimpulan dan Saran}\\
-	Pada bagian ini terdapat hal-hal apa saja yang didapatkan melalui penelitian ini. Selain itu, terdapat saran dari penulis bagi orang lain yang ingin melanjutkan penelitian ini.
+	Pada bagian ini terdapat kesimpulan yang dihasilkan melalui penelitian ini beserta dengan saran untuk penelitian selanjutnya.
 \end{itemize}

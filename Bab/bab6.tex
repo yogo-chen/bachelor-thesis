@@ -1,17 +1,23 @@
 \chapter{Kesimpulan dan Saran}
 
 \section{Kesimpulan}
-Berdasarkan penelitian yang telah dilakukan di dalam skripsi ini, disimpulkan bahwa:
+Berdasarkan penelitian yang telah dilakukan, terdapat beberapa hal yang dapat disimpulkan, yaitu:
 \begin{enumerate}
-	\item Masalah pencarian penempatan kamera CCTV berjumlah minimum yang mencakup seluruh ruangan dapat diselesaikan menggunakan metode linear programming. Masalah ini dapat memiliki banyak solusi, namun solusi-solusi tersebut belum tentu menghasilkan solusi kamera CCTV yang berjumlah minimum. Dengan memodelkan masalah ini dalam bentuk masalah linear programming, maka solusi optimal dari masalah ini dapat ditemukan.
-	\item Perangkat lunak untuk menyelesaikan masalah ini telah berhasil dibangun. Perangkat lunak ini dapat menerima spesifikasi masalah dan menerapkan metode linear programming untuk menyelesaikannya. Hasil dari penyelesaian ini disajikan dalam bentuk visualisasi sehingga mudah untuk dipahami.
-	\item Pengujian yang dilakukan menghasilkan informasi bahwa ukuran cell dan rasio antara sisi terpendek ruangan dengan jarak pandang kamera CCTV memiliki korelasi dengan tingkat \textit{overlap} dan \textit{out of bound}. Apabila ukuran cell semakin kecil, maka tingkat overlap dan out of bound akan semakin besar. Apabila rasio antara sisi terpendek ruangan dengan jarak pandang kamera CCTV semakin besar, maka tingkat \textit{overlap} dan \textit{out of bound} akan semakin kecil. Sedangkan untuk besar sudut pandang kamera CCTV, tidak ditemukan adanya korelasi dengan tingkat \textit{overlap} dan \textit{out of bound}.
+	\item Masalah ini dapat dimodelkan ke dalam bentuk masalah \textit{binary integer programming}. Variabel-variabel pada bentuk masalah \textit{binary integer programming} terdiri dari seluruh kemungkinan penempatan kamera CCTV. Kemungkinan penempatan kamera CCTV dapat dibangun dengan mengkombinasikan seluruh titik penempatan kamera CCTV dengan seluruh kemungkinan sudut arah pandang penempatan kamera CCTV. Fungsi tujuan pada model masalah \textit{binary integer programming} ditujukan untuk meminimasi jumlah penempatan kamera CCTV. Untuk memastikan bahwa setiap bagian dalam ruangan tercakup oleh kamera CCTV, maka ditambahkan batasan-batasan yang menyatakan bahwa setiap \textit{cell} dalam ruangan harus tercakup oleh setidaknya 1 penempatan kamera CCTV.
+	
+	\item Pemodelan masalah ini ke dalam bentuk masalah \textit{binary integer programming} dapat diselesaikan menggunakan algoritma \textit{Balas's additive}. Karena masalah ini dapat dimodelkan ke dalam bentuk masalah \textit{binary integer programming}, maka solusi masalah berupa penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan dapat ditemukan dengan menggunakan algoritma \textit{Balas's additive}.
+	
+	\item Perangkat lunak untuk menyelesaikan masalah ini dapat menerima masukan masalah dan menghasilkan solusinya. Perangkat lunak ini telah menerapkan hasil analisis pemodelan dan penyelesaian masalah sehingga solusi dari perangkat lunak ini merupakan solusi penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Solusi ini ditampilkan perangkat lunak melalui visualisasi pada tampilan antarmuka grafis sehingga penempatan-penempatan kamera CCTV dapat dipahami dengan lebih mudah.
+	
+	\item Pengujian pertama menghasilkan kesimpulan bahwa ukuran ruangan memiliki hubungan dengan ukuran model masalah \textit{binary integer programming}. Berdasarkan eksperimen yang dilakukan, didapati bahwa apabila ukuran ruangan semakin besar, maka ukuran model masalah \textit{binary integer programming} juga akan semakin besar.
+	
+	\item Pengujian kedua menghasilkan kesimpulan bahwa solusi optimal yang didapatkan dengan menggunakan algoritma \textit{Balas's additive} dapat ditemukan tanpa perlu memeriksa seluruh \(2^n\) kemungkinan solusi. Hal ini menandakan bahwa penyelesaian masalah \textit{binary integer programming} menggunakan algoritma \textit{Balas's additive} merupakan metode yang efisien karena tidak melibatkan \textit{exhaustive search}.
 \end{enumerate}
-Dengan demikian, setiap tujuan dalam skripsi ini telah tercapai.
 
 \section{Saran}
-Berikut ini adalah saran-saran dari penulis bagi pembaca/peneliti yang ingin melanjutkan penelitian ini:
+Terdapat beberapa saran untuk pengembangan penelitian ini lebih lanjut, yaitu:
 \begin{enumerate}
-	\item Lanjutan pemodelan masalah dalam bidang 3 dimensi.
-	\item Penerapan algoritma \textit{Heuristic} pada metode linear programming agar masalah linear programming dapat diselesaikan dengan lebih cepat.
+	\item Pemodelan masalah yang dilakukan pada penelitian ini masih dibatasi pada bidang 2 dimensi sehingga pemodelan masalah dapat dikembangkan lebih lanjut pada bidang 3 dimensi.
+	\item Ruangan yang digunakan dalam penelitian ini berbentuk sederhana (persegi panjang) tanpa adanya penghalang di dalamnya. Ruangan ini dapat dikembangkan lebih lanjut sehingga dapat berbentuk selain persegi panjang dan/atau memiliki suatu penghalang di dalamnya.
+	\item Kamera CCTV yang digunakan dalam penelitian ini merupakan kamera statis sehingga dapat dikembangkan dengan menggunakan kamera yang dapat bergerak.
 \end{enumerate}
