@@ -9,7 +9,7 @@ public class Angle {
     private static final double PI = Math.PI;
     private final double radians;
 
-    //coordinate system (flipped y)
+    // coordinate system (flipped y)
     //     -y
     //      ^
     //      |
@@ -18,11 +18,13 @@ public class Angle {
     //      v
     //     +y
     public static Angle rotationAngle(Point point, Point center) {
-//        double radians = Math.atan2( //if normal y
+        //if normal y
+//        double radians = Math.atan2( 
 //                point.getY() - center.getY(),
 //                point.getX() - center.getX()
 //        );
-        double radians = Math.atan2( //if flipped y
+        //if flipped y
+        double radians = Math.atan2(
                 center.getY() - point.getY(),
                 point.getX() - center.getX()
         );
@@ -94,13 +96,6 @@ public class Angle {
         } else {
             return start.rad() < radians || radians < end.rad();
         }
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.radians) ^ (Double.doubleToLongBits(this.radians) >>> 32));
-        return hash;
     }
 
     @Override

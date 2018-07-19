@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author Prayogo Cendra
  */
-public class GridPoint {
+public class CellMatrix {
 
     protected final int rows,
             columns,
@@ -20,7 +20,7 @@ public class GridPoint {
     protected final Cell[][] cellsMatrix;
     protected final ArrayList<Cell> innerCellList;
 
-    public GridPoint(
+    public CellMatrix(
             int innerRows,
             int innerColumns,
             int verticalMargins,
@@ -99,7 +99,7 @@ public class GridPoint {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("GRID POINT\nTotal cells: ");
+        sb.append("CELL MATRIX\nTotal cells: ");
         sb.append(rows);
         sb.append("x");
         sb.append(columns);

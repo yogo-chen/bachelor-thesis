@@ -8,7 +8,7 @@ import java.util.Iterator;
  *
  * @author Prayogo Cendra
  */
-public class Room extends GridPoint {
+public class Room extends CellMatrix {
 
     private final Dimension roomDimension;
     private final CameraSpecification cameraSpecification;

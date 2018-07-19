@@ -10,7 +10,7 @@ Berikut ini merupakan spesifikasi perangkat keras yang digunakan baik pada tahap
 	\item RAM: 8GB
 \end{itemize}
 
-\section{Lingkungan Implementasi Perangkat Keras}
+\section{Lingkungan Implementasi Perangkat Lunak}
 Berikut ini merupakan spesifikasi perangkat lunak yang digunakan baik pada tahap implementasi maupun pada tahap pengujian:
 \begin{itemize}
 	\item OS: Windows 10 Pro, 64-bit
@@ -39,10 +39,10 @@ Pada bagian ini, akan dibahas hasil implementasi antarmuka sesuai dengan peranca
 	\end{figure}
 \end{itemize}
 
-\section{Pengujian}
+\section{Pengujian Perangkat Lunak}
 Pada perangkat lunak yang telah dibangun, akan dilakukan 2 buah pengujian. Pengujian pertama dilakukan untuk melihat pengaruh perubahan masukan terhadap ukuran masalah masalah \textit{binary integer programming}. Pengujian kedua dilakukan untuk membandingkan jumlah iterasi pada algoritma \textit{Balas's additive} dengan iterasi \textit{exhaustive search} berjumlah \(2^n\).
 
-\subsection{Pengujian-1}
+\subsection{Pengujian 1}
 Pada pengujian ini, akan dilihat pengaruh perubahan masukan masalah terhadap ukuran masalah \textit{binary integer programming}. Sebanyak 4 buah eksperimen akan dilakukan dalam pengujian ini. Masukan yang digunakan untuk eksperimen ini dibagi menjadi 2 bagian:
 \begin{itemize}
 	\item \textbf{Masukan tetap}\\
@@ -75,7 +75,7 @@ Matriks \textit{cell} didapatkan berdasarkan masukan ukuran ruangan dan masukan 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
-	\begin{axis}[xlabel= \textit{cells}, ylabel=Jumlah variabel (\(n\)), legend pos = outer north east]
+	\begin{axis}[xlabel= \textit{Jumlah cells}, ylabel=Jumlah variabel (\(n\)), legend pos = outer north east]
 	\addplot[smooth][color=blue,mark=*] coordinates {(4,28) (6,44) (9,68) (12, 92)};
 	\end{axis}
 	\end{tikzpicture}
@@ -85,7 +85,7 @@ Matriks \textit{cell} didapatkan berdasarkan masukan ukuran ruangan dan masukan 
 
 Berdasarkan eksperimen yang dilakukan, didapatkan hubungan jumlah \textit{cells} terhadap jumlah variabel (\(n\)) yang dapat dilihat pada gambar~\ref{fig:pengujian_1}. Jumlah variabel (\(n\)) merupakan jumlah kemungkinan penempatan kamera CCTV. Apabila ukuran ruangan semakin besar, maka ukuran matriks \textit{cell} akan semakin besar. Apabila matriks \textit{cell} semakin besar, maka akan titik penempatan kamera CCTV semakin banyak sehingga kemungkinan penempatan kamera CCTV juga akan semakin banyak. Dengan demikian, dapat disimpulkan bahwa apabila ukuran ruangan semakin besar, maka kemungkinan penempatan kamera CCTV juga akan semakin banyak.
 
-\subsection{Pengujian-2}
+\subsection{Pengujian 2}
 Pada~\ref{balas_additive} diketahui bahwa pencarian solusi menggunakan algoritma \textit{Balas's additive} dilakukan secara efisien tanpa melibatkan \textit{exhaustive search}. Dengan menggunakan algoritma \textit{Balas's additive}, solusi optimal masalah \textit{binary integer programming} dapat ditemukan tanpa memeriksa seluruh \(2^n\) kemungkinan solusi di mana \(n\) menunjukkan jumlah variabel. Untuk menguji hal tersebut, akan dilakukan eksperimen perbandingan antara jumlah iterasi pada algoritma \textit{Balas's additive} dengan iterasi \textit{exhaustive search} yang berjumlah \(2^n\). Eksperimen ini dilakukan sebanyak 5 kali. Masukan yang digunakan untuk eksperimen ini dibagi menjadi 2 bagian:
 \begin{itemize}
 	\item \textbf{Masukan tetap}\\

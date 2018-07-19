@@ -38,40 +38,9 @@ public class Point {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Point other = (Point) obj;
-        if (Math.abs(this.x - other.x) > 0.000001) {
-            return false;
-        }
-        if (Math.abs(this.y - other.y) > 0.000001) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "("
-                + twoDecimalPointFloatNumber(x)
+        return twoDecimalPointFloatNumber(x)
                 + ", "
-                + twoDecimalPointFloatNumber(y)
-                + ")";
+                + twoDecimalPointFloatNumber(y);
     }
 }

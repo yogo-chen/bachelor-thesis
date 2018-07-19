@@ -130,8 +130,8 @@
 %=============================================================================
 \gambar{yes}
 %\gambar{no}
-\tabel{yes}
-%\tabel{no}  
+%\tabel{yes}
+\tabel{no}  
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -197,8 +197,8 @@
 %=============================================================================
 \namanpm{Prayogo Cendra}{2014730033}
 \tanggal{18}{5}{2018}
-\pembimbing{\CLF}{}    
-\penguji{<<penguji 1>>}{<<penguji 2>>} 
+\pembimbing{\VSM}{}    
+\penguji{\CHW}{\KDH} 
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -214,8 +214,8 @@
 % - gunakan \texorpdfstring{\\}{} untuk pindah ke baris baru
 % - judul TIDAK ditulis dengan menggunakan huruf besar seluruhnya !!
 %=============================================================================
-\judulINA{Pencarian Jumlah Kamera Statis Minimum dalam Suatu Ruangan Menggunakan Linear Programming}
-\judulENG{Finding Minimum Static Camera In A Room Using Linear Programming}
+\judulINA{Pencarian Jumlah Kamera Statis Minimum dalam Suatu Ruangan Menggunakan \textit{Binary Integer Programming}}
+\judulENG{Finding Minimum Static Camera In A Room Using Binary Integer Programming}
 %_____________________________________________________________________________
 %=============================================================================
 % 								BAGIAN X
@@ -228,23 +228,22 @@
 % - langsung mulai setelah '{' awal, jangan mulai menulis di baris bawahnya
 %=============================================================================
 \abstrakINA{
-Kamera CCTV merupakan kamera yang digunakan untuk memantau suatu lokasi dengan tujuan pengawasan dan keamanan. Kamera CCTV pada umumnya dipasang di tempat-tempat strategis sehingga mendapatkan jangkauan yang baik. Penempatan kamera CCTV di ruangan yang berbentuk sederhana (persegi panjang) relatif tidak sulit. Kamera CCTV yang dibutuhkan pada umumnya berjumlah dua buah dan dipasang di kedua sudut ruangan sehingga saling berhadapan. Namun, jika ruangan berukuran besar, maka tujuan penggunaan kamera CCTV bukan hanya untuk mendeteksi adanya orang, melainkan juga untuk mengenali orang tersebut. Hal ini dapat menyebabkan kesulitan dalam menentukan jumlah minimum dan lokasi penempatan kamera CCTV yang dapat mencakup seluruh ruangan.
-
-Pada skripsi ini, masalah akan akan dipelajari lebih lanjut dengan memahami setiap elemen pembentuk masalah. Selanjutnya, masalah ini akan dirumuskan lebih lanjut agar menjadi lebih konkret. Untuk menyelesaikan masalah ini, penulis menggunakan metode linear programming karena metode ini dapat menyelesaikan masalah optimasi. Masalah ini termasuk ke dalam jenis masalah optimasi karena solusi yang diharapkan harus bersifat paling optimal, yaitu penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh ruangan.
-
-Selain merumuskan masalah, penulis juga membangun perangkat lunak yang dapat mengsimulasikan masalah. Perangkat lunak ini dapat menerima masukan-masukan masalah dan menyelesaikannya menggunakan metode linear programming. Tidak hanya menyelesaikannya saja, perangkat lunak juga dapat memvisualisasikan solusinya sehingga penempatan-penempatan kamera CCTV dapat dipahami dengan lebih mudah.
-%Masalah ini termasuk dalam masalah optimasi di mana terdapat tujuan yang ingin dicapai, yaitu mendapatkan penempatan-penempatan kamera CCTV berjumlah paling minimum yang dapat mencakup seluruh ruangan. Salah satu metode yang dapat digunakan untuk menyelesaikan masalah ini adalah metode linear programming. Metode ini dipilih karena dapat menyelesaikan masalah yang berhubungan dengan optimasi. Dengan memodelkan masalah ini ke dalam bentuk masalah linear programming, maka solusi berupa penempatan-penempatan kamera CCTV yang berjumlah minimum dapat ditemukan.
-
-%Dalam pembahasan masalah ini, ruangan dibatasi sehingga dimodelkan dalam bidang 2 dimensi berbentuk persegi panjang. Selain itu, jenis kamera CCTV yang digunakan juga dibatasi sehingga hanya menggunakan 1 jenis kamera CCTV saja. Kamera CCTV memiliki spesifikasi yang relatif beragam. Spesifikasi kamera CCTV yang digunakan dalam masalah ini hanya spesifikasi jarak pandang efektif dan besar sudut pandang kamera CCTV. Spesifikasi jarak pandang efektif yang dimaksud adalah jarak pandang terjauh kamera CCTV untuk mengenali wajah seseorang. Dengan demikian, masukan masalah terdiri dari ukuran ruangan dan spesifikasi kamera CCTV.
-
-%Sebelum menyelesaikan masalah ini, masalah akan dimodelkan terlebih dahulu. Pemodelan masalah dilakukan dengan memodelkan setiap elemen masalah, seperti ruangan, kamera CCTV, daerah cakupan kamera CCTV, dsb. Setelah pemodelan ini dilakukan, maka metode penyelesaian masalah menggunakan metode linear programming akan diterapkan sehingga masalah dapat diselesaikan. Untuk membantu menyelesaikan masalah ini, akan dibangun sebuah perangkat lunak yang dapat menerima masalah ini dan menyelesaikan menggunakan metode linear programming. Solusi masalah berupa penempatan-penempatan kamera CCTV minimum akan divisualisasikan dalam bentuk grafis sehingga pengguna perangkat lunak dapat memahaminya dengan lebih mudah. Dengan demikian, masalah yang dibahas dalam skripsi ini dapat dimodelkan dan diselesaikan sehingga didapatkan solusi yang diinginkan.
+	Kamera merupakan alat optik yang digunakan untuk mengambil gambar. Salah satu penggunaan kamera dalam kehidupan sehari-hari adalah kamera CCTV (\textit{closed-circuit television}). Kamera CCTV digunakan untuk memantau suatu lokasi dengan tujuan pengawasan dan keamanan. Kamera CCTV pada umumnya dipasang di tempat yang strategis agar mendapat cakupan seefektif mungkin.
+	
+	Penempatan kamera CCTV dalam ruangan kecil yang berbentuk sederhana (persegi panjang) relatif tidak sulit. Kamera CCTV yang dibutuhkan pada umumnya berjumlah dua buah dan dipasang di kedua sudut ruangan yang merupakan satu diagonal sehingga saling berhadapan. Namun, jika ruangan berukuran besar, maka penempatan kamera CCTV dengan cara tersebut menjadi tidak efektif karena kamera CCTV tidak dapat memantau bagian ruangan yang berjarak terlalu jauh dari lokasi penempatan kamera CCTV.
+	
+	Pada penelitian ini, masalah tersebut akan dianalisis lebih lanjut dan diselesaikan. Solusi yang diharapkan dari masalah ini adalah penempatan-penempatan kamera CCTV yang berjumlah minimum yang dapat mencakup seluruh isi ruangan. Terdapat metode yang digunakan untuk menyelesaikan masalah ini, yaitu dengan menggunakan metode \textit{binary integer programming}. Setelah memodelkan masalah ke dalam bentuk \textit{binary integer programming}, hasil pemodelan tersebut akan diselesaikan menggunakan algoritma \textit{Balas's additive}. Dengan demikian, masalah ini dapat diselesaikan dan solusinya dapat ditemukan. 
+	
+	Pada penelitian ini juga akan dibangun sebuah perangkat lunak yang dapat menyelesaikan masalah tersebut. Perangkat lunak yang dibangun akan menggunakan tampilan antarmuka grafis dengan tujuan memvisualisasikan solusi penempatan kamera CCTV dalam ruangan. Dengan visualisasi, solusi penempatan kamera CCTV dalam ruangan akan lebih mudah untuk dipahami.
 }
 \abstrakENG{
-CCTV cameras are cameras used to monitor a location with the purpose of surveillance and security. CCTV cameras are generally installed in strategic places to get a good coverage. The placement of CCTV cameras in a simple room (rectangle) is relatively not difficult. CCTV cameras that are needed in general amount to two pieces and installed in both corners of the room so they are facing each other. However, if the room is large, then the purpose of using CCTV cameras is not only to detect people, but also to recognize the person. This can cause difficulties in determining the minimum number and location of CCTV camera placement that can cover the entire room.
-
-In this thesis, the problem will be studied further by understanding every problem-forming element. Furthermore, this problem will be formulated further to be more concrete. To solve this problem, the author uses linear programming method because this method can solve the optimization problem. This problem belongs to the type of optimization problem because the expected solution should be the most optimal, that is the minimum placements of CCTV camera that can cover the entire room.
-
-In addition to formulating the problem, the authors also build software that can simulate the problem. This software can receive input problems and solve them using linear programming method. Not only solve it, the software can also visualize the solution so that the placement of CCTV cameras can be understood more easily.
+	The camera is an optical tool used to take pictures. One use of the camera in everyday life is a CCTV (closed-circuit television) camera. CCTV cameras are used to monitor a location for surveillance and security purposes. CCTV cameras are generally installed in strategic places to get the most effective coverage possible.
+	
+	The placement of CCTV camera in a small simple shaped (rectangle) room is relatively not difficult. CCTV cameras that are needed mostly two and installed in both corners of the room which is a diagonal so they facing each other. However, if the room is large, then the placement of CCTV cameras in such a way becomes ineffective because CCTV cameras can not monitor the part of the room that is too far away from the location of CCTV camera placement.
+	
+	In this study, the problem will be further analyzed and completed. The expected solution of this problem is the placement of a minimum CCTV camera that can cover the entire contents of the room. There is a method used to solve this problem, by using binary integer programming method. After modeling the problem into the binary integer programming form, the modeling results will be resolved using the Balas's additive algorithm. Thus, this problem can be solved and the solution can be found.
+	
+	In this research, a software that can solve the problem will also be built. The built software will use a graphical interface display with the aim of visualizing indoor CCTV camera placement solutions. With visualizations, indoor CCTV camera placement solutions will be easier to understand.
 }
 %=============================================================================
 
@@ -257,8 +256,8 @@ In addition to formulating the problem, the authors also build software that can
 % - kunciENG: keywords in english
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\kunciINA{cctv, linear programming}
-\kunciENG{cctv, linear programming}
+\kunciINA{penempatan kamera, \textit{binary integer programming}, \textit{balas additive}}
+\kunciENG{camera placement, binary integer programming, balas additive}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -268,7 +267,7 @@ In addition to formulating the problem, the authors also build software that can
 % Persembahan : kepada siapa anda mempersembahkan skripsi ini ...
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\untuk{<<kepada siapa anda mempersembahkan skripsi ini\ldots?>>}
+\untuk{dipersembahkan untuk kedua orang tua penulis}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -279,7 +278,19 @@ In addition to formulating the problem, the authors also build software that can
 % kasih kepada yang telah membantu anda bla bla bla ....  
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\prakata{<<Tuliskan kata pengantar dari anda di sini \ldots>>} 
+\prakata{
+	Puji dan syukur kepada Tuhan Yesus Kristus atas berkat dan penyertaanNYA yang tiada henti sehingga penulis dapat menyelesaikan tugas akhir ini yang berjudul ''Pencarian Jumlah Kamera Statis Minimum dalam Suatu Ruangan Menggunakan \textit{Binary Integer Programming}''. Selama proses penyusunan, penulis menemukan berbagai hal baru yang sangat bermanfaat untuk menambah pengetahuan dan juga memperluas wawasan. Melalui prakata ini, penulis ingin menyampaikan rasa terima kepada setiap pihak yang telah meluangkan waktu dan usahanya dalam membantu proses penyusunan tugas akhir ini. Secara khusus penulis ingin menyampaikan terima kasih kepada:
+	\begin{enumerate}
+		\item Papa dan Mama yang telah bekerja keras memberikan dukungan edukasi bagi penulis.
+		\item Kedua kakak kandung, William Cendra dan Lunel Candra yang telah memberikan kritik, saran, dan dukungannya selama proses penyusunan tugas akhir ini.
+		\item Bapak Claudio Franciscus, S.T., M.T., selaku dosen pembimbing yang telah memberikan arahan dan masukan selama proses penyusunan tugas akhir ini.
+		\item Bapak Chandra Wijaya, M.T., dan Bapak Kristopher David Harjono, M.T., selaku dosen penguji yang telah bersedia memberikan kritik dan saran terhadap tugas akhir ini.
+		\item Cecilia Stefiany yang telah memberikan dukungan dan semangat selama proses penyusunan tugas akhir ini.
+		\item Ivan Tjahya Wiguna yang telah bersedia meluangkan waktunya untuk membagikan ilmunya dengan penulis.
+		\item Teman-teman penulis, Kresna Dwi Cahyo, Kevin Pratama, Johannes Kalas Guna Kinasah, Melinda Nur Abianti, dan teman-teman lainnya yang telah memberikan dukungan selama proses penyusunan tugas akhir ini.
+	\end{enumerate}
+	Penulis menyadari bahwa tugas akhir ini tidak luput dari kekurangan. Namun, penulis berharap bahwa penelitian yang dilakukan pada tugas akhir ini dapat memberikan manfaat bagi setiap pihak yang membutuhkan.
+}
 %=============================================================================
 
 %_____________________________________________________________________________
