@@ -239,7 +239,7 @@
 \abstrakENG{
 	The camera is an optical tool used to take pictures. One use of the camera in everyday life is a CCTV (closed-circuit television) camera. CCTV cameras are used to monitor a location for surveillance and security purposes. CCTV cameras are generally installed in strategic places to get the most effective coverage possible.
 	
-	The placement of CCTV camera in a small simple shaped (rectangle) room is relatively not difficult. CCTV cameras that are needed mostly two and installed in both corners of the room which is a diagonal so they facing each other. However, if the room is large, then the placement of CCTV cameras in such a way becomes ineffective because CCTV cameras can not monitor the part of the room that is too far away from the location of CCTV camera placement.
+	The placement of CCTV camera in a small simple shaped (rectangle) room is relatively easy. CCTV cameras that are needed mostly two and installed in both corners of the room which is a diagonal so they facing each other. However, if the room is large, then the placement of CCTV cameras in such a way becomes ineffective because CCTV cameras can not monitor the part of the room that is too far away from the location of CCTV camera placement.
 	
 	In this study, the problem will be further analyzed and completed. The expected solution of this problem is the placement of a minimum CCTV camera that can cover the entire contents of the room. There is a method used to solve this problem, by using binary integer programming method. After modeling the problem into the binary integer programming form, the modeling results will be resolved using the Balas's additive algorithm. Thus, this problem can be solved and the solution can be found.
 	
@@ -256,8 +256,8 @@
 % - kunciENG: keywords in english
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
-\kunciINA{penempatan kamera, \textit{binary integer programming}, \textit{balas additive}}
-\kunciENG{camera placement, binary integer programming, balas additive}
+\kunciINA{kamera, penempatan kamera, \textit{linear programming}, \textit{binary integer programming}, \textit{balas additive}}
+\kunciENG{camera, camera placement, linear programming, binary integer programming, balas additive}
 %=============================================================================
 
 %_____________________________________________________________________________
@@ -279,17 +279,17 @@
 % Petunjuk: hilangkan tanda << & >>, dan isi sesuai dengan data anda.
 %=============================================================================
 \prakata{
-	Puji dan syukur kepada Tuhan Yesus Kristus atas berkat dan penyertaanNYA yang tiada henti sehingga penulis dapat menyelesaikan tugas akhir ini yang berjudul ''Pencarian Jumlah Kamera Statis Minimum dalam Suatu Ruangan Menggunakan \textit{Binary Integer Programming}''. Selama proses penyusunan, penulis menemukan berbagai hal baru yang sangat bermanfaat untuk menambah pengetahuan dan juga memperluas wawasan. Melalui prakata ini, penulis ingin menyampaikan rasa terima kepada setiap pihak yang telah meluangkan waktu dan usahanya dalam membantu proses penyusunan tugas akhir ini. Secara khusus penulis ingin menyampaikan terima kasih kepada:
+	Puji dan syukur dipanjatkan kepada Tuhan Yang Maha Esa atas berkat dan penyertaan-NYA yang tiada henti sehingga penulis dapat menyelesaikan tugas akhir yang berjudul ''Pencarian Jumlah Kamera Statis Minimum dalam Suatu Ruangan Menggunakan \textit{Binary Integer Programming}''. Selama proses penyusunan, penulis menemukan berbagai hal baru yang sangat bermanfaat untuk menambah pengetahuan dan juga memperluas wawasan. Melalui prakata ini, penulis ingin menyampaikan rasa terima kepada setiap pihak yang telah meluangkan waktu dan usahanya dalam membantu proses penyusunan tugas akhir ini. Secara khusus penulis ingin menyampaikan terima kasih kepada:
 	\begin{enumerate}
 		\item Papa dan Mama yang telah bekerja keras memberikan dukungan edukasi bagi penulis.
-		\item Kedua kakak kandung, William Cendra dan Lunel Candra yang telah memberikan kritik, saran, dan dukungannya selama proses penyusunan tugas akhir ini.
-		\item Bapak Claudio Franciscus, S.T., M.T., selaku dosen pembimbing yang telah memberikan arahan dan masukan selama proses penyusunan tugas akhir ini.
+		\item Bapak Claudio Franciscus, M.T., selaku dosen pembimbing yang telah memberikan arahan dan masukan selama proses penyusunan tugas akhir ini.
 		\item Bapak Chandra Wijaya, M.T., dan Bapak Kristopher David Harjono, M.T., selaku dosen penguji yang telah bersedia memberikan kritik dan saran terhadap tugas akhir ini.
+		\item Kedua kakak kandung, William Cendra dan Lunel Candra yang telah memberikan kritik, saran, dan dukungan selama proses penyusunan tugas akhir ini.
+		\item Ivan Tjahya Wiguna yang telah bersedia meluangkan waktunya untuk berbagi ilmu bersama penulis.
 		\item Cecilia Stefiany yang telah memberikan dukungan dan semangat selama proses penyusunan tugas akhir ini.
-		\item Ivan Tjahya Wiguna yang telah bersedia meluangkan waktunya untuk membagikan ilmunya dengan penulis.
 		\item Teman-teman penulis, Kresna Dwi Cahyo, Kevin Pratama, Johannes Kalas Guna Kinasah, Melinda Nur Abianti, dan teman-teman lainnya yang telah memberikan dukungan selama proses penyusunan tugas akhir ini.
 	\end{enumerate}
-	Penulis menyadari bahwa tugas akhir ini tidak luput dari kekurangan. Namun, penulis berharap bahwa penelitian yang dilakukan pada tugas akhir ini dapat memberikan manfaat bagi setiap pihak yang membutuhkan.
+	Penulis menyadari bahwa tugas akhir ini tidak lepas dari kekurangan. Namun, penulis berharap bahwa penelitian yang dilakukan pada tugas akhir ini dapat memberi manfaat bagi setiap pihak yang membutuhkan.
 }
 %=============================================================================
 
